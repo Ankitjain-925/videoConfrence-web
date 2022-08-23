@@ -165,6 +165,7 @@ class Index extends Component {
       back_symptoms_begin,
       back_injured,
       cough_symptoms_begin,
+      appointments,
       cough_suffer_symtoms,
       cough_allergies,
       pain_level,
@@ -206,13 +207,13 @@ class Index extends Component {
               <Grid item xs={12} md={12}>
                 <Grid container direction="row">
                   {/* Website Menu */}
-                  <LeftMenu isNotShow={true} currentPage="feedback" />
-                  <LeftMenuMobile isNotShow={true} currentPage="feedback" />
+                  <LeftMenu isNotShow={true} currentPage="appointmentList" />
+                  <LeftMenuMobile isNotShow={true} currentPage="appointmentList" />
                   <Grid item xs={12} md={11} lg={10}>
                     <Grid className="docsOpinion docsAllOption">
                       <Grid container direction="row" className="docsOpinLbl">
                         <Grid item xs={12} md={6}>
-                          <label>{request_list}</label>
+                          <label>{appointments}</label>
                         </Grid>
                       </Grid>
                       <Grid className="presPkgIner2">

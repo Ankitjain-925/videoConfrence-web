@@ -67,8 +67,8 @@ class Index extends Component {
   };
 
   //   //For Archive link
-  ArchiveLink = () => {
-    this.props.history.push("/patient/archive-request");
+  gotoAppointmentList = () => {
+    this.props.history.push("/appointment-list");
   };
 
   //For Second opinion link
@@ -85,7 +85,7 @@ class Index extends Component {
       logout,
       manage_prepaid_talktime,
       dashboard,
-      archive_request,
+      appointments,
 
     } = translate;
     return (
@@ -141,6 +141,33 @@ class Index extends Component {
 
                   {this.props.currentPage !== "register_video" && ( <li
                     className={
+                      this.props.currentPage === "appointmentList" ? "menuActv" : ""
+                    }
+                  >
+                    <a onClick={this.gotoAppointmentList}>
+                      {this.props.settings &&
+                      this.props.settings.setting &&
+                      this.props.settings.setting.mode &&
+                      this.props.settings.setting.mode === "dark" ? (
+                        <img
+                          src={require("assets/images/archive2.png")}
+                          alt=""
+                          title=""
+                        />
+                      ) : (
+                        <img
+                          src={require("assets/images/archive.png")}
+                          alt=""
+                          title=""
+                        />
+                      )}
+                      <span>{appointments}</span>
+                    </a>
+                  </li> )}
+
+
+                  {this.props.currentPage !== "register_video" && ( <li
+                    className={
                       this.props.currentPage === "picture" ? "menuActv" : ""
                     }
                   >
@@ -166,31 +193,6 @@ class Index extends Component {
                     </a>
                   </li> )}
                   
-                  {this.props.currentPage !== "register_video" && ( <li
-                    className={
-                      this.props.currentPage === "archivelink" ? "menuActv" : ""
-                    }
-                  >
-                    <a onClick={this.ArchiveLink}>
-                      {this.props.settings &&
-                      this.props.settings.setting &&
-                      this.props.settings.setting.mode &&
-                      this.props.settings.setting.mode === "dark" ? (
-                        <img
-                          src={require("assets/images/archive2.png")}
-                          alt=""
-                          title=""
-                        />
-                      ) : (
-                        <img
-                          src={require("assets/images/archive.png")}
-                          alt=""
-                          title=""
-                        />
-                      )}
-                      <span>{archive_request}</span>
-                    </a>
-                  </li> )}
 
                   <li
                     className={
