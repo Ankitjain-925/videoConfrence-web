@@ -18231,3 +18231,11 @@ span.PIC_Condition:hover {
    font-family: Muli;
  font-weight: 600;
 }
+
+/* CSS Added for Guidelines */
+
+.guidline_text{
+  font-weight: 700;
+  text-decoration-line: underline;
+  cursor: pointer;
+}

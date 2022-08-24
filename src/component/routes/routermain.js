@@ -15,6 +15,7 @@ import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 import { Dashboard } from "Screens/Patient/Dashboard";
 import RegisterVideo from "Screens/Patient/RegisterVideo";
+import VideoGuideLine from 'Screens/Patient/VideoGuideLine'
 class Routermain extends Component {
   render() {
     return (
@@ -32,6 +33,12 @@ class Routermain extends Component {
               exact
               path="/dashboard"
               render={(props) => <Dashboard {...props} />}
+            />
+
+            <Route
+              exact
+              path="/video-guideline"
+              render={(props) => <VideoGuideLine {...props} />}
             />
 
             <Route
