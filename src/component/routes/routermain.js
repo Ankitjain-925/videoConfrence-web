@@ -1,25 +1,26 @@
-import React, { Component } from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import Register from 'Screens/Register';
-import Login from 'Screens/Login';
-import ForgotPass from 'Screens/ChangePassword';
-import ChangePass from 'Screens/ChangePassword/changepassword';
-import NotFound from 'Screens/Components/NotFound';
-import RegSuccuss from 'Screens/Components/RegSuccess/index';
-import Form from 'Screens/Patient/SickLeaveForm/index';
-import RequestList from 'Screens/Patient/RequestList/index';
-import PatientProfile from 'Screens/Patient/Profile/index';
-import VideoCall from 'Screens/VideoCall/index';
-import Payment from 'Screens/Patient/RequestList/Payment/index';
-import ArchiveRequest from 'Screens/Patient/ArchiveRequest/index';
-import {Dashboard} from 'Screens/Patient/Dashboard'
-import RegisterVideo from 'Screens/Patient/RegisterVideo'
+import React, { Component } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import Register from "Screens/Register";
+import Login from "Screens/Login";
+import ForgotPass from "Screens/ChangePassword";
+import ChangePass from "Screens/ChangePassword/changepassword";
+import NotFound from "Screens/Components/NotFound";
+import RegSuccuss from "Screens/Components/RegSuccess/index";
+import Form from "Screens/Patient/SickLeaveForm/index";
+import AppointmentList from "Screens/Patient/RequestList/index";
+import PatientProfile from "Screens/Patient/Profile/index";
+import VideoCall from "Screens/VideoCall/index";
+import Payment from "Screens/Patient/RequestList/Payment/index";
+import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
+import { Dashboard } from "Screens/Patient/Dashboard";
+import RegisterVideo from "Screens/Patient/RegisterVideo";
+import VideoGuideLine from 'Screens/Patient/VideoGuideLine'
 import RegisterVC from 'Screens/Patient/RegisterVC/index'
 class Routermain extends Component {
   render() {
     return (
-      <Router basename={'/video-confrance'}>
+      <Router basename={"/video-confrance"}>
         <Grid>
           <Switch>
             <Route exact path="/" render={(props) => <Login {...props} />} />
@@ -37,16 +38,24 @@ class Routermain extends Component {
 
             <Route
               exact
-              path="/video_register"
-              render={(props) => <RegisterVideo {...props} />}
+              path="/video-guideline"
+              render={(props) => <VideoGuideLine {...props} />}
             />
 
             <Route
               exact
+              path="/video_register"
+              render={(props) => <RegisterVideo {...props} />}
+            />
+            <Route
               path="/patient/register-VC"
               render={(props) => <RegisterVC {...props} />}
             />
-
+            <Route
+              exact
+              path="/appointment-list"
+              render={(props) => <AppointmentList {...props} />}
+            />
             <Route
               exact
               path="/patient"
