@@ -7058,6 +7058,7 @@ a.diaCDActv {
   margin-top: 20px;
   margin-bottom: 2px;
   outline: none;
+  margin: 10px;
 }
 .infoShwSave3 input:hover {
   background: transparent;

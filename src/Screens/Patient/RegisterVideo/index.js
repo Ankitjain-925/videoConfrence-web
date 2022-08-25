@@ -120,59 +120,59 @@ const RegisterVideo = (props) => {
                 <Grid item xs={12} md={10} lg={8}>
 
                   {/* <Grid className="profilePkgIner1"> */}
-                    {/* Tabs  */}
-                    {/* <AppBar position="static" className="profileTabsUpr">
+                  {/* Tabs  */}
+                  {/* <AppBar position="static" className="profileTabsUpr">
                       <lable>Register </lable>
                     </AppBar> */}
                   {/* </Grid> */}
-                  <Grid className="profilePkgIner2">
-                    
-                    <Grid className="logForm">
 
-                      {error && (<div className="err_message" >
-                        {errormsg}
-                      </div>
-                      )
-                      }
-                      <Grid className="logRow">
-                        <Grid>
-                          <label>Username</label>
-                        </Grid>
-                        <Grid>
-                          <input
-                            type="text"
-                            value={email}
-                            name="email"
-                            onKeyDown={(e) => onKeyDownlogin(e)}
-                            onChange={(e) => { setEmail(e.target.value) }
-                            }
-                          />
-                        </Grid>
+
+                  <Grid className="profilePkgIner2 logForm">
+                  <Grid className="logf">
+                    {error && (<div className="err_message" >
+                      {errormsg}
+                    </div>
+                    )
+                    }
+                    <Grid className="logRow">
+                      <Grid>
+                        <label>Username</label>
                       </Grid>
-                      <Grid className="logRow">
-                        <Grid>
-                          <label>Password</label>
-                        </Grid>
-                        <Grid>
-                          <input
-                            type={hidden ? "password" : "text"}
-                            name="pass"
-                            onKeyDown={(e) => onKeyDownlogin(e)}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)
-                            }
-                          />
-                        </Grid>
-                      </Grid>
-                      
-                      <Grid className="infoShwSave3">
+                      <Grid>
                         <input
-                          type="submit"
-                          value="submit"
-                          onClick={() => BtnSubmit()}
-
+                          type="text"
+                          value={email}
+                          name="email"
+                          onKeyDown={(e) => onKeyDownlogin(e)}
+                          onChange={(e) => { setEmail(e.target.value) }
+                          }
                         />
                       </Grid>
+                    </Grid>
+                    <Grid className="logRow">
+                      <Grid>
+                        <label>Password</label>
+                      </Grid>
+                      <Grid>
+                        <input
+                          type={hidden ? "password" : "text"}
+                          name="pass"
+                          onKeyDown={(e) => onKeyDownlogin(e)}
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)
+                          }
+                        />
+                      </Grid>
+                    </Grid>
+
+                    <Grid className="infoShwSave3">
+                      <input
+                        type="submit"
+                        value="submit"
+                        onClick={() => BtnSubmit()}
+
+                      />
+                    </Grid>
                     </Grid>
                   </Grid>
                   {/* End of Tabs */}

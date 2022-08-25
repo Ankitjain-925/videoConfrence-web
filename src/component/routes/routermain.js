@@ -15,6 +15,7 @@ import Payment from 'Screens/Patient/RequestList/Payment/index';
 import ArchiveRequest from 'Screens/Patient/ArchiveRequest/index';
 import {Dashboard} from 'Screens/Patient/Dashboard'
 import RegisterVideo from 'Screens/Patient/RegisterVideo'
+import RegisterVC from 'Screens/Patient/RegisterVC/index'
 class Routermain extends Component {
   render() {
     return (
@@ -38,6 +39,12 @@ class Routermain extends Component {
               exact
               path="/video_register"
               render={(props) => <RegisterVideo {...props} />}
+            />
+
+            <Route
+              exact
+              path="/patient/register-VC"
+              render={(props) => <RegisterVC {...props} />}
             />
 
             <Route

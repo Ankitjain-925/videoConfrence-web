@@ -10019,7 +10019,9 @@ label.formviewhead{
     padding-right: 60px;
   }
 }
-
+.st1 label{
+  position: absolute;
+}
 .err_message2 {
   color: red !important;
   font-weight: 600;
