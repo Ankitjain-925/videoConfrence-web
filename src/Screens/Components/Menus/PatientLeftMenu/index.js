@@ -160,34 +160,7 @@ class Index extends Component {
                   this.props.currentPage === "appointmentList" ? "menuActv" : ""
                 }
               >
-                <a onClick={this.gotoAppointmentList}>
-                  {this.props.settings &&
-                  this.props.settings.setting &&
-                  this.props.settings.setting.mode &&
-                  this.props.settings.setting.mode === "dark" ? (
-                    <img
-                      src={require("assets/images/archive2.png")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                      src={require("assets/images/archive.png")}
-                      alt=""
-                      title=""
-                    />
-                  )}
-                  <span>{appointments}</span>
-                </a>
-              </li>
-            )}
 
-            {this.props.currentPage !== "register_video" && (
-              <li
-                className={
-                  this.props.currentPage === "picture" ? "menuActv" : ""
-                }
-              >
                 <a onClick={this.PictureEval1}>
                   {this.props.settings &&
                     this.props.settings.setting &&
@@ -210,6 +183,37 @@ class Index extends Component {
               </li>
             )}
 
+
+            {this.props.currentPage !== "register_video" && (
+              <li
+                className={
+                  this.props.currentPage === "picture" ? "menuActv" : ""
+                }
+              >
+             
+
+                <a onClick={this.gotoAppointmentList}>
+
+                  {this.props.settings &&
+                    this.props.settings.setting &&
+                    this.props.settings.setting.mode &&
+                    this.props.settings.setting.mode === "dark" ? (
+                    <img
+                      src={require("assets/images/archive2.png")}
+                      alt=""
+                      title=""
+                    />
+                  ) : (
+                    <img
+                      src={require("assets/images/archive.png")}
+                      alt=""
+                      title=""
+                    />
+                  )}
+                  <span>{appointments}</span>
+                </a>
+              </li>
+            )}
 
             {this.props.currentPage !== "register_video" && (
               <li
