@@ -41,30 +41,29 @@ function RegisterVC(props) {
     left: "10px"
   };
   return (
-
     <Grid
-    className = {
-      props.settings &&
-        props.settings.setting &&
-        props.settings.setting.mode &&
-        props.settings.setting.mode === "dark"
-        ? "homeBg darkTheme homeBgDrk"
-        : "homeBg"
-    }
-      >
+      className={
+        props.settings &&
+          props.settings.setting &&
+          props.settings.setting.mode &&
+          props.settings.setting.mode === 'dark'
+          ? 'homeBg darkTheme homeBgDrk'
+          : 'homeBg'
+      }
+    >
       <Grid className="homeBgIner">
         <Grid container direction="row" justify="center">
           <Grid item xs={12} md={12}>
             <Grid container direction="row">
               {/* Website Menu */}
-              <LeftMenu isNotShow={true} currentPage="register_video" />
-              <LeftMenuMobile isNotShow={true} currentPage="register_video" />
+              <LeftMenu isNotShow={true} currentPage="dashboard" />
+              <LeftMenuMobile isNotShow={true} currentPage="dashboard" />
               <Notification />
               {/* Website Mid Content */}
               <Grid item xs={12} md={11} lg={10}>
                 <Grid className="docsOpinion">
                   <Grid container direction="row" className="docsOpinLbl">
-                    <Grid item xs={12} md={6} style={myst1}>
+                    <Grid item xs={12} md={6} className= "label_1">
                       <label>{book_appointment}</label>
                     </Grid>
                   </Grid>
@@ -90,12 +89,13 @@ function RegisterVC(props) {
                 <Grid item xs={12} md={3}></Grid>
                 {/* End of Website Right Content */}
               </Grid>
+              {/* End of Website Right Content */}
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-  </Grid>
-  );
+    </Grid>
+  )
 }
 
 export default RegisterVC;

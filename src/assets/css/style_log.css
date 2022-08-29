@@ -411,6 +411,8 @@ img.passArow {
     letter-spacing: 0;
     line-height: 20px;
     margin-bottom: 6px;
+    font-weight: 600;
+    margin: 10px;
 }
 .logForm input[type="text"], .logForm input[type="password"] {
     border-radius: 7px;
@@ -612,6 +614,11 @@ ul.flag-select__options li {
     width: 100%;
     height: auto;
     margin: 30px 0px;
+}
+
+.label_1{
+position: relative;
+left: -10px;
 }
 
 /*End By Ankita*/
