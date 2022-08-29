@@ -84,7 +84,8 @@
     "start": "^5.1.0",
     "styled-components": "^5.3.3",
     "swiper": "^6.7.5",
-    "webpack": "4.42.0"
+    "webpack": "4.42.0",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "react-scripts start",

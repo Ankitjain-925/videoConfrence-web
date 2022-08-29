@@ -12,14 +12,16 @@ import queryString from "query-string";
 import { commonNoTokentHeader } from "component/CommonHeader/index";
 import axios from "axios";
 import sitedata from "sitedata";
-import { pure } from 'recompose';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { LoginReducerAim } from 'Screens/Login/actions';
-import { Settings } from 'Screens/Login/setting';
-import { LanguageFetchReducer } from 'Screens/actions';
-import { OptionList } from 'Screens/Login/metadataaction';
-import { authy } from 'Screens/Login/authy.js';
+import { pure } from "recompose";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { LoginReducerAim } from "Screens/Login/actions";
+import { Settings } from "Screens/Login/setting";
+import { LanguageFetchReducer } from "Screens/actions";
+import { OptionList } from "Screens/Login/metadataaction";
+import { authy } from "Screens/Login/authy.js";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const path = sitedata.data.path;
 
@@ -35,66 +37,67 @@ TabContainer.propTypes = {
 };
 
 const RegisterVideo = (props) => {
-  const [userData, setUserData] = useState(props.stateLoginValueAim.user)
+  const [userData, setUserData] = useState(props.stateLoginValueAim.user);
   const [value, setValue] = useState(0);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [_password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [errormsg, setErrormsg] = useState('');
+  const [errormsg, setErrormsg] = useState("");
   const [error2, setError2] = useState(false);
-  const [hidden, setHidden] = useState(true)
+  const [hidden, setHidden] = useState(true);
+  const [ITGuideline, setITGuideline] = useState(false)
   let translate = getLanguage(props.stateLanguageType);
   let { my_profile, Security } = translate;
   let history = useHistory();
 
-  let {
-    register_video_confrance,
-    sick_leave_certificate,
-  } = translate;
+  let { register_video_confrance, sick_leave_certificate, click_on_accept_it_guidline, view_guidelines, password, username } = translate;
   const BtnSubmit = () => {
-    if (email !== "" && password !== "") {
-      confirmSubmit()
+    if (email !== "" && _password !== "") {
+      confirmSubmit();
     } else {
-      setErrormsg('Username && password not empty')
-      setError(true)
+      setErrormsg("Username && password not empty");
+      setError(true);
     }
-  }
+  };
   const onKeyDownlogin = (e) => {
     if (e.key === "Enter") {
       BtnSubmit();
     }
   };
   const confirmSubmit = () => {
-    let _data = {
-      email: email,
-      password: password,
-      first_name: userData.first_name,
-      last_name: userData.last_name,
-      profile_id: userData.profile_id
+    if(ITGuideline){
+      setErrormsg("");
+      setError(false);
+      let _data = {
+        email: email,
+        password: _password,
+        first_name: userData.first_name,
+        last_name: userData.last_name,
+        profile_id: userData.profile_id,
+        isITGuideLineAccepted : ITGuideline
+      };
+      axios
+        .post(path + "/vchat/AddVideoUserAccount", _data, commonNoTokentHeader())
+        .then((response) => {
+          if (response.data.hassuccessed === true) {
+            history.push({
+              pathname: "/dashboard",
+            });
+          } else {
+          }
+        });
+    }else{
+      setErrormsg("Please accept IT Guideline");
+      setError(true);
     }
-    axios
-      .post(
-        path + "/vchat/AddVideoUserAccount",
-        _data,
-        commonNoTokentHeader()
-      )
-      .then((response) => {
-        if (response.data.hassuccessed === true) {
-          history.push({
-            pathname: '/dashboard',
-          });
-        } else {
-
-        }
-      });
   };
   return (
     <Grid
       className={
         props.settings &&
-          props.settings.setting &&
-          props.settings.setting.mode &&
-          props.settings.setting.mode === "dark"
+        props.settings.setting &&
+        props.settings.setting.mode &&
+        props.settings.setting.mode === "dark"
           ? "homeBg darkTheme homeBgDrk"
           : "homeBg"
       }
@@ -118,7 +121,6 @@ const RegisterVideo = (props) => {
                 </Grid>
 
                 <Grid item xs={12} md={10} lg={8}>
-
                   {/* <Grid className="profilePkgIner1"> */}
                   {/* Tabs  */}
                   {/* <AppBar position="static" className="profileTabsUpr">
@@ -126,41 +128,62 @@ const RegisterVideo = (props) => {
                     </AppBar> */}
                   {/* </Grid> */}
 
-
                   <Grid className="profilePkgIner2 logForm">
-                  <Grid className="logf">
-                    {error && (<div className="err_message" >
-                      {errormsg}
-                    </div>
-                    )
-                    }
-                    <Grid className="logRow">
-                      <Grid>
-                        <label>Username</label>
+                    <Grid className="logForm">
+                      {error && <div className="err_message">{errormsg}</div>}
+                      <Grid className="logRow">
+                        <Grid>
+                          <label>{username}</label>
+                        </Grid>
+                        <Grid>
+                          <input
+                            type="text"
+                            value={email}
+                            name="email"
+                            onKeyDown={(e) => onKeyDownlogin(e)}
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                            }}
+                          />
+                        </Grid>
                       </Grid>
-                      <Grid>
-                        <input
-                          type="text"
-                          value={email}
-                          name="email"
-                          onKeyDown={(e) => onKeyDownlogin(e)}
-                          onChange={(e) => { setEmail(e.target.value) }
+                      <Grid className="logRow">
+                        <Grid>
+                          <label>{password}</label>
+                        </Grid>
+                        <Grid>
+                          <input
+                            type={hidden ? "password" : "text"}
+                            name="pass"
+                            onKeyDown={(e) => onKeyDownlogin(e)}
+                            value={_password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                        </Grid>
+                      </Grid>
+
+                      <Grid className="aceptTermsPlcy">
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              value="checkedB"
+                              color="#00ABAF"
+                              checked = {ITGuideline}
+                              onChange={()=>{
+                                setITGuideline(!ITGuideline)
+                              }}
+                            />
                           }
+                          label={click_on_accept_it_guidline}
                         />
+                        <span onClick={()=>history.push("/video-guideline")} className="guidline_text">{view_guidelines}</span>
                       </Grid>
-                    </Grid>
-                    <Grid className="logRow">
-                      <Grid>
-                        <label>Password</label>
-                      </Grid>
-                      <Grid>
+
+                      <Grid className="infoShwSave3">
                         <input
-                          type={hidden ? "password" : "text"}
-                          name="pass"
-                          onKeyDown={(e) => onKeyDownlogin(e)}
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)
-                          }
+                          type="submit"
+                          value="submit"
+                          onClick={() => BtnSubmit()}
                         />
                       </Grid>
                     </Grid>
@@ -176,8 +199,6 @@ const RegisterVideo = (props) => {
                     </Grid>
                   </Grid>
                   {/* End of Tabs */}
-
-
                 </Grid>
                 {/* Website Right Content */}
                 <Grid item xs={12} md={3}></Grid>
@@ -190,7 +211,6 @@ const RegisterVideo = (props) => {
     </Grid>
   );
 };
-
 
 const mapStateToProps = (state) => {
   const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
