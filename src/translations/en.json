@@ -1904,7 +1904,7 @@
     "try_after_some_time":"There is no doctor availiable yet please try after some time!",
     "payment_process_must_be_within_15_min":"The payment process must be within 15 min, and time is exceeded now. Please create a new request again, this request will go to the archive automatically after some time!",
     "upcoming_slots":"upcoming time slots",
-    "aimedis_elements_au" : "Aimedis elements AU",
+    "aimedis_elements_au" : "Aimedis Video Conference",
     "check_your_meeting_key_or_link_again":"Meeting not available please check your meeting key or link again",
     "meeting_time_out":"Meeting time out",
 

@@ -127,7 +127,8 @@ const RegisterVideo = (props) => {
                       <lable>Register </lable>
                     </AppBar> */}
                   {/* </Grid> */}
-                  <Grid className="profilePkgIner2">
+
+                  <Grid className="profilePkgIner2 logForm">
                     <Grid className="logForm">
                       {error && <div className="err_message">{errormsg}</div>}
                       <Grid className="logRow">
@@ -185,6 +186,16 @@ const RegisterVideo = (props) => {
                           onClick={() => BtnSubmit()}
                         />
                       </Grid>
+                    </Grid>
+
+                    <Grid className="infoShwSave3">
+                      <input
+                        type="submit"
+                        value="submit"
+                        onClick={() => BtnSubmit()}
+
+                      />
+                    </Grid>
                     </Grid>
                   </Grid>
                   {/* End of Tabs */}
