@@ -127,8 +127,7 @@ const RegisterVideo = (props) => {
                       <lable>Register </lable>
                     </AppBar> */}
                   {/* </Grid> */}
-
-                  <Grid className="profilePkgIner2 logForm">
+                  <Grid className="profilePkgIner2">
                     <Grid className="logForm">
                       {error && <div className="err_message">{errormsg}</div>}
                       <Grid className="logRow">
@@ -187,6 +186,21 @@ const RegisterVideo = (props) => {
                         />
                       </Grid>
                     </Grid>
+                    <Grid className="logRow">
+                      <Grid>
+                        <label>Password</label>
+                      </Grid>
+                      <Grid>
+                        <input
+                          type={hidden ? "password" : "text"}
+                          name="pass"
+                          onKeyDown={(e) => onKeyDownlogin(e)}
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)
+                          }
+                        />
+                      </Grid>
+                    </Grid>
 
                     <Grid className="infoShwSave3">
                       <input
@@ -208,7 +222,7 @@ const RegisterVideo = (props) => {
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    
   );
 };
 

@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
@@ -18,7 +17,6 @@ import { Dashboard } from "Screens/Patient/Dashboard";
 import RegisterVideo from "Screens/Patient/RegisterVideo";
 import VideoGuideLine from 'Screens/Patient/VideoGuideLine'
 import RegisterVC from 'Screens/Patient/RegisterVC/index'
-
 class Routermain extends Component {
   render() {
     return (
@@ -49,21 +47,16 @@ class Routermain extends Component {
               path="/video_register"
               render={(props) => <RegisterVideo {...props} />}
             />
-
             <Route
-              exact
               path="/patient/register-VC"
               render={(props) => <RegisterVC {...props} />}
             />
-
-
-          <Route
+            <Route
               exact
               path="/appointment-list"
               render={(props) => <AppointmentList {...props} />}
             />
-            
-         <Route
+            <Route
               exact
               path="/patient"
               render={(props) => <PatientProfile {...props} />}

@@ -26,7 +26,10 @@ class JobDetails extends Component {
 
 
     render() {
-        
+        const myst1 = {
+            display: "flex",
+                }
+
         const { jobTitle, jobCompany, jobLocation, handleChange } = this.props;
         return (
             <>
@@ -34,8 +37,8 @@ class JobDetails extends Component {
 
 
                     <Grid className="logRow" >
-                        <Grid container direction="row" justify="center">
-                            <Grid item xs={6} md={6}>
+                        <Grid container direction="row" justify="center" >
+                            <Grid item xs={6} md={6} style= {myst1}>
 
 
 
@@ -49,7 +52,7 @@ class JobDetails extends Component {
                                 />
                                 <label>PrePaid</label>
                             </Grid>
-                            <Grid item xs={6} md={6}>
+                            <Grid item xs={6} md={6} style= {myst1}>
                                 <input
                                     type="radio"
                                     checked={this.state.setData === "yes"}
@@ -80,7 +83,7 @@ class JobDetails extends Component {
                     </Grid>
 
 
-                    <Grid className="infoShwSave3">
+                    <Grid className="infoShwSave3 label_1">
                         <input
                             type="button"
                             value="« Back"
