@@ -1911,7 +1911,7 @@
 		"change_citizenship": "Do you want to change the Citizenship country according your new mobile country code?",
 		"fill_citizenship":"Please fill the Citizenship country",
     "click_on_accept_it_guidline" : "Click here to accept IT guideline !",
-    "view_guidelines" : "View Guideline"
-   
+    "view_guidelines" : "View Guideline",
+   "guideline" : "Guideline"
   }
 }
