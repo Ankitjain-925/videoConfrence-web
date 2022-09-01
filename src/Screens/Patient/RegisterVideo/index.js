@@ -186,6 +186,31 @@ const RegisterVideo = (props) => {
                         />
                       </Grid>
                     </Grid>
+                    <Grid className="logRow">
+                      <Grid>
+                        <label>Password</label>
+                      </Grid>
+                      <Grid>
+                        <input
+                          type={hidden ? "password" : "text"}
+                          name="pass"
+                          onKeyDown={(e) => onKeyDownlogin(e)}
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)
+                          }
+                        />
+                      </Grid>
+                    </Grid>
+
+                    <Grid className="infoShwSave3">
+                      <input
+                        type="submit"
+                        value="submit"
+                        onClick={() => BtnSubmit()}
+
+                      />
+                    </Grid>
+                    </Grid>
                   </Grid>
                   {/* End of Tabs */}
                 </Grid>
@@ -197,7 +222,7 @@ const RegisterVideo = (props) => {
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    
   );
 };
 
