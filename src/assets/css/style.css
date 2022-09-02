@@ -4189,6 +4189,13 @@ button.aboutTabsIner {
   min-height: 150vh;
   padding-bottom: 122px;
 }
+.profilePkgIner3 {
+  padding: 22px 28px;
+  padding-bottom: 122px;
+}
+.border-radious-10{
+  border-radius: 10px;
+}
 .profileInfoDate .react-date-picker {
   display: block !important;
 }
