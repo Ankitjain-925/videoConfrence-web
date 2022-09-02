@@ -249,7 +249,7 @@ class Index extends Component {
       stateLoginValueAim?.user?.type === 'patient' &&
       this.props.verifyCode.code
     ) {
-      return <Redirect to={'/dashboard'} />;
+      return <Redirect to={'/settings'} />;
     } else {
       return (
         <Grid

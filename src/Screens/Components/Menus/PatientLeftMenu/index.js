@@ -74,7 +74,7 @@ class Index extends Component {
 
   //For Second opinion link
   dashboard = () => {
-    this.props.history.push("/dashboard");
+    this.props.history.push("/settings");
   };
 
   //   //For Archive link
@@ -138,18 +138,18 @@ class Index extends Component {
                     this.props.settings.setting.mode &&
                     this.props.settings.setting.mode === "dark" ? (
                     <img
-                      src={require("assets/images/nav-journal-white.svg")}
+                      src={require("assets/virtual_images/settings-whits.png")}
                       alt=""
                       title=""
                     />
                   ) : (
                     <img
-                      src={require("assets/images/nav-journal.svg")}
+                      src={require("assets/virtual_images/setting.png")}
                       alt=""
                       title=""
                     />
                   )}
-                  <span>{dashboard}</span>
+                  <span>{"Settings"}</span>
                 </a>
               </li>
             )}

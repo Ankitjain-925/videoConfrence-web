@@ -73,7 +73,7 @@ class Index extends Component {
 
   //For Second opinion link
   dashboard = () => {
-    this.props.history.push("/dashboard");
+    this.props.history.push("/settings");
   };
   render() {
     let translate = getLanguage(this.props.stateLanguageType);
@@ -113,31 +113,33 @@ class Index extends Component {
             <Menu className="addCstmMenu">
               <Grid className="menuItems">
                 <ul>
-                {this.props.currentPage !== "register_video" && (<li
-                    className={
-                      this.props.currentPage === "dashboard" ? "menuActv" : ""
-                    }
-                  >
-                    <a onClick={this.dashboard}>
-                      {this.props.settings &&
-                      this.props.settings.setting &&
-                      this.props.settings.setting.mode &&
-                      this.props.settings.setting.mode === "dark" ? (
-                        <img
-                          src={require("assets/images/nav-journal-white.svg")}
-                          alt=""
-                          title=""
-                        />
-                      ) : (
-                        <img
-                          src={require("assets/images/nav-journal.svg")}
-                          alt=""
-                          title=""
-                        />
-                      )}
-                      <span>{dashboard}</span>
-                    </a>
-                  </li> )}
+                {this.props.currentPage !== "register_video" && (
+              <li
+                className={
+                  this.props.currentPage === "dashboard" ? "menuActv" : ""
+                }
+              >
+                <a onClick={this.dashboard}>
+                  {this.props.settings &&
+                    this.props.settings.setting &&
+                    this.props.settings.setting.mode &&
+                    this.props.settings.setting.mode === "dark" ? (
+                    <img
+                      src={require("assets/virtual_images/settings-whits.png")}
+                      alt=""
+                      title=""
+                    />
+                  ) : (
+                    <img
+                      src={require("assets/virtual_images/setting.png")}
+                      alt=""
+                      title=""
+                    />
+                  )}
+                  <span>{"Settings"}</span>
+                </a>
+              </li>
+            )}
 
                   {this.props.currentPage !== "register_video" && ( <li
                     className={

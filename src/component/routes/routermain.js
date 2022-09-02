@@ -32,7 +32,7 @@ class Routermain extends Component {
 
             <Route
               exact
-              path="/dashboard"
+              path="/settings"
               render={(props) => <Dashboard {...props} />}
             />
 

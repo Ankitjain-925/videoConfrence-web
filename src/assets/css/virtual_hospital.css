@@ -14862,3 +14862,88 @@ label.errMsgStyleSecPart {
 .darkTheme .allSickVideoSec label, .darkTheme .allSickVideoSec h3{
   color:#00abaf!important;
 }
+
+/*css added by Lokesh*/
+
+.settingbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  gap: 20px;
+  width: 301px;
+  height: 80px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgba(35, 35, 35, 0.04);
+  border-radius: 8px;
+}
+
+.settingbox-heading {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000808;
+  margin: 25px 6px;
+}
+.last-sec-setting {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(35, 35, 35, 0.04);
+    border-radius: 8px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.middle-setting-items {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.middle-setting-items img {
+  margin-right: 16px;
+}
+
+.setting-h5 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 35px;
+  margin: 30px 0px;
+  color: #000808;
+}
+
+.logout {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  /* width: 920px; */
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+  color: #00ABAF;
+}
+
+.topupButton{
+   text-transform: capitalize;
+   color: #fff !important;
+   background-color: #00ABAF !important;
+   border-radius: 4;
+}
+.settingPage{
+  margin: 10px 10px 10px 50px;
+  padding: 10px;
+}
+.last-sec-setting p{
+  padding: 7px 0px;
+}
+@media (max-width: 959px) {
+  .settingPage{
+    margin: 10px 10px 10px 10px;
+    padding: 10px;
+  }
+}
+a {
+  color: #000 !important;
+}
