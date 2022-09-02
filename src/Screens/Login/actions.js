@@ -8,7 +8,7 @@ import axios from "axios";
 import { CometChat } from "@cometchat-pro/chat";
 import { COMETCHAT_CONSTANTS } from "../Components//CometChat/consts";
 import * as Docarray from "./doctorarray";
-import { commonNoTokentHeader } from "component/CommonHeader/index";
+import { commonNoTokentHeader, commonHeader } from "component/CommonHeader/index";
 const path = sitedata.data.path + "/UserProfile";
 const path1 = sitedata.data.path + "/User";
 
@@ -36,6 +36,19 @@ export const updateCometUser = async (data)=>{
   .then((response) => {})
   .catch((err)=>{})
 }
+
+export const checkVideo = async (data)=>{
+  var response2 = await axios
+  .post(
+    sitedata.data.path + "/vchat/getuserchat",
+    {
+      _id: data.user._id,
+    },
+    commonHeader(data.token)
+  )
+  return response2.data.data;
+}
+
 
 export const LoginReducerAim = (email, password, logintoken, SendCallback = () => {}, forUpdate) => {
   
@@ -74,10 +87,16 @@ export const LoginReducerAim = (email, password, logintoken, SendCallback = () =
           dispatch({ type: GET_LOGIN_SUCCESS, payload: tmp });
           SendCallback();
         } else {
+          checkVideo(response.data).then((getVerify)=>{
           tmp = {
             token: response.data.token,
             user: response.data.user,
+            isVerified: response.data.isVerified,
+            isBlocked: response.data.isBlocked,
+            type: response.data.type,
+            is_vedio_registered: getVerify
           };
+          
           dispatch(
             Docarray.Doctorarrays(
               response.data.user.type,
@@ -136,6 +155,7 @@ export const LoginReducerAim = (email, password, logintoken, SendCallback = () =
               dispatch({ type: GET_LOGIN_ERROR, payload: tmp });
               SendCallback();
             });
+          })
         }
       })
       .catch((error) => {

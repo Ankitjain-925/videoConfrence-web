@@ -44,8 +44,8 @@ export const Dashboard = (props) => {
         <Grid container direction="row" justify="center">
           <Grid item xs={12} md={12}>
             <Grid container direction="row">
-              <LeftMenu isNotShow={true} currentPage="dashboard" />
-              <LeftMenuMobile isNotShow={true} currentPage="dashboard" />
+              <LeftMenu isNotShow={true} currentPage="settings" />
+              <LeftMenuMobile isNotShow={true} currentPage="settings" />
               <Grid item xs={12} md={10} lg={8}>
                 <div className="settingPage">
               <h5 className="setting-h5">Settings</h5>
