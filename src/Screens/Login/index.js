@@ -250,9 +250,15 @@ class Index extends Component {
       this.props.verifyCode.code
     ) {
 
-      return <Redirect to={'/video_login'} />;
+      if(stateLoginValueAim.is_vedio_registered){
+        return <Redirect to={'/video_login'} />;
+      }
+      else{
+        return <Redirect to={'/patient/video_register'} />;
+      } 
+    } 
+    else {
 
-    } else {
       return (
         <Grid
           className={

@@ -33,7 +33,7 @@ class Routermain extends Component {
 
             <Route
               exact
-              path="/settings"
+              path="/patient/settings"
               render={(props) => <Dashboard {...props} />}
             />
 
@@ -45,14 +45,14 @@ class Routermain extends Component {
 
             <Route
               exact
-              path="/video_register"
+              path="/patient/video_register"
               render={(props) => <RegisterVideo {...props} />}
             />
 
             <Route exact path='/video_login' render ={(props) => <LoginVideo {...props} /> } />
 
             <Route
-              path="/patient/register-VC"
+              path="/patient/new-request"
               render={(props) => <RegisterVC {...props} />}
             />
             <Route

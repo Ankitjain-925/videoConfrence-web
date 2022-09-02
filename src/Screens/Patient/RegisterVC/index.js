@@ -56,8 +56,8 @@ function RegisterVC(props) {
           <Grid item xs={12} md={12}>
             <Grid container direction="row">
               {/* Website Menu */}
-              <LeftMenu isNotShow={true} currentPage="dashboard" />
-              <LeftMenuMobile isNotShow={true} currentPage="dashboard" />
+              <LeftMenu isNotShow={true} currentPage="appointments" />
+              <LeftMenuMobile isNotShow={true} currentPage="appointments" />
               <Notification />
               {/* Website Mid Content */}
               <Grid item xs={12} md={11} lg={10}>
