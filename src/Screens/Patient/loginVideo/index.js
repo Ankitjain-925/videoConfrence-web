@@ -1,62 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import LeftMenu from "Screens/Components/Menus/PatientLeftMenu/index";
 import LeftMenuMobile from "Screens/Components/Menus/PatientLeftMenu/mobile";
 import Notification from "Screens/Components/CometChat/react-chat-ui-kit/CometChat/components/Notifications";
-import AppBar from "@material-ui/core/AppBar";
-import { getLanguage } from "translations/index";
-import Typography from "@material-ui/core/Typography";
-import PropTypes from "prop-types";
-import queryString from "query-string";
-import { commonNoTokentHeader } from "component/CommonHeader/index";
-import axios from "axios";
-import sitedata from "sitedata";
 import { pure } from "recompose";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { LoginReducerAim } from "Screens/Login/actions";
-import { Settings } from "Screens/Login/setting";
 import { LanguageFetchReducer } from "Screens/actions";
-import { OptionList } from "Screens/Login/metadataaction";
-import { authy } from "Screens/Login/authy.js";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { getLanguage } from "translations/index";
+import axios from "axios";
+import { commonHeader } from "component/CommonHeader/index";
+import sitedata from "sitedata";
+import { useHistory } from "react-router-dom";
+import { Settings } from "Screens/Login/setting";
 
 const path = sitedata.data.path;
 
-function TabContainer(props) {
-  return (
-    <Typography component="div" className="tabsCntnts">
-      {props.children}
-    </Typography>
-  );
-}
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-const RegisterVideo = (props) => {
-  const [userData, setUserData] = useState(props.stateLoginValueAim.user);
-  const [value, setValue] = useState(0);
-  const [email, setEmail] = useState("");
-  const [_password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [errormsg, setErrormsg] = useState("");
-  const [error2, setError2] = useState(false);
-  const [hidden, setHidden] = useState(true);
-  const [ITGuideline, setITGuideline] = useState(false);
-  let translate = getLanguage(props.stateLanguageType);
+const LoginVideo = (props) => {
+ 
   let history = useHistory();
 
-  let {
-    register_video_confrance,
-    sick_leave_certificate,
-    click_on_accept_it_guidline,
-    view_guidelines,
-    password,
-    username,
-  } = translate;
+  const [email, setEmail] = useState("");
+  const [_password, setPassword] = useState("");
+  const [hidden, setHidden] = useState(true);
+  const [error, setError] = useState(false);
+  const [errormsg, setErrormsg] = useState("");
+
+  let translate = getLanguage(props.stateLanguageType);
+  let { login_video_confrence, username, password, login_LOGIN_btn } = translate;
+
   const BtnSubmit = () => {
     if (email !== "" && _password !== "") {
       confirmSubmit();
@@ -71,35 +44,26 @@ const RegisterVideo = (props) => {
     }
   };
   const confirmSubmit = () => {
-    if (ITGuideline) {
-      setErrormsg("");
-      setError(false);
-      let _data = {
-        email: email,
-        password: _password,
-        first_name: userData.first_name,
-        last_name: userData.last_name,
-        profile_id: userData.profile_id,
-        isITGuideLineAccepted: ITGuideline,
-      };
-      axios
-        .post(
-          path + "/vchat/AddVideoUserAccount",
-          _data,
-          commonNoTokentHeader()
-        )
-        .then((response) => {
-          if (response.data.hassuccessed === true) {
-            history.push({
-              pathname: "/dashboard",
-            });
-          } else {
-          }
-        });
-    } else {
-      setErrormsg("Please accept IT Guideline");
-      setError(true);
-    }
+    setErrormsg("");
+    setError(false);
+    let _data = {
+      email: email,
+      password: _password,
+    };
+    axios
+      .post(
+        path + "/vchat/loginVideoUserAccount",
+        _data,
+        commonHeader(props.token)
+      )
+      .then((response) => {
+        if (response.data.hassuccessed === true) {
+          history.push({
+            pathname: "/dashboard",
+          });
+        } else {
+        }
+      });
   };
   return (
     <Grid
@@ -120,16 +84,14 @@ const RegisterVideo = (props) => {
               <LeftMenu isNotShow={true} currentPage="register_video" />
               <LeftMenuMobile isNotShow={true} currentPage="register_video" />
               <Notification />
-              {/* Website Mid Content */}
               <Grid item xs={12} md={11} lg={10}>
                 <Grid className="docsOpinion">
                   <Grid container direction="row" className="docsOpinLbl">
                     <Grid item xs={12} md={6}>
-                      <label>{register_video_confrance}</label>
+                      <label>{login_video_confrence}</label>
                     </Grid>
                   </Grid>
                 </Grid>
-
                 <Grid item xs={12} md={10} lg={8}>
                   <Grid className="profilePkg">
                     <Grid className="profilePkgIner3 border-radious-10">
@@ -166,45 +128,18 @@ const RegisterVideo = (props) => {
                           </Grid>
                         </Grid>
 
-                        <Grid className="aceptTermsPlcy">
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                value="checkedB"
-                                color="#00ABAF"
-                                checked={ITGuideline}
-                                onChange={() => {
-                                  setITGuideline(!ITGuideline);
-                                }}
-                              />
-                            }
-                            label={click_on_accept_it_guidline}
-                          />
-                          <span
-                            onClick={() => history.push("/video-guideline")}
-                            className="guidline_text"
-                          >
-                            {view_guidelines}
-                          </span>
-                        </Grid>
-
                         <Grid className="infoShwSave3">
                           <input
                             type="submit"
-                            value="submit"
+                            value={login_LOGIN_btn}
                             onClick={() => BtnSubmit()}
                           />
                         </Grid>
                       </Grid>
-                      
                     </Grid>
                   </Grid>
                 </Grid>
-                {/* End of Tabs */}
               </Grid>
-              {/* Website Right Content */}
-              <Grid item xs={12} md={3}></Grid>
-              {/* End of Website Right Content */}
             </Grid>
           </Grid>
         </Grid>
@@ -218,29 +153,19 @@ const mapStateToProps = (state) => {
     state.LoginReducerAim;
   const { stateLanguageType } = state.LanguageReducer;
   const { settings } = state.Settings;
-  const { verifyCode } = state.authy;
-  const { metadata } = state.OptionList;
-  // const { Doctorsetget } = state.Doctorset;
-  // const { catfil } = state.filterate;
   return {
     stateLanguageType,
+    settings,
     stateLoginValueAim,
     loadingaIndicatoranswerdetail,
-    settings,
-    verifyCode,
-    metadata,
-    //   Doctorsetget,
-    //   catfil
   };
 };
 export default pure(
   withRouter(
     connect(mapStateToProps, {
       LoginReducerAim,
-      OptionList,
-      LanguageFetchReducer,
       Settings,
-      authy,
-    })(RegisterVideo)
+      LanguageFetchReducer,
+    })(LoginVideo)
   )
 );

@@ -249,14 +249,16 @@ class Index extends Component {
       stateLoginValueAim?.user?.type === 'patient' &&
       this.props.verifyCode.code
     ) {
+
       if(stateLoginValueAim.is_vedio_registered){
-        return <Redirect to={'/patient/settings'} />;
+        return <Redirect to={'/video_login'} />;
       }
       else{
         return <Redirect to={'/patient/video_register'} />;
       } 
     } 
     else {
+
       return (
         <Grid
           className={
