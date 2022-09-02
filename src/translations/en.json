@@ -1,6 +1,6 @@
 {
   "text": {
-    "manage_prepaid_talktime" : "Manage Prepaid Talktime",
+    "manage_prepaid_talktime": "Manage Prepaid Talktime",
     "dashboard": "Dashboard",
     "login_Password": "Password",
     "login_Forgotpassword": "Forgot password?",
@@ -114,7 +114,7 @@
     "Delete": "Delete",
     "de_archive": "De-archive",
     "password": "Password",
-    "username" : "Username",
+    "username": "Username",
     "supportive_text": "Supportive text like this can be added if needed.",
     "Current": "Current",
     "new_password": "New password",
@@ -1262,7 +1262,6 @@
     "select_user_type": "Please select user type",
     "suported_file_type_jpg": "Supported file types: .jpg, .png",
     "plz_select_patient": "Please, Select a patient",
-
     "Billing": "Billing",
     "Institution": "Institution",
     "Addservice": "Add service",
@@ -1647,7 +1646,6 @@
     "Citizenship": "Citizenship",
     "justapply": "Just apply",
     "applyFiltersandsave": "Apply and Save",
-
     "picture_evaluation": "Picture Evaluation",
     "diabetes": "Diabetes",
     "place_of_residence": "Place of Residence",
@@ -1728,7 +1726,6 @@
     "unfollow": "Unfollow",
     "since": "since",
     "not_followed_by_yet": "noch nicht gefolgt",
-
     "hurtnow": "Hurt now",
     "headache_hurtnow_back": "Back",
     "headache_hurtnow_front": "Front",
@@ -1791,7 +1788,6 @@
     "cardiac_heart_failure": "Heart failure",
     "quality_of_pain": "Quality Pain",
     "payment": "Payment",
-
     "where_did_the_pain_begin": "Where did the pain begin?",
     "front": "Front",
     "left": "Left",
@@ -1861,7 +1857,6 @@
     "suffer_from_vomiting": "Suffer from vomiting",
     "environmental_suffer_symtoms": "Environmental Suffer symtoms",
     "keep_liquids_with": "keep Liquids with you",
-
     "bp_should_number": "bp should be in number",
     "Body_temp_bet": "Body temperature between 36-41",
     "blood_sugar_between": "Blood sugar should be between 160-240",
@@ -1899,19 +1894,19 @@
     "active": "Active",
     "inactive": "Inactive",
     "meeting": "Meeting",
-    "this_time_slot_is_already_booked":"This time slot is already booked,",
-    "another_one":"another one!",
-    "try_after_some_time":"There is no doctor availiable yet please try after some time!",
-    "payment_process_must_be_within_15_min":"The payment process must be within 15 min, and time is exceeded now. Please create a new request again, this request will go to the archive automatically after some time!",
-    "upcoming_slots":"upcoming time slots",
-    "aimedis_elements_au" : "Aimedis Video Conference",
-    "check_your_meeting_key_or_link_again":"Meeting not available please check your meeting key or link again",
-    "meeting_time_out":"Meeting time out",
-
-		"change_citizenship": "Do you want to change the Citizenship country according your new mobile country code?",
-		"fill_citizenship":"Please fill the Citizenship country",
-    "click_on_accept_it_guidline" : "Click here to accept IT guideline !",
-    "view_guidelines" : "View Guideline",
-   "guideline" : "Guideline"
+    "this_time_slot_is_already_booked": "This time slot is already booked,",
+    "another_one": "another one!",
+    "try_after_some_time": "There is no doctor availiable yet please try after some time!",
+    "payment_process_must_be_within_15_min": "The payment process must be within 15 min, and time is exceeded now. Please create a new request again, this request will go to the archive automatically after some time!",
+    "upcoming_slots": "upcoming time slots",
+    "aimedis_elements_au": "Aimedis Video Conference",
+    "check_your_meeting_key_or_link_again": "Meeting not available please check your meeting key or link again",
+    "meeting_time_out": "Meeting time out",
+    "change_citizenship": "Do you want to change the Citizenship country according your new mobile country code?",
+    "fill_citizenship": "Please fill the Citizenship country",
+    "click_on_accept_it_guidline": "Click here to accept IT guideline !",
+    "view_guidelines": "View Guideline",
+    "guideline": "Guideline",
+    "login_video_confrence": "Login to Video-Confrence"
   }
 }
