@@ -27,17 +27,11 @@ class AllInfo extends Component {
     }
     SearchFilter1 = (e) => {
         var user_token = this.props.stateLoginValueAim.token
-        var val = e.target.value.toLowerCase()
+        var data1 = e.target.value.toLowerCase()
         this.setState({ searchValue: e.target.value });
         axios
-            .post(
-                sitedata.data.path + "/vchat/Get_Doctor",
-                {
-
-                    data: val,
-
-                },
-                commonHeader(user_token))
+      .get( sitedata.data.path + "/vchat/Get_Doctor/" + data1,
+      commonHeader(user_token))
             .then((response) => {
 
                 this.setState({ loaderImage: false });
