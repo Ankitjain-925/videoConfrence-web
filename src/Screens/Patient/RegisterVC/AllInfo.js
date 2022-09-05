@@ -11,6 +11,7 @@ import { LanguageFetchReducer } from 'Screens/actions';
 import { getLanguage } from 'translations/index';
 import Input from '@material-ui/core/Input';
 import { S3Image } from "Screens/Components/GetS3Images/index";
+import { DebounceInput } from 'react-debounce-input';
 
 class AllInfo extends Component {
     constructor(props) {
@@ -30,8 +31,8 @@ class AllInfo extends Component {
         var data1 = e.target.value.toLowerCase()
         this.setState({ searchValue: e.target.value });
         axios
-      .get( sitedata.data.path + "/vchat/Get_Doctor/" + data1,
-      commonHeader(user_token))
+            .get(sitedata.data.path + "/vchat/Get_Doctor/" + data1,
+                commonHeader(user_token))
             .then((response) => {
 
                 this.setState({ loaderImage: false });
@@ -66,10 +67,13 @@ class AllInfo extends Component {
                             <Grid className="breadCrumbUpr">
                                 <Grid container direction="row" alignItems="center">
                                     <Grid item xs={12} md={12} className="srchLft">
-                                        <Input
+                                        <DebounceInput
+                                            className="de_inp"
                                             name="searchValue"
                                             value={this.state.searchValue}
                                             placeholder={search_by_name_email_speciality_id_doc}
+
+                                            debounceTimeout={300}
                                             onChange={this.SearchFilter1}
                                             autoComplete="off"
                                         />
