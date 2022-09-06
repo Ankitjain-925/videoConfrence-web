@@ -14949,14 +14949,11 @@ a {
 }
 /* css added by jyothi*/
 .card-section{
-  background: #F7F7F7;
   padding:40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 36px;
-  gap: 40px;
   width: 624px;
   height: 500px;
   background: #F7F7F7;
@@ -15054,3 +15051,176 @@ a {
 .P_f2 {
   float: right;
 }
+
+.call-page-card {
+  width: 100%;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: #FFFFFF;
+}
+
+.video-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 16px;
+  gap: 10px;
+  width: 100%;
+  height: 516px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), url(/video-confrance/static/media/frame.5fb7c2c4.png) normal);
+    background-image: url(/video-confrance/static/media/frame.5fb7c2c4.png);
+    border-radius: 12px;
+    background-repeat: no-repeat, repeat;
+}
+
+.call-popup {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  position: absolute;
+  width: 287px;
+  left: calc(50% - 287px/2 + 0.5px);
+  top: 254.66px;
+  border: 1px solid #ddd;
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+
+.call-pop-body {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  color: #000808;
+}
+
+.call-img {
+  width: 100px;
+  border-radius: 8px;
+  margin-right: 20px;
+
+}
+
+.inprogress-call {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 10px 6px;
+  width: 84px;
+  height: 22px;
+  background: #FBD4D4;
+  border-radius: 60px;
+}
+
+.inprogress-call-text {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  color: #EE5253;
+}
+
+.call-review-text {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #404646;
+}
+
+.call-feedback-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 45px 0px;
+  padding: 45px 10px;
+  border-bottom: #f1f1f1 1px solid;
+  border-top: #f1f1f1 1px solid;
+}
+.call-comment-patient{
+  padding-top: 13px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: #404646;
+}
+.comment-callpat h5{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 15px;
+}
+.comment-callpat p{
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #00ABAF;
+  margin-top: 10px;
+}
+.call-pop-title {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size:16px;
+}
+
+.top-up {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #00ABAF;
+
+}
+.call-end-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 32px;
+  gap: 10px;
+  width: 156px;
+  background: #EE5253;
+  border-radius: 8px;
+}
+.call-out-top-up{
+  width: 50%;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  color: #00ABAF;
+  font-weight: 600;
+  padding: 20px;
+}
+.call-close-btn{
+  width: 50%;
+  text-align: center;
+  color: #ee5253;
+  font-weight: 600;
+  padding: 20px;
+  }
+
+  .heading-status-call {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+  }
+  .option-call-move
+  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .call-feadback-header{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+  }
