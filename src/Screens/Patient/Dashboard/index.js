@@ -20,6 +20,12 @@ import { Settings } from "Screens/Login/setting";
 import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { LoginReducerAim } from "Screens/Login/actions";
+import { LanguageFetchReducer } from 'Screens/actions';
+import { Settings } from "Screens/Login/setting";
+
 function TabContainer(props) {
   return (
     <Typography component="div" className="tabsCntnts">
@@ -30,11 +36,13 @@ function TabContainer(props) {
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
 const Dashboard = (props) => {
   const history = useHistory();
   const [value, setValue] = useState(0);
   const [languageValue, setLanguageValue] = useState(null);
   const [openFancyLanguage , setOpenFancyLanguage ] = useState(false)
+
   let translate = getLanguage(props.stateLanguageType);
   let {
     my_profile,
@@ -76,39 +84,40 @@ const Dashboard = (props) => {
               <LeftMenuMobile isNotShow={true} currentPage="settings" />
               <Grid item xs={12} md={10} lg={8}>
                 <div className="settingPage">
-              <h5 className="setting-h5">Settings</h5>
-<div className='settingbox'>
-  <div>
-    <p>Your Aimedis Credit</p>
-    <b>24Min</b>
-  </div>
-  <div>
-    <Button variant='contained' className="topupButton">Top Up</Button>
-  </div>
-</div>
+                  <h5 className="setting-h5">Settings</h5>
+                  <div className='settingbox form_full'>
+                    <div >
+                      <label>Your Aimedis Credit</label>
+                      <p>24Min</p>
+                    </div>
+                    <div>
+                      <Button variant='contained' className="topupButton">Top Up</Button>
+                    </div>
+                  </div>
 
 
-<p className='settingbox-heading'>Account Settings</p>
+                  <p className='settingbox-heading'>Account Settings</p>
 
-<div className="last-sec-setting">
+
+<div className="last-sec-setting form_full">
   <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
   <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
   <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
   <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privactandnotification</div></div>
 
 
-</div>
-<p className='settingbox-heading'>Other</p>
+                  </div>
+                  <p className='settingbox-heading'>Other</p>
 
-<div className="last-sec-setting">
-  <p className='middle-setting-items'>Amount</p>
-  <p>Terms & Conditions </p>
-  <p> Privact Policy</p>
-  <p> Rate Aimedies Diagnostics</p>
-</div>
-</div>
+                  <div className="last-sec-setting form_full">
+                    <p className='middle-setting-items'>Amount</p>
+                    <p>Terms & Conditions </p>
+                    <p> Privact Policy</p>
+                    <p> Rate Aimedies Diagnostics</p>
+                  </div>
+                </div>
 
-{/* <div className='logout' >Logout</div> */}
+                {/* <div className='logout' >Logout</div> */}
               </Grid>
             </Grid>
           </Grid>
@@ -158,4 +167,3 @@ export default pure(
       authy,
     })(Dashboard)
   )
-);

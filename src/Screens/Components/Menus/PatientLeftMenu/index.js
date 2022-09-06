@@ -122,113 +122,112 @@ class Index extends Component {
         </Grid>
         <Grid className="menuItems">
           <ul>
-            {this.props.currentPage !== "register_video" && (
-              <li
-                className={
-                  this.props.currentPage === "settings" ? "menuActv" : ""
-                }
-              >
-                <a onClick={this.dashboard}>
-                  {this.props.settings &&
+            <li
+              className={
+                this.props.currentPage === "settings" ? "menuActv" : ""
+              }
+            >
+              <a onClick={this.dashboard}>
+                {this.props.settings &&
                   this.props.settings.setting &&
                   this.props.settings.setting.mode &&
                   this.props.settings.setting.mode === "dark" ? (
-                    <img
-                      src={require("assets/virtual_images/settings-whits.png")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                      src={require("assets/virtual_images/setting.png")}
-                      alt=""
-                      title=""
-                    />
-                  )}
-                  <span>{"Settings"}</span>
-                </a>
-              </li>
-            )}
+                  <img
+                    src={require("assets/virtual_images/settings-whits.png")}
+                    alt=""
+                    title=""
+                  />
+                ) : (
+                  <img
+                    src={require("assets/virtual_images/setting.png")}
+                    alt=""
+                    title=""
+                  />
+                )}
+                <span>{"Settings"}</span>
+              </a>
+            </li>
+            <li
+              className={
+                this.props.currentPage === "topup" ? "menuActv" : ""
+              }
+            >
 
-            {this.props.currentPage !== "register_video" && (
-              <li
-                className={this.props.currentPage === "topup" ? "menuActv" : ""}
-              >
-                <a onClick={this.topupPage}>
-                  {this.props.settings &&
-                  this.props.settings.setting &&
-                  this.props.settings.setting.mode &&
-                  this.props.settings.setting.mode === "dark" ? (
-                    <img
-                      src={require("assets/images/archive2.png")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                      src={require("assets/images/archive.png")}
-                      alt=""
-                      title=""
-                    />
-                  )}
-                  <span>{"Top-up"}</span>
-                </a>
-              </li>
-            )}
 
-            {this.props.currentPage !== "register_video" && (
-              <li
-                className={
-                  this.props.currentPage === "appointments" ? "menuActv" : ""
-                }
-              >
-                <a onClick={this.PictureEval}>
-                  {this.props.settings &&
-                  this.props.settings.setting &&
-                  this.props.settings.setting.mode &&
-                  this.props.settings.setting.mode === "dark" ? (
-                    <img
-                      src={require("assets/images/nav-journal-white.svg")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                      src={require("assets/images/nav-journal.svg")}
-                      alt=""
-                      title=""
-                    />
-                  )}
-                  <span>{appointments}</span>
-                </a>
-              </li>
-            )}
+              <a onClick={this.topupPage}>
 
-            {this.props.currentPage !== "register_video" && (
-              <li
-                className={this.props.currentPage === "list" ? "menuActv" : ""}
-              >
-                <a onClick={this.gotoAppointmentList}>
-                  {this.props.settings &&
+                {this.props.settings &&
                   this.props.settings.setting &&
                   this.props.settings.setting.mode &&
                   this.props.settings.setting.mode === "dark" ? (
-                    <img
-                      src={require("assets/images/archive2.png")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                      src={require("assets/images/archive.png")}
-                      alt=""
-                      title=""
-                    />
-                  )}
-                  <span>{"List Requests"}</span>
-                </a>
-              </li>
-            )}
+                  <img
+                    src={require("assets/images/archive2.png")}
+                    alt=""
+                    title=""
+                  />
+                ) : (
+                  <img
+                    src={require("assets/images/archive.png")}
+                    alt=""
+                    title=""
+                  />
+                )}
+                <span>{"Top-up"}</span>
+              </a>
+            </li>
+            <li
+              className={
+                this.props.currentPage === "appointments" ? "menuActv" : ""
+              }
+            >
+              <a onClick={this.PictureEval}>
+                {this.props.settings &&
+                  this.props.settings.setting &&
+                  this.props.settings.setting.mode &&
+                  this.props.settings.setting.mode === "dark" ? (
+                  <img
+                    src={require("assets/images/nav-journal-white.svg")}
+                    alt=""
+                    title=""
+                  />
+                ) : (
+                  <img
+                    src={require("assets/images/nav-journal.svg")}
+                    alt=""
+                    title=""
+                  />
+                )}
+                <span>{appointments}</span>
+              </a>
+            </li>
+            <li
+              className={
+                this.props.currentPage === "list" ? "menuActv" : ""
+              }
+            >
+
+
+              <a onClick={this.gotoAppointmentList}>
+
+                {this.props.settings &&
+                  this.props.settings.setting &&
+                  this.props.settings.setting.mode &&
+                  this.props.settings.setting.mode === "dark" ? (
+                  <img
+                    src={require("assets/images/archive2.png")}
+                    alt=""
+                    title=""
+                  />
+                ) : (
+                  <img
+                    src={require("assets/images/archive.png")}
+                    alt=""
+                    title=""
+                  />
+                )}
+                <span>{"List Requests"}</span>
+              </a>
+            </li>
 
             <li
               className={this.props.currentPage === "profile" ? "menuActv" : ""}
@@ -246,9 +245,10 @@ class Index extends Component {
                     <li>
                       <a onClick={this.ProfileLink}>
                         {this.props.settings &&
-                        this.props.settings.setting &&
-                        this.props.settings.setting.mode &&
-                        this.props.settings.setting.mode === "dark" ? (
+                          this.props.settings.setting &&
+                          this.props.settings.setting.mode &&
+                          this.props.settings.setting.mode === "dark" ? (
+
                           <img
                             src={require("assets/images/menudocs-white.jpg")}
                             alt=""
@@ -271,9 +271,9 @@ class Index extends Component {
                         }}
                       >
                         {this.props.settings &&
-                        this.props.settings.setting &&
-                        this.props.settings.setting.mode &&
-                        this.props.settings.setting.mode === "dark" ? (
+                          this.props.settings.setting &&
+                          this.props.settings.setting.mode &&
+                          this.props.settings.setting.mode === "dark" ? (
                           <img
                             src={require("assets/images/menudocs-white.jpg")}
                             alt=""
@@ -292,9 +292,9 @@ class Index extends Component {
                     <li>
                       <a>
                         {this.props.settings &&
-                        this.props.settings.setting &&
-                        this.props.settings.setting.mode &&
-                        this.props.settings.setting.mode === "dark" ? (
+                          this.props.settings.setting &&
+                          this.props.settings.setting.mode &&
+                          this.props.settings.setting.mode === "dark" ? (
                           <img
                             src={require("assets/images/menudocs-white.jpg")}
                             alt=""
@@ -322,9 +322,9 @@ class Index extends Component {
                     <li onClick={this.logOutClick}>
                       <a>
                         {this.props.settings &&
-                        this.props.settings.setting &&
-                        this.props.settings.setting.mode &&
-                        this.props.settings.setting.mode === "dark" ? (
+                          this.props.settings.setting &&
+                          this.props.settings.setting.mode &&
+                          this.props.settings.setting.mode === "dark" ? (
                           <img
                             src={require("assets/images/menudocs-white.jpg")}
                             alt=""
@@ -336,6 +336,7 @@ class Index extends Component {
                             alt=""
                             title=""
                           />
+
                         )}
                         {logout}
                       </a>
