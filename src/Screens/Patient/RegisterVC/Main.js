@@ -74,7 +74,8 @@ export class StepForm extends Component {
         const myst1 = {
             float: "right",
             left: "-30px",
-            position: "relative"
+            position: "relative",
+            margin: "10px"
         };
 
         return (

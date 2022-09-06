@@ -33,7 +33,7 @@ class JobDetails extends Component {
         const { jobTitle, jobCompany, jobLocation, handleChange } = this.props;
         return (
             <>
-                <Grid className="logForm">
+                <Grid className="logForm form_full">
 
 
                     <Grid className="logRow" >

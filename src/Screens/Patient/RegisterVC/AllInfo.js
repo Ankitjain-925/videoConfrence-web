@@ -59,7 +59,7 @@ class AllInfo extends Component {
         return (
 
             <>
-
+<Grid className="logForm form_full">
                 {/* Start of Bread Crumb */}
                 <Grid container direction="row" alignItems="center">
                     <Grid item xs={12} md={12}  >
@@ -77,7 +77,7 @@ class AllInfo extends Component {
                                             onChange={this.SearchFilter1}
                                             autoComplete="off"
                                         />
-                                        <a>
+                                        <a className="Serc_img">
                                             <img
                                                 src={require('assets/virtual_images/InputField.svg')}
                                                 alt=""
@@ -108,8 +108,8 @@ class AllInfo extends Component {
                                                     <Grid className="flowProfil">
                                                         <Grid className="P_f"><S3Image imgUrl={item.image} /></Grid>
                                                         <Grid className="flowProfilRght" >
-                                                            <label>{item.first_name + item.last_name}</label>
-                                                            <p>{item.profile_id}</p>
+                                                            <p><label>{item.first_name + item.last_name}</label>
+                                                            <label>{item.profile_id}</label></p>
                                                             <p>{item.speciality}</p>
                                                             <input
                                                                 type="button"
@@ -136,6 +136,7 @@ class AllInfo extends Component {
                         </Grid>
                     </Grid>
 
+                </Grid>
                 </Grid>
             </>
         );

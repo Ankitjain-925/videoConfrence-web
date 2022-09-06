@@ -17186,7 +17186,7 @@ a {
 }
 
 
-.P_full{
+.P_full {
   margin: 5px;
 }
 
@@ -17200,9 +17200,24 @@ a {
   top: 25px;
   border-radius: 10px;
 }
+
 .P_f2 {
   float: right;
 }
-.de_inp{
+
+.de_inp {
   border: none;
+}
+
+.darkTheme .form_full {
+  background-color: #404646;
+}
+
+.Serc_img img {
+  position: relative;
+  top: -10px;
+}
+
+.settingPage h5{
+  color : white;
 }
