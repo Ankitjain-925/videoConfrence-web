@@ -11,6 +11,7 @@ import { LanguageFetchReducer } from 'Screens/actions';
 import { getLanguage } from 'translations/index';
 import Input from '@material-ui/core/Input';
 import { S3Image } from "Screens/Components/GetS3Images/index";
+import { DebounceInput } from 'react-debounce-input';
 
 class AllInfo extends Component {
     constructor(props) {
@@ -27,16 +28,10 @@ class AllInfo extends Component {
     }
     SearchFilter1 = (e) => {
         var user_token = this.props.stateLoginValueAim.token
-        var val = e.target.value.toLowerCase()
+        var data1 = e.target.value.toLowerCase()
         this.setState({ searchValue: e.target.value });
         axios
-            .post(
-                sitedata.data.path + "/vchat/Get_Doctor",
-                {
-
-                    data: val,
-
-                },
+            .get(sitedata.data.path + "/vchat/Get_Doctor/" + data1,
                 commonHeader(user_token))
             .then((response) => {
 
@@ -64,7 +59,7 @@ class AllInfo extends Component {
         return (
 
             <>
-
+<Grid className="logForm form_full">
                 {/* Start of Bread Crumb */}
                 <Grid container direction="row" alignItems="center">
                     <Grid item xs={12} md={12}  >
@@ -72,14 +67,17 @@ class AllInfo extends Component {
                             <Grid className="breadCrumbUpr">
                                 <Grid container direction="row" alignItems="center">
                                     <Grid item xs={12} md={12} className="srchLft">
-                                        <Input
+                                        <DebounceInput
+                                            className="de_inp"
                                             name="searchValue"
                                             value={this.state.searchValue}
                                             placeholder={search_by_name_email_speciality_id_doc}
+
+                                            debounceTimeout={300}
                                             onChange={this.SearchFilter1}
                                             autoComplete="off"
                                         />
-                                        <a>
+                                        <a className="Serc_img">
                                             <img
                                                 src={require('assets/virtual_images/InputField.svg')}
                                                 alt=""
@@ -110,8 +108,8 @@ class AllInfo extends Component {
                                                     <Grid className="flowProfil">
                                                         <Grid className="P_f"><S3Image imgUrl={item.image} /></Grid>
                                                         <Grid className="flowProfilRght" >
-                                                            <label>{item.first_name + item.last_name}</label>
-                                                            <p>{item.profile_id}</p>
+                                                            <p><label>{item.first_name + item.last_name}</label>
+                                                            <label>{item.profile_id}</label></p>
                                                             <p>{item.speciality}</p>
                                                             <input
                                                                 type="button"
@@ -138,6 +136,7 @@ class AllInfo extends Component {
                         </Grid>
                     </Grid>
 
+                </Grid>
                 </Grid>
             </>
         );

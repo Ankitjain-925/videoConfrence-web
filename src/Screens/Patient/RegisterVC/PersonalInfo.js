@@ -17,7 +17,7 @@ class PersonalInfo extends Component {
     render() {
         const { firstName, lastName, handleChange } = this.props;
         return (
-            <> <Grid className="logForm">
+            <> <Grid className="logForm form_full">
 
 
                 <Grid className="logRow">
