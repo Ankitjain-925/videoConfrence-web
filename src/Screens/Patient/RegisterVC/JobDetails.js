@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 
 class JobDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' }
+        this.state = { value: '', }
+        this.state = {
+            isActive: false,
+            isActiv: false,
+        };
 
     }
     continue = e => {
@@ -23,12 +33,24 @@ class JobDetails extends Component {
 
     }
 
+    dssd = e => {
+        e.preventDefault();
+        this.setState({ isActiv: false });
+        this.setState({ isActive: !this.state.isActive });
+    }
+
+    dssdd = e => {
+        e.preventDefault();
+        this.setState({ isActive: false });
+        this.setState({ isActiv: !this.state.isActiv });
+    }
+
 
 
     render() {
         const myst1 = {
             display: "flex",
-                }
+        }
 
         const { jobTitle, jobCompany, jobLocation, handleChange } = this.props;
         return (
@@ -37,31 +59,46 @@ class JobDetails extends Component {
 
 
                     <Grid className="logRow" >
-                        <Grid container direction="row" justify="center" >
-                            <Grid item xs={6} md={6} style= {myst1}>
+                        <Grid container direction="row" >
+                            <Grid item xs={12} md={5} className="Card_1" >
 
 
 
-                                <input
-                                    type="radio"
-                                    checked={this.state.setData === "no"}
-                                    value="no"
-                                    onChange={(e) => this.onchange(e)}
+                                <Grid sx={{ maxWidth: 345 }} onClick={this.dssd} className={this.state.isActive ? 'Card_Sel' : ''}>
 
-                                    placeholder="Job Title"
-                                />
-                                <label>PrePaid</label>
+
+                                    <Grid container justify="space-between" className="padd_10">
+                                        <Typography inline variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
+                                        <Typography inline variant="h6" component="div" align="right" className="adv2">10 Min</Typography>
+                                    </Grid>
+
+
+                                    <CardContent>
+                                        <Typography variant="body2" color="text.secondary">
+                                        Your Top-Up Amount is: 
+                                        </Typography>
+                                    </CardContent>
+                                    
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} md={6} style= {myst1}>
-                                <input
-                                    type="radio"
-                                    checked={this.state.setData === "yes"}
+                            <Grid item xs={12} md={1}>
 
-                                    value="yes"
-                                    onChange={(e) => this.onchange(e)}
-                                    placeholder="Company"
-                                />
-                                <label>Credit Card</label>
+                            </Grid>
+                            <Grid item xs={12} md={5} className="Card_1">
+                                <Grid sx={{ maxWidth: 345 }} onClick={this.dssdd} className={this.state.isActiv ? 'Card_Sel' : ''}>
+
+
+                                    <Grid container justify="space-between" className="padd_10">
+                                        <Typography inline variant="h6" component="div" align="left" className="adv1">Credit Card</Typography>
+                                        <Typography inline variant="h6" component="div" align="right" className="adv2">20 Min</Typography>
+                                    </Grid>
+                                    <CardContent>
+                                        <Typography variant="body2" color="text.secondary">
+                                            Click Here To Pay Through Credit Card 
+                                        </Typography>
+                                    </CardContent>
+                                    
+                                </Grid>
                             </Grid>
 
                         </Grid>
@@ -83,7 +120,7 @@ class JobDetails extends Component {
                     </Grid>
 
 
-                    <Grid className="infoShwSave3 label_1">
+                    <Grid className="infoShwSave3">
                         <input
                             type="button"
                             value="« Back"

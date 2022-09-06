@@ -10546,12 +10546,23 @@ button.crdoLghtBlu2 {
   border-radius: 28px;
 }
 
-.flowProfil label {
+/* .flowProfil label {
   color: #000808;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0;
   line-height: 16px;
+  font-family: Muli;
+  margin-bottom: 0px;
+} */
+
+.flowProfil label {
+  display: block;
+  color: #000808;
+  font-size: 20px !important;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 29px;
   font-family: Muli;
   margin-bottom: 0px;
 }
@@ -10567,7 +10578,9 @@ button.crdoLghtBlu2 {
 .flowProfil {
   display: flex;
   align-items: center;
-  margin-top: 12px;
+  /* margin-top: 12px; */
+  padding: 13px;
+
 }
 
 .flowProfilRght {
@@ -17191,8 +17204,13 @@ a {
 }
 
 .P_f img {
-  width: 100%;
-  border-radius: 100%;
+  width: auto;
+  height: 85px;
+  border-radius: 8px;
+  /* padding: 15px; */
+  margin: 15px;
+  border: solid 1px #dfdfdf;
+
 }
 
 .P_f1 {
@@ -17213,11 +17231,49 @@ a {
   background-color: #404646;
 }
 
+/* .darkTheme .form_full .Card_Se {
+  background-color: #404646;
+}
+
+.darkTheme .form_full .Card_Se {
+  background-color: #404646;
+} */
 .Serc_img img {
   position: relative;
   top: -10px;
 }
 
-.settingPage h5{
-  color : white;
+.settingPage h5 {
+  color: white;
+}
+
+.Card_1 {
+  margin: 10px !important;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #f1f2f2;
+}
+
+.darkTheme .Card_1 {
+  margin: 10px !important;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #192020;
+}
+.Card_Sel {
+  border: 2px solid #00abaf;
+  border-radius: 6px;
+}
+
+.padd_10{
+  padding: 10px;
+}
+.darkTheme .adv1{
+  color: #cddada;
+}
+.adv2{
+  background: #e1f7f7;
+    border-radius: 20%;
+    filter: blur(0.5px);
+    padding: 3px;
 }
