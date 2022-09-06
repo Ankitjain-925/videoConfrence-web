@@ -251,7 +251,7 @@ class Index extends Component {
     ) {
 
       if(stateLoginValueAim.is_vedio_registered){
-        return <Redirect to={'/video_login'} />;
+        return <Redirect to={'/patient/video_login'} />;
       }
       else{
         return <Redirect to={'/patient/video_register'} />;
