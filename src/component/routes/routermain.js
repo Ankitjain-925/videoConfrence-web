@@ -13,7 +13,7 @@ import PatientProfile from "Screens/Patient/Profile/index";
 import VideoCall from "Screens/VideoCall/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
-import { Dashboard } from "Screens/Patient/Dashboard";
+import Dashboard from "Screens/Patient/Dashboard";
 import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
 import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from 'Screens/Patient/loginVideo'
