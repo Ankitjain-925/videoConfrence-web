@@ -4190,8 +4190,8 @@ button.aboutTabsIner {
   padding-bottom: 122px;
 }
 .profilePkgIner3 {
-  padding: 22px 28px;
-  padding-bottom: 122px;
+  padding-left: 22px;
+  /* padding-bottom: 122px; */
 }
 .border-radious-10{
   border-radius: 10px;

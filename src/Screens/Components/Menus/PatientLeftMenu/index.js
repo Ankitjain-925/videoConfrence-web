@@ -101,15 +101,15 @@ class Index extends Component {
         md={1}
         className={
           this.props.settings &&
-            this.props.settings.setting &&
-            this.props.settings.setting.mode &&
-            this.props.settings.setting.mode === "dark"
+          this.props.settings.setting &&
+          this.props.settings.setting.mode &&
+          this.props.settings.setting.mode === "dark"
             ? this.props.comes === "emergency"
               ? "emergency_accessmenu MenuLeftUpr MenuLeftDrkUpr"
               : "MenuLeftUpr MenuLeftDrkUpr"
             : this.props.comes === "emergency"
-              ? "emergency_accessmenu MenuLeftUpr"
-              : "MenuLeftUpr"
+            ? "emergency_accessmenu MenuLeftUpr"
+            : "MenuLeftUpr"
         }
       >
         {this.state.loaderImage && <Loader />}
@@ -228,6 +228,7 @@ class Index extends Component {
                 <span>{"List Requests"}</span>
               </a>
             </li>
+
             <li
               className={this.props.currentPage === "profile" ? "menuActv" : ""}
             >
@@ -247,6 +248,7 @@ class Index extends Component {
                           this.props.settings.setting &&
                           this.props.settings.setting.mode &&
                           this.props.settings.setting.mode === "dark" ? (
+
                           <img
                             src={require("assets/images/menudocs-white.jpg")}
                             alt=""
@@ -334,6 +336,7 @@ class Index extends Component {
                             alt=""
                             title=""
                           />
+
                         )}
                         {logout}
                       </a>

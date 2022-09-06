@@ -9,9 +9,12 @@ import { getLanguage } from "translations/index";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import queryString from "query-string";
-import { commonNoTokentHeader } from "component/CommonHeader/index";
+import {
+  commonNoTokentHeader,
+  commonHeader,
+} from "component/CommonHeader/index";
 import axios from "axios";
-import sitedata from "sitedata";
+import sitedata, { data } from "sitedata";
 import { pure } from "recompose";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -75,25 +78,35 @@ const RegisterVideo = (props) => {
       setErrormsg("");
       setError(false);
       let _data = {
-        email: email,
+        email: userData.email || "",
+        username: email,
         password: _password,
         first_name: userData.first_name,
         last_name: userData.last_name,
         profile_id: userData.profile_id,
         isITGuideLineAccepted: ITGuideline,
+        patient_id: userData._id,
+        status: true,
       };
       axios
         .post(
           path + "/vchat/AddVideoUserAccount",
           _data,
-          commonNoTokentHeader()
+          commonHeader(props.stateLoginValueAim.token)
         )
         .then((response) => {
-          if (response.data.hassuccessed === true) {
+          if (
+            response.data.hassuccessed === true &&
+            response.data.data !== "User Already Register"
+          ) {
+            props.LoginReducerAim('', '', "", "", props.stateLoginValueAim, true);
             history.push({
-              pathname: "/dashboard",
+              pathname: "/patient/settings",
             });
           } else {
+            history.push({
+              pathname: "/patient/video_login",
+            });
           }
         });
     } else {
@@ -131,73 +144,73 @@ const RegisterVideo = (props) => {
                 </Grid>
 
                 <Grid item xs={12} md={10} lg={8}>
-                  <Grid className="profilePkg">
-                    <Grid className="profilePkgIner3 border-radious-10">
-                      <Grid className="logForm">
-                        {error && <div className="err_message">{errormsg}</div>}
-                        <Grid className="logRow">
-                          <Grid>
-                            <label>{username}</label>
-                          </Grid>
-                          <Grid>
-                            <input
-                              type="text"
-                              value={email}
-                              name="email"
-                              onKeyDown={(e) => onKeyDownlogin(e)}
-                              onChange={(e) => {
-                                setEmail(e.target.value);
-                              }}
-                            />
-                          </Grid>
+                  {/* <Grid className="profilePkg"> */}
+                  <Grid className="profilePkgIner3 border-radious-10">
+                    <Grid className="logForm">
+                      {error && <div className="err_message">{errormsg}</div>}
+                      <Grid className="logRow">
+                        <Grid>
+                          <label>{username}</label>
                         </Grid>
-                        <Grid className="logRow">
-                          <Grid>
-                            <label>{password}</label>
-                          </Grid>
-                          <Grid>
-                            <input
-                              type={hidden ? "password" : "text"}
-                              name="pass"
-                              onKeyDown={(e) => onKeyDownlogin(e)}
-                              value={_password}
-                              onChange={(e) => setPassword(e.target.value)}
-                            />
-                          </Grid>
-                        </Grid>
-
-                        <Grid className="aceptTermsPlcy">
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                value="checkedB"
-                                color="#00ABAF"
-                                checked={ITGuideline}
-                                onChange={() => {
-                                  setITGuideline(!ITGuideline);
-                                }}
-                              />
-                            }
-                            label={click_on_accept_it_guidline}
-                          />
-                          <span
-                            onClick={() => history.push("/video-guideline")}
-                            className="guidline_text"
-                          >
-                            {view_guidelines}
-                          </span>
-                        </Grid>
-
-                        <Grid className="infoShwSave3">
+                        <Grid>
                           <input
-                            type="submit"
-                            value="submit"
-                            onClick={() => BtnSubmit()}
+                            type="text"
+                            value={email}
+                            name="email"
+                            onKeyDown={(e) => onKeyDownlogin(e)}
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                            }}
                           />
                         </Grid>
                       </Grid>
-                      
+                      <Grid className="logRow">
+                        <Grid>
+                          <label>{password}</label>
+                        </Grid>
+                        <Grid>
+                          <input
+                            type={hidden ? "password" : "text"}
+                            name="pass"
+                            onKeyDown={(e) => onKeyDownlogin(e)}
+                            value={_password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                        </Grid>
+                      </Grid>
+
+                      <Grid className="aceptTermsPlcy">
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              value="checkedB"
+                              color="#00ABAF"
+                              checked={ITGuideline}
+                              onChange={() => {
+                                setITGuideline(!ITGuideline);
+                              }}
+                            />
+                          }
+                          label={click_on_accept_it_guidline}
+                        />
+                        <span
+                          onClick={() => history.push("/video-guideline")}
+                          className="guidline_text"
+                        >
+                          {view_guidelines}
+                        </span>
+                      </Grid>
+
+                      <Grid className="infoShwSave3">
+                        <input
+                          type="submit"
+                          value="submit"
+                          onClick={() => BtnSubmit()}
+                        />
+                      </Grid>
                     </Grid>
+
+                    {/* </Grid> */}
                   </Grid>
                 </Grid>
                 {/* End of Tabs */}
