@@ -7,15 +7,24 @@ class PersonalInfo extends Component {
     constructor(props) {
         super(props);
         this.state = { value: '' }
-
+        this.state = {
+            title_degreeData: [{ value: "20", label: 20 },
+            { value: "40", label: 40 },
+            { value: "60", label: 60 },
+            { value: "120", label: 120 },
+            { value: "240", label: 240 },],
+        };
     }
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
 
+
+
     render() {
         const { firstName, lastName, handleChange } = this.props;
+        
         return (
             <> <Grid className="logForm form_full">
 
@@ -29,7 +38,7 @@ class PersonalInfo extends Component {
                             value={this.state.title}
 
                             options={this.state.title_degreeData}
-                            placeholder="Mr."
+                            placeholder="Select Time To Talk "
                             name="title"
                             isSearchable={false}
                             className="mr_sel"

@@ -45,11 +45,16 @@ class AllInfo extends Component {
                 this.setState({ loaderImage: false });
             });
     };
+    continue = e => {
+        e.preventDefault();
+        this.props.nextStep();
+    }
 
     back = e => {
         e.preventDefault();
         this.props.prevStep();
     }
+
     render() {
         let translate = getLanguage(this.props.stateLanguageType);
         let {
@@ -127,12 +132,18 @@ class AllInfo extends Component {
                             </Grid>
                         </Grid>
                         <Grid className="infoShwSave3 P_f2 ">
-                            <input
-                                type="button"
-                                value="« Back"
-                                onClick={this.back}
+                        <input
+                            type="button"
+                            value="« Back"
+                            onClick={this.back}
 
-                            />
+                        />
+                        <input
+                            type="button"
+                            value="Next »"
+                            onClick={this.continue}
+
+                        />
                         </Grid>
                     </Grid>
 

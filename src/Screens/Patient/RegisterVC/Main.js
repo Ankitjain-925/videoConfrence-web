@@ -67,6 +67,15 @@ export class StepForm extends Component {
                 jobLocation={jobLocation}
                 prevStep={this.prevStep}
             />);
+            if (step === 4)
+            return (<AllInfo
+                firstName={firstName}
+                lastName={lastName}
+                jobTitle={jobTitle}
+                jobCompany={jobCompany}
+                jobLocation={jobLocation}
+                prevStep={this.prevStep}
+            />);
     }
 
     render() {
