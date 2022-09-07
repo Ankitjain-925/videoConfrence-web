@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
+import { getLanguage } from "translations/index";
 import LeftMenu from "Screens/Components/Menus/PatientLeftMenu/index";
 import LeftMenuMobile from "Screens/Components/Menus/PatientLeftMenu/mobile";
 const VideoGuideLine = (props) => {
+  let translate = getLanguage(props.stateLanguageType);
+  const { guideline } = translate;
   return (
     <Grid
       className={
@@ -25,7 +28,7 @@ const VideoGuideLine = (props) => {
                 <Grid className="docsOpinion">
                   <Grid container direction="row" className="docsOpinLbl">
                     <Grid item xs={12} md={6}>
-                      <label>{"Guideline"}</label>
+                      <label>{guideline}</label>
                     </Grid>
                   </Grid>
                 </Grid>
