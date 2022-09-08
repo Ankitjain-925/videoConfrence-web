@@ -78,6 +78,11 @@ class Index extends Component {
   dashboard = () => {
     this.props.history.push("/patient/settings");
   };
+
+   //For feedback page
+   feedBack = () => {
+    this.props.history.push("/patient/feed-back");
+  };
   render() {
     let translate = getLanguage(this.props.stateLanguageType);
     let {
@@ -220,6 +225,34 @@ class Index extends Component {
                     />
                   )}
                   <span>{"List Requests"}</span>
+                </a>
+              </li>
+              <li
+                className={
+                  this.props.currentPage === "feedback" ? "menuActv" : ""
+                }
+              >
+             
+
+                <a onClick={this.feedBack}>
+
+                  {this.props.settings &&
+                    this.props.settings.setting &&
+                    this.props.settings.setting.mode &&
+                    this.props.settings.setting.mode === "dark" ? (
+                      <img
+                      src={require("assets/images/nav-journal-white.svg")}
+                      alt=""
+                      title=""
+                    />
+                  ) : (
+                    <img
+                    src={require("assets/images/nav-journal.svg")}
+                    alt=""
+                    title=""
+                  />
+                  )}
+                  <span>{"Feed Back"}</span>
                 </a>
               </li>
               <li

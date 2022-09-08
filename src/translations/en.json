@@ -1913,7 +1913,10 @@
 		"fill_citizenship":"Please fill the Citizenship country",
     "click_on_accept_it_guidline" : "Click here to accept IT guideline !",
     "view_guidelines" : "View Guideline",
-    "login_video_confrence" : "Login to Video-Confrence"
+    "login_video_confrence" : "Login to Video-Confrence",
+    "FeedBack":"Feed Back",
+    "Give_Comment_Doctor":"Give Comment to the Doctor",
+    "Give_rating_Doctor":"Give rating to the Doctor"
    
   }
 }
