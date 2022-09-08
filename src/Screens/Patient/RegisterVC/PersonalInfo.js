@@ -24,7 +24,7 @@ class PersonalInfo extends Component {
 
     render() {
         const { firstName, lastName, handleChange } = this.props;
-        
+
         return (
             <> <Grid className="logForm form_full">
 
@@ -35,13 +35,13 @@ class PersonalInfo extends Component {
                     </Grid>
                     <Grid>
                         <Select
-                            value={this.state.title}
-
+                            value={firstName}
+                            name="firstName"
                             options={this.state.title_degreeData}
                             placeholder="Select Time To Talk "
-                            name="title"
                             isSearchable={false}
                             className="mr_sel"
+                            onChange={handleChange('firstName')}
                         />
                     </Grid>
                 </Grid>
