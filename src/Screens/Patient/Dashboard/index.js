@@ -20,11 +20,6 @@ import { Settings } from "Screens/Login/setting";
 import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { LoginReducerAim } from "Screens/Login/actions";
-import { LanguageFetchReducer } from 'Screens/actions';
-import { Settings } from "Screens/Login/setting";
 
 function TabContainer(props) {
   return (
@@ -166,4 +161,4 @@ export default pure(
       Settings,
       authy,
     })(Dashboard)
-  )
+  ))
