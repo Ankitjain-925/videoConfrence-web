@@ -14948,10 +14948,13 @@ label.errMsgStyleSecPart {
     padding: 10px;
   }
 }
-a {
-  color: #000 !important;
-}
 
+a {
+  color: #000;
+}
+.darkTheme a {
+  color: #f1f1f1;
+}
 /* css added by jyothi*/
 .card-section{
   padding:40px;
@@ -15166,7 +15169,6 @@ a {
   width: 100px;
   border-radius: 8px;
   margin-right: 20px;
-
 }
 
 .inprogress-call {
