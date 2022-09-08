@@ -15214,11 +15214,12 @@ a {
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
-  line-height: 18px;
-  color: #404646;
+  line-height: 18px !important;
+  color: #404646 !important;
 }
 .comment-callpat h5{
   font-size: 14px;
+  color: #d9dada !important;
   font-weight: 700;
   line-height: 15px;
 }
@@ -15227,7 +15228,7 @@ a {
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
-  color: #00ABAF;
+  color: #00ABAF !important;
   margin-top: 10px;
 }
 .call-pop-title {
@@ -15293,3 +15294,11 @@ a {
     height: 100px;
   }
 
+.css-ohwg9z{
+  width: 100%;
+}
+.BannerGrid .gridDiv {
+  width: 47%;
+  margin-left: 1%;
+  margin-right: 1%;
+}

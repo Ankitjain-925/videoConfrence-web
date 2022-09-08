@@ -161,5 +161,4 @@ export default pure(
       Settings,
       authy,
     })(Dashboard)
-  )
-)
+  ))
