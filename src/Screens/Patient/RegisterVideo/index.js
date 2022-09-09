@@ -13,6 +13,7 @@ import {
   commonNoTokentHeader,
   commonHeader,
 } from "component/CommonHeader/index";
+import Payment from "Screens/Patient/RequestList/Payment/index";
 import axios from "axios";
 import sitedata, { data } from "sitedata";
 import { pure } from "recompose";
@@ -25,7 +26,6 @@ import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-
 const path = sitedata.data.path;
 
 function TabContainer(props) {
@@ -49,6 +49,7 @@ const RegisterVideo = (props) => {
   const [error2, setError2] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [ITGuideline, setITGuideline] = useState(false);
+  const [openPayment, setOpenPayment] = useState(false);
   let translate = getLanguage(props.stateLanguageType);
   let history = useHistory();
 
@@ -60,9 +61,9 @@ const RegisterVideo = (props) => {
     password,
     username,
   } = translate;
-  const BtnSubmit = () => {
+  const BtnSubmit = (paymentData) => {
     if (email !== "" && _password !== "") {
-      confirmSubmit();
+      confirmSubmit(paymentData);
     } else {
       setErrormsg("Username && password not empty");
       setError(true);
@@ -70,49 +71,65 @@ const RegisterVideo = (props) => {
   };
   const onKeyDownlogin = (e) => {
     if (e.key === "Enter") {
-      BtnSubmit();
+      onPayment();
     }
   };
-  const confirmSubmit = () => {
-    if (ITGuideline) {
-      setErrormsg("");
-      setError(false);
-      let _data = {
-        email: userData.email || "",
-        username: email,
-        password: _password,
-        first_name: userData.first_name,
-        last_name: userData.last_name,
-        profile_id: userData.profile_id,
-        isITGuideLineAccepted: ITGuideline,
-        patient_id: userData._id,
-        status: true,
-      };
-      axios
-        .post(
-          path + "/vchat/AddVideoUserAccount",
-          _data,
-          commonHeader(props.stateLoginValueAim.token)
-        )
-        .then((response) => {
-          if (
-            response.data.hassuccessed === true &&
-            response.data.data !== "User Already Register"
-          ) {
-            props.LoginReducerAim('', '', "", "", props.stateLoginValueAim, true);
-            history.push({
-              pathname: "/patient/settings",
-            });
-          } else {
-            history.push({
-              pathname: "/patient/video_login",
-            });
-          }
-        });
-    } else {
+  const confirmSubmit = (paymentData) => {
+    let _data = {
+      email: userData.email || "",
+      username: email,
+      password: _password,
+      first_name: userData.first_name,
+      last_name: userData.last_name,
+      profile_id: userData.profile_id,
+      isITGuideLineAccepted: ITGuideline,
+      patient_id: userData._id,
+      status: true,
+    };
+    if (paymentData?.data?.message == "Payment Success") {
+      _data["is_payment"] = true;
+      _data["payment_data"] = paymentData?.data?.paymentData;
+    }
+
+    axios
+      .post(
+        path + "/vchat/AddVideoUserAccount",
+        _data,
+        commonHeader(props.stateLoginValueAim.token)
+      )
+      .then((response) => {
+        if (
+          response.data.hassuccessed === true &&
+          response.data.data !== "User Already Register"
+        ) {
+          props.LoginReducerAim("", "", "", "", props.stateLoginValueAim, true);
+          history.push({
+            pathname: "/patient/settings",
+          });
+        } else {
+          history.push({
+            pathname: "/patient/video_login",
+          });
+        }
+      });
+  };
+
+  const onPayment = () => {
+    if (!email && !_password) {
+      setErrormsg("Username && password shouldn't be empty");
+      setError(true);
+    } else if (!ITGuideline) {
       setErrormsg("Please accept IT Guideline");
       setError(true);
+    } else {
+      setErrormsg("");
+      setError(false);
+      setOpenPayment(true);
     }
+  };
+
+  const handleCancel = () => {
+    setOpenPayment(false);
   };
   return (
     <Grid
@@ -146,7 +163,7 @@ const RegisterVideo = (props) => {
                 <Grid item xs={12} md={10} lg={8}>
                   {/* <Grid className="profilePkg"> */}
                   <Grid className="profilePkgIner3 border-radious-10">
-                    <Grid className="logForm">
+                    <Grid className="logForm form_full">
                       {error && <div className="err_message">{errormsg}</div>}
                       <Grid className="logRow">
                         <Grid>
@@ -205,13 +222,20 @@ const RegisterVideo = (props) => {
                         <input
                           type="submit"
                           value="submit"
-                          onClick={() => BtnSubmit()}
+                          onClick={() => onPayment()}
                         />
                       </Grid>
                     </Grid>
 
                     {/* </Grid> */}
                   </Grid>
+                  {openPayment && (
+                    <Payment
+                      onCancel={handleCancel}
+                      usedFor={"register_video"}
+                      onSuccessPayment={BtnSubmit}
+                    />
+                  )}
                 </Grid>
                 {/* End of Tabs */}
               </Grid>
