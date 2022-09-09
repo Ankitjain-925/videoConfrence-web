@@ -9,8 +9,8 @@ import { pure } from "recompose";
 import { Settings } from 'Screens/Login/setting';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from "@material-ui/core";
-import NotesEditor from "./../Editor/index";
-import SymptomQuestions from '../../Components/TimelineComponent/CovidSymptomsField/SymptomQuestions'; 
+import NotesEditor from "../Editor/index";
+import SymptomQuestions from '../TimelineComponent/CovidSymptomsField/SymptomQuestions'; 
 import axios from "axios";
 import sitedata from "sitedata";
 import { commonHeader } from "component/CommonHeader/index";
@@ -54,32 +54,31 @@ class Index extends Component {
         this.setState({ showQuestion: state });
     };
     handleTaskSubmit =()=>{
+        console.log('data',this.state.showQuestion)
         let translate = getLanguage(this.props.stateLanguageType);
         let { Something_went_wrong } = translate;
         var data = this.state.showQuestion;
-        var patient_infos = [{
+        var patient_infos = {
             first_name: this.props.stateLoginValueAim?.user?.first_name,
             last_name: this.props.stateLoginValueAim?.user?.last_name,
+            image: this.props.stateLoginValueAim?.user?.image,
             alies_id: this.props.stateLoginValueAim?.user?.alies_id,
             profile_id: this.props.stateLoginValueAim?.user?.profile_id,
-         }]
+         }
          var doctor_infos
-         = [{
+         = {
             first_name: "Ankit",
             last_name: "jain",
             alies_id: "D_QRW7IAGTg",
             profile_id: "D_QRW7IAGTg",
             email:"ankitjain.webnexus@gmail.com",
-            image:"https://aimedis-0001.s3.amazonaws.com/D_QRW7IAGTg/1660719470481-doctor image.jpg.jpg&bucket=aimedis-0001"
-         }]
-          data.patient_infos = patient_infos;
-          data.doctor_infos = doctor_infos;
-          var a=data.Comment;
+            profile_image:"https://aimedis-0001.s3.amazonaws.com/D_QRW7IAGTg/1660719470481-doctor image.jpg.jpg&bucket=aimedis-0001"
+         }
+          data.patient_info = patient_infos;
+          data.doctor_info = doctor_infos;
           data.patient_id =this.props.stateLoginValueAim?.user?._id;
-          data.Comment = [a];
-          data.rating = data.rating;
           data.doctor_id="62a41f1ec627873603accc6c"
-         this.setState({ loaderImage: true });
+          this.setState({ loaderImage: true });
         axios
       .post(
         sitedata.data.path + "/vchat/givefeedback",
@@ -241,7 +240,7 @@ class Index extends Component {
                                         <NotesEditor
                                             name="Comment"
                                             onChange={(e) => this.updateAllEntrySec(e,'Comment')}
-                                            value={this.state.showQuestion || ""}
+                                            value={this.state.showQuestion || "" }
                                         />
                                      </Grid>
                               </Grid>

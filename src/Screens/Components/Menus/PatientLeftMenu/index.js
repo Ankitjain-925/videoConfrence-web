@@ -85,7 +85,7 @@ class Index extends Component {
 
    //For feedback page
    feedBack = () => {
-    this.props.history.push("/patient/feed-back");
+    this.props.history.push("/patient/Feed-back");
   };
 
   render() {

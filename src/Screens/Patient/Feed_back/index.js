@@ -10,7 +10,7 @@ import { Settings } from 'Screens/Login/setting';
 import { connect } from 'react-redux';
 import { Component } from "react";
 import Loader from 'Screens/Components/Loader/index';
-import ShowQues from '../../Components/ShowQues/index';
+import ShowQuestion from '../../Components/ShowQuestion/index';
 
 
 
@@ -72,7 +72,7 @@ class Index extends Component {
                                                 />
                                             </Grid>
                                         </Grid>
-                                        <ShowQues
+                                        <ShowQuestion
                                             closeFullQues={() => this.closeFullQues()}
                                             openModal={this.state.openModal}
                                            

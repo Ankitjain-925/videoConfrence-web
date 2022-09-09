@@ -16,7 +16,7 @@ import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 import { Dashboard } from "Screens/Patient/Dashboard";
 import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
 import RegisterVideo from "Screens/Patient/RegisterVideo";
-import Feedback from "Screens/Patient/Feedback";
+import Feed_back from "Screens/Patient/Feed_back";
 import LoginVideo from 'Screens/Patient/loginVideo'
 import VideoGuideLine from 'Screens/Patient/VideoGuideLine'
 import RegisterVC from 'Screens/Patient/RegisterVC/index'
@@ -92,10 +92,11 @@ class Routermain extends Component {
               path="/patient/sick-request"
               render={(props) => <Form {...props} />}
             />
+            {/* added by tanya */}
             <Route
               exact
-              path="/patient/feed-back"
-              render={(props) => <Feedback {...props} />}
+              path="/patient/Feed-back"
+              render={(props) => <Feed_back {...props} />}
             />
           {/* Need to route required component */}
             <Route
