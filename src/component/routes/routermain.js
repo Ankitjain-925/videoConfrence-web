@@ -13,9 +13,10 @@ import PatientProfile from "Screens/Patient/Profile/index";
 import VideoCall from "Screens/VideoCall/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
-import { Dashboard } from "Screens/Patient/Dashboard";
+import Dashboard from "../../Screens/Patient/Dashboard";
 import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
 import Newpage from "Screens/Patient/newpage/index";
+import { VideoCallPat } from "Screens/Patient/VideoCall/index"
 import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from 'Screens/Patient/loginVideo'
 import VideoGuideLine from 'Screens/Patient/VideoGuideLine'
@@ -45,6 +46,11 @@ class Routermain extends Component {
 
             <Route
               exact
+              path="/patient/video-call"
+              render={(props) => <VideoCallPat {...props} />}
+            />
+            <Route
+              exact
               path="/patient/settings"
               render={(props) => <Dashboard {...props} />}
             />
@@ -62,6 +68,7 @@ class Routermain extends Component {
             />
 
             <Route exact path='/video_login' render={(props) => <LoginVideo {...props} />} />
+            <Route exact path='/patient/video_login' render={(props) => <LoginVideo {...props} />} />
 
             <Route
               path="/patient/new-request"
@@ -104,9 +111,9 @@ class Routermain extends Component {
               exact={true}
               render={(props) => <NotFound {...props} />}
             />
-          </Switch>
-        </Grid>
-      </Router>
+          </Switch >
+        </Grid >
+      </Router >
     );
   }
 }

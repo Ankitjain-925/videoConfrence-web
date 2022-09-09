@@ -11,6 +11,11 @@ import { getLanguage } from 'translations/index';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Main from './Main';
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { LoginReducerAim } from "Screens/Login/actions";
+import { LanguageFetchReducer } from 'Screens/actions';
+import { Settings } from "Screens/Login/setting";
 
 function RegisterVC(props) {
   const [value, setValue] = useState(0)
@@ -63,7 +68,7 @@ function RegisterVC(props) {
               <Grid item xs={12} md={11} lg={10}>
                 <Grid className="docsOpinion">
                   <Grid container direction="row" className="docsOpinLbl">
-                    <Grid item xs={12} md={6} className= "label_1">
+                    <Grid item xs={12} md={6} className="label_1">
                       <label>{book_appointment}</label>
                     </Grid>
                   </Grid>
@@ -77,10 +82,10 @@ function RegisterVC(props) {
                     <lable>Register </lable>
                   </AppBar> */}
                   {/* </Grid> */}
-                  <Grid className="profilePkgIner2">
+                  
 
                     <Main />
-                  </Grid>
+                  
                   {/* End of Tabs */}
 
 
@@ -97,8 +102,25 @@ function RegisterVC(props) {
     </Grid>
   )
 }
+const mapStateToProps = (state) => {
+  const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
+    state.LoginReducerAim;
+  const { stateLanguageType } = state.LanguageReducer;
+  const { settings } = state.Settings;
+  return {
+    stateLanguageType,
+    stateLoginValueAim,
+    settings,
+  };
+};
+export default withRouter(
+  connect(mapStateToProps, {
+    LoginReducerAim,
+    LanguageFetchReducer,
+    Settings
+  })(RegisterVC)
+);
 
-export default RegisterVC;
 
 
 

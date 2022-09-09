@@ -18,20 +18,21 @@ import { Settings } from "Screens/Login/setting";
 const path = sitedata.data.path;
 
 const LoginVideo = (props) => {
- 
+
   let history = useHistory();
 
-  const [email, setEmail] = useState("");
+  const [_username, set_username] = useState("");
   const [_password, setPassword] = useState("");
   const [hidden, setHidden] = useState(true);
   const [error, setError] = useState(false);
   const [errormsg, setErrormsg] = useState("");
 
   let translate = getLanguage(props.stateLanguageType);
-  let { login_video_confrence, username, password, login_LOGIN_btn } = translate;
+  let { login_video_confrence, username, password, login_LOGIN_btn } =
+    translate;
 
   const BtnSubmit = () => {
-    if (email !== "" && _password !== "") {
+    if (_username !== "" && _password !== "") {
       confirmSubmit();
     } else {
       setErrormsg("Username && password not empty");
@@ -47,19 +48,16 @@ const LoginVideo = (props) => {
     setErrormsg("");
     setError(false);
     let _data = {
-      email: email,
+      username: _username,
       password: _password,
     };
     axios
-      .post(
-        path + "/vchat/loginVideoUserAccount",
-        _data,
-        commonHeader(props.token)
-      )
+      .post(path + "/vchat/UsernameLogin", _data, commonHeader(props.token))
       .then((response) => {
         if (response.data.hassuccessed === true) {
+          props.LoginReducerAim("", "", "", "", props.stateLoginValueAim, true);
           history.push({
-            pathname: "/dashboard",
+            pathname: "/patient/settings",
           });
         } else {
         }
@@ -69,9 +67,9 @@ const LoginVideo = (props) => {
     <Grid
       className={
         props.settings &&
-        props.settings.setting &&
-        props.settings.setting.mode &&
-        props.settings.setting.mode === "dark"
+          props.settings.setting &&
+          props.settings.setting.mode &&
+          props.settings.setting.mode === "dark"
           ? "homeBg darkTheme homeBgDrk"
           : "homeBg"
       }
@@ -93,52 +91,63 @@ const LoginVideo = (props) => {
                   </Grid>
                 </Grid>
                 <Grid item xs={12} md={10} lg={8}>
-                  <Grid className="profilePkg">
-                    <Grid className="profilePkgIner3 border-radious-10">
-                      <Grid className="logForm">
-                        {error && <div className="err_message">{errormsg}</div>}
-                        <Grid className="logRow">
-                          <Grid>
-                            <label>{username}</label>
-                          </Grid>
-                          <Grid>
-                            <input
-                              type="text"
-                              value={email}
-                              name="email"
-                              onKeyDown={(e) => onKeyDownlogin(e)}
-                              onChange={(e) => {
-                                setEmail(e.target.value);
-                              }}
-                            />
-                          </Grid>
-                        </Grid>
-                        <Grid className="logRow">
-                          <Grid>
-                            <label>{password}</label>
-                          </Grid>
-                          <Grid>
-                            <input
-                              type={hidden ? "password" : "text"}
-                              name="pass"
-                              onKeyDown={(e) => onKeyDownlogin(e)}
-                              value={_password}
-                              onChange={(e) => setPassword(e.target.value)}
-                            />
-                          </Grid>
-                        </Grid>
 
-                        <Grid className="infoShwSave3">
+                  {/* <Grid className="profilePkg"> */}
+                  <Grid className="profilePkgIner3 border-radious-10">
+                    <Grid className="logForm form_full">
+                      {error && <div className="err_message">{errormsg}</div>}
+                      <Grid className="logRow">
+                        <Grid>
+                          <label>{username}</label>
+                        </Grid>
+                        <Grid>
                           <input
-                            type="submit"
-                            value={login_LOGIN_btn}
-                            onClick={() => BtnSubmit()}
+                            type="text"
+                            value={_username}
+                            name="username"
+                            onKeyDown={(e) => onKeyDownlogin(e)}
+                            onChange={(e) => {
+                              set_username(e.target.value);
+                            }}
                           />
                         </Grid>
                       </Grid>
+                      <Grid className="logRow">
+                        <Grid>
+                          <label>{password}</label>
+                        </Grid>
+                        <Grid>
+                          <input
+                            type={hidden ? "password" : "text"}
+                            name="pass"
+                            onKeyDown={(e) => onKeyDownlogin(e)}
+                            value={_password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                        </Grid>
+                      </Grid>
+
+                      <Grid className="infoShwSave3">
+                        <input
+                          type="submit"
+                          value={login_LOGIN_btn}
+                          onClick={() => BtnSubmit()}
+                        />
+                      </Grid>
+                    </Grid>
+
+                    <Grid className="infoShwSave3">
+                      <input
+                        type="submit"
+                        value={login_LOGIN_btn}
+                        onClick={() => BtnSubmit()}
+                      />
                     </Grid>
                   </Grid>
+
+
                 </Grid>
+                {/* </Grid> */}
               </Grid>
             </Grid>
           </Grid>
