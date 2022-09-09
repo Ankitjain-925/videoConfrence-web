@@ -14,7 +14,7 @@ import VideoCall from "Screens/VideoCall/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 import Dashboard from "Screens/Patient/Dashboard";
-import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
+import { SelectDoctor } from "Screens/Patient/Dashboard/Selectdoctor";
 import VideoCallPat from "Screens/Patient/VideoCall/index";
 import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from "Screens/Patient/loginVideo";
@@ -32,12 +32,7 @@ class Routermain extends Component {
               path="/register"
               render={(props) => <Register {...props} />}
             />
-            <Route
-              exact
-              path="/patient/select-doctor"
-              render={(props) => <SelectDoctor {...props} />}
-            />
-            <Route
+          <Route
               exact
               path="/patient/video-call"
               render={(props) => <VideoCallPat {...props} />}

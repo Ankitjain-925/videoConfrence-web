@@ -113,7 +113,7 @@ const VideoCallPat = (props) => {
                 <div className="settingPage">
                   <>
                     <div>
-                      <div className="call-page-card">
+                      <div className="call-page-card form_full">
                         <div className="heading-status-call">
                           <div className="inprogress-call">
                             <span className="inprogress-call-text">
@@ -129,7 +129,7 @@ const VideoCallPat = (props) => {
                         </div>
 
                         <div className="video-page">
-                          <div className="call-popup">
+                          <div className="call-popup Card_1">
                             <div className="call-pop-title">Out Of Credit</div>
                             <div className="call-pop-body">
                               You run out of credit. Please top up your account
@@ -168,7 +168,7 @@ const VideoCallPat = (props) => {
                           </div>
                         </div>
 
-                        <div className="call-feedback-area">
+                        <div className="call-feedback-part">
                           <Carousel>{slideItems}</Carousel>
                         </div>
 

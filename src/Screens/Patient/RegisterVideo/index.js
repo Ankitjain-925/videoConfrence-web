@@ -146,7 +146,7 @@ const RegisterVideo = (props) => {
                 <Grid item xs={12} md={10} lg={8}>
                   {/* <Grid className="profilePkg"> */}
                   <Grid className="profilePkgIner3 border-radious-10">
-                    <Grid className="logForm">
+                    <Grid className="logForm form_full">
                       {error && <div className="err_message">{errormsg}</div>}
                       <Grid className="logRow">
                         <Grid>
