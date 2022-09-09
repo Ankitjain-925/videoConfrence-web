@@ -136,13 +136,13 @@ const LoginVideo = (props) => {
                       </Grid>
                     </Grid>
 
-                    <Grid className="infoShwSave3">
+                    {/* <Grid className="infoShwSave3">
                       <input
                         type="submit"
                         value={login_LOGIN_btn}
                         onClick={() => BtnSubmit()}
                       />
-                    </Grid>
+                    </Grid> */}
                   </Grid>
 
 

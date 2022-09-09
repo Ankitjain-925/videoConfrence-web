@@ -17468,7 +17468,16 @@ a {
   line-height: 22px;
   padding: 20px;
   border-bottom: 1px solid #ddd;
-  color: #000808;
+}
+
+.darkTheme .call-pop-body {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  color: #d9dada;
 }
 
 .call-img {
@@ -17546,6 +17555,14 @@ a {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   font-size: 16px;
+}
+
+.darkTheme .call-pop-title {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  color: #d9dada;
 }
 
 .top-up {

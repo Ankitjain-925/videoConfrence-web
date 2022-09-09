@@ -14,7 +14,7 @@ import VideoCall from "Screens/VideoCall/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 import Dashboard from "Screens/Patient/Dashboard";
-import { VideoCallPat } from "Screens/Patient/VideoCall/index"
+import VideoCallPat from "Screens/Patient/VideoCall/index"
 import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from 'Screens/Patient/loginVideo'
 import VideoGuideLine from 'Screens/Patient/VideoGuideLine'

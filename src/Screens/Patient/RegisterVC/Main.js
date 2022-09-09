@@ -3,8 +3,8 @@ import PersonalInfo from './PersonalInfo';
 import JobDetails from './JobDetails';
 import AllInfo from './AllInfo';
 import Step4 from './Step4';
-import SelectDoctor from './Selectdoctor';
-import Form5 from './SickLeaveForm/index'
+import SelectDoctor from '../Dashboard/Selectdoctor';
+import Form5 from '../SickLeaveForm/index'
 
 import Grid from "@material-ui/core/Grid";
 
