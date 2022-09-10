@@ -9,9 +9,13 @@ import { getLanguage } from "translations/index";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import queryString from "query-string";
-import { commonNoTokentHeader } from "component/CommonHeader/index";
+import {
+  commonNoTokentHeader,
+  commonHeader,
+} from "component/CommonHeader/index";
+import Payment from "Screens/Patient/RequestList/Payment/index";
 import axios from "axios";
-import sitedata from "sitedata";
+import sitedata, { data } from "sitedata";
 import { pure } from "recompose";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -22,7 +26,6 @@ import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-
 const path = sitedata.data.path;
 
 function TabContainer(props) {
@@ -46,6 +49,7 @@ const RegisterVideo = (props) => {
   const [error2, setError2] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [ITGuideline, setITGuideline] = useState(false);
+  const [openPayment, setOpenPayment] = useState(false);
   let translate = getLanguage(props.stateLanguageType);
   let history = useHistory();
 
@@ -57,9 +61,9 @@ const RegisterVideo = (props) => {
     password,
     username,
   } = translate;
-  const BtnSubmit = () => {
+  const BtnSubmit = (paymentData) => {
     if (email !== "" && _password !== "") {
-      confirmSubmit();
+      confirmSubmit(paymentData);
     } else {
       setErrormsg("Username && password not empty");
       setError(true);
@@ -67,39 +71,65 @@ const RegisterVideo = (props) => {
   };
   const onKeyDownlogin = (e) => {
     if (e.key === "Enter") {
-      BtnSubmit();
+      onPayment();
     }
   };
-  const confirmSubmit = () => {
-    if (ITGuideline) {
-      setErrormsg("");
-      setError(false);
-      let _data = {
-        email: email,
-        password: _password,
-        first_name: userData.first_name,
-        last_name: userData.last_name,
-        profile_id: userData.profile_id,
-        isITGuideLineAccepted: ITGuideline,
-      };
-      axios
-        .post(
-          path + "/vchat/AddVideoUserAccount",
-          _data,
-          commonNoTokentHeader()
-        )
-        .then((response) => {
-          if (response.data.hassuccessed === true) {
-            history.push({
-              pathname: "/dashboard",
-            });
-          } else {
-          }
-        });
-    } else {
+  const confirmSubmit = (paymentData) => {
+    let _data = {
+      email: userData.email || "",
+      username: email,
+      password: _password,
+      first_name: userData.first_name,
+      last_name: userData.last_name,
+      profile_id: userData.profile_id,
+      isITGuideLineAccepted: ITGuideline,
+      patient_id: userData._id,
+      status: true,
+    };
+    if (paymentData?.data?.message == "Payment Success") {
+      _data["is_payment"] = true;
+      _data["payment_data"] = paymentData?.data?.paymentData;
+    }
+
+    axios
+      .post(
+        path + "/vchat/AddVideoUserAccount",
+        _data,
+        commonHeader(props.stateLoginValueAim.token)
+      )
+      .then((response) => {
+        if (
+          response.data.hassuccessed === true &&
+          response.data.data !== "User Already Register"
+        ) {
+          props.LoginReducerAim("", "", "", "", props.stateLoginValueAim, true);
+          history.push({
+            pathname: "/patient/settings",
+          });
+        } else {
+          history.push({
+            pathname: "/patient/video_login",
+          });
+        }
+      });
+  };
+
+  const onPayment = () => {
+    if (!email && !_password) {
+      setErrormsg("Username && password shouldn't be empty");
+      setError(true);
+    } else if (!ITGuideline) {
       setErrormsg("Please accept IT Guideline");
       setError(true);
+    } else {
+      setErrormsg("");
+      setError(false);
+      setOpenPayment(true);
     }
+  };
+
+  const handleCancel = () => {
+    setOpenPayment(false);
   };
   return (
     <Grid
@@ -131,74 +161,81 @@ const RegisterVideo = (props) => {
                 </Grid>
 
                 <Grid item xs={12} md={10} lg={8}>
-                  <Grid className="profilePkg">
-                    <Grid className="profilePkgIner3 border-radious-10">
-                      <Grid className="logForm">
-                        {error && <div className="err_message">{errormsg}</div>}
-                        <Grid className="logRow">
-                          <Grid>
-                            <label>{username}</label>
-                          </Grid>
-                          <Grid>
-                            <input
-                              type="text"
-                              value={email}
-                              name="email"
-                              onKeyDown={(e) => onKeyDownlogin(e)}
-                              onChange={(e) => {
-                                setEmail(e.target.value);
-                              }}
-                            />
-                          </Grid>
+                  {/* <Grid className="profilePkg"> */}
+                  <Grid className="profilePkgIner3 border-radious-10">
+                    <Grid className="logForm form_full">
+                      {error && <div className="err_message">{errormsg}</div>}
+                      <Grid className="logRow">
+                        <Grid>
+                          <label>{username}</label>
                         </Grid>
-                        <Grid className="logRow">
-                          <Grid>
-                            <label>{password}</label>
-                          </Grid>
-                          <Grid>
-                            <input
-                              type={hidden ? "password" : "text"}
-                              name="pass"
-                              onKeyDown={(e) => onKeyDownlogin(e)}
-                              value={_password}
-                              onChange={(e) => setPassword(e.target.value)}
-                            />
-                          </Grid>
-                        </Grid>
-
-                        <Grid className="aceptTermsPlcy">
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                value="checkedB"
-                                color="#00ABAF"
-                                checked={ITGuideline}
-                                onChange={() => {
-                                  setITGuideline(!ITGuideline);
-                                }}
-                              />
-                            }
-                            label={click_on_accept_it_guidline}
-                          />
-                          <span
-                            onClick={() => history.push("/video-guideline")}
-                            className="guidline_text"
-                          >
-                            {view_guidelines}
-                          </span>
-                        </Grid>
-
-                        <Grid className="infoShwSave3">
+                        <Grid>
                           <input
-                            type="submit"
-                            value="submit"
-                            onClick={() => BtnSubmit()}
+                            type="text"
+                            value={email}
+                            name="email"
+                            onKeyDown={(e) => onKeyDownlogin(e)}
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                            }}
                           />
                         </Grid>
                       </Grid>
-                      
+                      <Grid className="logRow">
+                        <Grid>
+                          <label>{password}</label>
+                        </Grid>
+                        <Grid>
+                          <input
+                            type={hidden ? "password" : "text"}
+                            name="pass"
+                            onKeyDown={(e) => onKeyDownlogin(e)}
+                            value={_password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                        </Grid>
+                      </Grid>
+
+                      <Grid className="aceptTermsPlcy">
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              value="checkedB"
+                              color="#00ABAF"
+                              checked={ITGuideline}
+                              onChange={() => {
+                                setITGuideline(!ITGuideline);
+                              }}
+                            />
+                          }
+                          label={click_on_accept_it_guidline}
+                        />
+                        <span
+                          onClick={() => history.push("/video-guideline")}
+                          className="guidline_text"
+                        >
+                          {view_guidelines}
+                        </span>
+                      </Grid>
+
+                      <Grid className="infoShwSave3">
+                        <input
+                          type="submit"
+                          value="submit"
+                          onClick={() => onPayment()}
+                        />
+                      </Grid>
                     </Grid>
+
+                    {/* </Grid> */}
                   </Grid>
+                  {openPayment && (
+                    <Payment
+                      onCancel={handleCancel}
+                      usedFor={"register_video"}
+                      onSuccessPayment={BtnSubmit}
+                    />
+                  )}
                 </Grid>
                 {/* End of Tabs */}
               </Grid>

@@ -4190,8 +4190,8 @@ button.aboutTabsIner {
   padding-bottom: 122px;
 }
 .profilePkgIner3 {
-  padding: 22px 28px;
-  padding-bottom: 122px;
+  padding-left: 22px;
+  /* padding-bottom: 122px; */
 }
 .border-radious-10{
   border-radius: 10px;
@@ -7065,7 +7065,7 @@ a.diaCDActv {
   margin-top: 20px;
   margin-bottom: 2px;
   outline: none;
-  margin: 10px;
+  margin: 16px;
 }
 .infoShwSave3 input:hover {
   background: transparent;

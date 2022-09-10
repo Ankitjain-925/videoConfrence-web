@@ -7,17 +7,26 @@ class PersonalInfo extends Component {
     constructor(props) {
         super(props);
         this.state = { value: '' }
-
+        this.state = {
+            title_degreeData: [{ value: "20", label: 20 },
+            { value: "40", label: 40 },
+            { value: "60", label: 60 },
+            { value: "120", label: 120 },
+            { value: "240", label: 240 },],
+        };
     }
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
 
+
+
     render() {
         const { firstName, lastName, handleChange } = this.props;
+
         return (
-            <> <Grid className="logForm">
+            <> <Grid className="logForm form_full">
 
 
                 <Grid className="logRow">
@@ -26,13 +35,13 @@ class PersonalInfo extends Component {
                     </Grid>
                     <Grid>
                         <Select
-                            value={this.state.title}
-
+                            value={firstName}
+                            name="firstName"
                             options={this.state.title_degreeData}
-                            placeholder="Mr."
-                            name="title"
+                            placeholder="Select Time To Talk "
                             isSearchable={false}
                             className="mr_sel"
+                            onChange={handleChange('firstName')}
                         />
                     </Grid>
                 </Grid>
