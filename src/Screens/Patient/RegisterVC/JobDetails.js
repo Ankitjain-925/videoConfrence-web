@@ -57,7 +57,7 @@ class JobDetails extends Component {
                 <Grid className="logForm form_full">
 
 
-                    <Grid className="logRow" >
+                <Grid className="logRow" >
                         <Grid container direction="row" >
                             <Grid item xs={12} md={5} className="Card_1" >
 
@@ -67,13 +67,13 @@ class JobDetails extends Component {
 
 
                                     <Grid container justify="space-between" className="padd_10">
-                                        <Typography inline variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
-                                        <Typography inline variant="h6" component="div" align="right" className="adv2">10 Min</Typography>
+                                        <Typography variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
+                                        <Typography variant="h6" component="div" align="right" className="adv2">10 Min</Typography>
                                     </Grid>
 
 
                                     <CardContent>
-                                        <Typography variant="body2" color="text.secondary">
+                                        <Typography variant="body2">
                                         Your Top-Up Amount is: 
                                         </Typography>
                                     </CardContent>
@@ -88,11 +88,11 @@ class JobDetails extends Component {
 
 
                                     <Grid container justify="space-between" className="padd_10">
-                                        <Typography inline variant="h6" component="div" align="left" className="adv1">Credit Card</Typography>
-                                        <Typography inline variant="h6" component="div" align="right" className="adv2">20 Min</Typography>
+                                        <Typography variant="h6" component="div" align="left" className="adv1">Credit Card</Typography>
+                                        <Typography variant="h6" component="div" align="right" className="adv2">20 Min</Typography>
                                     </Grid>
                                     <CardContent>
-                                        <Typography variant="body2" color="text.secondary">
+                                        <Typography variant="body2">
                                             Click Here To Pay Through Credit Card 
                                         </Typography>
                                     </CardContent>
