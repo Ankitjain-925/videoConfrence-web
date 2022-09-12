@@ -13,17 +13,24 @@ class PersonalInfo extends Component {
             { value: "60", label: 60 },
             { value: "120", label: 120 },
             { value: "240", label: 240 },],
+            title: '',
+            title2: '',
         };
     }
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
-
+    ValueName = (value) => {
+// console.log("gfcn", value);
+        this.setState({ title: value });
+        var sec = value.value * 5;
+        this.setState({ title2: sec });
+    }
 
 
     render() {
-        const { firstName, lastName, handleChange } = this.props;
+
 
         return (
             <> <Grid className="logForm form_full">
@@ -35,13 +42,13 @@ class PersonalInfo extends Component {
                     </Grid>
                     <Grid>
                         <Select
-                            value={firstName}
+                            value={this.state.title}
                             name="firstName"
                             options={this.state.title_degreeData}
                             placeholder="Select Time To Talk "
                             isSearchable={false}
                             className="mr_sel"
-                            onChange={handleChange('firstName')}
+                            onChange={(e) => {this.ValueName(e.value) }}
                         />
                     </Grid>
                 </Grid>
@@ -52,10 +59,10 @@ class PersonalInfo extends Component {
                     <Grid>
                         <input
                             type="text"
+                            readOnly
                             name="lastName"
-                            value={lastName}
+                            value={this.state.title2}
                             placeholder="Total Payable Amount"
-                            onChange={handleChange('lastName')}
                         />
                     </Grid>
                 </Grid>

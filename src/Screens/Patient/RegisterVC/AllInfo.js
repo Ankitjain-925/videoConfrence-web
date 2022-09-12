@@ -69,7 +69,7 @@ class AllInfo extends Component {
         let {
             search_by_name_email_speciality_id_doc,
         } = translate;
-        const { jobTitle, jobCompany, jobLocation, handleChange } = this.props;
+
         return (
 
             <>

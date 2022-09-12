@@ -58,7 +58,7 @@ continue = e => {
 }
 
 render() {
-  const { dataa, dataaa } = this.props;
+  const { dataa } = this.props;
   let translate = getLanguage(this.props.stateLanguageType);
   let {
     my_profile,
@@ -90,10 +90,10 @@ render() {
                     <Grid className="cardDisplay-select">
                       <Grid className='card-section'>
                         <Grid className="card-header">
-                          <S3Image imgUrl={dataa.image} />
+                          <S3Image imgUrl={dataa.language.image} />
 
                           <Grid>
-                            <h5 className="selectdoc-head"> {dataa.first_name}{' '}{dataa.last_name}{','}{dataa.speciality} </h5>
+                            <h5 className="selectdoc-head"> {dataa.language.first_name}{' '}{dataa.language.last_name}{','}{dataa.language.speciality} </h5>
                             {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                             <Grid className='selectdoc-button'>
                               <span>on-line</span>
@@ -115,7 +115,7 @@ render() {
 
 
                           <p className='card-label'>Your Aimedis credit : <b>Omin</b> </p>
-                          {dataaa ? <Grid>
+                          {dataa.lang ? <Grid>
                             <a>+ Top up your account </a>
                           </Grid> : (
                             ''

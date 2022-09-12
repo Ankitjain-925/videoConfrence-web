@@ -60,7 +60,10 @@ class Index extends Component {
       bookedError: ''
     };
   }
-
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  }
   updateAllEntrySec = (value, name) => {
     var state = this.state.updateQues;
     state[name] = value;
@@ -141,9 +144,6 @@ class Index extends Component {
                 <Grid item xs={12} md={11} lg={10}>
                   <Grid className="docsOpinion">
                     <Grid container direction="row" className="docsOpinLbl">
-                      <Grid item xs={12} md={6}>
-                        <label>{sick_leave_certificate}</label>
-                      </Grid>
                     </Grid>
                   </Grid>
                   <Grid item xs={12} sm={12} md={8}>
@@ -460,10 +460,16 @@ class Index extends Component {
                                 )}
                               </Grid>
                             )}
-                          <Grid className="infoShwSave3">
+                          <Grid className="infoShwSave3 cardioArea">
+                            <input
+                              type="button"
+                              value="« Back"
+                              onClick={this.back}
+
+                            />
                             <input
                               type="submit"
-                              value={Submit}
+                              value="Next »"
                               onClick={() => handleEvalSubmit(this, 1)}
                             ></input>
                           </Grid>
@@ -600,7 +606,13 @@ class Index extends Component {
                             {this.state.bookedError}
                           </div>
                           {/* )} */}
-                          <Grid className="infoShwSave3">
+                          <Grid className="infoShwSave3 cardioArea">
+                          <input
+                                    type="button"
+                                    value="« Back"
+                                    onClick={()=>this.setState({openCalendar:false})}
+
+                                />
                             <input
                               type="submit"
                               value={Submit}
