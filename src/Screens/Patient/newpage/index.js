@@ -10,12 +10,15 @@ import PropTypes from 'prop-types';
 import { Button } from "@material-ui/core/index";
 import { handleEvalSubmit } from "../SickLeaveForm/api";
 import useAllSetting from '../../Hooks/Setting'
+import { useHistory } from "react-router-dom";
 
 
 
 const Index = (props) => {
     const [codeValue, setcodeValue] = useState({});
     const settings = useAllSetting();
+    const history = useHistory();
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const state = codeValue;
@@ -24,8 +27,14 @@ const Index = (props) => {
     }
 
     const handleSubmit = () => {
-        console.log("codevalue", codeValue)
-        setcodeValue({ code: '' });
+        if (codeValue && codeValue?.code) {
+            history.push("/patient/video-call");
+            console.log("codevalue", codeValue)
+            setcodeValue({ code: '' });
+        }
+        else {
+            setError("Please enter Access Key first");
+        }
 
     }
     let translate = getLanguage(props.stateLanguageType);
@@ -56,11 +65,11 @@ const Index = (props) => {
 
                             <Grid item xs={12} md={11} lg={6}>
                                 {/* <Grid className="profilePkgIner2"> */}
-                                <Grid className="logForm hhh">
+                                <Grid className="logForm accessForm">
 
-
-                                    <Grid className="logRow ">
+                                    <Grid className="logRow">
                                         <Grid className="label_1">
+                                            <div className="err_message">{error}</div>
                                             <label>Confirmation code</label>
                                         </Grid>
                                         <Grid>
@@ -74,11 +83,10 @@ const Index = (props) => {
                                         </Grid>
                                     </Grid>
 
-
                                     <Grid className="infoShwSave3 label_1 ">
                                         <input
                                             type="button"
-                                            value="Submit"
+                                            value="Join Call"
                                             onClick={() => handleSubmit()}
 
                                         />

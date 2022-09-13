@@ -49,38 +49,38 @@ export const SelectDoctor = (props) => {
               <LeftMenu isNotShow={true} currentPage="settings" />
               <LeftMenuMobile isNotShow={true} currentPage="settings" />
               <Grid item xs={12} md={11} lg={11}>
-              <div className="settingPage">
-              {/* <h5 className="setting-h5">Settings</h5> */}
-<div className='last-sec-setting'>
+                <div className="settingPage">
+                  {/* <h5 className="setting-h5">Settings</h5> */}
+                  <div className='last-sec-setting'>
 
-   
 
-      {/* Card Menu */}
-      <Card className="cardDisplay-select">
-        <div className='card-section'>
-          <div className="card-header">
-            <img src={require("assets/virtual_images/agedman.png")} alt='doctor' />
 
-          
-          <div>
-            <h5 className="selectdoc-head"> Stacy Lee, MD </h5>
-            <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p>
-            <div className='selectdoc-button'>
-              <span>on-line</span>
-            </div>
-          </div>
-        </div>
-        <div className='card-content'>
-             <Select
-                value={''}
-                onChange={(e) => {}}
-                options={options}
-                placeholder={"I would like to"}
-                name="appointment"
-                isSearchable={true}
-                className="mr_sel"
-            />
-          {/* <TextField
+                    {/* Card Menu */}
+                    <Card className="cardDisplay-select">
+                      <div className='card-section'>
+                        <div className="card-header">
+                          <img src={require("assets/virtual_images/agedman.png")} alt='doctor' />
+
+
+                          <div>
+                            <h5 className="selectdoc-head"> Stacy Lee, MD </h5>
+                            <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p>
+                            <div className='selectdoc-button'>
+                              <span>on-line</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className='card-content'>
+                          <Select
+                            value={''}
+                            onChange={(e) => { }}
+                            options={options}
+                            placeholder={"I would like to"}
+                            name="appointment"
+                            isSearchable={true}
+                            className="mr_sel"
+                          />
+                          {/* <TextField
             className="outlined-select-currency"
             select
             margin='dense'
@@ -90,23 +90,23 @@ export const SelectDoctor = (props) => {
           >
             
           </TextField> */}
-         
 
-          <p className='card-label'>Your Aimedis credit : <b>Omin</b> </p>
-  
-          <a>+ Top up your account </a>
-     
-          <div>
-            <Button variant='contained' className="doctor-select-btn">Start the call</Button>
 
-          </div>
-        </div>
-        </div>
-      </Card>
-    </div>
-    </div>
+                          <p className='card-label'>Your Aimedis credit : <b>Omin</b> </p>
 
-{/* <div className='logout' >Logout</div> */}
+                          <a>+ Top up your account </a>
+
+                          <div>
+                            <Button variant='contained' className="doctor-select-btn">Start the call</Button>
+
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                </div>
+ 
+                {/* <div className='logout' >Logout</div> */}
               </Grid>
             </Grid>
           </Grid>

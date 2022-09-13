@@ -10,17 +10,16 @@ import RegSuccuss from "Screens/Components/RegSuccess/index";
 import Form from "Screens/Patient/SickLeaveForm/index";
 import AppointmentList from "Screens/Patient/RequestList/index";
 import PatientProfile from "Screens/Patient/Profile/index";
-import VideoCall from "Screens/VideoCall/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 import Dashboard from "../../Screens/Patient/Dashboard";
 import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
 import Newpage from "Screens/Patient/newpage/index";
-import { VideoCallPat } from "Screens/Patient/VideoCall/index"
+import VideoCallPat from "Screens/Patient/VideoCall/index"
 import RegisterVideo from "Screens/Patient/RegisterVideo";
-import LoginVideo from 'Screens/Patient/loginVideo'
-import VideoGuideLine from 'Screens/Patient/VideoGuideLine'
-import RegisterVC from 'Screens/Patient/RegisterVC/index'
+import LoginVideo from "Screens/Patient/loginVideo";
+import VideoGuideLine from "Screens/Patient/VideoGuideLine";
+import RegisterVC from "Screens/Patient/RegisterVC/index";
 class Routermain extends Component {
   render() {
     return (
@@ -40,7 +39,7 @@ class Routermain extends Component {
             />
             <Route
               exact
-              path="/patient/demi-page"
+              path="/patient/access-key"
               render={(props) => <Newpage {...props} />}
             />
 
@@ -69,6 +68,11 @@ class Routermain extends Component {
 
             <Route exact path='/video_login' render={(props) => <LoginVideo {...props} />} />
             <Route exact path='/patient/video_login' render={(props) => <LoginVideo {...props} />} />
+            <Route
+              exact
+              path="/patient/video_login"
+              render={(props) => <LoginVideo {...props} />}
+            />
 
             <Route
               path="/patient/new-request"
