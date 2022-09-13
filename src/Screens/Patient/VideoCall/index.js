@@ -177,7 +177,7 @@ const VideoCallPat = (props) => {
                 <div className="settingPage">
                   <>
                     <div>
-                      <div className="call-page-card">
+                      <div className="call-page-card form_full">
                         <div className="heading-status-call">
                           <div className="inprogress-call">
                             <span className="inprogress-call-text">
@@ -264,7 +264,7 @@ const VideoCallPat = (props) => {
                           </Grid>
                         </Grid>
 
-                        <div className="call-feedback-area">
+                        <div className="call-feedback-part">
                           <Carousel>{slideItems}</Carousel>
                         </div>
 

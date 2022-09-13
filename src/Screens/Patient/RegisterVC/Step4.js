@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
-class JobDetails extends Component {
+class Step4 extends Component {
     constructor(props) {
         super(props);
         this.state = { value: '', }
@@ -17,10 +17,6 @@ class JobDetails extends Component {
             isActiv: false,
         };
 
-    }
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
     }
 
     back = e => {
@@ -37,8 +33,6 @@ class JobDetails extends Component {
         e.preventDefault();
         this.setState({ isActiv: false });
         this.setState({ isActive: !this.state.isActive });
-        this.props.onSelectLanguage1(true);
-
     }
 
     dssdd = e => {
@@ -74,10 +68,10 @@ class JobDetails extends Component {
 
                                     <CardContent>
                                         <Typography variant="body2" color="text.secondary">
-                                        Your Top-Up Amount is: 
+                                            Your Top-Up Amount is:
                                         </Typography>
                                     </CardContent>
-                                    
+
                                 </Grid>
                             </Grid>
                             <Grid item xs={12} md={1}>
@@ -93,10 +87,10 @@ class JobDetails extends Component {
                                     </Grid>
                                     <CardContent>
                                         <Typography variant="body2" color="text.secondary">
-                                            Click Here To Pay Through Credit Card 
+                                            Click Here To Pay Through Credit Card
                                         </Typography>
                                     </CardContent>
-                                    
+
                                 </Grid>
                             </Grid>
 
@@ -126,12 +120,6 @@ class JobDetails extends Component {
                             onClick={this.back}
 
                         />
-                        <input
-                            type="button"
-                            value="Next »"
-                            onClick={this.continue}
-
-                        />
                     </Grid>
                 </Grid>
 
@@ -141,4 +129,4 @@ class JobDetails extends Component {
     }
 }
 
-export default JobDetails;
+export default Step4;

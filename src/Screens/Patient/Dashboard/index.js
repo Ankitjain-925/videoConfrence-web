@@ -15,11 +15,14 @@ import { getSetting } from "Screens/Components/Menus/api";
 import { pure } from "recompose";
 import { connect } from "react-redux";
 import { LoginReducerAim } from "Screens/Login/actions";
+import { withRouter } from "react-router-dom";
+
+
 import { Settings } from "Screens/Login/setting";
 import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
-import { withRouter } from "react-router-dom";
+
 
 function TabContainer(props) {
   return (

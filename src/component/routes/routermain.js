@@ -34,11 +34,6 @@ class Routermain extends Component {
             />
             <Route
               exact
-              path="/patient/select-doctor"
-              render={(props) => <SelectDoctor {...props} />}
-            />
-            <Route
-              exact
               path="/patient/access-key"
               render={(props) => <Newpage {...props} />}
             />

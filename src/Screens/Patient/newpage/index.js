@@ -56,43 +56,50 @@ const Index = (props) => {
             }
         >
             <Grid className="homeBgIner">
-                <Grid container direction="row" justify="center">
-                    <Grid item xs={12} md={12}>
+                <Grid container direction="row">
+                    <Grid item xs={12} sm={12} md={12}>
                         <Grid container direction="row">
                             <LeftMenu isNotShow={true} currentPage="settings" />
                             <LeftMenuMobile isNotShow={true} currentPage="settings" />
-
-
-                            <Grid item xs={12} md={11} lg={6}>
-                                {/* <Grid className="profilePkgIner2"> */}
-                                <Grid className="logForm accessForm">
-
-                                    <Grid className="logRow">
-                                        <Grid className="label_1">
-                                            <div className="err_message">{error}</div>
-                                            <label>Confirmation code</label>
+                            <Grid item xs={12} md={11} lg={10}>
+                                <Grid className="docsOpinion">
+                                    <Grid container direction="row" className="docsOpinLbl">
+                                        <Grid item xs={12} md={6} className="label_1">
+                                            <label>Confirmation Access Key</label>
                                         </Grid>
-                                        <Grid>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid item xs={12} sm={6}>
+                                    {/* <Grid className="profilePkgIner2"> */}
+                                    <Grid className="logForm accessForm">
+
+                                        <Grid className="logRow">
+                                            <Grid className="label_1">
+                                                <div className="err_message">{error}</div>
+                                                <label>Enter Access Key</label>
+                                            </Grid>
+                                            <Grid>
+                                                <input
+                                                    type="text"
+                                                    name="code"
+                                                    value={codeValue?.code}
+                                                    placeholder="Enter key"
+                                                    onChange={(e) => handleChange(e)}
+                                                />
+                                            </Grid>
+                                        </Grid>
+
+                                        <Grid className="infoShwSave3 label_1 ">
                                             <input
-                                                type="text"
-                                                name="code"
-                                                value={codeValue?.code}
-                                                placeholder="Enter code"
-                                                onChange={(e) => handleChange(e)}
+                                                type="button"
+                                                value="Join Call"
+                                                onClick={() => handleSubmit()}
+
                                             />
                                         </Grid>
                                     </Grid>
-
-                                    <Grid className="infoShwSave3 label_1 ">
-                                        <input
-                                            type="button"
-                                            value="Join Call"
-                                            onClick={() => handleSubmit()}
-
-                                        />
-                                    </Grid>
                                 </Grid>
-                                {/* </Grid> */}
                             </Grid>
 
 
