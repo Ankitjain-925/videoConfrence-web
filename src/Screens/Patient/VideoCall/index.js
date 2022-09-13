@@ -234,33 +234,31 @@ const VideoCallPat = (props) => {
                         <Grid item xs={12} md={11} lg={10}>
                           <Grid container direction="row">
                             <Grid item xs={12} md={12} lg={12}>
-                              {startCall &&
-                                <Grid>
-                                  {/* <Grid className="callCss">
+                              <Grid className="cssCall">
+                                {startCall &&
+                                  <>
+                                    {/* <Grid className="callCss">
                                     <TimerIcon className="timerIcon" />
                                     <label className="formviewhead"> {this.state.time.h}h : {this.state.time.m}m</label>
                                   </Grid> */}
-                                  <CometChatOutgoingDirectCall
-                                    open
-                                    // userListCall={(userList) =>
-                                    //   this.userListCall(userList)
-                                    // }
-                                    // endCallScreen={(value) => this.endCallScreen(value)}
-                                    sessionID="12345"
-                                    // theme={props.theme}
-                                    // item={state.item}
-                                    // type={state.type}
-                                    // lang={state.lang}
-                                    callType={CometChat.CALL_TYPE.VIDEO}
-                                  // joinDirectCall={joinDirectCall}
-                                  // loggedInUser={loggedInUser}
-                                  // actionGenerated={actionHandler}
-                                  />
-                                </Grid>}
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={4}>
-                              <p>gdfgdfkjhkjfhkjg</p>
-                            </Grid>
+                                    <CometChatOutgoingDirectCall
+                                      open
+                                      // userListCall={(userList) =>
+                                      //   this.userListCall(userList)
+                                      // }
+                                      // endCallScreen={(value) => this.endCallScreen(value)}
+                                      sessionID="12345"
+                                      // theme={props.theme}
+                                      // item={state.item}
+                                      // type={state.type}
+                                      // lang={state.lang}
+                                      callType={CometChat.CALL_TYPE.VIDEO}
+                                    // joinDirectCall={joinDirectCall}
+                                    // loggedInUser={loggedInUser}
+                                    // actionGenerated={actionHandler}
+                                    />
+                                  </>}
+                              </Grid> </Grid>
                           </Grid>
                         </Grid>
 
