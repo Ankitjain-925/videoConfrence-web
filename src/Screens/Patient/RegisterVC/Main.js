@@ -11,7 +11,7 @@ import Grid from "@material-ui/core/Grid";
 export class StepForm extends Component {
     state = {
         step: 1,
-mainState:{},
+        mainState: {},
         language: '',
         lang: '',
     }
@@ -32,38 +32,53 @@ mainState:{},
     }
 
 
-    handleLanguage = (langValue) => {
-        const state=this.state.mainState;
-        state["language"]=langValue;
-        this.setState({ mainState:state });
+    handleLanguage = (langValue, i, search) => {
+        const state = this.state.mainState;
+        state["doctor_detail"] = langValue;
+        state["doctor_index"] = i;
+        console.log("hcfhgjhkj", langValue)
+        state["doctor_search"] = search;
+        this.setState({ mainState: state });
     }
 
     handleLanguage1 = (lang) => {
-        const state=this.state.mainState;
-        state["lang"]=lang;
-        this.setState({ mainState:state });
+        console.log("lang",lang)
+        const state = this.state.mainState;
+        state["permission"] = lang;
+        this.setState({ mainState: state });
     }
 
-    handleLanguage2 = (lang1) => {
-        this.setState({ lang: lang1 });
+    handleLanguage2 = (lang2) => {
+        const state = this.state.mainState;
+        state["time"] = lang2;
+        state["amount"] = lang2.value * 5;
+        this.setState({ mainState: state });
     }
+
+
+    // handleChange = input => e => {
+    //     this.setState({[input]: e.target.value});
+    // }
 
     showStep = () => {
         const { step, language, lang, mainState } = this.state;
 
         if (step === 1)
             return (<PersonalInfo
+                dataa={mainState}
                 onSelectLanguage2={this.handleLanguage2}
                 nextStep={this.nextStep}
             />);
         if (step === 2)
             return (<JobDetails
+                dataa={mainState}
                 onSelectLanguage1={this.handleLanguage1}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
             />);
         if (step === 3)
             return (<AllInfo
+                dataa={mainState}
                 onSelectLanguage={this.handleLanguage}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
@@ -74,7 +89,7 @@ mainState:{},
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
             />);
-            if (step === 5)
+        if (step === 5)
             return (<Form5
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}

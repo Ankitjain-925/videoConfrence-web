@@ -13,20 +13,20 @@ class PersonalInfo extends Component {
             { value: "60", label: 60 },
             { value: "120", label: 120 },
             { value: "240", label: 240 },],
-            title: '',
-            title2: '',
+            // title: '',
+            // title2: '',
         };
     }
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
-    ValueName = (value) => {
-// console.log("gfcn", value);
-        this.setState({ title: value });
-        var sec = value.value * 5;
-        this.setState({ title2: sec });
-    }
+    // ValueName = (value) => {
+        
+    //     var sec = value.value * 5;
+    //     this.setState({ title2: sec });
+    //     this.props.onSelectLanguage2(value);
+    // }
 
 
     render() {
@@ -41,14 +41,15 @@ class PersonalInfo extends Component {
                         <label>Enter Time To Talk</label>
                     </Grid>
                     <Grid>
+                        {console.log("trfhgjk", this.props.dataa.time )}
                         <Select
-                            value={this.state.title}
+                            value={this.props.dataa.time}
                             name="firstName"
                             options={this.state.title_degreeData}
                             placeholder="Select Time To Talk "
                             isSearchable={false}
                             className="mr_sel"
-                            onChange={(e) => {this.ValueName(e.value) }}
+                            onChange={(e) => {this.props.onSelectLanguage2(e) }}
                         />
                     </Grid>
                 </Grid>
@@ -61,7 +62,7 @@ class PersonalInfo extends Component {
                             type="text"
                             readOnly
                             name="lastName"
-                            value={this.state.title2}
+                            value={this.props.dataa.amount}
                             placeholder="Total Payable Amount"
                         />
                     </Grid>
