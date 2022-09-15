@@ -13,15 +13,13 @@ import { useHistory } from "react-router-dom";
 import SetLanguage from "Screens/Components/SetLanguage/index.js";
 import { getSetting } from "Screens/Components/Menus/api";
 import { pure } from "recompose";
+import { connect } from "react-redux";
+import { LoginReducerAim } from "Screens/Login/actions";
 import { withRouter } from "react-router-dom";
-
-
 import { Settings } from "Screens/Login/setting";
 import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
-import { connect } from "react-redux";
-import { LoginReducerAim } from "Screens/Login/actions";
 
 
 function TabContainer(props) {
@@ -60,9 +58,15 @@ const Dashboard = (props) => {
   const handleCloseFancyLanguage = () => {
     setOpenFancyLanguage(false);
   };
-  if(!props.stateLoginValueAim.isVideoLoggedIn){
-    return <Redirect to={'/patient/video_login'} />;
-  }else{
+  if (
+    props?.stateLoginValueAim.user === 'undefined' ||
+    props?.stateLoginValueAim.token === 450 ||
+    props?.stateLoginValueAim.token === 'undefined' ||
+    props?.stateLoginValueAim.user.type !== 'patient'
+  ) {
+    return <Redirect to={'/'} />;
+  }
+  else{
   return (
     <Grid
       className={
@@ -85,28 +89,21 @@ const Dashboard = (props) => {
                   <h5 className="setting-h5">Settings</h5>
                   <div className='settingbox form_full'>
                     <div >
-                      <label>Your Aimedis Credit</label>
-                      <p>24Min</p>
+                      <label>Your Aimedis Credit :</label>
+                      <p>24 Min</p>
                     </div>
                     <div>
                       <Button variant='contained' className="topupButton">Top Up</Button>
                     </div>
                   </div>
-
-
                   <p className='settingbox-heading'>Account Settings</p>
-
-
-<div className="last-sec-setting form_full">
-  <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
-  <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
-  <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
-  <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privactandnotification</div></div>
-
-
+                  <div className="last-sec-setting form_full">
+                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
+                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
+                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
+                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privactandnotification</div></div>
                   </div>
                   <p className='settingbox-heading'>Other</p>
-
                   <div className="last-sec-setting form_full">
                     <p className='middle-setting-items'>Amount</p>
                     <p>Terms & Conditions </p>
@@ -164,5 +161,4 @@ export default pure(
       Settings,
       authy,
     })(Dashboard)
-  )
-)
+  ))

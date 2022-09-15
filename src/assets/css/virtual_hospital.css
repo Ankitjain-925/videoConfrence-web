@@ -17184,9 +17184,11 @@ label.errMsgStyleSecPart {
 }
 
 a {
-  color: #000 !important;
+  color: #000;
 }
-
+.darkTheme a {
+  color: #f1f1f1;
+}
 /* css added by jyothi*/
 .card-section {
   padding: 40px;
@@ -17484,7 +17486,6 @@ a {
   width: 100px;
   border-radius: 8px;
   margin-right: 20px;
-
 }
 
 .inprogress-call {
@@ -17531,12 +17532,13 @@ a {
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
-  line-height: 18px;
-  font-family: Muli;
+  line-height: 18px !important;
+  color: #404646 !important;
 }
 
 .comment-callpat h5 {
   font-size: 14px;
+  color: #d9dada !important;
   font-weight: 700;
   line-height: 15px;
 }
@@ -17546,7 +17548,7 @@ a {
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
-  color: #00ABAF;
+  color: #00ABAF !important;
   margin-top: 10px;
 }
 
@@ -17610,6 +17612,15 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+}
+
+.css-ohwg9z{
+  width: 100%;
+}
+.BannerGrid .gridDiv {
+  width: 47%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .option-call-move {

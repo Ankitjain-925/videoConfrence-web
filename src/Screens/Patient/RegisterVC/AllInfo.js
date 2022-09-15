@@ -61,6 +61,7 @@ class AllInfo extends Component {
         this.props.prevStep();
     }
 
+
     dssd = (item, i, searchValue) => {
         console.log("1", item)
         console.log("1", i)
@@ -83,6 +84,7 @@ class AllInfo extends Component {
             .catch((error) => {
                 this.setState({ loaderImage: false });
             });
+
 
 
     }

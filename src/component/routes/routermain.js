@@ -13,11 +13,12 @@ import VideoCall from "Screens/VideoCall/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 import Dashboard from "Screens/Patient/Dashboard";
-import VideoCallPat from "Screens/Patient/VideoCall/index"
+import { SelectDoctor } from "Screens/Patient/Dashboard/Selectdoctor";
+import VideoCallPat from "Screens/Patient/VideoCall/index";
 import RegisterVideo from "Screens/Patient/RegisterVideo";
-import LoginVideo from 'Screens/Patient/loginVideo'
-import VideoGuideLine from 'Screens/Patient/VideoGuideLine'
-import RegisterVC from 'Screens/Patient/RegisterVC/index'
+import LoginVideo from "Screens/Patient/loginVideo";
+import VideoGuideLine from "Screens/Patient/VideoGuideLine";
+import RegisterVC from "Screens/Patient/RegisterVC/index";
 class Routermain extends Component {
   render() {
     return (
@@ -53,7 +54,11 @@ class Routermain extends Component {
               render={(props) => <RegisterVideo {...props} />}
             />
 
-            <Route exact path='/patient/video_login' render ={(props) => <LoginVideo {...props} /> } />
+            <Route
+              exact
+              path="/patient/video_login"
+              render={(props) => <LoginVideo {...props} />}
+            />
 
             <Route
               path="/patient/new-request"

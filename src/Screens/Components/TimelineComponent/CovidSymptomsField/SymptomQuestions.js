@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { LanguageFetchReducer } from 'Screens/actions';
-import { getLanguage } from 'translations/index';
-import { pure } from 'recompose';
+import React, { Component } from "react";
+import Grid from "@material-ui/core/Grid";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { LanguageFetchReducer } from "Screens/actions";
+import { getLanguage } from "translations/index";
+import { pure } from "recompose";
 
 class Index extends Component {
   constructor(props) {
@@ -41,92 +41,181 @@ class Index extends Component {
     return (
       <>
         <Grid container direction="row" alignItems="center">
-          {this.props.comesFrom === 'Feedback' ? (
+          {this.props.comesFrom === "Feedback" ? (
             <Grid className="FeedbackCss">
               <Grid item xs={12} md={12}>
                 <label>{this.state.label}</label>
               </Grid>
               <Grid item xs={12} md={12} className="symptomsType">
                 <a
-                  className={this.state.value == 0 && 'activeButton'}
+                  className={this.state.value == 0 && "activeButton"}
                   onClick={() => this.updateEntryState1(0)}
                 >
                   <img
-                    src={require('assets/images/smile1.png')}
+                    src={require("assets/images/smile1.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile1wht.png')}
+                    src={require("assets/images/smile1wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
                   />
                 </a>
                 <a
-                  className={this.state.value == 1 && 'activeButton'}
+                  className={this.state.value == 1 && "activeButton"}
                   onClick={() => this.updateEntryState1(1)}
                 >
                   <img
-                    src={require('assets/images/smile2.png')}
+                    src={require("assets/images/smile2.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile2wht.png')}
+                    src={require("assets/images/smile2wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
                   />
                 </a>
                 <a
-                  className={this.state.value == 2 && 'activeButton'}
+                  className={this.state.value == 2 && "activeButton"}
                   onClick={() => this.updateEntryState1(2)}
                 >
                   <img
-                    src={require('assets/images/smile3.png')}
+                    src={require("assets/images/smile3.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile3wht.png')}
+                    src={require("assets/images/smile3wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
                   />
                 </a>
                 <a
-                  className={this.state.value == 3 && 'activeButton'}
+                  className={this.state.value == 3 && "activeButton"}
                   onClick={() => this.updateEntryState1(3)}
                 >
                   <img
-                    src={require('assets/images/smile4.png')}
+                    src={require("assets/images/smile4.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile4wht.png')}
+                    src={require("assets/images/smile4wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
                   />
                 </a>
                 <a
-                  className={this.state.value == 4 && 'activeButton'}
+                  className={this.state.value == 4 && "activeButton"}
                   onClick={() => this.updateEntryState1(4)}
                 >
                   <img
-                    src={require('assets/images/smile5.png')}
+                    src={require("assets/images/smile5.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile5wht.png')}
+                    src={require("assets/images/smile5wht.png")}
+                    alt=""
+                    title=""
+                    className="symptomsWht"
+                  />
+                </a>
+              </Grid>
+            </Grid>
+          ) : this.props.comesFrom == "videoCallRating" ? (
+            <Grid className="FeedbackCss">
+              <Grid item xs={12} md={12}>
+                <label>{this.state.label}</label>
+              </Grid>
+              <Grid item xs={12} md={12} className="symptomsType">
+                <a
+                  className={this.state.value >= 1 && "activeButton"}
+                  onClick={() => this.updateEntryState1(0)}
+                >
+                  <img
+                    src={require("assets/images/smile1.png")}
+                    alt=""
+                    title=""
+                    className="symptomsGry"
+                  />
+                  <img
+                    src={require("assets/images/smile1wht.png")}
+                    alt=""
+                    title=""
+                    className="symptomsWht"
+                  />
+                </a>
+                <a
+                  className={this.state.value >= 2 && "activeButton"}
+                >
+                  <img
+                    src={require("assets/images/smile2.png")}
+                    alt=""
+                    title=""
+                    className="symptomsGry"
+                  />
+                  <img
+                    src={require("assets/images/smile2wht.png")}
+                    alt=""
+                    title=""
+                    className="symptomsWht"
+                  />
+                </a>
+                <a
+                  className={this.state.value >= 3 && "activeButton"}
+                >
+                  <img
+                    src={require("assets/images/smile3.png")}
+                    alt=""
+                    title=""
+                    className="symptomsGry"
+                  />
+                  <img
+                    src={require("assets/images/smile3wht.png")}
+                    alt=""
+                    title=""
+                    className="symptomsWht"
+                  />
+                </a>
+                <a
+                  className={this.state.value >= 4 && "activeButton"}
+                >
+                  <img
+                    src={require("assets/images/smile4.png")}
+                    alt=""
+                    title=""
+                    className="symptomsGry"
+                  />
+                  <img
+                    src={require("assets/images/smile4wht.png")}
+                    alt=""
+                    title=""
+                    className="symptomsWht"
+                  />
+                </a>
+                <a
+                  className={this.state.value >= 5 && "activeButton"}
+                >
+                  <img
+                    src={require("assets/images/smile5.png")}
+                    alt=""
+                    title=""
+                    className="symptomsGry"
+                  />
+                  <img
+                    src={require("assets/images/smile5wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
@@ -141,85 +230,85 @@ class Index extends Component {
               </Grid>
               <Grid item xs={7} md={7} className="symptomsType">
                 <a
-                  className={this.state.value == 0 && 'activeButton'}
+                  className={this.state.value == 0 && "activeButton"}
                   onClick={() => this.updateEntryState1(0)}
                 >
                   <img
-                    src={require('assets/images/smile1.png')}
+                    src={require("assets/images/smile1.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile1wht.png')}
+                    src={require("assets/images/smile1wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
                   />
                 </a>
                 <a
-                  className={this.state.value == 1 && 'activeButton'}
+                  className={this.state.value == 1 && "activeButton"}
                   onClick={() => this.updateEntryState1(1)}
                 >
                   <img
-                    src={require('assets/images/smile2.png')}
+                    src={require("assets/images/smile2.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile2wht.png')}
+                    src={require("assets/images/smile2wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
                   />
                 </a>
                 <a
-                  className={this.state.value == 2 && 'activeButton'}
+                  className={this.state.value == 2 && "activeButton"}
                   onClick={() => this.updateEntryState1(2)}
                 >
                   <img
-                    src={require('assets/images/smile3.png')}
+                    src={require("assets/images/smile3.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile3wht.png')}
+                    src={require("assets/images/smile3wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
                   />
                 </a>
                 <a
-                  className={this.state.value == 3 && 'activeButton'}
+                  className={this.state.value == 3 && "activeButton"}
                   onClick={() => this.updateEntryState1(3)}
                 >
                   <img
-                    src={require('assets/images/smile4.png')}
+                    src={require("assets/images/smile4.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile4wht.png')}
+                    src={require("assets/images/smile4wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"
                   />
                 </a>
                 <a
-                  className={this.state.value == 4 && 'activeButton'}
+                  className={this.state.value == 4 && "activeButton"}
                   onClick={() => this.updateEntryState1(4)}
                 >
                   <img
-                    src={require('assets/images/smile5.png')}
+                    src={require("assets/images/smile5.png")}
                     alt=""
                     title=""
                     className="symptomsGry"
                   />
                   <img
-                    src={require('assets/images/smile5wht.png')}
+                    src={require("assets/images/smile5wht.png")}
                     alt=""
                     title=""
                     className="symptomsWht"

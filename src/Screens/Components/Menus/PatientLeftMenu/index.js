@@ -122,7 +122,9 @@ class Index extends Component {
         </Grid>
         <Grid className="menuItems">
           <ul>
-            <li
+            {this.props.stateLoginValueAim?.isVideoLoggedIn && 
+            <>
+             <li
               className={
                 this.props.currentPage === "settings" ? "menuActv" : ""
               }
@@ -228,6 +230,8 @@ class Index extends Component {
                 <span>{"List Requests"}</span>
               </a>
             </li>
+            </>
+           }
 
             <li
               className={this.props.currentPage === "profile" ? "menuActv" : ""}
