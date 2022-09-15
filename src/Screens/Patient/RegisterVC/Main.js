@@ -11,16 +11,7 @@ import Grid from "@material-ui/core/Grid";
 export class StepForm extends Component {
     state = {
         step: 1,
-
-        // step 1
-        firstName: '',
-        lastName: '',
-        email: '',
-
-        // step 2
-        jobTitle: '',
-        jobCompany: '',
-        jobLocation: '',
+        mainState: {},
         language: '',
         lang: '',
     }
@@ -40,75 +31,66 @@ export class StepForm extends Component {
         });
     }
 
-    handleChange = input => e => {
-        this.setState({ [input]: e.target.value });
-    }
 
-    handleLanguage = (langValue) => {
-        this.setState({ language: langValue });
-        // var aaa = { ...langValue }
-        // console.log("gfctcghchgvyhvygvyhg", aaa)
+    handleLanguage = (langValue, i, search) => {
+        const state = this.state.mainState;
+        state["doctor_detail"] = langValue;
+        state["doctor_index"] = i;
+        console.log("hcfhgjhkj", langValue)
+        state["doctor_search"] = search;
+        this.setState({ mainState: state });
     }
 
     handleLanguage1 = (lang) => {
-        this.setState({ lang: lang });
-        // var aaa = { ...langValue }
-        // console.log("gfctcghchgvyhvygvyhg", aaa)
+        console.log("lang",lang)
+        const state = this.state.mainState;
+        state["permission"] = lang;
+        this.setState({ mainState: state });
     }
 
+    handleLanguage2 = (lang2) => {
+        const state = this.state.mainState;
+        state["time"] = lang2;
+        state["amount"] = lang2.value * 5;
+        this.setState({ mainState: state });
+    }
+
+
+    // handleChange = input => e => {
+    //     this.setState({[input]: e.target.value});
+    // }
+
     showStep = () => {
-        const { step, firstName, lastName, jobTitle, jobCompany, jobLocation, language, lang } = this.state;
+        const { step, language, lang, mainState } = this.state;
 
         if (step === 1)
             return (<PersonalInfo
+                dataa={mainState}
+                onSelectLanguage2={this.handleLanguage2}
                 nextStep={this.nextStep}
-                handleChange={this.handleChange}
-                firstName={firstName}
-                lastName={lastName}
             />);
         if (step === 2)
             return (<JobDetails
+                dataa={mainState}
                 onSelectLanguage1={this.handleLanguage1}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
-                handleChange={this.handleChange}
-                jobTitle={jobTitle}
-                jobCompany={jobCompany}
-                jobLocation={jobLocation}
             />);
         if (step === 3)
             return (<AllInfo
+                dataa={mainState}
                 onSelectLanguage={this.handleLanguage}
-                firstName={firstName}
-                lastName={lastName}
-                jobTitle={jobTitle}
-                jobCompany={jobCompany}
-                jobLocation={jobLocation}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
-                handleChange={this.handleChange}
             />);
         if (step === 4)
             return (<SelectDoctor
-                dataa={language}
-                dataaa={lang}
-                firstName={firstName}
-                lastName={lastName}
-                jobTitle={jobTitle}
-                jobCompany={jobCompany}
-                jobLocation={jobLocation}
+                dataa={mainState}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
             />);
-            if (step === 5)
+        if (step === 5)
             return (<Form5
-                dataa={language}
-                dataaa={lang}
-                firstName={firstName}
-                lastName={lastName}
-                jobTitle={jobTitle}
-                jobCompany={jobCompany}
-                jobLocation={jobLocation}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
             />);

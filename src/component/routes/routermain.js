@@ -7,7 +7,6 @@ import ForgotPass from "Screens/ChangePassword";
 import ChangePass from "Screens/ChangePassword/changepassword";
 import NotFound from "Screens/Components/NotFound";
 import RegSuccuss from "Screens/Components/RegSuccess/index";
-import Form from "Screens/Patient/SickLeaveForm/index";
 import AppointmentList from "Screens/Patient/RequestList/index";
 import PatientProfile from "Screens/Patient/Profile/index";
 import VideoCall from "Screens/VideoCall/index";
@@ -89,11 +88,6 @@ class Routermain extends Component {
               exact
               path="/register-successfull"
               render={(props) => <RegSuccuss {...props} />}
-            />
-            <Route
-              exact
-              path="/patient/sick-request"
-              render={(props) => <Form {...props} />}
             />
 
             {/* Need to route required component */}
