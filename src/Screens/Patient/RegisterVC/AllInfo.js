@@ -61,7 +61,6 @@ class AllInfo extends Component {
     }
     onChangePage = (data) => {
         this.props.onSelectLanguage(data);
-        console.log("jgvuvyuv", data)
         this.setState({ isActive: !this.state.isActive });
     }
     render() {
