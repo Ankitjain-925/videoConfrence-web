@@ -16,7 +16,7 @@ import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 import Dashboard from "Screens/Patient/Dashboard";
 import VideoCallPat from "Screens/Patient/VideoCall/index";
 import RegisterVideo from "Screens/Patient/RegisterVideo";
-import Feed_back from "Screens/Patient/Feed_back";
+import FeedBack from "Screens/Patient/FeedBack";
 import LoginVideo from 'Screens/Patient/loginVideo'
 import VideoGuideLine from 'Screens/Patient/VideoGuideLine'
 import RegisterVC from 'Screens/Patient/RegisterVC/index'
@@ -101,7 +101,7 @@ class Routermain extends Component {
             <Route
               exact
               path="/patient/Feed-back"
-              render={(props) => <Feed_back {...props} />}
+              render={(props) => <FeedBack {...props} />}
             />
           {/* Need to route required component */}
             <Route
