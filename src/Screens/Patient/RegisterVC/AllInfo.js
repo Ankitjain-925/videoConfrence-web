@@ -84,6 +84,7 @@ class AllInfo extends Component {
             });
 
 
+
     }
     // onChangePage = (data, i) => {
     //     this.props.onSelectLanguage(data);

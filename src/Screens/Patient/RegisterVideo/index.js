@@ -8,11 +8,13 @@ import AppBar from "@material-ui/core/AppBar";
 import { getLanguage } from "translations/index";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+import { Redirect, Route } from 'react-router-dom';
 import queryString from "query-string";
 import {
   commonNoTokentHeader,
   commonHeader,
 } from "component/CommonHeader/index";
+import Payment from "Screens/Patient/RequestList/Payment/index";
 import axios from "axios";
 import sitedata, { data } from "sitedata";
 import { pure } from "recompose";
@@ -25,7 +27,6 @@ import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-
 const path = sitedata.data.path;
 
 function TabContainer(props) {
@@ -49,6 +50,7 @@ const RegisterVideo = (props) => {
   const [error2, setError2] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [ITGuideline, setITGuideline] = useState(false);
+  const [openPayment, setOpenPayment] = useState(false);
   let translate = getLanguage(props.stateLanguageType);
   let history = useHistory();
 
@@ -60,9 +62,9 @@ const RegisterVideo = (props) => {
     password,
     username,
   } = translate;
-  const BtnSubmit = () => {
+  const BtnSubmit = (paymentData) => {
     if (email !== "" && _password !== "") {
-      confirmSubmit();
+      confirmSubmit(paymentData);
     } else {
       setErrormsg("Username && password not empty");
       setError(true);
@@ -70,50 +72,81 @@ const RegisterVideo = (props) => {
   };
   const onKeyDownlogin = (e) => {
     if (e.key === "Enter") {
-      BtnSubmit();
+      onPayment();
     }
   };
-  const confirmSubmit = () => {
-    if (ITGuideline) {
-      setErrormsg("");
-      setError(false);
-      let _data = {
-        email: userData.email || "",
-        username: email,
-        password: _password,
-        first_name: userData.first_name,
-        last_name: userData.last_name,
-        profile_id: userData.profile_id,
-        isITGuideLineAccepted: ITGuideline,
-        patient_id: userData._id,
-        status: true,
-      };
-      axios
-        .post(
-          path + "/vchat/AddVideoUserAccount",
-          _data,
-          commonHeader(props.stateLoginValueAim.token)
-        )
-        .then((response) => {
-          if (
-            response.data.hassuccessed === true &&
-            response.data.data !== "User Already Register"
-          ) {
-            props.LoginReducerAim('', '', "", "", props.stateLoginValueAim, true);
-            history.push({
-              pathname: "/patient/settings",
-            });
-          } else {
-            history.push({
-              pathname: "/patient/video_login",
-            });
-          }
-        });
-    } else {
+  const confirmSubmit = (paymentData) => {
+    let _data = {
+      email: userData.email || "",
+      username: email,
+      password: _password,
+      first_name: userData.first_name,
+      last_name: userData.last_name,
+      profile_id: userData.profile_id,
+      isITGuideLineAccepted: ITGuideline,
+      patient_id: userData._id,
+      status: true,
+    };
+    if (paymentData?.data?.message == "Payment Success") {
+      _data["is_payment"] = true;
+      _data["payment_data"] = paymentData?.data?.paymentData;
+    }
+
+    axios
+      .post(
+        path + "/vchat/AddVideoUserAccount",
+        _data,
+        commonHeader(props?.stateLoginValueAim.token)
+      )
+      .then((response) => {
+        if(response.data.hassuccessed){
+          history.push({
+            pathname: "/patient/video_login",
+          });
+        }
+        else if (
+          !response.data.hassuccessed &&
+          response.data.data !== "User Already Register"
+        ) {
+          setErrormsg("Already exist in system");
+        } else {
+          setErrormsg("Something went wrong please try with another user name");
+        }
+      });
+  };
+
+  const onPayment = () => {
+    if (!email && !_password) {
+      setErrormsg("Username && password shouldn't be empty");
+      setError(true);
+    } else if (!ITGuideline) {
       setErrormsg("Please accept IT Guideline");
       setError(true);
+    } else {
+      setErrormsg("");
+      setError(false);
+      setOpenPayment(true);
     }
   };
+
+  const handleCancel = () => {
+    setOpenPayment(false);
+  };
+  if (
+    props?.stateLoginValueAim?.token !== 401 &&
+    props?.stateLoginValueAim?.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    props?.verifyCode?.code
+  ) {
+
+    if(props?.stateLoginValueAim.is_vedio_registered){
+      return <Redirect to={'/patient/video_login'} />;
+    }
+    else{
+      return <Redirect to={'/patient/video_register'} />;
+    } 
+  } 
+  else {
   return (
     <Grid
       className={
@@ -205,13 +238,20 @@ const RegisterVideo = (props) => {
                         <input
                           type="submit"
                           value="submit"
-                          onClick={() => BtnSubmit()}
+                          onClick={() => onPayment()}
                         />
                       </Grid>
                     </Grid>
 
                     {/* </Grid> */}
                   </Grid>
+                  {openPayment && (
+                    <Payment
+                      onCancel={handleCancel}
+                      usedFor={"register_video"}
+                      onSuccessPayment={BtnSubmit}
+                    />
+                  )}
                 </Grid>
                 {/* End of Tabs */}
               </Grid>
@@ -224,6 +264,7 @@ const RegisterVideo = (props) => {
       </Grid>
     </Grid>
   );
+                  }
 };
 
 const mapStateToProps = (state) => {

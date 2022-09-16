@@ -17184,9 +17184,11 @@ label.errMsgStyleSecPart {
 }
 
 a {
-  color: #000 !important;
+  color: #000;
 }
-
+.darkTheme a {
+  color: #f1f1f1;
+}
 /* css added by jyothi*/
 .card-section {
   padding: 40px;
@@ -17343,6 +17345,9 @@ a {
   float: right;
 }
 
+.darkTheme .hhh{
+  background-color: #404646 !important;
+}
 .de_inp {
   border: none;
 }
@@ -17421,8 +17426,8 @@ a {
   top: -10px;
 }
 
-.settingPage h5 {
-  color: white;
+.darkTheme .settingPage h5 {
+  color: #ffffff;
 }
 
 .Card_1 {
@@ -17516,7 +17521,6 @@ a {
   width: 100px;
   border-radius: 8px;
   margin-right: 20px;
-
 }
 
 .inprogress-call {
@@ -17563,12 +17567,13 @@ a {
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
-  line-height: 18px;
-  font-family: Muli;
+  line-height: 18px !important;
+  color: #404646 !important;
 }
 
 .comment-callpat h5 {
   font-size: 14px;
+  color: #d9dada !important;
   font-weight: 700;
   line-height: 15px;
 }
@@ -17578,7 +17583,7 @@ a {
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
-  color: #00ABAF;
+  color: #00ABAF !important;
   margin-top: 10px;
 }
 
@@ -17644,6 +17649,20 @@ a {
   padding: 10px;
 }
 
+.css-ohwg9z{
+  width: 100%;
+}
+.BannerGrid .gridDiv {
+  width: 47%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.accessForm{
+    /* margin: 71px 187px 91px 62px!important; */
+}
+
+
 .option-call-move {
   display: flex;
   flex-direction: row;
@@ -17656,3 +17675,178 @@ a {
   flex-direction: row;
   height: 100px;
 }
+
+ .darkTheme .accessForm{
+  background: #404646
+}
+
+.cssCall .css-1yrthcx {
+  /* top: 95px!important;
+  left: 60px!important; */
+  width: 85%;
+  border-radius: 8px;
+  height: 400px;
+  position: relative
+  
+}
+
+.top-up-1 {
+  padding: 10px;
+  display:flex;
+  flex-direction: column;
+  height:150%;
+  justify-content: space-between;
+  margin: 20px;
+}
+.top-upbackText{
+  font-style: normal;
+  font-weight: bold;
+  color: #000000;
+}
+.top-up-inner{
+  margin: auto 130px;
+}
+.topup-header{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 35px;
+  color: #000808;
+}
+.top-up-1-middle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-top: 40px;
+  gap: 20px;
+  width: 161px;
+  height: 80px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgb(35 35 35 / 4%);
+  border-radius: 8px;
+}
+.top-up-1-middle-heading{
+  font-style: normal;
+font-weight: 700;
+font-size: 17px;
+line-height: 22px;
+}
+
+
+/* added by tanya */
+
+.formopen input{
+  border-radius: 8px;
+  background-color: #00abaf;
+  border: 2px solid #00abaf;
+  width: 240px;
+  color: #ffffff;
+  font-family: Muli;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: center;
+  padding: 12px 8px;
+  margin-top: 20px;
+  margin-bottom: 2px;
+  outline: none;
+  margin: 10px;
+}
+.formopen input:hover {
+  background-color: 00abaf;
+  
+}
+
+.creatTaskModel3{
+  width: 580px;
+  background: #fff;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: 0 24px 32px 0 rgb(0 8 8 / 8%);
+  margin-top: 20px;
+  padding-right: 2px;
+  padding-top: 18px;
+  padding-bottom: 16px;
+  border-radius: 12px;
+  }
+  .darkTheme .creatTaskModel3 {
+    background-color: #404646 !important;
+  }
+  
+  @media (max-width: 768px) {
+    .creatTaskModel3 {
+      width: 98% !important;
+    }
+  }
+  .creatTaskModel11{
+    margin-top:21px!important
+  }
+
+  .creatTaskModel.creatTaskModel11 .MuiGrid-root.creatLbl {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .creatTaskModel.creatTaskModel11 {
+    padding: 0px;
+  }
+  .creatTaskCntnt {
+    height: 537px;
+    overflow-y: scroll;
+    padding: 20px 0px;
+  }
+  .symptomsType a:hover .symptomsWht {
+    display: block !important;
+  }
+  .symptomsType a .symptomsWht {
+    display: none;
+  }
+  .symptomsType .activeButton .symptomsWht {
+    display: block !important;
+  }
+ .darkTheme .ql-toolbar.ql-snow {
+    background-color: #192020 !important;
+}
+.darkTheme .quill .ql-editor {
+  background: #404646 !important;
+  color: #bfc1c1 !important;
+}
+.darkTheme .ql-editor {
+  color: #c0c0c0;
+}
+.darkTheme .symptomsType a {
+  background-color: #363636;
+  border: 1px solid #00abaf;
+}
+.FeedbackCss label{
+  padding:10px 0px;
+
+}
+.noteval{
+  margin-top: 10px;
+}
+.fillDiaAll2 label {
+  display: contents;
+  margin-top: 20px;
+  display: block !important;
+  margin-bottom: 8px;
+}
+
+.darkTheme .fillDiaAll2 .ql-stroke,
+.darkTheme .ql-snow .ql-fill,
+.darkTheme .ql-snow .ql-stroke.ql-fill,
+.darkTheme .ql-snow.ql-toolbar .ql-picker-label {
+  fill: none;
+  stroke: #00abaf !important;
+  color: #00abaf !important;
+}
+
+

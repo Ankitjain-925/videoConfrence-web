@@ -144,7 +144,7 @@ export const callScreenResizerStyle = (state) => {
 
     const backgroundStyle = (state.maximized) ? {
         display: "none"
-    }: {
+    } : {
         cursor: "nwse-resize",
         clipPath: "polygon(100% 0,100% 100%,0 100%)",
         background: "repeating-linear-gradient(135deg,hsla(0,0%,100%,.5),hsla(0,0%,100%,.5) 2px,#000 0,#000 4px)",
@@ -156,7 +156,7 @@ export const callScreenResizerStyle = (state) => {
         position: "absolute",
         right: "0",
         bottom: "0",
-        zIndex: "2147483004", 
+        zIndex: "2147483004",
         ...backgroundStyle
     }
 }

@@ -10,6 +10,7 @@ import { LoginReducerAim } from "Screens/Login/actions";
 import { LanguageFetchReducer } from "Screens/actions";
 import { getLanguage } from "translations/index";
 import axios from "axios";
+import { Redirect, Route } from 'react-router-dom';
 import { commonHeader } from "component/CommonHeader/index";
 import sitedata from "sitedata";
 import { useHistory } from "react-router-dom";
@@ -50,20 +51,50 @@ const LoginVideo = (props) => {
     let _data = {
       username: _username,
       password: _password,
+      email: props?.stateLoginValueAim?.user?.email
     };
     axios
       .post(path + "/vchat/UsernameLogin", _data, commonHeader(props.token))
       .then((response) => {
         if (response.data.hassuccessed === true) {
-          props.LoginReducerAim("", "", "", "", props.stateLoginValueAim, true);
+          props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '',props.token, () => {}, props.stateLoginValueAim, true, response?.data?.data);
           history.push({
             pathname: "/patient/settings",
           });
         } else {
+          setErrormsg("Username / Password is worng");
+          setError(true);
         }
       });
   };
+  if (
+    props?.stateLoginValueAim.user === 'undefined' ||
+    props?.stateLoginValueAim.token === 450 ||
+    props?.stateLoginValueAim.token === 'undefined' ||
+    props?.stateLoginValueAim.user.type !== 'patient'
+  ) {
+    return <Redirect to={'/'} />;
+  }
+  else if (
+    props?.stateLoginValueAim.token !== 401 &&
+    props?.stateLoginValueAim.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    props?.verifyCode?.code
+  ) {
+
+    if(props?.stateLoginValueAim.is_vedio_registered){
+      return <Redirect to={'/patient/video_login'} />;
+    }
+    else if(props?.stateLoginValueAim?.isVideoLoggedIn){
+      return <Redirect to={'/patient/settings'} />;
+    } 
+    else{
+      return <Redirect to={'/patient/video_register'} />;
+    }
+  } 
+  else {
   return (
+    
     <Grid
       className={
         props.settings &&
@@ -136,13 +167,6 @@ const LoginVideo = (props) => {
                       </Grid>
                     </Grid>
 
-                    {/* <Grid className="infoShwSave3">
-                      <input
-                        type="submit"
-                        value={login_LOGIN_btn}
-                        onClick={() => BtnSubmit()}
-                      />
-                    </Grid> */}
                   </Grid>
 
 
@@ -155,6 +179,7 @@ const LoginVideo = (props) => {
       </Grid>
     </Grid>
   );
+  }
 };
 
 const mapStateToProps = (state) => {

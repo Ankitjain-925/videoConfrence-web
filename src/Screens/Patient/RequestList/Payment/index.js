@@ -120,7 +120,7 @@ class Index extends Component {
     const Checkout = ({
       name = 'AIS',
       description = 'Stripe Payment',
-      amount = this.state.amountDta,
+      amount = this.props.usedFor == "register_video" ? 20 : this.state.amountDta,
       email = this.props.stateLoginValueAim.user.email,
     }) => (
       <StripeCheckout
@@ -142,16 +142,24 @@ class Index extends Component {
     );
 
     //For payment
-    const onToken = (token) =>
+    const onToken = (token) =>{
+      const amount = this.props.usedFor == "register_video" ? 20 : this.state.amountDta
       axios
         .post(sitedata.data.path + '/lms_stripeCheckout/intent-pop', {
           source: token.id,
           currency: CURRENCY,
-          amount: fromEuroToCent(this.state.amountDta, this),
+          amount: fromEuroToCent(amount, this),
         })
-        .then(successPayment, this.setState({ addtocart: [] }))
+        .then((data)=>{
+          if(this.props.usedFor == "register_video"){
+            this.props.onSuccessPayment(data)
+          }else{
+            successPayment(data) 
+            this.setState({ addtocart: [] })
+          }
+        })
         .catch(errorPayment);
-
+}
     return (
       <Grid>
         <Grid
@@ -164,19 +172,19 @@ class Index extends Component {
               : 'homeBg'
           }
         >
-          {this.state.loaderImage && <Loader />}
+          {this.state.loaderImage && this.props.usedFor != "register_video" && <Loader />}
           <Grid className="homeBgIner">
             <Grid container direction="row" justify="center">
               <Grid item xs={12} md={12}>
                 <Grid container direction="row">
                   {/* Website Menu */}
-                  <LeftMenu isNotShow={true} currentPage="feedback" />
-                  <LeftMenuMobile isNotShow={true} currentPage="feedback" />
+                  {this.props.usedFor != "register_video" &&<LeftMenu isNotShow={true} currentPage="feedback" />}
+                  {this.props.usedFor != 'register_video' && <LeftMenuMobile isNotShow={true} currentPage="feedback" />}
                   <Grid item xs={12} md={11} lg={10}>
                     <Grid className="docsOpinion">
                       <Grid container direction="row" className="docsOpinLbl">
                         <Grid item xs={12} md={6}>
-                          <label>{request_list_payment}</label>
+                          <label>{this.props.usedFor == "register_video" ? "Register VIdeo Payment" : request_list_payment}</label>
                         </Grid>
                       </Grid>
                     </Grid>
@@ -192,7 +200,7 @@ class Index extends Component {
                               <Grid item xs={12} md={6}>
                                 <button
                                   onClick={() => {
-                                    CancelClick(this);
+                                    this.props.usedFor == "register_video" ? this.props.onCancel() : CancelClick(this);
                                   }}
                                   className="CutomStripeButton"
                                 >

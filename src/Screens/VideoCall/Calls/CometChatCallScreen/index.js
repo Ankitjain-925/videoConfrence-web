@@ -314,7 +314,6 @@ class CometChatCallScreen extends React.PureComponent {
     // const customCSS = this.context.UIKitSettings.customCSS;
     const showRecordingButton = true;
     // this.context.UIKitSettings.showCallRecordingOption;
-
     const callSettings = new CometChat.CallSettingsBuilder()
       .enableDefaultLayout(true)
       .setSessionID(sessionId)
@@ -342,9 +341,9 @@ class CometChatCallScreen extends React.PureComponent {
         onUserListUpdated: (userList) => {
           this.props.userListCall(userList);
         },
-        // onUserJoined: (user) => {
-        //   console.log('user', user);
-        // },s
+        onUserJoined: (user) => {
+          console.log('user', user);
+        },
         onError: (error) => {
           if (this.context) {
             this.context.setCallInProgress(null, '');
@@ -468,17 +467,17 @@ class CometChatCallScreen extends React.PureComponent {
 
     return (
       <React.Fragment>
-      <div
+        <div
           css={callScreenBackgroundStyle(this.state)}
           ref={this.callScreenBackgroundEl}
         ></div>
-          <div
+        <div
           ref={this.callScreenEl}
           className="callscreen__container"
           css={callScreenContainerStyle(this.props)}
           style={{ top: this.state.y + 'px', left: this.state.x + 'px' }}
         >
-           <div
+          <div
             css={callScreenInnerBackgroundStyle()}
             ref={this.callScreenInnerBackgroundEl}
           ></div>
@@ -511,7 +510,7 @@ class CometChatCallScreen extends React.PureComponent {
             className="callscreen__resizer-both"
             onMouseDown={this.initResize}
           ></div>
-        </div> 
+        </div>
       </React.Fragment>
     );
   }
