@@ -13,17 +13,24 @@ class PersonalInfo extends Component {
             { value: "60", label: 60 },
             { value: "120", label: 120 },
             { value: "240", label: 240 },],
+            // title: '',
+            // title2: '',
         };
     }
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
-
+    // ValueName = (value) => {
+        
+    //     var sec = value.value * 5;
+    //     this.setState({ title2: sec });
+    //     this.props.onSelectLanguage2(value);
+    // }
 
 
     render() {
-        const { firstName, lastName, handleChange } = this.props;
+
 
         return (
             <> <Grid className="logForm form_full">
@@ -34,14 +41,15 @@ class PersonalInfo extends Component {
                         <label>Enter Time To Talk</label>
                     </Grid>
                     <Grid>
+                        {console.log("trfhgjk", this.props.dataa.time )}
                         <Select
-                            value={firstName}
+                            value={this.props.dataa.time}
                             name="firstName"
                             options={this.state.title_degreeData}
                             placeholder="Select Time To Talk "
                             isSearchable={false}
                             className="mr_sel"
-                            onChange={handleChange('firstName')}
+                            onChange={(e) => {this.props.onSelectLanguage2(e) }}
                         />
                     </Grid>
                 </Grid>
@@ -52,10 +60,10 @@ class PersonalInfo extends Component {
                     <Grid>
                         <input
                             type="text"
+                            readOnly
                             name="lastName"
-                            value={lastName}
+                            value={this.props.dataa.amount}
                             placeholder="Total Payable Amount"
-                            onChange={handleChange('lastName')}
                         />
                     </Grid>
                 </Grid>

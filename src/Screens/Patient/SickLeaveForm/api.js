@@ -133,9 +133,9 @@ export function getLink() {
   }
   let STRIPE_PUBLISHABLE;
   if (env === 'DEV') {
-    STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-confrance';
+    STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
   } else {
-    STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-confrance';
+    STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
   }
   return STRIPE_PUBLISHABLE;
 }

@@ -50,15 +50,18 @@ export const checkVideo = async (data)=>{
 }
 
 
-export const LoginReducerAim = (email, password, logintoken, SendCallback = () => {}, forUpdate, isVideoLoggedIn ) => {
+export const LoginReducerAim = (email, password, logintoken, SendCallback = () => {}, forUpdate, isVideoLoggedIn, VideoData ) => {
   
   return (dispatch) => {
     if(forUpdate?.value || forUpdate?.user){
       let tmp = {
         token: forUpdate.token,
         user: forUpdate.user,
-        isVideoLoggedIn : isVideoLoggedIn
+        isVideoLoggedIn : isVideoLoggedIn,
       };
+      if(VideoData){
+        tmp.VideoData = VideoData
+      }
       dispatch({ type: GET_LOGIN_SUCCESS, payload: tmp });
       SendCallback();
     }
