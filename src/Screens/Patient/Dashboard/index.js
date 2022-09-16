@@ -70,57 +70,55 @@ const Dashboard = (props) => {
   else{
   return (
     <Grid
-      className={
-        props.settings &&
-          props.settings.setting &&
-          props.settings.setting.mode &&
-          props.settings.setting.mode === 'dark'
-          ? 'homeBg darkTheme homeBgDrk'
-          : 'homeBg'
-      }
-    >
-      <Grid className="homeBgIner">
-        <Grid container direction="row" justify="center">
-          <Grid item xs={12} md={12}>
-            <Grid container direction="row">
-              <LeftMenu isNotShow={true} currentPage="settings" />
-              <LeftMenuMobile isNotShow={true} currentPage="settings" />
-              <Grid item xs={12} md={10} lg={8}>
-                <div className="settingPage">
-                  <h5 className="setting-h5">Settings</h5>
-                  
-                  <MiddleTopup btnShow={true}/>
+className={
+  props.settings &&
+    props.settings.setting &&
+    props.settings.setting.mode &&
+    props.settings.setting.mode === 'dark'
+    ? 'homeBg darkTheme homeBgDrk'
+    : 'homeBg'
+}
+>
+<Grid className="homeBgIner">
+<Grid container direction="row" justify="center">
+    <Grid item xs={12} md={12}>
+      <Grid container direction="row">
+        <LeftMenu isNotShow={true} currentPage="settings" />
+        <LeftMenuMobile isNotShow={true} currentPage="settings" />
+        <Grid item xs={12} md={10} lg={8}>
+          <div className="settingPage">
+            <h5 className="setting-h5">Settings</h5>
+            
+            <MiddleTopup btnShow={true}/>
 
-                  <p className='settingbox-heading'>Account Settings</p>
-                  <div className="last-sec-setting form_full">
-                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
-                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
-                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
-                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privactandnotification</div></div>
-                  </div>
-                  <p className='settingbox-heading'>Other</p>
-                  <div className="last-sec-setting form_full">
-                    <p className='middle-setting-items'>Amount</p>
-                    <p>Terms & Conditions </p>
-                    <p> Privact Policy</p>
-                    <p> Rate Aimedies Diagnostics</p>
-                  </div>
-                  </div>
-
-                  {/* <div className='logout' >Logout</div> */}
-                </Grid>
-              </Grid>
-            </Grid>
+            <p className='settingbox-heading'>Account Settings</p>
+            <div className="last-sec-setting form_full">
+              <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
+              <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
+              <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
+              <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privactandnotification</div></div>
+            </div>
+            <p className='settingbox-heading'>Other</p>
+            <div className="last-sec-setting form_full">
+              <p className='middle-setting-items'>Amount</p>
+              <p>Terms & Conditions </p>
+              <p> Privact Policy</p>
+              <p> Rate Aimedies Diagnostics</p>
+            </div>
+         </div>
           </Grid>
         </Grid>
-        <SetLanguage
-          getSetting={() => getSetting(this)}
-          openFancyLanguage={openFancyLanguage}
-          languageValue={languageValue}
-          handleCloseFancyLanguage={() => openLanguageModel()}
-          openLanguageModel={() => setOpenFancyLanguage(false)}
-        />
       </Grid>
+    </Grid>
+ </Grid>
+<SetLanguage
+    getSetting={() => getSetting(this)}
+    openFancyLanguage={openFancyLanguage}
+    languageValue={languageValue}
+    handleCloseFancyLanguage={() => openLanguageModel()}
+    openLanguageModel={() => setOpenFancyLanguage(false)}
+  />
+</Grid>
     )
   }
 }

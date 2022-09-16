@@ -21,6 +21,8 @@ import LoginVideo from "Screens/Patient/loginVideo";
 import VideoGuideLine from "Screens/Patient/VideoGuideLine";
 import RegisterVC from "Screens/Patient/RegisterVC/index";
 import TopUp from "Screens/Patient/Dashboard/topup"
+import FeedBack from "Screens/Patient/FeedBack";
+// import TopUp from "Screens/Patient/Dashboard/topup"
 class Routermain extends Component {
   render() {
     return (
@@ -102,6 +104,11 @@ class Routermain extends Component {
               exact
               path="/register-successfull"
               render={(props) => <RegSuccuss {...props} />}
+            />
+              <Route
+              exact
+              path="/patient/Feed-back"
+              render={(props) => <FeedBack {...props} />}
             />
 
             {/* Need to route required component */}
