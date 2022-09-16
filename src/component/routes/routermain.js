@@ -13,16 +13,16 @@ import VideoCall from "Screens/VideoCall/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 import Dashboard from "Screens/Patient/Dashboard";
-import { SelectDoctor } from "Screens/Patient/Dashboard/Selectdoctor";
 import VideoCallPat from "Screens/Patient/VideoCall/index";
 import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from "Screens/Patient/loginVideo";
 import VideoGuideLine from "Screens/Patient/VideoGuideLine";
 import RegisterVC from "Screens/Patient/RegisterVC/index";
+// import TopUp from "Screens/Patient/Dashboard/topup"
 class Routermain extends Component {
   render() {
     return (
-      <Router basename={"/video-confrance"}>
+      <Router basename={"/video-conference"}>
         <Grid>
           <Switch>
             <Route exact path="/" render={(props) => <Login {...props} />} />
@@ -41,6 +41,11 @@ class Routermain extends Component {
               path="/patient/settings"
               render={(props) => <Dashboard {...props} />}
             />
+            {/* <Route
+              exact
+              path="/patient/top-up"
+              render={(props) => <TopUp {...props} />}
+            /> */}
 
             <Route
               exact
