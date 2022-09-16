@@ -37,7 +37,7 @@ const Dashboard = (props) => {
   const history = useHistory();
   const [value, setValue] = useState(0);
   const [languageValue, setLanguageValue] = useState(null);
-  const [openFancyLanguage , setOpenFancyLanguage ] = useState(false)
+  const [openFancyLanguage, setOpenFancyLanguage] = useState(false)
 
   let translate = getLanguage(props.stateLanguageType);
   let {
@@ -48,7 +48,7 @@ const Dashboard = (props) => {
   const profileLink = () => {
     history.push("/patient");
   };
-  
+
   //For open the model
   const openLanguageModel = () => {
     setOpenFancyLanguage(true);
@@ -58,6 +58,7 @@ const Dashboard = (props) => {
   const handleCloseFancyLanguage = () => {
     setOpenFancyLanguage(false);
   };
+
   if (
     props?.stateLoginValueAim.user === 'undefined' ||
     props?.stateLoginValueAim.token === 450 ||
@@ -110,23 +111,22 @@ const Dashboard = (props) => {
                     <p> Privact Policy</p>
                     <p> Rate Aimedies Diagnostics</p>
                   </div>
-                </div>
 
-                {/* <div className='logout' >Logout</div> */}
+                  {/* <div className='logout' >Logout</div> */}
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
+        <SetLanguage
+          getSetting={() => getSetting(this)}
+          openFancyLanguage={openFancyLanguage}
+          languageValue={languageValue}
+          handleCloseFancyLanguage={() => openLanguageModel()}
+          openLanguageModel={() => setOpenFancyLanguage(false)}
+        />
       </Grid>
-      <SetLanguage
-        getSetting={() => getSetting(this)}
-        openFancyLanguage={openFancyLanguage}
-        languageValue={languageValue}
-        handleCloseFancyLanguage={()=>openLanguageModel()}
-        openLanguageModel={()=>setOpenFancyLanguage(false)}
-      />
-    </Grid>
-  )
+    )
   }
 
 }

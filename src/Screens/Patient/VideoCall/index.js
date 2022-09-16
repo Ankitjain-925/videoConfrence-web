@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import { Button, TextField, Card } from "@material-ui/core/index";
 import Item from "./SliderItem";
 import Carousel from "react-material-ui-carousel";
-import APIs from "Screens/APIcall/index";
+import { APIs, APIs1, APIs2 } from "Screens/APIcall/index";
 import axios from "axios";
 import { pure } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -22,6 +22,14 @@ import { Settings } from "Screens/Login/setting";
 import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
+import {
+  CometChatOutgoingDirectCall,
+} from '../../VideoCall/Calls/index';
+import { CometChat } from '@cometchat-pro/chat';
+import { COMETCHAT_CONSTANTS } from '../../Components/CometChat/consts';
+import useAllLoginReducerAim from "../../Hooks/LoginReducerAim"
+
+
 
 // var data = [
 //   {
@@ -60,10 +68,14 @@ TabContainer.propTypes = {
 const VideoCallPat = (props) => {
   const [slideItems, setSlideItems] = useState([]);
   const [value, setValue] = useState(0);
+  const stateLoginValueAim = useAllLoginReducerAim();
+  const [startCall, setStartCall] = useState(false);
+
   let translate = getLanguage(props.stateLanguageType);
   let { my_profile, Security } = translate;
 
   useEffect(() => {
+    callCometChat();
     axios
       .get(
         APIs.getfeedbackfordoctor + "/62a41f1ec627873603accc6c",
@@ -73,7 +85,7 @@ const VideoCallPat = (props) => {
         let { data, hassuccessed } = response.data;
         if (hassuccessed) {
           const sliderItems = data.length > 2 ? 2 : data.length;
-          const items =[];
+          const items = [];
           for (let i = 0; i < data.length; i += sliderItems) {
             if (i % sliderItems === 0) {
               items.push(
@@ -92,13 +104,65 @@ const VideoCallPat = (props) => {
       });
   }, []);
 
+
+  const callCometChat = () => {
+    var profile_id = stateLoginValueAim?.user?.profile_id;
+    let callType = 'DIRECT';
+    CometChat.login(profile_id, COMETCHAT_CONSTANTS.AUTH_KEY)
+      .then((resp) => {
+        axios
+          .post(APIs1.cometUserList, {
+            profile_id: profile_id,
+          })
+          .then((response) => {
+            if (response && response.data && response.data.hassuccessed) {
+              var sesion_id = "1112";
+              axios
+                .get(APIs2.linktime + "/" + sesion_id)
+                .then((response) => {
+                  setStartCall(true);
+                  // if (response && response.data && response.data.hassuccessed) {
+                  //   if (response.data.message === 'link active') {
+                  //     this.setState({
+                  //       sectionValue: 1,
+                  //       allTasks: response.data.data.Task,
+                  //       gender: response.data.data.gender,
+                  //       loaderImage: false,
+                  //     });
+                  //     this.startTimer(response.data.data.Task)
+                  //   }
+                  // } else {
+                  //   if (
+                  //     response.data.message === 'Link will active soon' ||
+                  //     response.data.message === 'link start soon'
+                  //   ) {
+                  //     this.setState({ sectionValue: 2, loaderImage: false });
+                  //   } else if (response.data.message === 'Link Expire') {
+                  //     this.setState({ sectionValue: 3, loaderImage: false });
+                  //   } else {
+                  //     this.setState({ sectionValue: 5, loaderImage: false });
+                  //   }
+                  // }
+                })
+                .catch((err) => {
+                  console.log('err', err);
+                  // this.setState({ sectionValue: 5, loaderImage: false });
+                });
+            }
+          })
+          .catch((err) => {
+          });
+      })
+      .catch((err) => { });
+  }
+
   return (
     <Grid
       className={
         props.settings &&
-        props.settings.setting &&
-        props.settings.setting.mode &&
-        props.settings.setting.mode === "dark"
+          props.settings.setting &&
+          props.settings.setting.mode &&
+          props.settings.setting.mode === "dark"
           ? "homeBg darkTheme homeBgDrk"
           : "homeBg"
       }
@@ -107,8 +171,8 @@ const VideoCallPat = (props) => {
         <Grid container direction="row" justify="center">
           <Grid item xs={12} md={12}>
             <Grid container direction="row">
-              <LeftMenu isNotShow={true} currentPage="settings" />
-              <LeftMenuMobile isNotShow={true} currentPage="settings" />
+              {/* <LeftMenu isNotShow={true} currentPage="settings" /> */}
+              {/* <LeftMenuMobile isNotShow={true} currentPage="settings" /> */}
               <Grid item xs={12} md={11} lg={11}>
                 <div className="settingPage">
                   <>
@@ -128,8 +192,8 @@ const VideoCallPat = (props) => {
                           </div>
                         </div>
 
-                        <div className="video-page">
-                          <div className="call-popup Card_1">
+                        {/* <div className="video-page">
+                          <div className="call-popup">
                             <div className="call-pop-title">Out Of Credit</div>
                             <div className="call-pop-body">
                               You run out of credit. Please top up your account
@@ -142,7 +206,6 @@ const VideoCallPat = (props) => {
                             </div>
                           </div>
                         </div>
-
                         <div className="heading-status-call">
                           <div className="">
                             <img
@@ -166,7 +229,38 @@ const VideoCallPat = (props) => {
                               alt="speaker"
                             />
                           </div>
-                        </div>
+                        </div> */}
+
+                        <Grid item xs={12} md={11} lg={10}>
+                          <Grid container direction="row">
+                            <Grid item xs={12} md={12} lg={12}>
+                              <Grid className="cssCall">
+                                {startCall &&
+                                  <>
+                                    {/* <Grid className="callCss">
+                                    <TimerIcon className="timerIcon" />
+                                    <label className="formviewhead"> {this.state.time.h}h : {this.state.time.m}m</label>
+                                  </Grid> */}
+                                    <CometChatOutgoingDirectCall
+                                      open
+                                      // userListCall={(userList) =>
+                                      //   this.userListCall(userList)
+                                      // }
+                                      // endCallScreen={(value) => this.endCallScreen(value)}
+                                      sessionID="12345"
+                                      // theme={props.theme}
+                                      // item={state.item}
+                                      // type={state.type}
+                                      // lang={state.lang}
+                                      callType={CometChat.CALL_TYPE.VIDEO}
+                                    // joinDirectCall={joinDirectCall}
+                                    // loggedInUser={loggedInUser}
+                                    // actionGenerated={actionHandler}
+                                    />
+                                  </>}
+                              </Grid> </Grid>
+                          </Grid>
+                        </Grid>
 
                         <div className="call-feedback-part">
                           <Carousel>{slideItems}</Carousel>

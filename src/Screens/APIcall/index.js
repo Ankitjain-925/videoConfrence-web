@@ -2,8 +2,16 @@ import sitedata from "sitedata";
 
 const path = sitedata.data.path;
 
- const APIs = {
+export const APIs = {
   getfeedbackfordoctor: path + "/vchat/getfeedbackfordoctor",
 };
 
-export default APIs
+export const APIs1 = {
+  cometUserList: path + "/cometUserList",
+};
+
+export const APIs2 = {
+  linktime: path + "/vactive/Linktime"
+};
+
+// export default APIs

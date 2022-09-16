@@ -9,11 +9,14 @@ import NotFound from "Screens/Components/NotFound";
 import RegSuccuss from "Screens/Components/RegSuccess/index";
 import AppointmentList from "Screens/Patient/RequestList/index";
 import PatientProfile from "Screens/Patient/Profile/index";
-import VideoCall from "Screens/VideoCall/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
-import Dashboard from "Screens/Patient/Dashboard";
-import VideoCallPat from "Screens/Patient/VideoCall/index";
+
+import Dashboard from "../../Screens/Patient/Dashboard";
+import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
+import Newpage from "Screens/Patient/newpage/index";
+import VideoCallPat from "Screens/Patient/VideoCall/index"
+
 import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from "Screens/Patient/loginVideo";
 import VideoGuideLine from "Screens/Patient/VideoGuideLine";
@@ -31,7 +34,13 @@ class Routermain extends Component {
               path="/register"
               render={(props) => <Register {...props} />}
             />
-          <Route
+            <Route
+              exact
+              path="/patient/access-key"
+              render={(props) => <Newpage {...props} />}
+            />
+
+            <Route
               exact
               path="/patient/video-call"
               render={(props) => <VideoCallPat {...props} />}
@@ -59,6 +68,8 @@ class Routermain extends Component {
               render={(props) => <RegisterVideo {...props} />}
             />
 
+            <Route exact path='/video_login' render={(props) => <LoginVideo {...props} />} />
+            <Route exact path='/patient/video_login' render={(props) => <LoginVideo {...props} />} />
             <Route
               exact
               path="/patient/video_login"
@@ -101,9 +112,9 @@ class Routermain extends Component {
               exact={true}
               render={(props) => <NotFound {...props} />}
             />
-          </Switch>
-        </Grid>
-      </Router>
+          </Switch >
+        </Grid >
+      </Router >
     );
   }
 }

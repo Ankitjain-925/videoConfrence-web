@@ -17313,6 +17313,9 @@ a {
   float: right;
 }
 
+.darkTheme .hhh{
+  background-color: #404646 !important;
+}
 .de_inp {
   border: none;
 }
@@ -17623,6 +17626,11 @@ a {
   margin-right: 1%;
 }
 
+.accessForm{
+    /* margin: 71px 187px 91px 62px!important; */
+}
+
+
 .option-call-move {
   display: flex;
   flex-direction: row;
@@ -17635,6 +17643,21 @@ a {
   flex-direction: row;
   height: 100px;
 }
+
+ .darkTheme .accessForm{
+  background: #404646
+}
+
+.cssCall .css-1yrthcx {
+  /* top: 95px!important;
+  left: 60px!important; */
+  width: 85%;
+  border-radius: 8px;
+  height: 400px;
+  position: relative
+  
+}
+
 .top-up-1 {
   padding: 10px;
   display:flex;
@@ -17678,3 +17701,4 @@ font-weight: 700;
 font-size: 17px;
 line-height: 22px;
 }
+
