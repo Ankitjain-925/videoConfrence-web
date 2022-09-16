@@ -20,7 +20,7 @@ import { Settings } from "Screens/Login/setting";
 import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
-
+import MiddleTopup from "./middleTopup";
 
 function TabContainer(props) {
   return (
@@ -88,15 +88,9 @@ const Dashboard = (props) => {
               <Grid item xs={12} md={10} lg={8}>
                 <div className="settingPage">
                   <h5 className="setting-h5">Settings</h5>
-                  <div className='settingbox form_full'>
-                    <div >
-                      <label>Your Aimedis Credit :</label>
-                      <p>24 Min</p>
-                    </div>
-                    <div>
-                      <Button variant='contained' className="topupButton">Top Up</Button>
-                    </div>
-                  </div>
+                  
+                  <MiddleTopup btnShow={true}/>
+
                   <p className='settingbox-heading'>Account Settings</p>
                   <div className="last-sec-setting form_full">
                     <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
@@ -110,6 +104,7 @@ const Dashboard = (props) => {
                     <p>Terms & Conditions </p>
                     <p> Privact Policy</p>
                     <p> Rate Aimedies Diagnostics</p>
+                  </div>
                   </div>
 
                   {/* <div className='logout' >Logout</div> */}
@@ -128,10 +123,7 @@ const Dashboard = (props) => {
       </Grid>
     )
   }
-
 }
-
-
 const mapStateToProps = (state) => {
   const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
     state.LoginReducerAim;
@@ -161,4 +153,4 @@ export default pure(
       Settings,
       authy,
     })(Dashboard)
-  ))
+  ));

@@ -12,8 +12,7 @@ import PatientProfile from "Screens/Patient/Profile/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 
-import Dashboard from "../../Screens/Patient/Dashboard";
-import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
+import Dashboard from "Screens/Patient/Dashboard";
 import Newpage from "Screens/Patient/newpage/index";
 import VideoCallPat from "Screens/Patient/VideoCall/index"
 
@@ -21,7 +20,7 @@ import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from "Screens/Patient/loginVideo";
 import VideoGuideLine from "Screens/Patient/VideoGuideLine";
 import RegisterVC from "Screens/Patient/RegisterVC/index";
-// import TopUp from "Screens/Patient/Dashboard/topup"
+import TopUp from "Screens/Patient/Dashboard/topup"
 class Routermain extends Component {
   render() {
     return (
@@ -50,12 +49,11 @@ class Routermain extends Component {
               path="/patient/settings"
               render={(props) => <Dashboard {...props} />}
             />
-            {/* <Route
+            <Route
               exact
               path="/patient/top-up"
               render={(props) => <TopUp {...props} />}
-            /> */}
-
+            />
             <Route
               exact
               path="/video-guideline"
