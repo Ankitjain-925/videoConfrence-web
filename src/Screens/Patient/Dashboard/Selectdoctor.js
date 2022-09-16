@@ -65,148 +65,122 @@ class SelectDoctor extends Component {
       Security
     } = translate;
     return (
-      <Grid
-        className={
-          this.props.settings &&
-            this.props.settings.setting &&
-            this.props.settings.setting.mode &&
-            this.props.settings.setting.mode === 'dark'
-            ? 'homeBg darkTheme homeBgDrk'
-            : 'homeBg'
-        }
-      >
-        <Grid className="homeBgIner">
-          <Grid container direction="row" justify="center">
-            <Grid item xs={12} md={12}>
-              <Grid container direction="row">
-                <Grid item xs={12} md={11} lg={11}>
-                  <Grid className="settingPage">
-                    {/* <h5 className="setting-h5">Settings</h5> */}
-                    <Grid className='last-sec-setting form_full'>
-                      
-
-                      {/* Card Menu */}
-                      <Grid className="cardDisplay-select">
-                        <Grid className='card-section'>
-                          <Grid className="card-header">
-                            <S3Image imgUrl={dataa.doctor_detail[0].image} />
-
-                            <Grid>
-                              <h5 className="selectdoc-head"> {dataa.doctor_detail[0].first_name}{' '}{dataa.doctor_detail[0].last_name}{','}{dataa.doctor_detail[0].speciality} </h5>
-                              {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
-                              <Grid className='selectdoc-button'>
-                                <span>on-line</span>
-
-                              </Grid>
-                            </Grid>
-                          </Grid>
-                          <Grid className='card-content'>
-                            <Select
-                              value={''}
-                              onChange={(e) => { }}
-                              options={options}
-                              placeholder={"I would like to"}
-                              name="appointment"
-                              isSearchable={true}
-                              className="mr_sel"
-                            />
+      <Grid className="logForm form_full">
+        {/* Start of Bread Crumb */}
+        <Grid container direction="row" alignItems="center">
+          <Grid item xs={12} md={12}  >
 
 
 
-                            <p className='card-label'>Your Aimedis credit : <b>Omin</b> </p>
-                            {dataa.permission ? <Grid>
-                              <a>+ Top up your account </a>
-                            </Grid> : (
-                              ''
-                            )}
 
-                            {dataa.doctor_detail[1].data.data?.length > 0 &&
-                              dataa.doctor_detail[1].data.data.map((item, i) => (
-
-                                <Grid
-                                  item
-                                  xs={12}
-                                  md={12}
-                                  lg={12}
+            {/* Card Menu */}
 
 
-                                >
+            <Grid className="card-header">
+              <S3Image imgUrl={dataa.doctor_detail[0].image} />
 
+              <Grid>
+                <h5 className="selectdoc-head"> {dataa.doctor_detail[0].first_name}{' '}{dataa.doctor_detail[0].last_name} </h5>
+                <h6 className="selectdoc-head2"> {dataa.doctor_detail[0].profile_id}</h6>
+                {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
+                <Grid className='selectdoc-button'>
+                  <span>
+                <img className = "v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
+                </span>
 
-                                  <Grid className='call-feedback-part'>
-                                    <Grid>
-                                      <Grid className='call-feadback-header'>
-                                        <Grid>
-                                          <img className="call-img" src={item.patient_infos.image} alt='doctor' />
-
-                                        </Grid>
-                                        <Grid className="comment-callpat">
-                                          <h5> Latest review for: </h5>
-                                          <p>{item.patient_infos.first_name}{' '}{item.patient_infos.last_name}, MD</p>
-                                          <p>{item.patient_id}</p>
-
-                                        </Grid>
-                                      </Grid>
-                                      <Grid className="call-comment-patient">
-                                        {/* {item.comment} */}
-                                      </Grid>
-                                    </Grid>
-                                  </Grid>
-
-
-                                </Grid>
-
-
-                              ))}
-
-
-                            <Grid className="infoShwSave3 ">
-                              <input
-                                type="button"
-                                value="« Back"
-                                onClick={this.back}
-
-                              />
-                              <input
-                                type="button"
-                                value="Next »"
-                                onClick={this.continue}
-
-                              />
-                            </Grid>
-
-
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-
-                  {/* <Grid className='logout' >Logout</Grid> */}
                 </Grid>
               </Grid>
             </Grid>
+            <Grid className='card-content'>
+              {/* <Select
+                    value={''}
+                    onChange={(e) => { }}
+                    options={options}
+                    placeholder={"I would like to"}
+                    name="appointment"
+                    isSearchable={true}
+                    className="mr_sel"
+                  /> */}
+
+              <p className='card-label'>I would like to: <b>Video-Call</b> </p>
+              
+
+
+              {dataa.permission ? <Grid>
+                <p className='card-label'>Your Aimedis credit : <b>Omin</b> </p>
+                <a>+ Top up your account </a>
+              </Grid> : (
+                ''
+              )}
+
+              {dataa.doctor_detail[1].data.data?.length > 0 &&
+                dataa.doctor_detail[1].data.data.map((item, i) => (
+
+                  <Grid
+                    item
+                    xs={12}
+                    md={12}
+                    lg={12}
+
+
+                  >
+
+
+                    <Grid className='call-feedback-part'>
+                      <Grid>
+                        <Grid className='call-feadback-header'>
+                          <Grid>
+                            <img className="call-img" src={item?.patient_infos?.image} alt='doctor' />
+
+                          </Grid>
+                          <Grid className="comment-callpat">
+                            <h5> Latest review for: </h5>
+                            <p>{item?.patient_infos?.first_name}{' '}{item?.patient_infos?.last_name}, MD</p>
+                            <p>{item?.patient_id}</p>
+
+                          </Grid>
+                        </Grid>
+                        <Grid className="call-comment-patient">
+                          {/* {item.comment} */}
+                        </Grid>
+                      </Grid>
+                    </Grid>
+
+
+                  </Grid>
+
+
+                ))}
+
+
+              <Grid className="infoShwSave3 ">
+                <input
+                  type="button"
+                  value="« Back"
+                  onClick={this.back}
+
+                />
+                <input
+                  type="button"
+                  value="Next »"
+                  onClick={this.continue}
+
+                />
+              </Grid>
+
+
+            </Grid>
+
+
+
+
+
+            {/* <Grid className='logout' >Logout</Grid> */}
           </Grid>
         </Grid>
       </Grid>
+
     );
   }
 }
-const mapStateToProps = (state) => {
-  const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
-    state.LoginReducerAim;
-  const { stateLanguageType } = state.LanguageReducer;
-  const { settings } = state.Settings;
-  return {
-    stateLanguageType,
-    stateLoginValueAim,
-    settings,
-  };
-};
-export default withRouter(
-  connect(mapStateToProps, {
-    LoginReducerAim,
-    LanguageFetchReducer,
-    Settings
-  })(SelectDoctor)
-);
+export default SelectDoctor; 
