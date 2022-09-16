@@ -141,12 +141,12 @@ class Index extends Component {
                 <Grid item xs={12} md={11} lg={10}>
                   <Grid className="docsOpinion">
                     <Grid container direction="row" className="docsOpinLbl">
-                      <Grid item xs={12} md={6}>
+                      <Grid item xs={12} md={12}>
                         <label>{sick_leave_certificate}</label>
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={12}>
                     <Grid className="cnfrmDiaMain2">
                       {!openCalendar === true && (
                         <Grid>
