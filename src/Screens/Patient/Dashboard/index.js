@@ -113,6 +113,7 @@ const Dashboard = (props) => {
                   </div>
 
                   {/* <div className='logout' >Logout</div> */}
+                  </div>
                 </Grid>
               </Grid>
             </Grid>
