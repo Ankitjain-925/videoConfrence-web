@@ -33,7 +33,7 @@ class JobDetails extends Component {
 
     }
 
-    dssd = e => {
+    click = e => {
         // e.preventDefault();
         // this.setState({ isActiv: false });
         // this.setState({ isActive: !this.state.isActive });
@@ -61,7 +61,7 @@ class JobDetails extends Component {
 
 
 
-                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.dssd(true)} className={this.props.dataa.permission ? 'Card_Sel' : ''}>
+                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(true)} className={this.props.dataa.permission ? 'Card_Sel' : ''}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
@@ -82,7 +82,7 @@ class JobDetails extends Component {
 
                             </Grid>
                             <Grid item xs={12} md={5} className="Card_1">
-                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.dssd(false)} className={!this.props.dataa.permission ? 'Card_Sel' : ''}>
+                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(false)} className={!this.props.dataa.permission ? 'Card_Sel' : ''}>
 
 
                                     <Grid container justify="space-between" className="padd_10">

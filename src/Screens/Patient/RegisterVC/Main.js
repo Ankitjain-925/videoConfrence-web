@@ -7,11 +7,14 @@ import SelectDoctor from '../Dashboard/Selectdoctor';
 import Form5 from '../SickLeaveForm/index'
 
 import Grid from "@material-ui/core/Grid";
+import { ConsoleCustom } from 'Screens/Components/BasicMethod/index';
 
 export class StepForm extends Component {
     state = {
         step: 1,
         mainState: {},
+        mainState2: {},
+        mainState3: {},
         language: '',
         lang: '',
     }
@@ -33,10 +36,10 @@ export class StepForm extends Component {
 
 
     handleLanguage = (langValue, i, search) => {
+        console.log("dsfghjgfd",langValue)
         const state = this.state.mainState;
         state["doctor_detail"] = langValue;
         state["doctor_index"] = i;
-        console.log("hcfhgjhkj", langValue)
         state["doctor_search"] = search;
         this.setState({ mainState: state });
     }
@@ -56,12 +59,32 @@ export class StepForm extends Component {
     }
 
 
+    handleLanguage5 = (la, la2, la3) => {
+        console.log("gggg", la)
+        const state = this.state.mainState2;
+        state["la2"] = la2;
+        state["la3"] = la3;
+        // this.setState({ mainState2: la2 });
+        // this.setState({ mainState3: la3 });
+        if (la){
+            console.log("check")
+            this.setState({
+                step: 6
+            });
+        }
+        // const state = this.state.mainState;
+        // state["time"] = lang2;
+        // state["amount"] = lang2.value * 5;
+        // this.setState({ mainState: state });
+    }
+
+
     // handleChange = input => e => {
     //     this.setState({[input]: e.target.value});
     // }
 
     showStep = () => {
-        const { step, language, lang, mainState } = this.state;
+        const { step, language, lang, mainState, mainState2 } = this.state;
 
         if (step === 1)
             return (<PersonalInfo
@@ -89,8 +112,11 @@ export class StepForm extends Component {
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
             />);
-        if (step === 5)
+        if (step === 5 || step === 6)
             return (<Form5
+                dataa2={mainState2}
+                onSelectLanguage5={this.handleLanguage5}
+                dataa={mainState}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
             />);
@@ -109,7 +135,8 @@ export class StepForm extends Component {
 
         return (
             <>
-                <h1 style={myst1}>Step {step} of 5.</h1>
+                <h1 style={myst1}>Step {step} of 6.</h1>
+
                 {this.showStep()}
             </>
         );

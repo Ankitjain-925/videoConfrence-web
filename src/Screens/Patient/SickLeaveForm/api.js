@@ -415,15 +415,17 @@ export const handleEvalSubmit = (current, value) => {
     // image: current.props.stateLoginValueAim?.user.user?.image,
   };
   data.patient = patient;
+  data.item = current.props.dataa
   data.patient_id = current.props.stateLoginValueAim?.user?._id;
-  data.task_name = 'Sick leave certificate from patient';
-  data.task_type = 'sick_leave';
+  data.task_name = 'Video Conference from patient';
+  data.task_type = 'video_conference';
   data.done_on = '';
   data.priority = 0;
   data.archived = false;
   data.status = 'open';
   data.created_at = new Date();
-  data.house_id = getHouseId();
+  data.house_id = "60fabfe5b3394533f7f9a6dc-1654919887767";
+
   if (!data?.due_on?.date) {
     let due_on = data?.due_on || {};
     due_on['date'] = new Date();
@@ -1956,25 +1958,25 @@ export const onChange = (date, current) => {
   let days;
   switch (day_num) {
     case 1:
-      days = 'monday';
+      days = 'Monday';
       break;
     case 2:
-      days = 'tuesday';
+      days = 'Tuesday';
       break;
     case 3:
-      days = 'wednesday';
+      days = 'Wednesday';
       break;
     case 4:
-      days = 'thursday';
+      days = 'Thursday';
       break;
     case 5:
-      days = 'friday';
+      days = 'Friday';
       break;
     case 6:
-      days = 'saturday';
+      days = 'Saturday';
       break;
     case 0:
-      days = 'sunday';
+      days = 'Sunday';
       break;
   }
   let appointmentData = current.state.appointmentData;
@@ -1984,6 +1986,7 @@ export const onChange = (date, current) => {
       if (key == days) {
         appointDate = value;
         current.setState({ appointDate: appointDate });
+        
         let DoctorSlot = [];
         appointDate.map((item, i) => {
           if (i < appointDate?.length - 1) {
@@ -1995,10 +1998,11 @@ export const onChange = (date, current) => {
         }
         // nextDay.setDate(day.getDate()+1);
         var localDateTime = new Date(new Date().setDate(new Date(date).getDate()));
-        var id = current.state.doctorData?._id;
+        // var id = current.state.doctorData?._id;
+        var id = current.props.dataa.doctor_detail[0]._id;
         axios
           .post(
-            sitedata.data.path + '/vactive/SelectDocforSickleave2',
+            sitedata.data.path + '/vchat/getSlotTime/',
             {
               date: localDateTime,
               doctor_id: id
@@ -2110,22 +2114,26 @@ export const getCalendarData = (current) => {
   let { try_after_some_time } = translate;
   var user_token = current.props.stateLoginValueAim?.token;
   axios
-    .get(
-      sitedata.data.path + '/vactive/SelectDocforSickleave',
-      commonHeader(user_token)
-    )
+    .post(
+      sitedata.data.path + "/vchat/DynamicSlots/",
+      {
+
+        _id: current.props.dataa.doctor_detail[0]._id,
+        duration_of_timeslots: current.props.dataa.time.value,
+      },
+      commonHeader(user_token))
     .then((response) => {
       if (response?.data && response?.data?.data) {
         var data1 = response?.data?.data[0]?.data;
-        var data = response?.data?.data[0]?.sickleave[0];
+        var data = response?.data?.data[0]?.slot[0];
         if (
-          response?.data?.data[0]?.sickleave?.length > 0 &&
-          (data?.monday?.length > 0 ||
-            data?.tuesday?.length > 0 ||
-            data?.wednesday?.length > 0 ||
-            data?.thursday?.length > 0 ||
-            data?.friday?.length > 0 ||
-            data?.saturday?.length > 0)
+          response?.data?.data[0]?.slot?.length > 0 &&
+          (data?.Monday?.length > 0 ||
+            data?.Tuesday?.length > 0 ||
+            data?.Wednesday?.length > 0 ||
+            data?.Thursday?.length > 0 ||
+            data?.Friday?.length > 0 ||
+            data?.Saturday?.length > 0)
         ) {
           current.setState({
             errorChrMsg1: '',
