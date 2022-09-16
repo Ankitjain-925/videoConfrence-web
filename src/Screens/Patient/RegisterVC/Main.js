@@ -3,7 +3,7 @@ import PersonalInfo from './PersonalInfo';
 import JobDetails from './JobDetails';
 import AllInfo from './AllInfo';
 import Step4 from './Step4';
-import SelectDoctor from '../Dashboard/selectdoctor';
+import SelectDoctor from '../Dashboard/Selectdoctor';
 import Form5 from '../SickLeaveForm/index'
 
 import Grid from "@material-ui/core/Grid";
@@ -135,12 +135,9 @@ export class StepForm extends Component {
 
         return (
             <>
-
-
                 <h1 style={myst1}>Step {step} of 6.</h1>
+
                 {this.showStep()}
-
-
             </>
         );
     }

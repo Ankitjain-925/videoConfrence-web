@@ -1,109 +1,246 @@
-import React, { Component } from 'react';
+import React, { useState } from "react"
+import { Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LeftMenu from 'Screens/Components/Menus/PatientLeftMenu/index';
 import LeftMenuMobile from 'Screens/Components/Menus/PatientLeftMenu/mobile';
 import Notification from 'Screens/Components/CometChat/react-chat-ui-kit/CometChat/components/Notifications';
 import AppBar from '@material-ui/core/AppBar';
-import Select from 'react-select';
 import { getLanguage } from 'translations/index';
+import MMHG from "Screens/Components/mmHgField/index";
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import { Button, TextField, Card } from "@material-ui/core/index";
-import { withRouter } from "react-router-dom";
+import { Button } from "@material-ui/core/index";
+import { useHistory } from "react-router-dom";
+import SetLanguage from "Screens/Components/SetLanguage/index.js";
+import { getSetting } from "Screens/Components/Menus/api";
+import { pure } from "recompose";
 import { connect } from "react-redux";
 import { LoginReducerAim } from "Screens/Login/actions";
-import { LanguageFetchReducer } from 'Screens/actions';
+import { withRouter } from "react-router-dom";
 import { Settings } from "Screens/Login/setting";
-import { S3Image } from "Screens/Components/GetS3Images/index";
+import { LanguageFetchReducer } from "Screens/actions";
+import { OptionList } from "Screens/Login/metadataaction";
+import { authy } from "Screens/Login/authy.js";
+import MiddleTopup from "./middleTopup";
 
-var options = [{}]
+
 function TabContainer(props) {
   return (
     <Typography component="div" className="tabsCntnts">
-      {this.props.children}
+      {props.children}
     </Typography>
   );
 }
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
-class TopUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-  
-    };
+
+const Dashboard = (props) => {
+  const history = useHistory();
+  const [customAmount, SetcustomAmount] = useState(false);
+  const [languageValue, setLanguageValue] = useState(null);
+  const [openFancyLanguage, setOpenFancyLanguage] = useState(false)
+
+  let translate = getLanguage(props.stateLanguageType);
+  let {
+    my_profile,
+    Security
+  } = translate;
+
+  const profileLink = () => {
+    history.push("/patient");
+  };
+
+  //For open the model
+  const openLanguageModel = () => {
+    setOpenFancyLanguage(true);
+  };
+
+  //For close Model
+  const handleCloseFancyLanguage = () => {
+    setOpenFancyLanguage(false);
+  };
+
+  if (
+    props?.stateLoginValueAim.user === 'undefined' ||
+    props?.stateLoginValueAim.token === 450 ||
+    props?.stateLoginValueAim.token === 'undefined' ||
+    props?.stateLoginValueAim.user.type !== 'patient'
+  ) {
+    return <Redirect to={'/'} />;
   }
-
-  render() {
-    const { dataa } = this.props;
-    let translate = getLanguage(this.props.stateLanguageType);
-    let {
-      my_profile,
-      Security
-    } = translate;
+  else {
     return (
-      <>
-       <Grid
-      className={
-        this.props.settings &&
-          this.props.settings.setting &&
-          this.props.settings.setting.mode &&
-          this.props.settings.setting.mode === 'dark'
-          ? 'homeBg darkTheme homeBgDrk'
-          : 'homeBg'
-      }
-    >
-      <Grid className="homeBgIner">
-        <Grid container direction="row" justify="center">
-          <Grid item xs={12} md={12}>
-            <Grid container direction="row">
-              <LeftMenu isNotShow={true} currentPage="settings" />
-              <LeftMenuMobile isNotShow={true} currentPage="settings" />
-              <Grid item xs={12} md={10} lg={8}>
-                <div className="settingPage">
-                  <h5 className="setting-h5">Settings</h5>
-                  <div className='settingbox form_full'>
-                    <div >
-                      <label>Your Aimedis Credit :</label>
-                      <p>24 Min</p>
-                    </div>
-                    <div>
-                      <Button variant='contained' className="topupButton">Top Up</Button>
-                    </div>
-                  </div>
-                  <p className='settingbox-heading'>Account Settings</p>
-                  <div className="last-sec-setting form_full">
-                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
-                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
-                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
-                    <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privactandnotification</div></div>
-                  </div>
-                  <p className='settingbox-heading'>Other</p>
-                  <div className="last-sec-setting form_full">
-                    <p className='middle-setting-items'>Amount</p>
-                    <p>Terms & Conditions </p>
-                    <p> Privact Policy</p>
-                    <p> Rate Aimedies Diagnostics</p>
-                  </div>
-                </div>
+      <Grid
+        className={
+          props.settings &&
+            props.settings.setting &&
+            props.settings.setting.mode &&
+            props.settings.setting.mode === 'dark'
+            ? 'homeBg darkTheme homeBgDrk'
+            : 'homeBg'
+        }
+      >
+        <Grid className="homeBgIner">
+          <Grid container direction="row" justify="center">
+            <Grid item xs={12} md={12}>
+              <Grid container direction="row">
+                <LeftMenu isNotShow={true} currentPage="topup" />
+                <LeftMenuMobile isNotShow={true} currentPage="topup" />
+                <Grid item xs={12} md={10} lg={8}>
+                  <div className="settingPage">
+                    <h5 className="setting-h5">Balance</h5>
+                    {console.log('sdfsdfdsf', customAmount)}
+                    {!customAmount ? <>
 
-                {/* <div className='logout' >Logout</div> */}
+                      <MiddleTopup />
+                      <p className='settingbox-heading'>Top up your balance</p>
+                      {/* <div className="last-sec-setting form_full">
+                    
+                  </div> */}
+                      <Grid container direction="row" justify="center" alignItems="center">
+                        <Grid item xs={4} md={4} sm={4}>
+                          <div className="top-up-mid1-inner">
+                            <div className="top-up-head-1">
+                              <div className='top-up-head'>Starter</div>
+                              <div className='top-up-minnute'>40min</div>
+                            </div>
+                            <div>
+                              <div className="top-up-content">Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                              </div>
+                            </div>
+                            <div className='top-up-cost'>8,99 €</div>
+                            <div>
+                              <button className='top-up-buybtn'>Buy Now</button>
+                            </div>
+                          </div>
+                        </Grid>
+
+                        <Grid item xs={4} md={4} sm={4}>
+                          <div className="top-up-mid1-inner">
+                            <div className="top-up-head-1">
+                              <div className='top-up-head'>Standard</div>
+                              <div className='top-up-minnute'>60min</div>
+                            </div>
+                            <div>
+                              <div className='top-up-content'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                              </div>
+                            </div>
+                            <div className='top-up-cost'>23,99 €</div>
+                            <div>
+                              <button className='top-up-buybtn'>Buy Now</button>
+                            </div>
+                          </div>
+                        </Grid>
+
+                        <Grid item xs={4} md={4} sm={4}>
+                          <div className="top-up-mid1-inner">
+                            <div className="top-up-head-1">
+                              <div className='top-up-head'>Premium</div>
+                              <div className='top-up-minnute'>120min</div>
+                            </div>
+                            <div>
+                              <div className='top-up-content'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                              </div>
+                            </div>
+                            <div className='top-up-cost'>49,99 €</div>
+                            <div>
+                              <button className='top-up-buybtn'>Buy Now</button>
+                            </div>
+                          </div>
+                        </Grid>
+
+                      </Grid>
+
+                      <Grid className="goto-custom-topup" onClick={() => { SetcustomAmount(true) }}>
+                        or choose a custom amount
+                      </Grid>
+                    </>
+                      :
+                      <>
+                        <div className='last-sec-setting form_full'>
+                          <div className="custom-topup-Back" onClick={()=>{SetcustomAmount(false)}}> {'<'} Back </div>
+                          <div className='custom-topup'>
+                            <div>
+                              <h2 className="custom-topup-head">Add a custom amount</h2>
+                            </div>
+                            <div className="custom-topup-field">
+                                <MMHG
+                                  name="amount"
+                                  label={"EUR"}
+                                  // onChange={(e) => this.updateEntryState(e)}
+                                 value={'21,00'}
+                                />
+                              <div>
+                              </div>
+                            </div>
+                            <div className="custom-topup-recieve">You will recieve: <span className="custom-topup-rmin">21min</span></div>
+                            <div className="continueBTN-topup">
+                              <Button variant='contained'>Continue</Button>
+                            </div>
+                          </div>
+                        </div>
+                      </>}
+                    {/* <div style={{
+                        background: '#FFFFFF',
+                        boxShadow: '0px 4px 12px rgba(35, 35, 35, 0.04)',
+                        borderRadius: '8px',
+                        float: 'left',
+                        width: '240.33px',
+                        height: '264px',
+                        padding: '20px',
+                        marginRight: '12px'
+                      }}>
+                        <div style={{ float: 'left', width: '100%', height: '50px' }}>
+                          <div className='top-up-head'>Standard</div>
+                          <div className='top-up-minnute'>30min</div>
+                        </div>
+                        <div>
+                          <div className='paraStyles'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                          </div>
+                        </div>
+                        <div className='top-up-cost'>23,99 €</div>
+                        <div>
+                          <button className='top-up-buybtnblue'>Buy Now</button>
+                        </div>
+                      </div>
+                      <div style={{
+                        background: '#FFFFFF',
+                        boxShadow: '0px 4px 12px rgba(35, 35, 35, 0.04)+',
+                        borderRadius: '8px',
+                        float: 'right',
+                        width: '240.33px',
+                        height: '264px',
+                        padding: '20px',
+                        marginRight: '12px'
+
+                      }}>
+                        <div style={{ float: 'left', width: '100%', height: '50px' }}>
+                          <div className='top-up-head'>Premium</div>
+                          <div className='top-up-minnute'>100min</div>
+                        </div>
+                        <div>
+                          <div className='paraStyles'>Aenean at lectus pos+uere enim id nec. Molestie neque, sed fusce faucibus.
+                          </div>
+                        </div>
+                        <div className='top-up-cost'>49,99 €</div>
+                        <div>
+                          <button className='top-up-buybtn'>Buy Now</button>
+                        </div>
+                      </div>
+                    </div> */}
+
+                  </div>
+
+                  {/* <div className='logout' >Logout</div> */}
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
+
       </Grid>
-      <SetLanguage
-        getSetting={() => getSetting(this)}
-        openFancyLanguage={openFancyLanguage}
-        languageValue={languageValue}
-        handleCloseFancyLanguage={()=>openLanguageModel()}
-        openLanguageModel={()=>setOpenFancyLanguage(false)}
-      />
-    </Grid></>
-        
-    );
+    )
   }
 }
 const mapStateToProps = (state) => {
@@ -111,16 +248,28 @@ const mapStateToProps = (state) => {
     state.LoginReducerAim;
   const { stateLanguageType } = state.LanguageReducer;
   const { settings } = state.Settings;
+  const { verifyCode } = state.authy;
+  const { metadata } = state.OptionList;
+  // const { Doctorsetget } = state.Doctorset;
+  // const { catfil } = state.filterate;
   return {
     stateLanguageType,
     stateLoginValueAim,
+    loadingaIndicatoranswerdetail,
     settings,
+    verifyCode,
+    metadata,
+    //   Doctorsetget,
+    //   catfil
   };
 };
-export default withRouter(
-  connect(mapStateToProps, {
-    LoginReducerAim,
-    LanguageFetchReducer,
-    Settings
-  })(TopUp)
-);
+export default pure(
+  withRouter(
+    connect(mapStateToProps, {
+      LoginReducerAim,
+      OptionList,
+      LanguageFetchReducer,
+      Settings,
+      authy,
+    })(Dashboard)
+  ));

@@ -79,7 +79,7 @@ class Index extends Component {
   };
 
   topupPage = () => {
-    // this.props.history.push('/topupPage');
+    this.props.history.push('/patient/top-up');
   };
 
   render() {

@@ -71,7 +71,7 @@ class Index extends Component {
     this.props.history.push("/appointment-list");
   };
   topupPage = () => {
-    // this.props.history.push('/topupPage');
+    this.props.history.push('/patient/top-up');
   };
 
   //For Second opinion link
