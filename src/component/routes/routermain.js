@@ -13,7 +13,7 @@ import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
 
 import Dashboard from "../../Screens/Patient/Dashboard";
-import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
+// import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
 import Newpage from "Screens/Patient/newpage/index";
 import VideoCallPat from "Screens/Patient/VideoCall/index"
 

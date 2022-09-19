@@ -54,7 +54,6 @@ class JobDetails extends Component {
             <>
                 <Grid className="logForm form_full">
 
-
                     <Grid className="logRow" >
                         <Grid container direction="row" >
                             <Grid item xs={12} md={5} className="Card_1" >
@@ -72,7 +71,7 @@ class JobDetails extends Component {
 
                                     <CardContent>
                                         <Typography variant="body2">
-                                        Your Top-Up Amount is: 
+                                        Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'} 
                                         </Typography>
                                     </CardContent>
                                     

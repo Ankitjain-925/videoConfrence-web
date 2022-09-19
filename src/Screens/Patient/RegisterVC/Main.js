@@ -3,11 +3,15 @@ import PersonalInfo from './PersonalInfo';
 import JobDetails from './JobDetails';
 import AllInfo from './AllInfo';
 import Step4 from './Step4';
-import SelectDoctor from '../Dashboard/selectdoctor';
+import SelectDoctor from '../Dashboard/Selectdoctor'
 import Form5 from '../SickLeaveForm/index'
 
 import Grid from "@material-ui/core/Grid";
 import { ConsoleCustom } from 'Screens/Components/BasicMethod/index';
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { LoginReducerAim } from "Screens/Login/actions";
+import { LanguageFetchReducer } from 'Screens/actions';
 
 export class StepForm extends Component {
     state = {
@@ -36,7 +40,7 @@ export class StepForm extends Component {
 
 
     handleLanguage = (langValue, i, search) => {
-        console.log("dsfghjgfd",langValue)
+        console.log("dsfghjgfd", langValue)
         const state = this.state.mainState;
         state["doctor_detail"] = langValue;
         state["doctor_index"] = i;
@@ -45,7 +49,7 @@ export class StepForm extends Component {
     }
 
     handleLanguage1 = (lang) => {
-        console.log("lang",lang)
+        console.log("lang", lang)
         const state = this.state.mainState;
         state["permission"] = lang;
         this.setState({ mainState: state });
@@ -66,7 +70,7 @@ export class StepForm extends Component {
         state["la3"] = la3;
         // this.setState({ mainState2: la2 });
         // this.setState({ mainState3: la3 });
-        if (la){
+        if (la) {
             console.log("check")
             this.setState({
                 step: 6
@@ -94,6 +98,7 @@ export class StepForm extends Component {
             />);
         if (step === 2)
             return (<JobDetails
+                redux_st={this.props}
                 dataa={mainState}
                 onSelectLanguage1={this.handleLanguage1}
                 nextStep={this.nextStep}
@@ -101,6 +106,7 @@ export class StepForm extends Component {
             />);
         if (step === 3)
             return (<AllInfo
+                redux_st={this.props}
                 dataa={mainState}
                 onSelectLanguage={this.handleLanguage}
                 nextStep={this.nextStep}
@@ -146,4 +152,19 @@ export class StepForm extends Component {
     }
 }
 
-export default StepForm;
+const mapStateToProps = (state) => {
+    const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
+        state.LoginReducerAim;
+    const { stateLanguageType } = state.LanguageReducer;
+    return {
+        stateLanguageType,
+        stateLoginValueAim,
+
+    };
+};
+export default withRouter(
+    connect(mapStateToProps, {
+        LoginReducerAim,
+        LanguageFetchReducer,
+    })(StepForm)
+);

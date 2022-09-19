@@ -91,7 +91,7 @@ const Dashboard = (props) => {
                   <div className='settingbox form_full'>
                     <div >
                       <label>Your Aimedis Credit :</label>
-                      <p>24 Min</p>
+                      <p>{props?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'}</p>
                     </div>
                     <div>
                       <Button variant='contained' className="topupButton">Top Up</Button>
