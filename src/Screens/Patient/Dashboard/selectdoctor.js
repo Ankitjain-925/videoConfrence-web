@@ -9,6 +9,10 @@ import { getLanguage } from 'translations/index';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { Button, TextField, Card } from "@material-ui/core/index";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { LoginReducerAim } from "Screens/Login/actions";
+import { LanguageFetchReducer } from 'Screens/actions';
 import { Settings } from "Screens/Login/setting";
 import { S3Image } from "Screens/Components/GetS3Images/index";
 
@@ -55,7 +59,7 @@ class SelectDoctor extends Component {
 
   render() {
     const { dataa } = this.props;
-    let translate = getLanguage(this?.props?.redux_st?.stateLanguageType);
+    let translate = getLanguage(this.props.stateLanguageType);
     let {
       my_profile,
       Security
@@ -73,16 +77,16 @@ class SelectDoctor extends Component {
 
 
             <Grid className="card-header">
-              <S3Image imgUrl={dataa?.doctor_detail[0]?.image} />
+              <S3Image imgUrl={dataa.doctor_detail[0].image} />
 
               <Grid>
-                <h5 className="selectdoc-head"> {dataa?.doctor_detail[0]?.first_name}{' '}{dataa?.doctor_detail[0]?.last_name} </h5>
-                <h6 className="selectdoc-head2"> ( {dataa?.doctor_detail[0]?.profile_id} )</h6>
+                <h5 className="selectdoc-head"> {dataa.doctor_detail[0].first_name}{' '}{dataa.doctor_detail[0].last_name} </h5>
+                <h6 className="selectdoc-head2"> {dataa.doctor_detail[0].profile_id}</h6>
                 {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                 <Grid className='selectdoc-button'>
                   <span>
-                    <img className="v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
-                  </span>
+                <img className = "v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
+                </span>
 
                 </Grid>
               </Grid>
@@ -97,26 +101,28 @@ class SelectDoctor extends Component {
                     isSearchable={true}
                     className="mr_sel"
                   /> */}
-              <Grid className='card-label'>
-                <p >I would like to:
-                  <b>Video-Call</b> </p></Grid>
+
+              <p className='card-label'>I would like to: <b>Video-Call</b> </p>
+              
 
 
-
-              {dataa?.permission ? <Grid>
-                <p className='card-label'>Your Aimedis credit : <b>{this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'}</b> </p>
+              {dataa.permission ? <Grid>
+                <p className='card-label'>Your Aimedis credit : <b>Omin</b> </p>
                 <a>+ Top up your account </a>
               </Grid> : (
                 ''
               )}
 
-              {dataa?.doctor_detail[1]?.data?.data?.length > 0 &&
-                dataa?.doctor_detail[1]?.data?.data?.map((item, i) => (
+              {dataa.doctor_detail[1].data.data?.length > 0 &&
+                dataa.doctor_detail[1].data.data.map((item, i) => (
+
                   <Grid
                     item
                     xs={12}
                     md={12}
                     lg={12}
+
+
                   >
 
 
@@ -124,22 +130,26 @@ class SelectDoctor extends Component {
                       <Grid>
                         <Grid className='call-feadback-header'>
                           <Grid>
+                            <img className="call-img" src={item?.patient_infos?.image} alt='doctor' />
 
-                            <S3Image imgUrl={item?.patient_info?.image} />
                           </Grid>
                           <Grid className="comment-callpat">
-                            {/* <h5> Latest review for: </h5> */}
-                            <p>{item?.patient_info?.first_name}{' '}{item?.patient_info?.last_name}</p>
-                            <p>( {item?.patient_info?.alies_id} )</p>
+                            <h5> Latest review for: </h5>
+                            <p>{item?.patient_infos?.first_name}{' '}{item?.patient_infos?.last_name}, MD</p>
+                            <p>{item?.patient_id}</p>
+
                           </Grid>
                         </Grid>
                         <Grid className="call-comment-patient">
-                          <p>
-                            Improve Score by identifying gaps | Live Coaching by Top Teachers | Personalized attention. 54+ hours of live online classes | 1000+ multilevel practice questions | 7 adaptive mocks. Top GMAT Teachers. Score 700+ in GMAT. 10000 + Students. Full Length Mock Tests. Improve your Score. Enroll Online. Courses: Online Live Classes, Online Private Tutoring, Live Online GMAT Coaching.
-                          </p> </Grid>
+                          {/* {item.comment} */}
+                        </Grid>
                       </Grid>
                     </Grid>
+
+
                   </Grid>
+
+
                 ))}
 
 
@@ -173,4 +183,4 @@ class SelectDoctor extends Component {
     );
   }
 }
-export default SelectDoctor;
+export default SelectDoctor; 
