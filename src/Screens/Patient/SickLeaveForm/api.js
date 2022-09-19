@@ -1116,23 +1116,24 @@ export const handleEvalSubmit = (current, value) => {
       if (data?._id && (data?.is_decline || data?.is_decline == true)) {
         updateTaskApi(current, data);
       } else {
-        axios
-          .post(
-            sitedata.data.path + '/vh/AddTask',
-            data,
-            commonHeader(current.props.stateLoginValueAim?.token)
-          )
-          .then((responce) => {
-            mailSendToDoc(data, current);
+        current.props.nextStep();
+        // axios
+        //   .post(
+        //     sitedata.data.path + '/vh/AddTask',
+        //     data,
+        //     commonHeader(current.props.stateLoginValueAim?.token)
+        //   )
+        //   .then((responce) => {
+        //     mailSendToDoc(data, current);
 
-            current.props.history.push('/patient/request-list');
-          })
-          .catch(function (error) {
-            console.log('error');
-            current.setState({
-              loaderImage: false,
-            });
-          });
+        //     current.props.history.push('/patient/request-list');
+        //   })
+        //   .catch(function (error) {
+        //     console.log('error');
+        //     current.setState({
+        //       loaderImage: false,
+        //     });
+        //   });
       }
     } else {
       current.setState({
@@ -1986,7 +1987,7 @@ export const onChange = (date, current) => {
       if (key == days) {
         appointDate = value;
         current.setState({ appointDate: appointDate });
-        
+
         let DoctorSlot = [];
         appointDate.map((item, i) => {
           if (i < appointDate?.length - 1) {

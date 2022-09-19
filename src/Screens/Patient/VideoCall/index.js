@@ -27,33 +27,12 @@ import {
 } from '../../VideoCall/Calls/index';
 import { CometChat } from '@cometchat-pro/chat';
 import { COMETCHAT_CONSTANTS } from '../../Components/CometChat/consts';
-import useAllLoginReducerAim from "../../Hooks/LoginReducerAim"
+import useAllLoginReducerAim from "../../Hooks/LoginReducerAim";
+import Loader from 'Screens/Components/Loader/index';
+import { S3Image } from 'Screens/Components/GetS3Images/index';
+import useAllSetting from '../../Hooks/Setting';
+import TimerIcon from '@material-ui/icons/Timer';
 
-
-
-// var data = [
-//   {
-//     name: "Stacy Lee, MD",
-//     img: "patient.png",
-//     description: "Probably the most random thing you have ever seen!",
-//   },
-//   {
-//     name: "Michel K, MD",
-//     img: "person1.jpg",
-//     description: "Hello World!",
-//   },
-//   {
-//     name: "Stacy Lee, MD",
-//     img: "patient.png",
-//     description: "Probably the most random thing you have ever seen!",
-//   },
-//   {
-//     name: "Michel K, MD",
-//     img: "person1.jpg",
-//     description: "Hello World!",
-//   },
-// ];
-var options = [{}];
 function TabContainer(props) {
   return (
     <Typography component="div" className="tabsCntnts">
@@ -70,6 +49,8 @@ const VideoCallPat = (props) => {
   const [value, setValue] = useState(0);
   const stateLoginValueAim = useAllLoginReducerAim();
   const [startCall, setStartCall] = useState(false);
+  const [loaderImage, setLoaderImage] = useState(false);
+  const settings = useAllSetting();
 
   let translate = getLanguage(props.stateLanguageType);
   let { my_profile, Security } = translate;
@@ -79,7 +60,7 @@ const VideoCallPat = (props) => {
     axios
       .get(
         APIs.getfeedbackfordoctor + "/62a41f1ec627873603accc6c",
-        commonHeader(props.stateLoginValueAim.token)
+        commonHeader(stateLoginValueAim.token)
       )
       .then((response) => {
         let { data, hassuccessed } = response.data;
@@ -108,6 +89,7 @@ const VideoCallPat = (props) => {
   const callCometChat = () => {
     var profile_id = stateLoginValueAim?.user?.profile_id;
     let callType = 'DIRECT';
+    setLoaderImage(true);
     CometChat.login(profile_id, COMETCHAT_CONSTANTS.AUTH_KEY)
       .then((resp) => {
         axios
@@ -120,6 +102,7 @@ const VideoCallPat = (props) => {
               axios
                 .get(APIs2.linktime + "/" + sesion_id)
                 .then((response) => {
+                  setLoaderImage(false);
                   setStartCall(true);
                   // if (response && response.data && response.data.hassuccessed) {
                   //   if (response.data.message === 'link active') {
@@ -159,40 +142,43 @@ const VideoCallPat = (props) => {
   return (
     <Grid
       className={
-        props.settings &&
-          props.settings.setting &&
-          props.settings.setting.mode &&
-          props.settings.setting.mode === "dark"
+        settings &&
+          settings.setting &&
+          settings.setting.mode &&
+          settings.setting.mode === "dark"
           ? "homeBg darkTheme homeBgDrk"
           : "homeBg"
       }
     >
+      {loaderImage && <Loader />}
       <Grid className="homeBgIner">
         <Grid container direction="row" justify="center">
           <Grid item xs={12} md={12}>
             <Grid container direction="row">
               {/* <LeftMenu isNotShow={true} currentPage="settings" /> */}
               {/* <LeftMenuMobile isNotShow={true} currentPage="settings" /> */}
-              <Grid item xs={12} md={11} lg={11}>
-                <div className="settingPage">
-                  <>
-                    <div>
-                      <div className="call-page-card form_full">
-                        <div className="heading-status-call">
-                          <div className="inprogress-call">
-                            <span className="inprogress-call-text">
-                              In progress
-                            </span>
-                          </div>
-                          <div className="">
-                            <span className="call-review-text">
-                              {" "}
-                              Latest review for
-                            </span>
-                          </div>
-                        </div>
+              <Grid item xs={12} md={12} lg={12}>
+                {startCall &&
+                  <div className="settingPage">
+                    <>
+                      <div>
+                        <div className="call-page-card form_full">
+                          <div className="heading-status-call">
+                            <div className="inprogress-call">
+                              <span className="inprogress-call-text">
+                                In progress
+                              </span>
+                            </div>
+                            <div className="">
+                              {/* <span className="call-review-text">
+                                {" "}
+                                Latest review for
+                              </span> */}
 
-                        {/* <div className="video-page">
+                            </div>
+                          </div>
+
+                          {/* <div className="video-page">
                           <div className="call-popup">
                             <div className="call-pop-title">Out Of Credit</div>
                             <div className="call-pop-body">
@@ -231,16 +217,16 @@ const VideoCallPat = (props) => {
                           </div>
                         </div> */}
 
-                        <Grid item xs={12} md={11} lg={10}>
-                          <Grid container direction="row">
-                            <Grid item xs={12} md={12} lg={12}>
-                              <Grid className="cssCall">
-                                {startCall &&
+                          <Grid item xs={12} md={12} lg={12}>
+                            <Grid container direction="row">
+                              <Grid item xs={12} md={10} lg={9}>
+                                <Grid className="cssCall">
+                                  {/* {startCall && */}
                                   <>
-                                    {/* <Grid className="callCss">
-                                    <TimerIcon className="timerIcon" />
-                                    <label className="formviewhead"> {this.state.time.h}h : {this.state.time.m}m</label>
-                                  </Grid> */}
+                                    <Grid>
+                                      <TimerIcon className="timerIcon" />
+                                      <label className="formviewhead"> h : m</label>
+                                    </Grid>
                                     <CometChatOutgoingDirectCall
                                       open
                                       // userListCall={(userList) =>
@@ -257,26 +243,38 @@ const VideoCallPat = (props) => {
                                     // loggedInUser={loggedInUser}
                                     // actionGenerated={actionHandler}
                                     />
-                                  </>}
-                              </Grid> </Grid>
+                                  </>
+                                  {/* } */}
+                                </Grid>
+                              </Grid>
+                              <Grid item xs={12} md={12} lg={3}>
+                                <Grid className="profileImagePat">
+                                  {/* <S3Image imgUrl="allTasks?.patient?.image" /> */}
+                                </Grid>
+                                <Grid className="topTxtVideoSec">
+                                  <p>Ankit Jain</p>
+                                  <label className="formviewhead">P43nbnj65_4</label>
+                                </Grid>
+                              </Grid>
+                            </Grid>
                           </Grid>
-                        </Grid>
 
-                        <div className="call-feedback-part">
-                          <Carousel>{slideItems}</Carousel>
-                        </div>
+                          <div className="call-feedback-part">
+                            <Carousel>{slideItems}</Carousel>
+                          </div>
 
-                        <div>
-                          At vero eos et accusamus et iusto odio dignissimos
-                          ducimus qui blanditiis praesentium voluptatum deleniti
-                          atque corrupti quos dolores et quas molestias
-                          excepturi sint{" "}
-                          <a href="">occaecati cupiditate non provident.</a>
+                          <div>
+                            At vero eos et accusamus et iusto odio dignissimos
+                            ducimus qui blanditiis praesentium voluptatum deleniti
+                            atque corrupti quos dolores et quas molestias
+                            excepturi sint{" "}
+                            <a href="">occaecati cupiditate non provident.</a>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </>
-                </div>
+                    </>
+                  </div>
+                }
 
                 {/* <div className='logout' >Logout</div> */}
               </Grid>
@@ -288,34 +286,5 @@ const VideoCallPat = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
-    state.LoginReducerAim;
-  const { stateLanguageType } = state.LanguageReducer;
-  const { settings } = state.Settings;
-  const { verifyCode } = state.authy;
-  const { metadata } = state.OptionList;
-  // const { Doctorsetget } = state.Doctorset;
-  // const { catfil } = state.filterate;
-  return {
-    stateLanguageType,
-    stateLoginValueAim,
-    loadingaIndicatoranswerdetail,
-    settings,
-    verifyCode,
-    metadata,
-    //   Doctorsetget,
-    //   catfil
-  };
-};
-export default pure(
-  withRouter(
-    connect(mapStateToProps, {
-      LoginReducerAim,
-      OptionList,
-      LanguageFetchReducer,
-      Settings,
-      authy,
-    })(VideoCallPat)
-  )
-);
+
+export default VideoCallPat;

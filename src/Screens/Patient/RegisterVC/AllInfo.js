@@ -30,7 +30,7 @@ class AllInfo extends Component {
     SearchFilter1 = (e) => {
         var user_token = this.props.redux_st.stateLoginValueAim.token
         var data1 = e.target.value.toLowerCase()
-        this.props.onSelectLanguage('','','' );
+        this.props.onSelectLanguage('', '', '');
         this.setState({ searchValue: e.target.value });
         axios
             .get(sitedata.data.path + "/vchat/Get_Doctor/" + data1,
@@ -140,7 +140,7 @@ class AllInfo extends Component {
                                                                                     >
                                                 <Grid className="card-header Card_Sel">
                                                     <S3Image imgUrl={this.props.dataa.doctor_detail[0].image} />
-                                                    
+
                                                     <Grid>
                                                         <h5 className="selectdoc-head"> {this.props.dataa.doctor_detail[0].first_name}{' '}{this.props.dataa.doctor_detail[0].last_name}</h5>
                                                         <h5 className="selectdoc-head2"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>
@@ -197,21 +197,21 @@ class AllInfo extends Component {
                                 {/* </Grid> */}
                             </Grid>
                             <Grid className="infoShwSave3 ">
-                            <input
+                                <input
                                     type="button"
                                     value="« Back"
                                     onClick={this.back}
 
                                 />
-                                {this.props.dataa.doctor_detail?
-                                
-                                <input
-                                    type="button"
-                                    value="Next »"
-                                    onClick={this.continue}
+                                {this.props.dataa.doctor_detail ?
 
-                                />: ''
-                                    }
+                                    <input
+                                        type="button"
+                                        value="Next »"
+                                        onClick={this.continue}
+
+                                    /> : ''
+                                }
                             </Grid>
                         </Grid>
 
