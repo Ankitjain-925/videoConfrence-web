@@ -163,6 +163,7 @@ class AllInfo extends Component {
                                                 <Grid className={this.state.load === i ? 'Card_Sel card-header' : 'card-header'} onClick={() => {
                                                         this.func(item, i, this.state.searchValue);
                                                     }}>
+
                                                     <S3Image imgUrl={item.image} />
 
                                                     <Grid>

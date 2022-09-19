@@ -17915,4 +17915,21 @@ line-height: 22px;
   color: #00abaf !important;
 }
 
+/* .euroamount{    position: absolute;
+  top: 8px;
+  left: 307px;
+  color: grey;
+  font-weight: 600;} */
 
+  .euroamount{
+    left: -17px;
+    float: right;
+    position: relative;
+    bottom: 30px;
+  }
+
+  .err_mesg{
+    text-align: left!important;
+    color: red !important;
+    font-weight: 600;
+  }
