@@ -139,11 +139,7 @@ class SelectDoctor extends Component {
                           </p> </Grid>
                       </Grid>
                     </Grid>
-
-
                   </Grid>
-
-
                 ))}
 
 
