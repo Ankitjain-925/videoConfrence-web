@@ -141,12 +141,9 @@ export class StepForm extends Component {
 
         return (
             <>
-
-
                 <h1 style={myst1}>Step {step} of 6.</h1>
+
                 {this.showStep()}
-
-
             </>
         );
     }

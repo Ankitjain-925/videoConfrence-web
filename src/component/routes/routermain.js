@@ -21,6 +21,7 @@ import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from "Screens/Patient/loginVideo";
 import VideoGuideLine from "Screens/Patient/VideoGuideLine";
 import RegisterVC from "Screens/Patient/RegisterVC/index";
+import TopUp from "Screens/Patient/Dashboard/topup"
 import FeedBack from "Screens/Patient/FeedBack";
 // import TopUp from "Screens/Patient/Dashboard/topup"
 class Routermain extends Component {
@@ -51,12 +52,11 @@ class Routermain extends Component {
               path="/patient/settings"
               render={(props) => <Dashboard {...props} />}
             />
-            {/* <Route
+            <Route
               exact
               path="/patient/top-up"
               render={(props) => <TopUp {...props} />}
-            /> */}
-
+            />
             <Route
               exact
               path="/video-guideline"
