@@ -253,7 +253,7 @@ export const allgetData = (patient_id, current) => {
   let { Something_went_wrong } = translate;
   axios
     .get(
-      sitedata.data.path + '/vactive/GetAllPatientData/' + patient_id,
+      sitedata.data.path + '/vchat/GetVideoTask/' + patient_id,
       commonHeader(current.props.stateLoginValueAim.token)
     )
     .then((responce) => {
