@@ -17229,13 +17229,15 @@ a {
 
 
 .selectdoc-button {
+  margin-top: 8px;
   border: 1px solid #1DD1A1;
   border-radius: 5px;
-  padding: 0px 10px;
+  padding: 0px 8px 0px 2px;
   font-size: 14px;
   font-weight: 700;
   color: #7F8383;
   display: flex;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -17264,9 +17266,13 @@ a {
   font-weight: 700;
 }
 
-.card-label {
+.card-label p{
   margin-bottom: 10px;
+  padding: 4px;
+  width: 100%;
+  border: #00ABAF 1px solid;
 }
+
 
 .doctor-select-btn {
   height: 48px;
@@ -17311,18 +17317,20 @@ a {
 
 .selectdoc-head2 {
   margin: 0;
-  font-weight: 800;
-  font-size: 17px;
+  font-weight: 400;
+  font-size: 13px;
   color: black;
   font-family: "Muli";
+  padding-top: 2px;
 }
 
 .darkTheme .selectdoc-head2 {
   margin: 0;
-  font-weight: 800;
-  font-size: 17px;
+  font-weight: 400;
+  font-size: 13px;
   color: #d9dada;
   font-family: "Muli";
+  padding-top: 3px;
 }
 
 .P_f img {
@@ -17592,7 +17600,8 @@ a {
   font-size: 14px;
   line-height: 18px;
   color: #00ABAF !important;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  margin-left: 8px;
 }
 
 .call-pop-title {
@@ -17681,7 +17690,7 @@ a {
 .call-feadback-header {
   display: flex;
   flex-direction: row;
-  height: 100px;
+  /* height: 100px; */
 }
 
  .darkTheme .accessForm{
@@ -17938,4 +17947,10 @@ line-height: 22px;
   color: #00abaf !important;
 }
 
+.call-feadback-header img{
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
 
