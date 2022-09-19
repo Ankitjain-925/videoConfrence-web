@@ -17422,7 +17422,7 @@ a {
 }
 
 .darkTheme .form_full .card-header {
-  background-color: #404646;
+  background-color: #182020;
 }
 
 .darkTheme .form_full .card-content {
@@ -17450,14 +17450,12 @@ a {
 }
 
 .Card_1 {
-  margin: 10px !important;
   cursor: pointer;
   border-radius: 5px;
   background: #f1f2f2;
 }
 
 .darkTheme .Card_1 {
-  margin: 10px !important;
   cursor: pointer;
   border-radius: 5px;
   background: #192020;

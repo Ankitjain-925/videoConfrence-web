@@ -62,12 +62,12 @@ class JobDetails extends Component {
                 <Grid className="logForm form_full">
 
                     <Grid className="logRow" >
-                        <Grid container direction="row" >
-                            <Grid item xs={12} md={5} className="Card_1" >
+                        <Grid container justify="center" spacing="3" alignItems="center" direction="row" >
+                            <Grid item xs={12} md={6} sm={6} >
 
 
 
-                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(true)} className={this.props.dataa.permission === true ? 'Card_Sel' : ''}>
+                                <Grid onClick={()=>this.click(true)} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
@@ -84,11 +84,9 @@ class JobDetails extends Component {
                                     
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12} md={1}>
-
-                            </Grid>
-                            <Grid item xs={12} md={5} className="Card_1">
-                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(false)} className={this.props.dataa.permission === true ? '' : this.props.dataa.permission === false ? 'Card_Sel' : ''}>
+                            
+                            <Grid item xs={12} md={6} sm={6} >
+                                <Grid  onClick={()=>this.click(false)} className={this.props.dataa.permission === true ? '' : this.props.dataa.permission === false ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">

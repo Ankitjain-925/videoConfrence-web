@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PersonalInfo from './PersonalInfo';
 import JobDetails from './JobDetails';
 import AllInfo from './AllInfo';
-import SelectDoctor from '../Dashboard/Selectdoctor'
+import SelectDoctor from '../Dashboard/Selectdoctors'
 import Form5 from '../SickLeaveForm/index'
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -10,6 +10,8 @@ import { LoginReducerAim } from "Screens/Login/actions";
 import { LanguageFetchReducer } from 'Screens/actions';
 import Payment from '../RequestList/Payment/index';
 import Step7 from "../RegisterVC/Step7"
+import { OptionList } from 'Screens/Login/metadataaction';
+
 
 export class StepForm extends Component {
     state = {
@@ -93,7 +95,8 @@ export class StepForm extends Component {
                 dataa={mainState}
                 onSelectLanguage2={this.handleLanguage2}
                 nextStep={this.nextStep}
-            />);
+                title_degreeData={this.props.metadata?.video_minutes || []}
+                />);
         if (step === 2)
             return (<JobDetails
                 redux_st={this.props}
@@ -162,15 +165,17 @@ const mapStateToProps = (state) => {
     const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
         state.LoginReducerAim;
     const { stateLanguageType } = state.LanguageReducer;
+    const { metadata } = state.OptionList;
     return {
         stateLanguageType,
         stateLoginValueAim,
-
+        metadata
     };
 };
 export default withRouter(
     connect(mapStateToProps, {
         LoginReducerAim,
         LanguageFetchReducer,
+        OptionList
     })(StepForm)
 );
