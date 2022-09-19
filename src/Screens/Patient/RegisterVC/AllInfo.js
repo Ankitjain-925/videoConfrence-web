@@ -127,17 +127,16 @@ class AllInfo extends Component {
                                 </Grid>
                                 {/* End of Bread Crumb */}
 
-                                <Grid className="wardsGrupUpr">
+                                {/* <Grid className="wardsGrupUpr"> */}
                                     <Grid container direction="row">
                                         {/* {console.log("this.props.dataa", this.props.dataa.doctor_detail.first_name)} */}
                                         {this.props.dataa.doctor_detail ?
-                                            <Grid className="flowInfo P_full Card_Sel">
-                                                <Grid className="card-header">
+                                                <Grid className="card-header Card_Sel">
                                                     <S3Image imgUrl={this.props.dataa.doctor_detail[0].image} />
                                                     
                                                     <Grid>
                                                         <h5 className="selectdoc-head"> {this.props.dataa.doctor_detail[0].first_name}{' '}{this.props.dataa.doctor_detail[0].last_name}</h5>
-                                                        <h5 className="selectdoc-head"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>
+                                                        <h5 className="selectdoc-head2"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>
                                                         {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                                                         <Grid className='selectdoc-button'>
                                                             <span>on-line</span>
@@ -145,7 +144,6 @@ class AllInfo extends Component {
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
-                                            </Grid>
                                             :
 
                                             this.state.currentList?.length > 0 &&
@@ -153,34 +151,31 @@ class AllInfo extends Component {
 
                                                 <Grid
                                                     item
-                                                    xs={12}
-                                                    md={4}
-                                                    lg={4}
-
-
-
+                                                    xs={6}
+                                                    md={6}
+                                                    lg={6}
+                                                    sm={6}
+                                                    className="manage-sel-doc"
                                                 >
                                                     {/* {console.log("1222",this.props.dataa.doctor_index )} */}
 
-                                                    <Grid className={this.state.load === i ? 'Card_Sel' : ''} onClick={() => {
+                                                    
+                                                <Grid className={this.state.load === i ? 'Card_Sel card-header' : 'card-header'} onClick={() => {
                                                         this.func(item, i, this.state.searchValue);
                                                     }}>
-                                                        <Grid className="flowInfo P_full">
-                                                            <Grid className="card-header">
-                                                                <S3Image imgUrl={item.image} />
+                                                    <S3Image imgUrl={item.image} />
 
-                                                                <Grid>
-                                                                    <h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5>
-                                                                    <h5 className="selectdoc-head"> {'('}{item.profile_id}{')'}</h5>
-                                                                    {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
-                                                                    <Grid className='selectdoc-button'>
-                                                                        <span>on-line</span>
+                                                    <Grid>
+                                                        <h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5>
+                                                        <h5 className="selectdoc-head2"> ({item.profile_id})</h5>
+                                                        {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
+                                                        <Grid className='selectdoc-button'>
+                                                            <span>on-line</span>
 
-                                                                    </Grid>
-                                                                </Grid>
-                                                            </Grid>
                                                         </Grid>
                                                     </Grid>
+                                                </Grid>
+                                                       
 
 
                                                 </Grid>
@@ -191,7 +186,7 @@ class AllInfo extends Component {
 
 
                                     </Grid>
-                                </Grid>
+                                {/* </Grid> */}
                             </Grid>
                             <Grid className="infoShwSave3 ">
                             <input

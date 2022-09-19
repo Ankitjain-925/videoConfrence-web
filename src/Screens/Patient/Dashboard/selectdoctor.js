@@ -77,7 +77,7 @@ class SelectDoctor extends Component {
 
               <Grid>
                 <h5 className="selectdoc-head"> {dataa?.doctor_detail[0]?.first_name}{' '}{dataa?.doctor_detail[0]?.last_name} </h5>
-                <h6 className="selectdoc-head2"> {dataa?.doctor_detail[0]?.profile_id}</h6>
+                <h6 className="selectdoc-head2"> ({dataa?.doctor_detail[0]?.profile_id})</h6>
                 {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                 <Grid className='selectdoc-button'>
                   <span>
