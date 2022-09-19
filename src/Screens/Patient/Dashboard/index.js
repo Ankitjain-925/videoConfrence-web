@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LeftMenu from 'Screens/Components/Menus/PatientLeftMenu/index';
@@ -7,11 +7,13 @@ import Notification from 'Screens/Components/CometChat/react-chat-ui-kit/CometCh
 import AppBar from '@material-ui/core/AppBar';
 import { getLanguage } from 'translations/index';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
+import sitedata from 'sitedata';
+import { commonHeader } from 'component/CommonHeader/index'
 import PropTypes from 'prop-types';
 import { Button } from "@material-ui/core/index";
 import { useHistory } from "react-router-dom";
 import SetLanguage from "Screens/Components/SetLanguage/index.js";
-import { getSetting } from "Screens/Components/Menus/api";
 import { pure } from "recompose";
 import { connect } from "react-redux";
 import { LoginReducerAim } from "Screens/Login/actions";
@@ -48,7 +50,35 @@ const Dashboard = (props) => {
   const profileLink = () => {
     history.push("/patient");
   };
+    // componentDidMount
+    useEffect(() => {
+      getSetting()
+  }, [])
 
+  const getSetting = () => {
+    console.log('props?.stateLoginValueAim', props?.stateLoginValueAim, props)
+    axios
+      .get(
+        sitedata.data.path + '/UserProfile/updateSetting',
+        commonHeader(props?.stateLoginValueAim.token)
+      )
+      .then((responce) => {
+        if (responce.data.hassuccessed && responce.data.data) {
+          props.Settings(responce.data.data);
+        } else {
+          props.Settings({
+            user_id: props?.stateLoginValueAim?.user?._id,
+          });
+        }
+        var languageValue = responce.data.data && responce.data.data.language
+        ? responce.data.data.language
+        : 'en';
+        setLanguageValue(languageValue);
+        props.LanguageFetchReducer(languageValue);
+      });
+  };
+
+  
   //For open the model
   const openLanguageModel = () => {
     setOpenFancyLanguage(true);
@@ -111,12 +141,13 @@ className={
       </Grid>
     </Grid>
  </Grid>
-<SetLanguage
-    getSetting={() => getSetting(this)}
+<SetLanguage  
+    getSetting={() => getSetting()}
     openFancyLanguage={openFancyLanguage}
     languageValue={languageValue}
-    handleCloseFancyLanguage={() => openLanguageModel()}
-    openLanguageModel={() => setOpenFancyLanguage(false)}
+    handleCloseFancyLanguage={() => handleCloseFancyLanguage()}
+    openLanguageModel={() => openLanguageModel()}
+    
   />
 </Grid>
     )

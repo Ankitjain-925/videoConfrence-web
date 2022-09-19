@@ -17222,9 +17222,9 @@ a {
 .card-header {
   display: flex;
   flex-direction: row;
-  height: inherit;
-  border: none;
-  background: #F7F7F7;
+  border-bottom: none;
+  margin: 5px;
+  border-radius:6px !important;
 }
 
 
@@ -17290,10 +17290,6 @@ a {
   height: 54px !important;
 }
 
-.P_full {
-  margin: 5px;
-}
-
 .v_c_img{
   height: 30px !important;
     width: 30px !important;
@@ -17302,7 +17298,7 @@ a {
 .selectdoc-head {
   margin: 0;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 17px;
   color: black;
   font-family: "Muli";
 }
@@ -17331,6 +17327,13 @@ a {
   color: #d9dada;
   font-family: "Muli";
   padding-top: 3px;
+  margin: 10px 0px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.darkTheme .selectdoc-head2 {
+  color: #d9dada;
 }
 
 .P_f img {
@@ -17360,31 +17363,31 @@ a {
   border: none;
 }
 
-.P_full .card-header {
+/* .P_full .card-header {
   box-shadow: 3px 3px #192020;
   display: flex;
   flex-direction: row;
   height: inherit;
   border: none;
   background: #F7F7F7;
-}
+} */
 
-.P_full .card-header img {
+/* .P_full .card-header img {
   width: 60px;
   height: 71px;
   border-radius: 8px;
   margin-right: auto;
   position: relative;
   left: -10px;
-}
+} */
 
-.P_full .card-header .selectdoc-head {
+/* .P_full .card-header .selectdoc-head {
   margin-bottom: 4px;
   font-weight: 800;
   font-size: 15px;
   color: black !important;
 
-}
+} */
 
 .call-feedback-part {
   display: flex;
@@ -17461,7 +17464,7 @@ a {
 }
 
 .Card_Sel {
-  border: 2px solid #00abaf;
+  border: 1px solid #00abaf;
   border-radius: 6px;
 }
 
@@ -17947,10 +17950,30 @@ line-height: 22px;
   color: #00abaf !important;
 }
 
+<<<<<<< HEAD
 .call-feadback-header img{
   width: 37px;
   height: 37px;
   border-radius: 50%;
   margin-right: 4px;
 }
+=======
+/* .euroamount{    position: absolute;
+  top: 8px;
+  left: 307px;
+  color: grey;
+  font-weight: 600;} */
 
+  .euroamount{
+    left: -17px;
+    float: right;
+    position: relative;
+    bottom: 30px;
+  }
+>>>>>>> 3ec80fb8fcb6fc0e9f163c628d21bb52d61879b1
+
+  .err_mesg{
+    text-align: left!important;
+    color: red !important;
+    font-weight: 600;
+  }

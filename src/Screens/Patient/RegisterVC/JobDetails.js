@@ -18,9 +18,16 @@ class JobDetails extends Component {
         };
 
     }
+    
     continue = e => {
         e.preventDefault();
-        this.props.nextStep();
+        console.log("this.props.dataa",this.props.dataa)
+        if(this.props.dataa.permission == true || this.props.dataa.permission == false){
+            this.props.nextStep();
+        }
+        else{
+            this.setState({ OptionRequired: "Please select a option"  });
+        }
     }
 
     back = e => {
@@ -60,7 +67,7 @@ class JobDetails extends Component {
 
 
 
-                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(true)} className={this.props.dataa.permission ? 'Card_Sel' : ''}>
+                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(true)} className={this.props.dataa.permission === true ? 'Card_Sel' : ''}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
@@ -81,7 +88,7 @@ class JobDetails extends Component {
 
                             </Grid>
                             <Grid item xs={12} md={5} className="Card_1">
-                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(false)} className={!this.props.dataa.permission ? 'Card_Sel' : ''}>
+                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(false)} className={this.props.dataa.permission === true ? '' : this.props.dataa.permission === false ? 'Card_Sel' : ''}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
@@ -96,7 +103,7 @@ class JobDetails extends Component {
                                     
                                 </Grid>
                             </Grid>
-
+                            <Grid className = "err_mesg">{this.state.OptionRequired}</Grid>
                         </Grid>
                     </Grid>
 
