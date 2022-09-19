@@ -4,10 +4,6 @@ import axios from "axios";
 import sitedata from "sitedata";
 import { commonCometHeader, commonHeader } from 'component/CommonHeader/index';
 import Loader from 'Screens/Components/Loader/index';
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { LoginReducerAim } from "Screens/Login/actions";
-import { LanguageFetchReducer } from 'Screens/actions';
 import { getLanguage } from 'translations/index';
 import Input from '@material-ui/core/Input';
 import { S3Image } from "Screens/Components/GetS3Images/index";
@@ -32,7 +28,7 @@ class AllInfo extends Component {
         };
     }
     SearchFilter1 = (e) => {
-        var user_token = this.props.stateLoginValueAim.token
+        var user_token = this.props.redux_st.stateLoginValueAim.token
         var data1 = e.target.value.toLowerCase()
         this.props.onSelectLanguage('', '', '');
         this.setState({ searchValue: e.target.value });
@@ -64,7 +60,7 @@ class AllInfo extends Component {
 
     func = (item, i, searchValue) => {
         this.setState({ load: i });
-        var user_token = this.props.stateLoginValueAim.token
+        var user_token = this.props.redux_st.stateLoginValueAim.token
         axios
             .get(sitedata.data.path + "/vchat/getfeedbackfordoctor/" + item._id,
                 commonHeader(user_token))
@@ -92,7 +88,7 @@ class AllInfo extends Component {
     //     this.setState({ isActive: i });
     // }
     render() {
-        let translate = getLanguage(this.props.stateLanguageType);
+        let translate = getLanguage(this.props.redux_st.stateLanguageType);
         let {
             search_by_name_email_speciality_id_doc,
         } = translate;
@@ -222,19 +218,5 @@ class AllInfo extends Component {
         );
     }
 }
-const mapStateToProps = (state) => {
-    const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
-        state.LoginReducerAim;
-    const { stateLanguageType } = state.LanguageReducer;
-    return {
-        stateLanguageType,
-        stateLoginValueAim,
 
-    };
-};
-export default withRouter(
-    connect(mapStateToProps, {
-        LoginReducerAim,
-        LanguageFetchReducer,
-    })(AllInfo)
-);
+export default AllInfo;

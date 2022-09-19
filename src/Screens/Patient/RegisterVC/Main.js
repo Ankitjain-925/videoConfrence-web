@@ -8,6 +8,8 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { LoginReducerAim } from "Screens/Login/actions";
 import { LanguageFetchReducer } from 'Screens/actions';
+import Payment from '../RequestList/Payment/index';
+import Step7 from "../RegisterVC/Step7"
 
 export class StepForm extends Component {
     state = {
@@ -123,8 +125,15 @@ export class StepForm extends Component {
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
             />);
+        if (step === 7)
+            return (<Step7
+                // dataa2={mainState2}
+                onSelectLanguage5={this.handleLanguage5}
+                // dataa={mainState}
+                nextStep={this.nextStep}
+                prevStep={this.prevStep}
+            />);
     }
-
 
 
     render() {
@@ -140,7 +149,7 @@ export class StepForm extends Component {
             <>
 
 
-                <h1 style={myst1}>Step {step} of 6.</h1>
+                <h1 style={myst1}>Step {step} of 7.</h1>
                 {this.showStep()}
 
 
