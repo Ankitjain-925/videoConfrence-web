@@ -32,7 +32,7 @@ class PersonalInfo extends Component {
                     </Grid>
                     <Grid>
                         <Select
-                            value={this.props.dataa.time}
+                            value={this.props.dataa?.time}
                             name="firstName"
                             options={this.state.title_degreeData}
                             placeholder="Select Time To Talk "
@@ -54,7 +54,7 @@ class PersonalInfo extends Component {
                             type="text"
                             readOnly
                             name="lastName"
-                            value={this.props.dataa.amount}
+                            value={this.props.dataa?.amount}
                             placeholder="Total Payable Amount"
                         />
                            <p className="euroamount">€</p>

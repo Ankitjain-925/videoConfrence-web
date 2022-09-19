@@ -131,6 +131,13 @@ class AllInfo extends Component {
                                     <Grid container direction="row">
                                         {/* {console.log("this.props.dataa", this.props.dataa.doctor_detail.first_name)} */}
                                         {this.props.dataa.doctor_detail ?
+                                                                                        <Grid
+                                                                                        item
+                                                                                        xs={6}
+                                                                                        md={6}
+                                                                                        lg={6}
+                                                                                        sm={6}
+                                                                                    >
                                                 <Grid className="card-header Card_Sel">
                                                     <S3Image imgUrl={this.props.dataa.doctor_detail[0].image} />
                                                     
@@ -144,6 +151,7 @@ class AllInfo extends Component {
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
+                                                </Grid>
                                             :
 
                                             this.state.currentList?.length > 0 &&
@@ -155,7 +163,6 @@ class AllInfo extends Component {
                                                     md={6}
                                                     lg={6}
                                                     sm={6}
-                                                    className="manage-sel-doc"
                                                 >
                                                     {/* {console.log("1222",this.props.dataa.doctor_index )} */}
 
