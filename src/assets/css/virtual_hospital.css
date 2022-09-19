@@ -17168,7 +17168,7 @@ label.errMsgStyleSecPart {
 }
 
 .settingPage {
-  margin: 10px 10px 10px 50px;
+  margin: 10px 10px 10px 10px;
   padding: 10px;
 }
 
@@ -17364,6 +17364,14 @@ a {
   border-top: #f1f1f1 1px solid;
   color: #d9dada;
   padding: 10px;
+}
+
+.call-feedback-part .call-feadback-header{
+  margin-top: 12px;
+}
+
+.darkTheme .MuiPaper-rounded{
+  background: #1c2226
 }
 
 .darkTheme .form_full {
@@ -17649,13 +17657,18 @@ a {
 }
 
 .cssCall .css-1yrthcx {
-  /* top: 95px!important;
-  left: 60px!important; */
-  width: 85%;
+/* top: 95px!important; */
+  left: 10px!important; 
+  /* width: 85%; */
   border-radius: 8px;
-  height: 400px;
-  position: relative
+  height: 425px;
+  position: relative;
+  margin-bottom: 18px
   
+}
+
+.inprogress-call span{
+  color:#EE5253
 }
 
 
