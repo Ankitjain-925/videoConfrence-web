@@ -17168,7 +17168,7 @@ label.errMsgStyleSecPart {
 }
 
 .settingPage {
-  margin: 10px 10px 10px 50px;
+  margin: 10px 10px 10px 10px;
   padding: 10px;
 }
 
@@ -17229,13 +17229,15 @@ a {
 
 
 .selectdoc-button {
+  margin-top: 8px;
   border: 1px solid #1DD1A1;
   border-radius: 5px;
-  padding: 0px 10px;
+  padding: 0px 8px 0px 2px;
   font-size: 14px;
   font-weight: 700;
   color: #7F8383;
   display: flex;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -17264,9 +17266,13 @@ a {
   font-weight: 700;
 }
 
-.card-label {
+.card-label p{
   margin-bottom: 10px;
+  padding: 4px;
+  width: 100%;
+  border: #00ABAF 1px solid;
 }
+
 
 .doctor-select-btn {
   height: 48px;
@@ -17306,6 +17312,21 @@ a {
 }
 
 .selectdoc-head2 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  color: black;
+  font-family: "Muli";
+  padding-top: 2px;
+}
+
+.darkTheme .selectdoc-head2 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  color: #d9dada;
+  font-family: "Muli";
+  padding-top: 3px;
   margin: 10px 0px;
   font-weight: 600;
   font-size: 13px;
@@ -17386,6 +17407,14 @@ a {
   border-top: #f1f1f1 1px solid;
   color: #d9dada;
   padding: 10px;
+}
+
+.call-feedback-part .call-feadback-header{
+  margin-top: 12px;
+}
+
+.darkTheme .MuiPaper-rounded{
+  background: #1c2226
 }
 
 .darkTheme .form_full {
@@ -17574,7 +17603,8 @@ a {
   font-size: 14px;
   line-height: 18px;
   color: #00ABAF !important;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  margin-left: 8px;
 }
 
 .call-pop-title {
@@ -17663,7 +17693,7 @@ a {
 .call-feadback-header {
   display: flex;
   flex-direction: row;
-  height: 100px;
+  /* height: 100px; */
 }
 
  .darkTheme .accessForm{
@@ -17671,13 +17701,18 @@ a {
 }
 
 .cssCall .css-1yrthcx {
-  /* top: 95px!important;
-  left: 60px!important; */
-  width: 85%;
+/* top: 95px!important; */
+  left: 10px!important; 
+  /* width: 85%; */
   border-radius: 8px;
-  height: 400px;
-  position: relative
+  height: 550px;
+  position: relative;
+  margin-bottom: 18px
   
+}
+
+.inprogress-call span{
+  color:#EE5253
 }
 
 .top-up-mid1-inner{
@@ -17915,6 +17950,14 @@ line-height: 22px;
   color: #00abaf !important;
 }
 
+<<<<<<< HEAD
+.call-feadback-header img{
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+=======
 /* .euroamount{    position: absolute;
   top: 8px;
   left: 307px;
@@ -17927,6 +17970,7 @@ line-height: 22px;
     position: relative;
     bottom: 30px;
   }
+>>>>>>> 3ec80fb8fcb6fc0e9f163c628d21bb52d61879b1
 
   .err_mesg{
     text-align: left!important;

@@ -29,8 +29,12 @@ const LoginVideo = (props) => {
   const [errormsg, setErrormsg] = useState("");
 
   let translate = getLanguage(props.stateLanguageType);
-  let { login_video_confrence, username, password, login_LOGIN_btn } =
+  let { login_video_confrence, username, password, login_LOGIN_btn, login_Forgotpassword, login_Password } =
     translate;
+
+  const toggleShow = () => {
+    setHidden(!hidden);
+  }
 
   const BtnSubmit = () => {
     if (_username !== "" && _password !== "") {
@@ -57,7 +61,7 @@ const LoginVideo = (props) => {
       .post(path + "/vchat/UsernameLogin", _data, commonHeader(props.token))
       .then((response) => {
         if (response.data.hassuccessed === true) {
-          props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '',props.token, () => {}, props.stateLoginValueAim, true, response?.data?.data);
+          props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props.token, () => { }, props.stateLoginValueAim, true, response?.data?.data);
           history.push({
             pathname: "/patient/settings",
           });
@@ -82,103 +86,141 @@ const LoginVideo = (props) => {
     props?.verifyCode?.code
   ) {
 
-    if(props?.stateLoginValueAim.is_vedio_registered){
+    if (props?.stateLoginValueAim.is_vedio_registered) {
       return <Redirect to={'/patient/video_login'} />;
     }
-    else if(props?.stateLoginValueAim?.isVideoLoggedIn){
+    else if (props?.stateLoginValueAim?.isVideoLoggedIn) {
       return <Redirect to={'/patient/settings'} />;
-    } 
-    else{
+    }
+    else {
       return <Redirect to={'/patient/video_register'} />;
     }
-  } 
+  }
   else {
-  return (
-    
-    <Grid
-      className={
-        props.settings &&
-          props.settings.setting &&
-          props.settings.setting.mode &&
-          props.settings.setting.mode === "dark"
-          ? "homeBg darkTheme homeBgDrk"
-          : "homeBg"
-      }
-    >
-      <Grid className="homeBgIner">
-        <Grid container direction="row" justify="center">
-          <Grid item xs={12} md={12}>
-            <Grid container direction="row">
-              {/* Website Menu */}
-              <LeftMenu isNotShow={true} currentPage="register_video" />
-              <LeftMenuMobile isNotShow={true} currentPage="register_video" />
-              <Notification />
-              <Grid item xs={12} md={11} lg={10}>
-                <Grid className="docsOpinion">
-                  <Grid container direction="row" className="docsOpinLbl">
-                    <Grid item xs={12} md={6}>
-                      <label>{login_video_confrence}</label>
+    return (
+
+      <Grid
+        className={
+          props.settings &&
+            props.settings.setting &&
+            props.settings.setting.mode &&
+            props.settings.setting.mode === "dark"
+            ? "homeBg darkTheme homeBgDrk"
+            : "homeBg"
+        }
+      >
+        <Grid className="homeBgIner">
+          <Grid container direction="row" justify="center">
+            <Grid item xs={12} md={12}>
+              <Grid container direction="row">
+                {/* Website Menu */}
+                <LeftMenu isNotShow={true} currentPage="register_video" />
+                <LeftMenuMobile isNotShow={true} currentPage="register_video" />
+                <Notification />
+                <Grid item xs={12} md={11} lg={10}>
+                  <Grid className="docsOpinion">
+                    <Grid container direction="row" className="docsOpinLbl">
+                      <Grid item xs={12} md={6}>
+                        <label>{login_video_confrence}</label>
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
-                <Grid item xs={12} md={10} lg={8}>
+                  <Grid item xs={12} md={10} lg={8}>
 
-                  {/* <Grid className="profilePkg"> */}
-                  <Grid className="profilePkgIner3 border-radious-10">
-                    <Grid className="logForm form_full">
-                      {error && <div className="err_message">{errormsg}</div>}
-                      <Grid className="logRow">
-                        <Grid>
-                          <label>{username}</label>
+                    {/* <Grid className="profilePkg"> */}
+                    <Grid className="profilePkgIner3 border-radious-10">
+                      <Grid className="logForm form_full">
+                        {error && <div className="err_message">{errormsg}</div>}
+                        <Grid className="logRow">
+                          <Grid>
+                            <label>{username}</label>
+                          </Grid>
+                          <Grid>
+                            <input
+                              type="text"
+                              value={_username}
+                              name="username"
+                              onKeyDown={(e) => onKeyDownlogin(e)}
+                              onChange={(e) => {
+                                set_username(e.target.value);
+                              }}
+                            />
+                          </Grid>
                         </Grid>
-                        <Grid>
+
+                        <Grid className="logRow logpassInst">
+                          <Grid container direction="row">
+                            <Grid item xs={11} sm={6} md={6}>
+                              <label>{login_Password}</label>
+                            </Grid>
+                            {/* <Grid
+                              item
+                              xs={11}
+                              sm={6}
+                              md={6}
+                              className="logFrgtpass"
+                            >
+                              <label>
+                                <a
+                                // onClick={forgotPassword}
+                                >
+                                  {login_Forgotpassword}
+                                </a>
+                              </label>
+                            </Grid> */}
+                          </Grid>
+                          <Grid className="logPass">
+                            {/* <Grid>
+                              <label>{password}</label>
+                            </Grid> */}
+                            <input
+                              type={hidden ? "password" : "text"}
+                              name="pass"
+                              onKeyDown={(e) => onKeyDownlogin(e)}
+                              value={_password}
+                              onChange={(e) => setPassword(e.target.value)}
+                            />
+                            {hidden && (
+                              <a onClick={toggleShow}>
+                                <img
+                                  src={require('assets/images/showeye.svg')}
+                                  alt=""
+                                  title=""
+                                />
+                              </a>
+                            )}
+                            {!hidden && (
+                              <a onClick={toggleShow}>
+                                <img
+                                  src={require('assets/images/hide.svg')}
+                                  alt=""
+                                  title=""
+                                />
+                              </a>
+                            )}
+                          </Grid></Grid>
+
+                        <Grid className="infoShwSave3">
                           <input
-                            type="text"
-                            value={_username}
-                            name="username"
-                            onKeyDown={(e) => onKeyDownlogin(e)}
-                            onChange={(e) => {
-                              set_username(e.target.value);
-                            }}
+                            type="submit"
+                            value={login_LOGIN_btn}
+                            onClick={() => BtnSubmit()}
                           />
                         </Grid>
                       </Grid>
-                      <Grid className="logRow">
-                        <Grid>
-                          <label>{password}</label>
-                        </Grid>
-                        <Grid>
-                          <input
-                            type={hidden ? "password" : "text"}
-                            name="pass"
-                            onKeyDown={(e) => onKeyDownlogin(e)}
-                            value={_password}
-                            onChange={(e) => setPassword(e.target.value)}
-                          />
-                        </Grid>
-                      </Grid>
 
-                      <Grid className="infoShwSave3">
-                        <input
-                          type="submit"
-                          value={login_LOGIN_btn}
-                          onClick={() => BtnSubmit()}
-                        />
-                      </Grid>
                     </Grid>
 
+
                   </Grid>
-
-
+                  {/* </Grid> */}
                 </Grid>
-                {/* </Grid> */}
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
+    );
   }
 };
 
