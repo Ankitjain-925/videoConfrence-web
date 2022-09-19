@@ -110,7 +110,8 @@ export const Upsaterhesus = (current, rhesusfromD) => {
               })
               datas = current.state.UpDataDetails.insurance;
               var forUpdate = {value: true, token: user_token, user: response.data.data}
-              current.props.LoginReducerAim(response.data.data?.email, '', user_token, () => {}, forUpdate);
+              var VideoData = current.props.stateLoginValueAim.VideoData
+              current.props.LoginReducerAim(response.data.data?.email, '', user_token, () => {}, forUpdate, true, VideoData);
               current.setState({ loaderImage: false });
           }).catch((error) => {
               current.setState({ loaderImage: false });

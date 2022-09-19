@@ -116,5 +116,5 @@
     "@typescript-eslint/parser": "^5.11.0",
     "eslint-plugin-react": "^7.28.0"
   },
-  "homepage": "https://virtualhospital.aidoc.io/video-confrance"
+  "homepage": "https://virtualhospital.aidoc.io/video-conference"
 }

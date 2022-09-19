@@ -11,10 +11,10 @@ import Typography from '@material-ui/core/Typography';
 class JobDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: '', }
         this.state = {
             isActive: false,
             isActiv: false,
+            value: ''
         };
 
     }
@@ -33,25 +33,23 @@ class JobDetails extends Component {
 
     }
 
-    dssd = e => {
-        e.preventDefault();
-        this.setState({ isActiv: false });
-        this.setState({ isActive: !this.state.isActive });
-        this.props.onSelectLanguage1(true);
+    click = e => {
+        // e.preventDefault();
+        // this.setState({ isActiv: false });
+        // this.setState({ isActive: !this.state.isActive });
+        this.props.onSelectLanguage1(e)
 
     }
 
-    dssdd = e => {
-        e.preventDefault();
-        this.setState({ isActive: false });
-        this.setState({ isActiv: !this.state.isActiv });
-    }
+    // dssdd = e => {
+    //     e.preventDefault();
+    //     this.setState({ isActive: false });
+    //     this.setState({ isActiv: !this.state.isActiv });
+    // }
 
 
 
     render() {
-
-        const { jobTitle, jobCompany, jobLocation, handleChange } = this.props;
         return (
             <>
                 <Grid className="logForm form_full">
@@ -63,17 +61,17 @@ class JobDetails extends Component {
 
 
 
-                                <Grid sx={{ maxWidth: 345 }} onClick={this.dssd} className={this.state.isActive ? 'Card_Sel' : ''}>
+                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(true)} className={this.props.dataa.permission ? 'Card_Sel' : ''}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
-                                        <Typography inline variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
-                                        <Typography inline variant="h6" component="div" align="right" className="adv2">10 Min</Typography>
+                                        <Typography variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
+                                        <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
                                     </Grid>
 
 
                                     <CardContent>
-                                        <Typography variant="body2" color="text.secondary">
+                                        <Typography variant="body2">
                                         Your Top-Up Amount is: 
                                         </Typography>
                                     </CardContent>
@@ -84,15 +82,15 @@ class JobDetails extends Component {
 
                             </Grid>
                             <Grid item xs={12} md={5} className="Card_1">
-                                <Grid sx={{ maxWidth: 345 }} onClick={this.dssdd} className={this.state.isActiv ? 'Card_Sel' : ''}>
+                                <Grid sx={{ maxWidth: 345 }} onClick={()=>this.click(false)} className={!this.props.dataa.permission ? 'Card_Sel' : ''}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
-                                        <Typography inline variant="h6" component="div" align="left" className="adv1">Credit Card</Typography>
-                                        <Typography inline variant="h6" component="div" align="right" className="adv2">20 Min</Typography>
+                                        <Typography variant="h6" component="div" align="left" className="adv1">Credit Card</Typography>
+                                        <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
                                     </Grid>
                                     <CardContent>
-                                        <Typography variant="body2" color="text.secondary">
+                                        <Typography variant="body2">
                                             Click Here To Pay Through Credit Card 
                                         </Typography>
                                     </CardContent>
@@ -110,8 +108,7 @@ class JobDetails extends Component {
                                 <input
                                     type="text"
                                     name="jobCompany"
-                                    value={jobLocation}
-                                    onChange={handleChange('jobLocation')}
+                                    
                                     placeholder="Enter Card Number"
                                 />
                             )}

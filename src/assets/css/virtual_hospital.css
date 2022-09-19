@@ -17227,21 +17227,16 @@ a {
   background: #F7F7F7;
 }
 
-.selectdoc-head {
-  margin: 0;
-  font-weight: 800;
-  font-size: 20px;
-  color: black !important;
-}
 
 .selectdoc-button {
   border: 1px solid #1DD1A1;
   border-radius: 5px;
-  padding: 2px 10px;
+  padding: 0px 10px;
   font-size: 14px;
   font-weight: 700;
   color: #7F8383;
-  display: initial;
+  display: flex;
+  width: fit-content;
 }
 
 .selectdoc-content {
@@ -17253,7 +17248,7 @@ a {
 }
 
 .card-content {
-  padding: 20px 0px;
+  padding: 20px 10px;
   background: #F7F7F7;
   width: 100% !important;
 }
@@ -17291,6 +17286,43 @@ a {
 
 .P_full {
   margin: 5px;
+}
+
+.v_c_img{
+  height: 30px !important;
+    width: 30px !important;
+}
+
+.selectdoc-head {
+  margin: 0;
+  font-weight: 800;
+  font-size: 20px;
+  color: black;
+  font-family: "Muli";
+}
+
+.darkTheme .selectdoc-head {
+  margin: 0;
+  font-weight: 800;
+  font-size: 20px;
+  color: #d9dada;
+  font-family: "Muli";
+}
+
+.selectdoc-head2 {
+  margin: 0;
+  font-weight: 800;
+  font-size: 17px;
+  color: black;
+  font-family: "Muli";
+}
+
+.darkTheme .selectdoc-head2 {
+  margin: 0;
+  font-weight: 800;
+  font-size: 17px;
+  color: #d9dada;
+  font-family: "Muli";
 }
 
 .P_f img {
@@ -17402,8 +17434,8 @@ a {
   top: -10px;
 }
 
-.settingPage h5 {
-  color: white;
+.darkTheme .settingPage h5 {
+  color: #ffffff;
 }
 
 .Card_1 {
@@ -17661,7 +17693,7 @@ a {
   left: 10px!important; 
   /* width: 85%; */
   border-radius: 8px;
-  height: 425px;
+  height: 550px;
   position: relative;
   margin-bottom: 18px
   
@@ -17671,5 +17703,239 @@ a {
   color:#EE5253
 }
 
+.top-up-mid1-inner{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgba(35, 35, 35, 0.04);
+  border-radius: 8px;
+  float: left;
+  padding: 20px;
+  margin-right: 12px
+}
+.top-up-buybtn{
+  border:none;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width:100%;
+  background: #E1F7F7;
+  border-radius: 6px;
+  font-weight:600;
+}
+.top-up-head-1{
+  position:relative;
+}
+.top-up-content{
+  padding:15px 0px;
+}
+.top-up-head{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  color: #171717;
+}
+.goto-custom-topup{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  margin-top:46px;
+  text-decoration-line: underline;
+  color: #00ABAF;
+  cursor:pointer;
+}
+.top-up-minnute
+{
+  padding: 5px;
+  background: #F7F7F7;
+  border-radius: 12px;
+  position: absolute;
+  right: 0;
+  top:0;
+}
+.top-up-buybtn:hover{
+  background: #00ABAF;
+}
+.top-up-cost{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 48px;
+  padding: 22px 0px;
+}
+.custom-topup-head{
+  text-align: center;
+  margin-bottom: 3px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 35px;
+}
+.custom-topup-rmin{
+  color: #1E1E1E;
+  font-weight: 700;
+}
+.custom-topup-Back{
+  color: #00ABAF;
+  font-weight:600;
+  font-size:14px;
+  cursor: pointer;
+}
+.custom-topup-recieve{
+  float:right;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #8A8A8E;
+}
+.continueBTN-topup button:hover{
+  color: #fff; 
+  background: #00ABAF;
+}
+.continueBTN-topup button{
+  width: 100%;
+  text-transform: capitalize;
+  color: #fff; 
+  background: #00ABAF;
+  border-radius: 8px; 
+  text-align: center; 
+  margin-top: 40px;
+}
+.custom-topup-field{
+  background: rgb(255, 255, 255);
+    box-shadow: rgb(35 35 35 / 4%) 0px 4px 12px;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px 30px 22px 10px;
+    margin-right: 12px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.custom-topup{
+  padding: 16px;
+  width: 620px;
+  background: #F7F7F7;
+  border-radius: 8px;
+  margin: 30px auto;
+}
+.top-up-1-middle-heading{
+  font-style: normal;
+font-weight: 700;
+font-size: 17px;
+line-height: 22px;
+}
+
+
+/* added by tanya */
+
+.formopen input{
+  border-radius: 8px;
+  background-color: #00abaf;
+  border: 2px solid #00abaf;
+  width: 240px;
+  color: #ffffff;
+  font-family: Muli;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: center;
+  padding: 12px 8px;
+  margin-top: 20px;
+  margin-bottom: 2px;
+  outline: none;
+  margin: 10px;
+}
+.formopen input:hover {
+  background-color: 00abaf;
+  
+}
+
+.creatTaskModel3{
+  width: 580px;
+  background: #fff;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: 0 24px 32px 0 rgb(0 8 8 / 8%);
+  margin-top: 20px;
+  padding-right: 2px;
+  padding-top: 18px;
+  padding-bottom: 16px;
+  border-radius: 12px;
+  }
+  .darkTheme .creatTaskModel3 {
+    background-color: #404646 !important;
+  }
+  
+  @media (max-width: 768px) {
+    .creatTaskModel3 {
+      width: 98% !important;
+    }
+  }
+  .creatTaskModel11{
+    margin-top:21px!important
+  }
+
+  .creatTaskModel.creatTaskModel11 .MuiGrid-root.creatLbl {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .creatTaskModel.creatTaskModel11 {
+    padding: 0px;
+  }
+  .creatTaskCntnt {
+    height: 537px;
+    overflow-y: scroll;
+    padding: 20px 0px;
+  }
+  .symptomsType a:hover .symptomsWht {
+    display: block !important;
+  }
+  .symptomsType a .symptomsWht {
+    display: none;
+  }
+  .symptomsType .activeButton .symptomsWht {
+    display: block !important;
+  }
+ .darkTheme .ql-toolbar.ql-snow {
+    background-color: #192020 !important;
+}
+.darkTheme .quill .ql-editor {
+  background: #404646 !important;
+  color: #bfc1c1 !important;
+}
+.darkTheme .ql-editor {
+  color: #c0c0c0;
+}
+.darkTheme .symptomsType a {
+  background-color: #363636;
+  border: 1px solid #00abaf;
+}
+.FeedbackCss label{
+  padding:10px 0px;
+
+}
+.noteval{
+  margin-top: 10px;
+}
+.fillDiaAll2 label {
+  display: contents;
+  margin-top: 20px;
+  display: block !important;
+  margin-bottom: 8px;
+}
+
+.darkTheme .fillDiaAll2 .ql-stroke,
+.darkTheme .ql-snow .ql-fill,
+.darkTheme .ql-snow .ql-stroke.ql-fill,
+.darkTheme .ql-snow.ql-toolbar .ql-picker-label {
+  fill: none;
+  stroke: #00abaf !important;
+  color: #00abaf !important;
+}
 
 

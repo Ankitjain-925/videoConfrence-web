@@ -7,23 +7,26 @@ import ForgotPass from "Screens/ChangePassword";
 import ChangePass from "Screens/ChangePassword/changepassword";
 import NotFound from "Screens/Components/NotFound";
 import RegSuccuss from "Screens/Components/RegSuccess/index";
-import Form from "Screens/Patient/SickLeaveForm/index";
 import AppointmentList from "Screens/Patient/RequestList/index";
 import PatientProfile from "Screens/Patient/Profile/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
-import Dashboard from "../../Screens/Patient/Dashboard";
-import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
+
+import Dashboard from "Screens/Patient/Dashboard";
 import Newpage from "Screens/Patient/newpage/index";
 import VideoCallPat from "Screens/Patient/VideoCall/index"
+
 import RegisterVideo from "Screens/Patient/RegisterVideo";
 import LoginVideo from "Screens/Patient/loginVideo";
 import VideoGuideLine from "Screens/Patient/VideoGuideLine";
 import RegisterVC from "Screens/Patient/RegisterVC/index";
+import TopUp from "Screens/Patient/Dashboard/topup"
+import FeedBack from "Screens/Patient/FeedBack";
+// import TopUp from "Screens/Patient/Dashboard/topup"
 class Routermain extends Component {
   render() {
     return (
-      <Router basename={"/video-confrance"}>
+      <Router basename={"/video-conference"}>
         <Grid>
           <Switch>
             <Route exact path="/" render={(props) => <Login {...props} />} />
@@ -48,7 +51,11 @@ class Routermain extends Component {
               path="/patient/settings"
               render={(props) => <Dashboard {...props} />}
             />
-
+            <Route
+              exact
+              path="/patient/top-up"
+              render={(props) => <TopUp {...props} />}
+            />
             <Route
               exact
               path="/video-guideline"
@@ -98,10 +105,10 @@ class Routermain extends Component {
               path="/register-successfull"
               render={(props) => <RegSuccuss {...props} />}
             />
-            <Route
+              <Route
               exact
-              path="/patient/sick-request"
-              render={(props) => <Form {...props} />}
+              path="/patient/Feed-back"
+              render={(props) => <FeedBack {...props} />}
             />
 
             {/* Need to route required component */}

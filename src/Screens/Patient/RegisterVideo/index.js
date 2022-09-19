@@ -8,6 +8,7 @@ import AppBar from "@material-ui/core/AppBar";
 import { getLanguage } from "translations/index";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+import { Redirect, Route } from 'react-router-dom';
 import queryString from "query-string";
 import {
   commonNoTokentHeader,
@@ -95,21 +96,21 @@ const RegisterVideo = (props) => {
       .post(
         path + "/vchat/AddVideoUserAccount",
         _data,
-        commonHeader(props.stateLoginValueAim.token)
+        commonHeader(props?.stateLoginValueAim.token)
       )
       .then((response) => {
-        if (
-          response.data.hassuccessed === true &&
-          response.data.data !== "User Already Register"
-        ) {
-          props.LoginReducerAim("", "", "", "", props.stateLoginValueAim, true);
-          history.push({
-            pathname: "/patient/settings",
-          });
-        } else {
+        if(response.data.hassuccessed){
           history.push({
             pathname: "/patient/video_login",
           });
+        }
+        else if (
+          !response.data.hassuccessed &&
+          response.data.data !== "User Already Register"
+        ) {
+          setErrormsg("Already exist in system");
+        } else {
+          setErrormsg("Something went wrong please try with another user name");
         }
       });
   };
@@ -131,6 +132,21 @@ const RegisterVideo = (props) => {
   const handleCancel = () => {
     setOpenPayment(false);
   };
+  if (
+    props?.stateLoginValueAim?.token !== 401 &&
+    props?.stateLoginValueAim?.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    props?.verifyCode?.code
+  ) {
+
+    if(props?.stateLoginValueAim.is_vedio_registered){
+      return <Redirect to={'/patient/video_login'} />;
+    }
+    else{
+      return <Redirect to={'/patient/video_register'} />;
+    } 
+  } 
+  else {
   return (
     <Grid
       className={
@@ -248,6 +264,7 @@ const RegisterVideo = (props) => {
       </Grid>
     </Grid>
   );
+                  }
 };
 
 const mapStateToProps = (state) => {

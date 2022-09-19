@@ -20,7 +20,7 @@ import { Settings } from "Screens/Login/setting";
 import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
-import MiddleTopup from "./middleTopup";
+
 
 function TabContainer(props) {
   return (
@@ -33,7 +33,7 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const Dashboard = (props) => {
+const TopUpdetail = (props) => {
   const history = useHistory();
   const [value, setValue] = useState(0);
   const [languageValue, setLanguageValue] = useState(null);
@@ -45,20 +45,6 @@ const Dashboard = (props) => {
     Security
   } = translate;
 
-  const profileLink = () => {
-    history.push("/patient");
-  };
-
-  //For open the model
-  const openLanguageModel = () => {
-    setOpenFancyLanguage(true);
-  };
-
-  //For close Model
-  const handleCloseFancyLanguage = () => {
-    setOpenFancyLanguage(false);
-  };
-
   if (
     props?.stateLoginValueAim.user === 'undefined' ||
     props?.stateLoginValueAim.token === 450 ||
@@ -69,56 +55,17 @@ const Dashboard = (props) => {
   }
   else{
   return (
-    <Grid
-className={
-  props.settings &&
-    props.settings.setting &&
-    props.settings.setting.mode &&
-    props.settings.setting.mode === 'dark'
-    ? 'homeBg darkTheme homeBgDrk'
-    : 'homeBg'
-}
->
-<Grid className="homeBgIner">
-<Grid container direction="row" justify="center">
-    <Grid item xs={12} md={12}>
-      <Grid container direction="row">
-        <LeftMenu isNotShow={true} currentPage="settings" />
-        <LeftMenuMobile isNotShow={true} currentPage="settings" />
-        <Grid item xs={12} md={10} lg={8}>
-          <div className="settingPage">
-            <h5 className="setting-h5">Settings</h5>
-            
-            <MiddleTopup btnShow={true}/>
-
-            <p className='settingbox-heading'>Account Settings</p>
-            <div className="last-sec-setting form_full">
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privactandnotification</div></div>
-            </div>
-            <p className='settingbox-heading'>Other</p>
-            <div className="last-sec-setting form_full">
-              <p className='middle-setting-items'>Amount</p>
-              <p>Terms & Conditions </p>
-              <p> Privact Policy</p>
-              <p> Rate Aimedies Diagnostics</p>
-            </div>
-         </div>
-          </Grid>
+        <Grid>
+            <div className='settingbox form_full'>
+                <div >
+                    <label>Your Aimedis Credit :</label>
+                    <p>24 Min</p>
+                </div>
+                <div>
+                    {props.btnShow && <Button variant='contained' className="topupButton" onClick={()=>{props.history.push('/patient/top-up')}}>Top Up</Button>}
+                </div>
+            </div>    
         </Grid>
-      </Grid>
-    </Grid>
- </Grid>
-<SetLanguage
-    getSetting={() => getSetting(this)}
-    openFancyLanguage={openFancyLanguage}
-    languageValue={languageValue}
-    handleCloseFancyLanguage={() => openLanguageModel()}
-    openLanguageModel={() => setOpenFancyLanguage(false)}
-  />
-</Grid>
     )
   }
 }
@@ -129,8 +76,6 @@ const mapStateToProps = (state) => {
   const { settings } = state.Settings;
   const { verifyCode } = state.authy;
   const { metadata } = state.OptionList;
-  // const { Doctorsetget } = state.Doctorset;
-  // const { catfil } = state.filterate;
   return {
     stateLanguageType,
     stateLoginValueAim,
@@ -138,8 +83,6 @@ const mapStateToProps = (state) => {
     settings,
     verifyCode,
     metadata,
-    //   Doctorsetget,
-    //   catfil
   };
 };
 export default pure(
@@ -150,5 +93,5 @@ export default pure(
       LanguageFetchReducer,
       Settings,
       authy,
-    })(Dashboard)
+    })(TopUpdetail)
   ));
