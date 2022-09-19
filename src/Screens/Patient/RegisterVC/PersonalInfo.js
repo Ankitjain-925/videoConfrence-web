@@ -19,7 +19,13 @@ class PersonalInfo extends Component {
     }
     continue = e => {
         e.preventDefault();
-        this.props.nextStep();
+        if(this.props.dataa.time){
+            this.props.nextStep();
+        }
+        else{
+            this.setState({ TimeRequired: "Please Enter Time"  });
+        }
+        
     }
     // ValueName = (value) => {
         
@@ -51,13 +57,16 @@ class PersonalInfo extends Component {
                             className="mr_sel"
                             onChange={(e) => {this.props.onSelectLanguage2(e) }}
                         />
+                        <Grid className = "err_mesg">{this.state.TimeRequired}</Grid>
                     </Grid>
                 </Grid>
                 <Grid className="logRow">
                     <Grid className="label_1">
                         <label>Estimated Amount</label>
                     </Grid>
-                    <Grid>
+                    
+                    <Grid className= "mys">
+                    
                         <input
                             type="text"
                             readOnly
@@ -65,6 +74,7 @@ class PersonalInfo extends Component {
                             value={this.props.dataa.amount}
                             placeholder="Total Payable Amount"
                         />
+                           <p className="euroamount">€</p>
                     </Grid>
                 </Grid>
 

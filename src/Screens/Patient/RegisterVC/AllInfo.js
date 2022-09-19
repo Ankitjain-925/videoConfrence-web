@@ -170,7 +170,7 @@ class AllInfo extends Component {
                                                                 <S3Image imgUrl={item.image} />
 
                                                                 <Grid>
-                                                                    <h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5>
+                                                                    <p><h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5></p>
                                                                     <h5 className="selectdoc-head"> {'('}{item.profile_id}{')'}</h5>
                                                                     {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                                                                     <Grid className='selectdoc-button'>
