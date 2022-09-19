@@ -110,6 +110,7 @@ export class StepForm extends Component {
             />);
         if (step === 4)
             return (<SelectDoctor
+                redux_st={this.props}
                 dataa={mainState}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
