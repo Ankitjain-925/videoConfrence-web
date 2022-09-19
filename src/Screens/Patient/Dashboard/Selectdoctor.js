@@ -9,10 +9,6 @@ import { getLanguage } from 'translations/index';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { Button, TextField, Card } from "@material-ui/core/index";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { LoginReducerAim } from "Screens/Login/actions";
-import { LanguageFetchReducer } from 'Screens/actions';
 import { Settings } from "Screens/Login/setting";
 import { S3Image } from "Screens/Components/GetS3Images/index";
 
@@ -59,7 +55,7 @@ class SelectDoctor extends Component {
 
   render() {
     const { dataa } = this.props;
-    let translate = getLanguage(this.props.stateLanguageType);
+    let translate = getLanguage(this?.props?.redux_st?.stateLanguageType);
     let {
       my_profile,
       Security
@@ -77,11 +73,11 @@ class SelectDoctor extends Component {
 
 
             <Grid className="card-header">
-              <S3Image imgUrl={dataa.doctor_detail[0].image} />
+              <S3Image imgUrl={dataa?.doctor_detail[0]?.image} />
 
               <Grid>
-                <h5 className="selectdoc-head"> {dataa.doctor_detail[0].first_name}{' '}{dataa.doctor_detail[0].last_name} </h5>
-                <h6 className="selectdoc-head2"> {dataa.doctor_detail[0].profile_id}</h6>
+                <h5 className="selectdoc-head"> {dataa?.doctor_detail[0]?.first_name}{' '}{dataa?.doctor_detail[0]?.last_name} </h5>
+                <h6 className="selectdoc-head2"> {dataa?.doctor_detail[0]?.profile_id}</h6>
                 {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                 <Grid className='selectdoc-button'>
                   <span>
@@ -106,15 +102,15 @@ class SelectDoctor extends Component {
               
 
 
-              {dataa.permission ? <Grid>
-                <p className='card-label'>Your Aimedis credit : <b>Omin</b> </p>
+              {dataa?.permission ? <Grid>
+                <p className='card-label'>Your Aimedis credit : <b>{this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'}</b> </p>
                 <a>+ Top up your account </a>
               </Grid> : (
                 ''
               )}
 
-              {dataa.doctor_detail[1].data.data?.length > 0 &&
-                dataa.doctor_detail[1].data.data.map((item, i) => (
+              {dataa?.doctor_detail[1]?.data?.data?.length > 0 &&
+                dataa?.doctor_detail[1]?.data?.data?.map((item, i) => (
 
                   <Grid
                     item
@@ -183,4 +179,4 @@ class SelectDoctor extends Component {
     );
   }
 }
-export default SelectDoctor; 
+export default SelectDoctor;
