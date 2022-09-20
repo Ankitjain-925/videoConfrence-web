@@ -17807,7 +17807,10 @@ a {
 .MuiGrid-root.logForm.form_full .card-header {
   margin-bottom: 10px;
   margin-right: 10px;
-  padding: 15px;inprogress-call span{
+  padding: 15px;
+}
+  
+  .inprogress-call span{
     color:#EE5253
   }
   
