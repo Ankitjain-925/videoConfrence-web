@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
-import Select from "react-select";
 
 
-class Payment extends Component {
+class CardPayment extends Component {
     constructor(props) {
         super(props);
         this.state = { value: '' }
@@ -57,4 +56,4 @@ class Payment extends Component {
     }
 }
 
-export default Payment;
+export default CardPayment;

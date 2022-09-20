@@ -1116,7 +1116,7 @@ export const handleEvalSubmit = (current, value) => {
       if (data?._id && (data?.is_decline || data?.is_decline == true)) {
         updateTaskApi(current, data);
       } else {
-        current.props.nextStep();
+        current.props.history.push('/patient/card-payment');
         // axios
         //   .post(
         //     sitedata.data.path + '/vh/AddTask',

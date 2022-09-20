@@ -17271,6 +17271,14 @@ a {
   padding: 4px;
   width: 100%;
   border: #00ABAF 1px solid;
+  background-color: #FFFFFF;
+  line-height: 30px;
+  border-radius: 5px
+}
+
+.darkTheme .card-label p{
+  background-color: #000000;
+  border-radius: 5px
 }
 
 
@@ -17317,19 +17325,15 @@ a {
   font-size: 13px;
   color: black;
   font-family: "Muli";
-  padding-top: 2px;
+  padding-top: 5px;
 }
-
 .darkTheme .selectdoc-head2 {
   margin: 0;
   font-weight: 400;
   font-size: 13px;
   color: #d9dada;
   font-family: "Muli";
-  padding-top: 3px;
-  margin: 10px 0px;
-  font-weight: 600;
-  font-size: 13px;
+  padding-top: 5px;
 }
 
 .darkTheme .selectdoc-head2 {
@@ -17950,14 +17954,12 @@ line-height: 22px;
   color: #00abaf !important;
 }
 
-<<<<<<< HEAD
 .call-feadback-header img{
   width: 37px;
   height: 37px;
   border-radius: 50%;
   margin-right: 4px;
 }
-=======
 /* .euroamount{    position: absolute;
   top: 8px;
   left: 307px;
@@ -17970,7 +17972,6 @@ line-height: 22px;
     position: relative;
     bottom: 30px;
   }
->>>>>>> 3ec80fb8fcb6fc0e9f163c628d21bb52d61879b1
 
   .err_mesg{
     text-align: left!important;
