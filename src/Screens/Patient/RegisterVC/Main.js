@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import { LoginReducerAim } from "Screens/Login/actions";
 import { LanguageFetchReducer } from 'Screens/actions';
 import Payment from '../RequestList/Payment/index';
-import Step7 from "../RegisterVC/Step7"
 import { OptionList } from 'Screens/Login/metadataaction';
 
 
@@ -96,7 +95,7 @@ export class StepForm extends Component {
                 onSelectLanguage2={this.handleLanguage2}
                 nextStep={this.nextStep}
                 title_degreeData={this.props.metadata?.video_minutes || []}
-                />);
+            />);
         if (step === 2)
             return (<JobDetails
                 redux_st={this.props}
@@ -128,14 +127,6 @@ export class StepForm extends Component {
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
             />);
-        if (step === 7)
-            return (<Step7
-                // dataa2={mainState2}
-                onSelectLanguage5={this.handleLanguage5}
-                // dataa={mainState}
-                nextStep={this.nextStep}
-                prevStep={this.prevStep}
-            />);
     }
 
 
@@ -152,7 +143,7 @@ export class StepForm extends Component {
             <>
 
 
-                <h1 style={myst1}>Step {step} of 7.</h1>
+                <h1 style={myst1}>Step {step} of 6.</h1>
                 {this.showStep()}
 
 

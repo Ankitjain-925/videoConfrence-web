@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import { Button, TextField, Card } from "@material-ui/core/index";
 import { Settings } from "Screens/Login/setting";
 import { S3Image } from "Screens/Components/GetS3Images/index";
+import SymptomQuestions from '../../Components/TimelineComponent/CovidSymptomsField/SymptomQuestions';
 
 var options = [{}]
 function TabContainer(props) {
@@ -52,6 +53,10 @@ class SelectDoctor extends Component {
     e.preventDefault();
     this.props.nextStep();
   }
+
+  updateAllEntrySec = (e, name) => {
+    this.setState({ showQuestion: e });
+  };
 
   render() {
     const { dataa } = this.props;
@@ -99,7 +104,7 @@ class SelectDoctor extends Component {
                   /> */}
               <Grid className='card-label'>
                 <p >I would like to:
-                  <b>Video-Call</b> </p></Grid>
+                  {' '}<b>Video-Call</b> </p></Grid>
 
 
 
@@ -118,24 +123,32 @@ class SelectDoctor extends Component {
                     md={12}
                     lg={12}
                   >
-
-
                     <Grid className='call-feedback-part'>
                       <Grid>
                         <Grid className='call-feadback-header'>
-                          <Grid>
-
-                            <S3Image imgUrl={item?.patient_info?.image} />
-                          </Grid>
+                          {/* <Grid> */}
+                          <S3Image imgUrl={item?.patient_info?.image} />
+                          {/* </Grid> */}
                           <Grid className="comment-callpat">
-                            {/* <h5> Latest review for: </h5> */}
                             <p>{item?.patient_info?.first_name}{' '}{item?.patient_info?.last_name}</p>
                             <p>( {item?.patient_info?.alies_id} )</p>
+                            <Grid className="setDataSym">
+                              <SymptomQuestions
+                                updateEntryState1={(e) =>
+                                  this.updateAllEntrySec(
+                                    e,
+                                    'rating'
+                                  )
+                                }
+                                comesFrom="Feedback"
+                                // label="Give_rating_Doctor"
+                                value={item?.rating}
+                              />
+                            </Grid>
                           </Grid>
                         </Grid>
                         <Grid className="call-comment-patient">
-                          <p>
-                            Improve Score by identifying gaps | Live Coaching by Top Teachers | Personalized attention. 54+ hours of live online classes | 1000+ multilevel practice questions | 7 adaptive mocks. Top GMAT Teachers. Score 700+ in GMAT. 10000 + Students. Full Length Mock Tests. Improve your Score. Enroll Online. Courses: Online Live Classes, Online Private Tutoring, Live Online GMAT Coaching.
+                          <p dangerouslySetInnerHTML={{ __html: item?.Comment }}>
                           </p> </Grid>
                       </Grid>
                     </Grid>

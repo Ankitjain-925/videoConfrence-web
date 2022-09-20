@@ -37,15 +37,16 @@ class Index extends Component {
 
   render() {
     let translate = getLanguage(this.props.stateLanguageType);
-    let {} = translate;
+    let { } = translate;
     return (
       <>
         <Grid container direction="row" alignItems="center">
           {this.props.comesFrom === "Feedback" ? (
             <Grid className="FeedbackCss">
-              <Grid item xs={12} md={12}>
-                <label>{this.state.label}</label>
-              </Grid>
+              {this.state.label &&
+                <Grid item xs={12} md={12}>
+                  <label>{this.state.label}</label>
+                </Grid>}
               <Grid item xs={12} md={12} className="symptomsType">
                 <a
                   className={this.state.value == 0 && "activeButton"}
