@@ -22,6 +22,8 @@ import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
 import MiddleTopup from "./middleTopup";
+import Payment from "Screens/Patient/RequestList/Payment/index";
+
 
 
 function TabContainer(props) {
@@ -40,6 +42,15 @@ const Dashboard = (props) => {
   const [customAmount, SetcustomAmount] = useState(false);
   const [languageValue, setLanguageValue] = useState(null);
   const [openFancyLanguage, setOpenFancyLanguage] = useState(false)
+  const [errormsg, setErrormsg] = useState("");
+  const [error, setError] = useState(false);
+  const [openPayment, setOpenPayment] = useState(false);
+  const [amount, setAmount] = useState("30");
+  const [famount, fsetAmount] = useState(amount/5);
+
+
+
+
 
   let translate = getLanguage(props.stateLanguageType);
   let {
@@ -54,6 +65,28 @@ const Dashboard = (props) => {
   //For open the model
   const openLanguageModel = () => {
     setOpenFancyLanguage(true);
+  };
+
+  const onPayment = () => {
+    if (!customAmount) {
+      setErrormsg("Amount shouldn't be empty");
+      setError(true);
+    } else {
+      setErrormsg("");
+      setError(false);
+      setOpenPayment(true);
+    }
+  };
+
+  const setAmo = (e) => {
+    setAmount("e");
+    fsetAmount(e/5);
+  }
+
+  const onKeyDownlogin = (e) => {
+    if (e.key === "Enter") {
+      onPayment();
+    }
   };
 
   //For close Model
@@ -100,7 +133,7 @@ const Dashboard = (props) => {
                   </div> */}
                       <Grid container direction="row" justify="center" alignItems="center">
                         <Grid item xs={4} md={4} sm={4}>
-                          <div className="top-up-mid1-inner">
+                          <div className="top-up-mid1-inner form_full">
                             <div className="top-up-head-1">
                               <div className='top-up-head'>Starter</div>
                               <div className='top-up-minnute'>40min</div>
@@ -117,7 +150,7 @@ const Dashboard = (props) => {
                         </Grid>
 
                         <Grid item xs={4} md={4} sm={4}>
-                          <div className="top-up-mid1-inner">
+                          <div className="top-up-mid1-inner form_full">
                             <div className="top-up-head-1">
                               <div className='top-up-head'>Standard</div>
                               <div className='top-up-minnute'>60min</div>
@@ -134,7 +167,7 @@ const Dashboard = (props) => {
                         </Grid>
 
                         <Grid item xs={4} md={4} sm={4}>
-                          <div className="top-up-mid1-inner">
+                          <div className="top-up-mid1-inner form_full">
                             <div className="top-up-head-1">
                               <div className='top-up-head'>Premium</div>
                               <div className='top-up-minnute'>120min</div>
@@ -153,33 +186,60 @@ const Dashboard = (props) => {
                       </Grid>
 
                       <Grid className="goto-custom-topup" onClick={() => { SetcustomAmount(true) }}>
-                        or choose a custom amount
+                      <img src={require('assets/images/rightArrow.png')} alt="" title="" />or choose a custom amount
                       </Grid>
                     </>
                       :
                       <>
                         <div className='last-sec-setting form_full'>
-                          <div className="custom-topup-Back" onClick={()=>{SetcustomAmount(false)}}> {'<'} Back </div>
-                          <div className='custom-topup'>
+                          <div className="custom-topup-Back" onClick={() => { SetcustomAmount(false) }}> {'« Back'}  </div>
+                          <div className='custom-topup form_full_bl'>
                             <div>
                               <h2 className="custom-topup-head">Add a custom amount</h2>
                             </div>
-                            <div className="custom-topup-field">
-                                <MMHG
-                                  name="amount"
-                                  label={"EUR"}
-                                  // onChange={(e) => this.updateEntryState(e)}
-                                 value={'21,00'}
-                                />
+                            <div className="custom-topup-field form_full">
+                              <MMHG
+                                onKeyDown={(e) => onKeyDownlogin(e)}
+                                name="amount"
+                                label={"EUR"}
+                                // onChange={(e) => this.updateEntryState(e)}
+                                value={amount}
+
+                                onChange={(e) => {
+                                  setAmo(e.target.value);
+                                }}
+                              />
+                           <p className="euroamount">€</p>
                               <div>
                               </div>
                             </div>
-                            <div className="custom-topup-recieve">You will recieve: <span className="custom-topup-rmin">21min</span></div>
+                            <div className="custom-topup-recieve">You will recieve: <span className="custom-topup-rmin">{famount}{' '}{'Min'}</span></div>
                             <div className="continueBTN-topup">
-                              <Button variant='contained'>Continue</Button>
+                              <Button variant='contained' onClick={() => onPayment()}>Continue</Button>
+
                             </div>
+
                           </div>
+
                         </div>
+                        <Grid>
+                        {openPayment && (
+                          <div className='last-sec-setting form_full'>
+                            
+                            <div className='custom-topup'>
+
+                              <Payment
+                                // onCancel={handleCancel}
+                                usedFor={"register_video"}
+                              // onSuccessPayment={BtnSubmit}
+                              />
+
+                            </div>
+
+                          </div>
+                        )}
+                        </Grid>
+
                       </>}
                     {/* <div style={{
                         background: '#FFFFFF',

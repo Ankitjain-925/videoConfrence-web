@@ -146,7 +146,8 @@ class AllInfo extends Component {
                                                         <h5 className="selectdoc-head2"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>
                                                         {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                                                         <Grid className='selectdoc-button'>
-                                                            <span>on-line</span>
+                                                        <img className = "v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
+
 
                                                         </Grid>
                                                     </Grid>
@@ -171,14 +172,13 @@ class AllInfo extends Component {
                                                         this.func(item, i, this.state.searchValue);
                                                     }}>
 
-                                                    <S3Image imgUrl={item.image} />
+                                                                <Grid>
+                                                                    <p><h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5></p>
+                                                                    <h5 className="selectdoc-head"> {'('}{item.profile_id}{')'}</h5>
+                                                                    {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
+                                                                    <Grid className='selectdoc-button'>
+                                                                    <img className = "v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
 
-                                                    <Grid>
-                                                        <h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5>
-                                                        <h5 className="selectdoc-head2"> ({item.profile_id})</h5>
-                                                        {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
-                                                        <Grid className='selectdoc-button'>
-                                                            <span>on-line</span>
 
                                                         </Grid>
                                                     </Grid>

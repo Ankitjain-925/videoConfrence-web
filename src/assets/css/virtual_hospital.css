@@ -15088,9 +15088,9 @@ ul.patientHint li {
   color: #f7f7f7;
 }
 
-.darkTheme .rrSysto div {
+/* .darkTheme .rrSysto div {
   background-color: #192020;
-}
+} */
 
 .darkTheme .rrSysto div input[type="text"] {
   background-color: transparent !important;
@@ -17173,7 +17173,7 @@ label.errMsgStyleSecPart {
 }
 
 .last-sec-setting p {
-  padding: 7px 0px;
+  padding: 2px 0px;
 }
 
 @media (max-width: 959px) {
@@ -17236,8 +17236,7 @@ a {
   font-size: 14px;
   font-weight: 700;
   color: #7F8383;
-  display: flex;
-  width: -moz-fit-content;
+  /* display: flex; */
   width: fit-content;
 }
 
@@ -17317,6 +17316,59 @@ a {
   font-size: 20px;
   color: #d9dada;
   font-family: "Muli";
+}
+
+.custom-topup{
+  padding: 16px;
+  width: 620px;
+  background: #F7F7F7;
+  border-radius: 8px;
+  margin: 30px auto;
+}
+
+.darkTheme .custom-topup{
+  padding: 16px;
+  width: 620px;
+  background: #000;
+  border-radius: 8px;
+  margin: 30px auto;
+  color: #d9dada;
+}
+
+.custom-topup-Back{
+ color: #000;
+  font-weight:700;
+  font-size:14px;
+  cursor: pointer; 
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  background: #00ABAF;
+  /* border: 2px solid #00ABAF; */
+  display: inline-flex;
+  border-radius: 7px;
+  padding: 3px;
+  font-family: 'Muli';
+  letter-spacing: 1px;
+  /* box-shadow: 0 8px 24px 0 rgb(0 171 175 / 32%); */
+}
+
+.darkTheme .custom-topup-Back{
+   color: #d9dada;
+  font-weight:700;
+  /* font-size:14px;
+  cursor: pointer;  */
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  background: #00ABAF;
+  /* border: 2px solid #00ABAF; */
+  display: inline-flex;
+  border-radius: 7px;
+  padding: 3px;
+  font-family: 'Muli';
+  letter-spacing: 1px;
+  /* box-shadow: 0 8px 24px 0 rgb(0 171 175 / 32%); */
 }
 
 .selectdoc-head2 {
@@ -17741,12 +17793,25 @@ a {
 .top-up-content{
   padding:15px 0px;
 }
+
+.darkTheme .top-up-content{
+  padding:15px 0px;
+  color: #d9dada;
+}
 .top-up-head{
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
   letter-spacing: -0.02em;
   color: #171717;
+}
+
+.darkTheme .top-up-head{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
 }
 .goto-custom-topup{
   font-weight: 700;
@@ -17760,11 +17825,22 @@ a {
 .top-up-minnute
 {
   padding: 5px;
-  background: #F7F7F7;
+  background: #00ABAF;
   border-radius: 12px;
   position: absolute;
   right: 0;
   top:0;
+}
+
+.darkTheme .top-up-minnute
+{
+  padding: 5px;
+  background: #00ABAF;
+  border-radius: 12px;
+  position: absolute;
+  right: 0;
+  top:0;
+  color: #d9dada;
 }
 .top-up-buybtn:hover{
   background: #00ABAF;
@@ -17776,6 +17852,16 @@ a {
   line-height: 48px;
   padding: 22px 0px;
 }
+
+.darkTheme .top-up-cost{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 48px;
+  padding: 22px 0px;
+  color: #d9dada
+}
+
 .custom-topup-head{
   text-align: center;
   margin-bottom: 3px;
@@ -17788,10 +17874,19 @@ a {
   font-weight: 700;
 }
 .custom-topup-Back{
-  color: #00ABAF;
+  /* color: #00ABAF;
   font-weight:600;
   font-size:14px;
+  cursor: pointer; */
+  font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
+  background: #00ABAF;
+  /* border: 2px solid #00ABAF; */
+  display: inline-flex;
+  border-radius: 7px;
+  padding: 3px;
+  font-family: 'Muli';
 }
 .custom-topup-recieve{
   float:right;
@@ -17979,5 +18074,11 @@ line-height: 22px;
 
   .setDataSym{
     margin-top: 4px;
-    margin-left: 7px;
+    margin-left: 7px;}
+  .err_mesg1{
+    text-align: left!important;
+    color: red !important;
+    font-weight: 600;
+    font-size: x-small;
+    font-family: 'Muli';
   }
