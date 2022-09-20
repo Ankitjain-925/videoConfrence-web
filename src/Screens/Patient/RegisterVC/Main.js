@@ -54,6 +54,12 @@ export class StepForm extends Component {
         this.setState({ mainState: state });
     }
 
+    handleLanguage6 = (lang) => {
+        const state = this.state.mainState;
+        state["house_id"] = lang;
+        this.setState({ mainState: state });
+    }
+
     handleLanguage2 = (lang2) => {
         const state = this.state.mainState;
         state["time"] = lang2;
@@ -80,6 +86,7 @@ export class StepForm extends Component {
         // state["amount"] = lang2.value * 5;
         // this.setState({ mainState: state });
     }
+
 
 
     // handleChange = input => e => {
@@ -115,6 +122,7 @@ export class StepForm extends Component {
         if (step === 4)
             return (<SelectDoctor
                 redux_st={this.props}
+                onSelectLanguage6={this.handleLanguage6}
                 dataa={mainState}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
