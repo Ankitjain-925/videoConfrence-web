@@ -4276,8 +4276,8 @@ button.aboutTabsIner {
   line-height: 18px;
 }
 .factorAuth {
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 14px;
 }
 .factorAuthEnbl h4 {
   color: #404646;
@@ -7063,9 +7063,10 @@ a.diaCDActv {
   text-align: center;
   padding: 12px 8px;
   margin-top: 20px;
-  margin-bottom: 2px;
   outline: none;
-  margin: 16px;
+}
+.infoShwSave3 input:first-child {
+  margin-right: 12px;
 }
 .infoShwSave3 input:hover {
   background: transparent;
@@ -8028,6 +8029,10 @@ a.hideDots {
 }
 .homeBgDrk .loginSite .logFrgtpass label {
   color: #00abaf !important;
+}
+.homeBgDrk .selectdoc-head, .homeBgDrk h5.selectdoc-head2,
+.homeBgDrk h6.selectdoc-head2 {
+  color: #d9dada !important;
 }
 /* End of dark screen css */
 
@@ -13578,6 +13583,11 @@ a.academy_ul ul li img {
   background-color: #e1f7f7;
   outline: none !important;
 }
+h5.selectdoc-head2 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 4px 0px 10px;
+}
 /* End of admin pages css */
 
 /*Added By ankita*/
@@ -14908,6 +14918,12 @@ ul.insuranceHint1 li {
 .darkTheme .checkHelthLbl a:hover {
   color: #00abaf;
 }
+.darkTheme .profileIdRght a {
+  color: #f1f1f1 !important;
+}
+.darkTheme .profileInfoDate {
+    color: #f1f1f1 !important;
+}
 .RelativeatSecurity {
   position: relative;
 }
@@ -15581,10 +15597,8 @@ label.or-label {
 .homeBgDrk .tooltip-container {
   background-color: #404646 !important;
 }
-.darkTheme label,
-.darkTheme p,
-.darkTheme h3,
-.darkTheme h1 {
+.darkTheme label, .darkTheme p, .darkTheme h3, 
+.darkTheme h1, .darkTheme .goto-custom-topup {
   color: #d9dada !important;
 }
 .dark-confirm {
@@ -17173,9 +17187,9 @@ select:-webkit-autofill:focus {
   background: #404646 !important;
   border: none;
 }
-.homeBgDrk .mr_sel {
-  border: 1px solid #9a9a9a;
-  color: #bfc1c1;
+.homeBgDrk .mr_sel, .homeBgDrk .logForm input[type='text'] {
+  border: 1px solid #9a9a9a !important;
+  color: #bfc1c1 !important;
 }
 .homeBg .ccl-right-panel {
   min-width: 118px;
@@ -18246,4 +18260,58 @@ span.PIC_Condition:hover {
   font-weight: 700;
   text-decoration-line: underline;
   cursor: pointer;
+}
+.top-up-mid1-inner {
+  padding: 22px;
+  margin: 8px;
+  grid-gap: 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgb(35 35 35 / 4%);
+  border-radius: 8px;
+}
+.top-up-head {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+.top-up-minnute {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.top-up-cost {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+button.top-up-buybtn {
+  font-size: 13px;
+  color: #fff !important;
+  background-color: #00ABAF !important;
+  border-radius: 4px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border: none;
+  display: block;
+  width: 100%;
+  padding: 6px 4px;
+}
+.logRow input[type="text"] {
+  background-color: hsl(0,0%,100%);
+  border-color: hsl(0,0%,80%);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+}
+.MuiGrid-root.selectdoc-button img {
+  height: 21px;
+  width: auto !important;
+}
+h6.selectdoc-head2 {
+  margin: 5px 0px 12px;
 }
