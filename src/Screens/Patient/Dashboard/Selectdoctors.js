@@ -60,6 +60,7 @@ class SelectDoctor extends Component {
 
   render() {
     const { dataa } = this.props;
+    console.log("dataa", dataa)
     let translate = getLanguage(this?.props?.redux_st?.stateLanguageType);
     let {
       my_profile,
@@ -78,19 +79,36 @@ class SelectDoctor extends Component {
 
 
             <Grid className="card-header">
-              <S3Image imgUrl={dataa?.doctor_detail[0]?.image} />
-
-              <Grid>
-                <h5 className="selectdoc-head"> {dataa?.doctor_detail[0]?.first_name}{' '}{dataa?.doctor_detail[0]?.last_name} </h5>
-                <h6 className="selectdoc-head2"> ( {dataa?.doctor_detail[0]?.profile_id} )</h6>
-                {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
-                <Grid className='selectdoc-button'>
-                  <span>
-                    <img className="v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
-                  </span>
-
+              <Grid container direction="row">
+                <Grid item xs={12} sm={6} md={6} className="setDataImg">
+                  <S3Image imgUrl={dataa?.doctor_detail[0]?.image} />
+                  <Grid>
+                    <h5 className="selectdoc-head"> {dataa?.doctor_detail[0]?.first_name}{' '}{dataa?.doctor_detail[0]?.last_name} </h5>
+                    <h6 className="selectdoc-head2"> ( {dataa?.doctor_detail[0]?.profile_id} )</h6>
+                    {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
+                    <Grid className='selectdoc-button'>
+                      <span>
+                        <img className="v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
+                      </span>
+                    </Grid>
+                  </Grid>
                 </Grid>
-              </Grid>
+
+                <Grid item xs={12} sm={6} md={6}>
+                  <label>Select Hospital</label>
+                  <Grid>
+                    <Select
+                      name="for_hospital"
+                      options={dataa?.doctor_detail[0]?.houses}
+                      placeholder="Search Select"
+                      onChange={(e) => this.props.onSelectLanguage6(e?.value)}
+                      value={dataa?.doctor_detail[0]?.houses.filter(obj => obj?.value === dataa?.house_id)}
+                      className="addStafSelect"
+                      isMulti={false}
+                      isSearchable={true}
+                    />
+                  </Grid>
+                </Grid>    </Grid>
             </Grid>
             <Grid className='card-content'>
               {/* <Select

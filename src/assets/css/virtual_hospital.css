@@ -18082,3 +18082,7 @@ line-height: 22px;
     font-size: x-small;
     font-family: 'Muli';
   }
+
+  .setDataImg{
+    display:flex
+  }
