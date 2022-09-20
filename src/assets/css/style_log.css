@@ -467,13 +467,6 @@ p.regOnlog {
     min-height: 450px;
   }
 }
-@media screen and (min-width: 767px){
-    .logForm {
-        padding: 20px 26px;
-        /* margin: 22px auto 30px; */
-        width: 100%;
-     }
-    }
 @media screen and (max-width: 767px){
 .logForm {
     padding: 20px 26px;

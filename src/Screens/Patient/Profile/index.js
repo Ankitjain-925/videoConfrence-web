@@ -178,6 +178,11 @@ class Index extends Component {
                 <Notification />
                 {/* Website Mid Content */}
                 <Grid item xs={12} md={10} lg={8}>
+                {!this.props.stateLoginValueAim?.isVideoLoggedIn && 
+                    <div className="backFlow movelogin" onClick={()=>{this.props.history.push('/patient/video_login')}}>
+                      <img src={require('assets/virtual_images/rightArrow.png')} />
+                      <a>Move to Login / Registration page</a>  
+                    </div>}
                   <Grid className="profilePkg ">
                     <Grid className="profilePkgIner1">
                       {/* Tabs  */}
