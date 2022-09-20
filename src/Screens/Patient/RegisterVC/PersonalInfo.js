@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import Select from "react-select";
-import { OptionList } from 'Screens/Login/metadataaction';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+
 class PersonalInfo extends Component {
     constructor(props) {
         super(props);
+        this.state = { value: '' }
         this.state = {
-            title_degreeData: this.props.metadata?.video_minutes
+            title_degreeData: [{ value: "20", label: 20 },
+            { value: "40", label: 40 },
+            { value: "60", label: 60 },
+            { value: "120", label: 120 },
+            { value: "240", label: 240 },],
         };
     }
     continue = e => {
@@ -21,7 +24,17 @@ class PersonalInfo extends Component {
         }
         
     }
+    // ValueName = (value) => {
+        
+    //     var sec = value.value * 5;
+    //     this.setState({ title2: sec });
+    //     this.props.onSelectLanguage2(value);
+    // }
+
+
     render() {
+
+
         return (
             <> <Grid className="logForm form_full">
 
@@ -31,10 +44,11 @@ class PersonalInfo extends Component {
                         <label>Enter Time To Talk</label>
                     </Grid>
                     <Grid>
+                        {console.log("trfhgjk", this.props.dataa )}
                         <Select
                             value={this.props.dataa.time}
                             name="firstName"
-                            options={this.state.title_degreeData}
+                            options={this.props.title_degreeData}
                             placeholder="Select Time To Talk "
                             isSearchable={false}
                             className="mr_sel"
@@ -75,14 +89,5 @@ class PersonalInfo extends Component {
         );
     }
 }
-const mapStateToProps = (state) => {
-    const { metadata } = state.OptionList;
-    return {
-      metadata,
-    };
-  };
-  export default withRouter(
-    connect(mapStateToProps, {
-      OptionList,
-    })(PersonalInfo)
-  );
+
+export default PersonalInfo;

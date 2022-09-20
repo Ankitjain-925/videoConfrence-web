@@ -23,7 +23,7 @@ import VideoGuideLine from "Screens/Patient/VideoGuideLine";
 import RegisterVC from "Screens/Patient/RegisterVC/index";
 import TopUp from "Screens/Patient/Dashboard/topup"
 import FeedBack from "Screens/Patient/FeedBack";
-import Card from "Screens/Patient/RegisterVC/PaymentSection/CardPayment";
+import Card from "Screens/Patient/RegisterVC/PaymentSection/index";
 // import TopUp from "Screens/Patient/Dashboard/topup"
 class Routermain extends Component {
   render() {
@@ -78,10 +78,9 @@ class Routermain extends Component {
               render={(props) => <LoginVideo {...props} />}
             />
             <Route
-              exact
-              path="/patient/card-payment"
-              render={(props) => <Card
-                {...props}
+              exact={true}
+              path="/payment/:id"
+              render={(props) => <Card {...props}
               />}
             />
 

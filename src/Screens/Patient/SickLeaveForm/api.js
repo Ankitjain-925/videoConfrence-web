@@ -52,7 +52,7 @@ export const fromEuroToCent = (amount, current) => {
 };
 
 export const CancelClick = (current) => {
-  current.props.history.push('/patient/request-list');
+  current.props.history.push('/appointment-list');
 };
 
 //for downoading the pdf
@@ -1116,24 +1116,30 @@ export const handleEvalSubmit = (current, value) => {
       if (data?._id && (data?.is_decline || data?.is_decline == true)) {
         updateTaskApi(current, data);
       } else {
-        current.props.history.push('/patient/card-payment');
-        // axios
-        //   .post(
-        //     sitedata.data.path + '/vh/AddTask',
-        //     data,
-        //     commonHeader(current.props.stateLoginValueAim?.token)
-        //   )
-        //   .then((responce) => {
-        //     mailSendToDoc(data, current);
-
-        //     current.props.history.push('/patient/request-list');
-        //   })
-        //   .catch(function (error) {
-        //     console.log('error');
-        //     current.setState({
-        //       loaderImage: false,
-        //     });
-        //   });
+        axios
+          .post(
+            sitedata.data.path + '/vh/AddTask',
+            data,
+            commonHeader(current.props.stateLoginValueAim?.token)
+          )
+          .then((responce) => {
+            // mailSendToDoc(data, current);
+            if (responce && responce.data && responce.data.hassuccessed) {
+              var check = responce?.data?.data?.item?.permission;
+              current.props.history.push({
+                pathname: check ? "/payment/top-up" : "/payment/credit-card",
+                state: {
+                  data: responce?.data?.data
+                }
+              })
+            }
+          })
+          .catch(function (error) {
+            console.log('error');
+            current.setState({
+              loaderImage: false,
+            });
+          });
       }
     } else {
       current.setState({
@@ -2225,3 +2231,27 @@ export const SelectTimeSlot = (AppointDay, Ai, data, current) => {
 //       current.setState({ loaderImage: false });
 //     });
 // };
+
+export const CallTopUpApi = (current, data) => {
+  let calPrePaid = current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min - data?.item?.time?.value;
+  var info = {
+    used_talktime: {
+      datetime: data?.date,
+      amount: data?.item?.amount,
+      min: data?.item?.time?.value
+    },
+    prepaid_talktime_min: calPrePaid,
+    manage_for: "use"
+  }
+  console.log("info", info)
+  current.setState({ loaderImage: true });
+  axios
+    .post(sitedata.data.path + '/managePrepaid',
+      info)
+    .then((res) => {
+      current.setState({ loaderImage: false });
+    })
+    .catch((err) => {
+      current.setState({ loaderImage: false });
+    })
+}
