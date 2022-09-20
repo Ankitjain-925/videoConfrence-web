@@ -132,25 +132,19 @@ const RegisterVideo = (props) => {
   const handleCancel = () => {
     setOpenPayment(false);
   };
-  if (
-    props?.stateLoginValueAim?.token !== 401 &&
-    props?.stateLoginValueAim?.token !== 450 &&
-    props?.stateLoginValueAim?.user?.type === 'patient' &&
-    props?.verifyCode?.code
-  ) {
-
-    if(props?.stateLoginValueAim.is_vedio_registered){
-      return <Redirect to={'/patient/video_login'} />;
-    }
-    else{
-      return <Redirect to={'/patient/video_register'} />;
-    } 
-  }
-  else if((props?.stateLoginValueAim?.token == 401 ||
+  if((props?.stateLoginValueAim?.token == 401 ||
     props?.stateLoginValueAim?.token == 450) &&
     props?.stateLoginValueAim?.user?.type !== 'patient'){
       return <Redirect to={'/'} />;
   }
+  else if (
+    props?.stateLoginValueAim?.token !== 401 &&
+    props?.stateLoginValueAim?.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    props?.stateLoginValueAim.is_vedio_registered
+  ) {
+      return <Redirect to={'/patient/video_login'} />;
+    }
   else {
   return (
     <Grid
@@ -279,8 +273,6 @@ const mapStateToProps = (state) => {
   const { settings } = state.Settings;
   const { verifyCode } = state.authy;
   const { metadata } = state.OptionList;
-  // const { Doctorsetget } = state.Doctorset;
-  // const { catfil } = state.filterate;
   return {
     stateLanguageType,
     stateLoginValueAim,
@@ -288,8 +280,6 @@ const mapStateToProps = (state) => {
     settings,
     verifyCode,
     metadata,
-    //   Doctorsetget,
-    //   catfil
   };
 };
 export default pure(

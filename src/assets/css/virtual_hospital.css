@@ -17972,3 +17972,11 @@ line-height: 22px;
     color: red !important;
     font-weight: 600;
   }
+  .backFlow.movelogin {
+    margin: 10px 50px;
+}
+.backFlow.movelogin img {
+  height: 13px;
+  margin-right: 5px;
+  vertical-align: BASELINE;
+}

@@ -71,31 +71,30 @@ const LoginVideo = (props) => {
         }
       });
   };
+  console.log('pt1')
   if (
     props?.stateLoginValueAim.user === 'undefined' ||
     props?.stateLoginValueAim.token === 450 ||
     props?.stateLoginValueAim.token === 'undefined' ||
     props?.stateLoginValueAim.user.type !== 'patient'
   ) {
+    console.log('pt2')
     return <Redirect to={'/'} />;
   }
   else if (
     props?.stateLoginValueAim.token !== 401 &&
     props?.stateLoginValueAim.token !== 450 &&
-    props?.stateLoginValueAim?.user?.type === 'patient' &&
-    props?.verifyCode?.code
+    props?.stateLoginValueAim?.user?.type === 'patient' && 
+    !props?.stateLoginValueAim.is_vedio_registered
   ) {
-
-    if (props?.stateLoginValueAim.is_vedio_registered) {
-      return <Redirect to={'/patient/video_login'} />;
-    }
-    else if (props?.stateLoginValueAim?.isVideoLoggedIn) {
-      return <Redirect to={'/patient/settings'} />;
-    }
-    else {
       return <Redirect to={'/patient/video_register'} />;
     }
-  }
+    else if (props?.stateLoginValueAim.token !== 401 &&
+      props?.stateLoginValueAim.token !== 450 &&
+      props?.stateLoginValueAim?.user?.type === 'patient' && 
+      props?.stateLoginValueAim?.isVideoLoggedIn) {
+      return <Redirect to={'/patient/settings'} />;
+    }
   else {
     return (
 
