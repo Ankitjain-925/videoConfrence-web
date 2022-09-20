@@ -2714,7 +2714,7 @@ a.lineSort {
 }
 
 .backFlow img {
-  transform: rotateZ(180deg);
+  transform: rotateZ(180deg) !important;
   vertical-align: sub;
   margin-right: 12px;
 }
@@ -17654,12 +17654,12 @@ a {
 }
 
 .comment-callpat p {
+  padding-left: 12px;
   font-style: italic;
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
   color: #00ABAF !important;
-  margin-top: 10px;
 }
 
 .call-pop-title {
@@ -18096,12 +18096,12 @@ a {
     color: #00abaf !important;
   }
   
-  .call-feadback-header img{
+  /* .call-feadback-header img{
     width: 37px;
     height: 37px;
     border-radius: 50%;
     margin-right: 4px;
-  }
+  } */
   /* .euroamount{    position: absolute;
     top: 8px;
     left: 307px;
@@ -18140,4 +18140,13 @@ a {
     font-weight: 600;
     font-size: x-small;
   }
-  
+  .log_form .rrSysto label
+  {
+    margin:0px !important;
+  }
+  .call-feadbackimg img{
+    width: 37px !important;
+    height: 37px !important;
+    border-radius: 50%;
+    margin-right: 4px;
+}
