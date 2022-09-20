@@ -18139,5 +18139,9 @@ a {
     color: red !important;
     font-weight: 600;
     font-size: x-small;
+    font-family: 'Muli';
   }
-  
+
+  .setDataImg{
+    display:flex
+  }

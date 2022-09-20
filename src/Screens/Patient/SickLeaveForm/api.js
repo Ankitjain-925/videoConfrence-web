@@ -2246,7 +2246,7 @@ export const CallTopUpApi = (current, data) => {
   console.log("info", info)
   current.setState({ loaderImage: true });
   axios
-    .post(sitedata.data.path + '/managePrepaid',
+    .post(sitedata.data.path + '/vchat/managePrepaid',
       info)
     .then((res) => {
       current.setState({ loaderImage: false });
