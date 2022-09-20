@@ -459,11 +459,11 @@ class CometChatCallScreen extends React.PureComponent {
   };
 
   render() {
-    const resizeText = Translator.translate('RESIZE', this.props.lang);
-    let iconView = <i css={iconStyle(minimizeIcon)} title={resizeText}></i>;
-    if (this.state.maximized === false) {
-      iconView = <i css={iconStyle(maximizeIcon)} title={resizeText}></i>;
-    }
+    // const resizeText = Translator.translate('RESIZE', this.props.lang);
+    // let iconView = <i css={iconStyle(minimizeIcon)} title={resizeText}></i>;
+    // if (this.state.maximized === false) {
+    //   iconView = <i css={iconStyle(maximizeIcon)} title={resizeText}></i>;
+    // }
 
     return (
       <React.Fragment>
@@ -486,7 +486,7 @@ class CometChatCallScreen extends React.PureComponent {
             className="callscreen__header"
             onMouseDown={this.enableDragging}
           >
-            <div css={headerTitleStyle()}>&nbsp;</div>
+            {/* <div css={headerTitleStyle()}>&nbsp;</div>
             <div
               className="callscreen__resize"
               css={headerButtonStyle()}
@@ -496,7 +496,7 @@ class CometChatCallScreen extends React.PureComponent {
               <button type="button" title={resizeText}>
                 {iconView}
               </button>
-            </div>
+            </div> */}
           </div>
           <div
             css={callScreenWrapperStyle(this.props, keyframes)}

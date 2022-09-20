@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import Select from "react-select";
 
-
 class PersonalInfo extends Component {
     constructor(props) {
         super(props);
@@ -13,8 +12,6 @@ class PersonalInfo extends Component {
             { value: "60", label: 60 },
             { value: "120", label: 120 },
             { value: "240", label: 240 },],
-            // title: '',
-            // title2: '',
         };
     }
     continue = e => {
@@ -47,11 +44,11 @@ class PersonalInfo extends Component {
                         <label>Enter Time To Talk</label>
                     </Grid>
                     <Grid>
-                        {console.log("trfhgjk", this.props.dataa.time )}
+                        {console.log("trfhgjk", this.props.dataa )}
                         <Select
                             value={this.props.dataa.time}
                             name="firstName"
-                            options={this.state.title_degreeData}
+                            options={this.props.title_degreeData}
                             placeholder="Select Time To Talk "
                             isSearchable={false}
                             className="mr_sel"

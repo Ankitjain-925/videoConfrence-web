@@ -145,7 +145,12 @@ const RegisterVideo = (props) => {
     else{
       return <Redirect to={'/patient/video_register'} />;
     } 
-  } 
+  }
+  else if((props?.stateLoginValueAim?.token == 401 ||
+    props?.stateLoginValueAim?.token == 450) &&
+    props?.stateLoginValueAim?.user?.type !== 'patient'){
+      return <Redirect to={'/'} />;
+  }
   else {
   return (
     <Grid

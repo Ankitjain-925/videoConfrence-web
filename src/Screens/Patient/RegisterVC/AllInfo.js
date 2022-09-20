@@ -30,7 +30,7 @@ class AllInfo extends Component {
     SearchFilter1 = (e) => {
         var user_token = this.props.redux_st.stateLoginValueAim.token
         var data1 = e.target.value.toLowerCase()
-        this.props.onSelectLanguage('','','' );
+        this.props.onSelectLanguage('', '', '');
         this.setState({ searchValue: e.target.value });
         axios
             .get(sitedata.data.path + "/vchat/Get_Doctor/" + data1,
@@ -127,17 +127,23 @@ class AllInfo extends Component {
                                 </Grid>
                                 {/* End of Bread Crumb */}
 
-                                <Grid className="wardsGrupUpr">
+                                {/* <Grid className="wardsGrupUpr"> */}
                                     <Grid container direction="row">
                                         {/* {console.log("this.props.dataa", this.props.dataa.doctor_detail.first_name)} */}
                                         {this.props.dataa.doctor_detail ?
-                                            <Grid className="flowInfo P_full Card_Sel">
-                                                <Grid className="card-header">
+                                                                                        <Grid
+                                                                                        item
+                                                                                        xs={6}
+                                                                                        md={6}
+                                                                                        lg={6}
+                                                                                        sm={6}
+                                                                                    >
+                                                <Grid className="card-header Card_Sel">
                                                     <S3Image imgUrl={this.props.dataa.doctor_detail[0].image} />
-                                                    
+
                                                     <Grid>
                                                         <h5 className="selectdoc-head"> {this.props.dataa.doctor_detail[0].first_name}{' '}{this.props.dataa.doctor_detail[0].last_name}</h5>
-                                                        <h5 className="selectdoc-head"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>
+                                                        <h5 className="selectdoc-head2"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>
                                                         {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                                                         <Grid className='selectdoc-button'>
                                                         <img className = "v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
@@ -146,7 +152,7 @@ class AllInfo extends Component {
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
-                                            </Grid>
+                                                </Grid>
                                             :
 
                                             this.state.currentList?.length > 0 &&
@@ -154,21 +160,17 @@ class AllInfo extends Component {
 
                                                 <Grid
                                                     item
-                                                    xs={12}
-                                                    md={4}
-                                                    lg={4}
-
-
-
+                                                    xs={6}
+                                                    md={6}
+                                                    lg={6}
+                                                    sm={6}
                                                 >
                                                     {/* {console.log("1222",this.props.dataa.doctor_index )} */}
 
-                                                    <Grid className={this.state.load === i ? 'Card_Sel' : ''} onClick={() => {
+                                                    
+                                                <Grid className={this.state.load === i ? 'Card_Sel card-header' : 'card-header'} onClick={() => {
                                                         this.func(item, i, this.state.searchValue);
                                                     }}>
-                                                        <Grid className="flowInfo P_full">
-                                                            <Grid className="card-header">
-                                                                <S3Image imgUrl={item.image} />
 
                                                                 <Grid>
                                                                     <p><h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5></p>
@@ -178,11 +180,10 @@ class AllInfo extends Component {
                                                                     <img className = "v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
 
 
-                                                                    </Grid>
-                                                                </Grid>
-                                                            </Grid>
                                                         </Grid>
                                                     </Grid>
+                                                </Grid>
+                                                       
 
 
                                                 </Grid>
@@ -193,24 +194,24 @@ class AllInfo extends Component {
 
 
                                     </Grid>
-                                </Grid>
+                                {/* </Grid> */}
                             </Grid>
                             <Grid className="infoShwSave3 ">
-                            <input
+                                <input
                                     type="button"
                                     value="« Back"
                                     onClick={this.back}
 
                                 />
-                                {this.props.dataa.doctor_detail?
-                                
-                                <input
-                                    type="button"
-                                    value="Next »"
-                                    onClick={this.continue}
+                                {this.props.dataa.doctor_detail ?
 
-                                />: ''
-                                    }
+                                    <input
+                                        type="button"
+                                        value="Next »"
+                                        onClick={this.continue}
+
+                                    /> : ''
+                                }
                             </Grid>
                         </Grid>
 

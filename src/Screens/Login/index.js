@@ -250,13 +250,13 @@ class Index extends Component {
       this.props.verifyCode.code
     ) {
 
-      if(stateLoginValueAim.is_vedio_registered){
+      if (stateLoginValueAim.is_vedio_registered) {
         return <Redirect to={'/patient/video_login'} />;
       }
-      else{
+      else {
         return <Redirect to={'/patient/video_register'} />;
-      } 
-    } 
+      }
+    }
     else {
 
       return (

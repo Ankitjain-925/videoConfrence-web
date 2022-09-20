@@ -71,8 +71,8 @@ class JobDetails extends Component {
                 <Grid className="logForm form_full">
 
                     <Grid className="logRow" >
-                        <Grid container direction="row" >
-                            <Grid item xs={12} md={5} className="Card_1" >
+                        <Grid container justify="center" spacing="3" alignItems="center" direction="row" >
+                            <Grid item xs={12} md={6} sm={6} >
 
 
 
