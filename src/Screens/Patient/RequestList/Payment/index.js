@@ -184,7 +184,7 @@ class Index extends Component {
                     <Grid className="docsOpinion">
                       <Grid container direction="row" className="docsOpinLbl">
                         <Grid item xs={12} md={6}>
-                          <label>{this.props.usedFor == "register_video" ? "Register VIdeo Payment" : request_list_payment}</label>
+                          <label>{this.props.usedFor == "register_video" ? "Register Video Payment" : request_list_payment}</label>
                         </Grid>
                       </Grid>
                     </Grid>
