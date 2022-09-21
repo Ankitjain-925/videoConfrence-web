@@ -17022,7 +17022,7 @@ label.errMsgStyleSecPart {
 .bookedSlotCss a {
   border-style: solid;
   border-color: red;
-  color: red;
+  color: red !important;
 }
 
 .err_message4 {
@@ -17138,15 +17138,16 @@ label.errMsgStyleSecPart {
   color: #000808;
 }
 
-.logout {
+.logoutdash {
+  margin-left: 60px;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  /* width: 920px; */
   padding-bottom: 10px;
   margin-bottom: 5px;
   border-bottom: 1px solid #ddd;
   color: #00ABAF;
+  cursor: pointer;
 }
 
 .topupButton {
@@ -18154,4 +18155,42 @@ a {
     height: 37px !important;
     border-radius: 50%;
     margin-right: 4px;
+}
+.succss-pg img{
+  margin: 21px 0px;
+}
+.succss-pg{
+text-align: center;
+align-items: center;
+padding: 48px 36px;
+background: #F7F7F7;
+border-radius: 12px;
+margin: 50px auto;
+width: 500px;
+}
+
+.success-button{
+  color: #fff;
+  width: 100%;
+  height: 48px;
+  font-weight: 700;
+  border: 0;
+  background: #00ABAF;
+  border-radius: 8px;
+}
+.success-header{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: #000808;
+}
+
+.success-sub-heading{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #596060;
+  margin: 35px;
 }

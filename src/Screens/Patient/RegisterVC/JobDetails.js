@@ -73,7 +73,7 @@ class JobDetails extends Component {
                     <Grid className="logRow" >
                         <Grid container justify="center" spacing="3" alignItems="center" direction="row" >
                             <Grid item xs={12} md={6} sm={6} >
-                                <Grid sx={{ maxWidth: 345 }} onClick={(e)=>this.click(true, 'top-up')} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
+                                <Grid sm={{ maxWidth: 345 }} onClick={(e)=>this.click(true, 'top-up')} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">

@@ -11,7 +11,7 @@ import AppointmentList from "Screens/Patient/RequestList/index";
 import PatientProfile from "Screens/Patient/Profile/index";
 import Payment from "Screens/Patient/RequestList/Payment/index";
 import ArchiveRequest from "Screens/Patient/ArchiveRequest/index";
-
+import SuccessMsg from "Screens/Patient/Dashboard/successmsg";
 import Dashboard from "../../Screens/Patient/Dashboard";
 // import { SelectDoctor } from "Screens/Patient/Dashboard/selectdoctor";
 import Newpage from "Screens/Patient/newpage/index";
@@ -77,6 +77,12 @@ class Routermain extends Component {
               path="/patient/video_login"
               render={(props) => <LoginVideo {...props} />}
             />
+             <Route
+              exact
+              path="/patient/SuccessMsg"
+              render={(props) => <SuccessMsg {...props} />}
+            />
+            
             <Route
               exact={true}
               path="/payment/:id"
