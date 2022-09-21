@@ -147,13 +147,14 @@ export function getLink() {
 export const CallTopUpApi_Add = (current, data) => {
   let calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min) + parseInt(data?.data?.paymentData?.amount/500);
   var info = {
-    used_talktime_data: {
+    paid_amount_obj: {
       datetime: data?.data?.paymentData?.Date,
       amount: data?.data?.paymentData?.amount/100,
-      min: data?.data?.paymentData?.amount/500
+      min: data?.data?.paymentData?.amount/500,
+      payment_data: data?.data?.paymentData,
       },
     prepaid_talktime_min: calPrePaid,
-    manage_for: "use",
+    manage_for: "add",
     _id: current.props.stateLoginValueAim?.VideoData?._id,
   }
   console.log("info", info)

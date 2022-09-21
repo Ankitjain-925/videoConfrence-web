@@ -46,7 +46,9 @@ const Dashboard = (props) => {
   const [error, setError] = useState(false);
   const [openPayment, setOpenPayment] = useState(false);
   const [amount, setAmount] = useState("30");
-  const [famount, fsetAmount] = useState(amount/5);
+  const [famount, fsetAmount] = useState(amount / 5);
+  const [famount2, fsetAmount2] = useState();
+
 
 
 
@@ -79,10 +81,14 @@ const Dashboard = (props) => {
     setOpenFancyLanguage(true);
   };
 
-  const onPayment = () => {
+  const onPayment = (e) => {
     if (!customAmount) {
       setErrormsg("Amount shouldn't be empty");
       setError(true);
+      setOpenPayment(true);
+      if (e == 40 || e == 60 || e == 120){
+        fsetAmount2(e)
+      }
     } else {
       setErrormsg("");
       setError(false);
@@ -91,8 +97,8 @@ const Dashboard = (props) => {
   };
 
   const setAmo = (e) => {
-    setAmount("e");
-    fsetAmount(e/5);
+    setAmount(e);
+    fsetAmount(e / 5);
   }
 
 
@@ -130,123 +136,150 @@ const Dashboard = (props) => {
                 <LeftMenuMobile isNotShow={true} currentPage="topup" />
                 <Grid item xs={12} md={10} lg={8}>
                   <div className="settingPage">
+                  {!openPayment && (
                     <h5 className="setting-h5">Balance</h5>
-                    {console.log('sdfsdfdsf', customAmount)}
-                    {!customAmount ? <>
-
-                      <MiddleTopup />
-                      <p className='settingbox-heading'>Top up your balance</p>
-                      {/* <div className="last-sec-setting form_full">
+                  )}
                     
-                  </div> */}
-                      <Grid container direction="row" justify="center" alignItems="center">
-                        <Grid item xs={4} md={4} sm={4}>
-                          <div className="top-up-mid1-inner form_full">
-                            <div className="top-up-head-1">
-                              <div className='top-up-head'>Starter</div>
-                              <div className='top-up-minnute'>40min</div>
-                            </div>
-                            <div>
-                              <div className="top-up-content">Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                    {!customAmount ? <>
+                      {!openPayment && (<>
+                        <MiddleTopup />
+
+
+                        <p className='settingbox-heading'>Top up your balance</p>
+                        {/* <div className="last-sec-setting form_full">
+                    
+                          </div> */}
+                        <Grid container direction="row" justify="center" alignItems="center">
+                          <Grid item xs={4} md={4} sm={4}>
+                            <div className="top-up-mid1-inner form_full">
+                              <div className="top-up-head-1">
+                                <div className='top-up-head'>Starter</div>
+                                <div className='top-up-minnute'>40min</div>
                               </div>
-                            </div>
-                            <div className='top-up-cost'>8,99 €</div>
-                            <div>
-                              <button className='top-up-buybtn'>Buy Now</button>
-                            </div>
-                          </div>
-                        </Grid>
-
-                        <Grid item xs={4} md={4} sm={4}>
-                          <div className="top-up-mid1-inner form_full">
-                            <div className="top-up-head-1">
-                              <div className='top-up-head'>Standard</div>
-                              <div className='top-up-minnute'>60min</div>
-                            </div>
-                            <div>
-                              <div className='top-up-content'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
-                              </div>
-                            </div>
-                            <div className='top-up-cost'>23,99 €</div>
-                            <div>
-                              <button className='top-up-buybtn'>Buy Now</button>
-                            </div>
-                          </div>
-                        </Grid>
-
-                        <Grid item xs={4} md={4} sm={4}>
-                          <div className="top-up-mid1-inner form_full">
-                            <div className="top-up-head-1">
-                              <div className='top-up-head'>Premium</div>
-                              <div className='top-up-minnute'>120min</div>
-                            </div>
-                            <div>
-                              <div className='top-up-content'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
-                              </div>
-                            </div>
-                            <div className='top-up-cost'>49,99 €</div>
-                            <div>
-                              <button className='top-up-buybtn'>Buy Now</button>
-                            </div>
-                          </div>
-                        </Grid>
-
-                      </Grid>
-
-                      <Grid className="goto-custom-topup" onClick={() => { SetcustomAmount(true) }}>
-                      <img src={require('assets/images/rightArrow.png')} alt="" title="" />or choose a custom amount
-                      </Grid>
-                    </>
-                      :
-                      <>
-                        <div className='last-sec-setting form_full'>
-                          <div className="custom-topup-Back" onClick={() => { SetcustomAmount(false) }}> {'« Back'}  </div>
-                          <div className='custom-topup form_full_bl'>
-                            <div>
-                              <h2 className="custom-topup-head">Add a custom amount</h2>
-                            </div>
-                            <div className="custom-topup-field form_full">
-                              <MMHG
-                                onKeyDown={(e) => onKeyDownlogin(e)}
-                                name="amount"
-                                label={"EUR"}
-                                // onChange={(e) => this.updateEntryState(e)}
-                                value={amount}
-
-                                onChange={(e) => {
-                                  setAmo(e.target.value);
-                                }}
-                              />
-                           <p className="euroamount">€</p>
                               <div>
+                                <div className="top-up-content">Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                                </div>
+                              </div>
+                              <div className='top-up-cost'>200 €</div>
+                              <div>
+                                <button className='top-up-buybtn' onClick={(e) => onPayment(40)}>Buy Now</button>
                               </div>
                             </div>
-                            <div className="custom-topup-recieve">You will recieve: <span className="custom-topup-rmin">{famount}{' '}{'Min'}</span></div>
-                            <div className="continueBTN-topup">
-                              <Button variant='contained' onClick={() => onPayment()}>Continue</Button>
+                          </Grid>
 
+                          <Grid item xs={4} md={4} sm={4}>
+                            <div className="top-up-mid1-inner form_full">
+                              <div className="top-up-head-1">
+                                <div className='top-up-head'>Standard</div>
+                                <div className='top-up-minnute'>60min</div>
+                              </div>
+                              <div>
+                                <div className='top-up-content'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                                </div>
+                              </div>
+                              <div className='top-up-cost'>300 €</div>
+                              <div>
+                                <button className='top-up-buybtn' onClick={(e) => onPayment(60)}>Buy Now</button>
+                              </div>
                             </div>
+                          </Grid>
 
-                          </div>
+                          <Grid item xs={4} md={4} sm={4}>
+                            <div className="top-up-mid1-inner form_full">
+                              <div className="top-up-head-1">
+                                <div className='top-up-head'>Premium</div>
+                                <div className='top-up-minnute'>120min</div>
+                              </div>
+                              <div>
+                                <div className='top-up-content'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                                </div>
+                              </div>
+                              <div className='top-up-cost'>600 €</div>
+                              <div>
+                                <button className='top-up-buybtn' onClick={(e) => onPayment(120)}>Buy Now</button>
+                              </div>
+                            </div>
+                          </Grid>
 
-                        </div>
-                        <Grid>
+                        </Grid>
+
+                        <Grid className="goto-custom-topup" onClick={() => { SetcustomAmount(true) }}>
+                          or choose a custom amount
+                        </Grid>
+                      </>
+                      )}
+                      <Grid>
                         {openPayment && (
+                          
                           <div className='last-sec-setting form_full'>
-                            
-                            <div className='custom-topup'>
 
+                            <div className='custom-topup'>
+                            
                               <Payment
                                 onCancel={handleCancel}
                                 usedFor={"top_up"}
-                                famount = {famount}
-                              
+                                famount={famount2}
+
                               />
 
                             </div>
 
                           </div>
                         )}
+                      </Grid>
+                    </>
+                      :
+                      <>
+                        {!openPayment && (
+                          <div className='last-sec-setting form_full'>
+                            <div className="custom-topup-Back" onClick={() => { SetcustomAmount(false) }}> {'« Back'}  </div>
+                            <div className='custom-topup form_full_bl'>
+                              <div>
+                                <h2 className="custom-topup-head">Add a custom amount</h2>
+                              </div>
+                              <div className="custom-topup-field form_full">
+                                <MMHG
+                                  onKeyDown={(e) => onKeyDownlogin(e)}
+                                  name="amount"
+                                  label={"EUR"}
+                                  // onChange={(e) => this.updateEntryState(e)}
+                                  value={amount}
+
+                                  onChange={(e) => {
+                                    setAmo(e.target.value);
+                                  }}
+                                />
+                                <p className="euroamount">€</p>
+                                <div>
+                                </div>
+                              </div>
+                              <div className="custom-topup-recieve">You will recieve: <span className="custom-topup-rmin">{famount}{' '}{'Min'}</span></div>
+                              <div className="continueBTN-topup">
+                                <Button variant='contained' onClick={() => onPayment()}>Continue</Button>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+                        )}
+                        <Grid>
+                          {openPayment && (
+                            <div className='last-sec-setting form_full'>
+
+                              <div className='custom-topup'>
+
+                                <Payment
+                                  onCancel={handleCancel}
+                                  usedFor={"top_up"}
+                                  famount={famount}
+
+                                />
+
+                              </div>
+
+                            </div>
+                          )}
                         </Grid>
 
                       </>}
