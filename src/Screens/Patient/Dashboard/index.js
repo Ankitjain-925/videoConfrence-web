@@ -126,11 +126,11 @@ className={
               <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
               <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
               <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privactandnotification</div></div>
+              <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privact and notification</div></div>
             </div>
             <p className='settingbox-heading'>Other</p>
             <div className="last-sec-setting form_full">
-              <p className='middle-setting-items'>Amount</p>
+              <p className='middle-setting-items'>About</p>
               <p>Terms & Conditions </p>
               <p> Privact Policy</p>
               <p> Rate Aimedies Diagnostics</p>

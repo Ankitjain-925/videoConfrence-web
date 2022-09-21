@@ -21,12 +21,13 @@ class JobDetails extends Component {
 
     continue = e => {
         e.preventDefault();
-        // if ((this.props.dataa.permission == true || this.props.dataa.permission == false) && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min >= this.props.dataa.time.value) {
-        this.props.nextStep();
-        // }
-        // else {
-        // this.setState({ OptionRequired: "Please select a option" });
-        // }
+        console.log("this.props.dataa", this.props.dataa)
+        if (this.props.dataa.permission == true || this.props.dataa.permission == false) {
+            this.props.nextStep();
+        }
+        else {
+            this.setState({ OptionRequired: "Please select a option" });
+        }
     }
 
     back = e => {
@@ -44,7 +45,7 @@ class JobDetails extends Component {
         // this.setState({ isActiv: false });
         // this.setState({ isActive: !this.state.isActive });
         this.props.onSelectLanguage1(e)
-        if (type == "top-up" && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min > this.props.dataa.time.value) {
+        if (type == "top-up" && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value) {
             this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low." });
             this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page" });
 
@@ -52,8 +53,8 @@ class JobDetails extends Component {
         else {
             this.setState({ CompareRequired: " " });
             this.setState({ OptionRequired: " " });
-
         }
+
     }
 
     // dssdd = e => {
@@ -72,29 +73,27 @@ class JobDetails extends Component {
                     <Grid className="logRow" >
                         <Grid container justify="center" spacing="3" alignItems="center" direction="row" >
                             <Grid item xs={12} md={6} sm={6} >
-
-
-
-                                <Grid onClick={() => this.click(true)} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
+                                <Grid sx={{ maxWidth: 345 }} onClick={(e) => this.click(true, 'top-up')} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
                                         <Typography variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
                                         <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
-                                    </Grid>
 
+                                    </Grid>
 
                                     <CardContent>
                                         <Typography variant="body2">
                                             Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'}
                                         </Typography>
                                     </CardContent>
+                                    <Grid className="err_mesg1">{this.state.CompareRequired}</Grid>
 
                                 </Grid>
                             </Grid>
 
-                            <Grid item xs={12} md={6} sm={6} >
-                                <Grid onClick={() => this.click(false)} className={this.props.dataa.permission === true ? 'Card_1' : this.props.dataa.permission === false ? 'Card_Sel Card_1' : 'Card_1'}>
+                            <Grid item xs={12} md={6} sm={6}>
+                                <Grid onClick={(e) => this.click(false, 'credit-card')} className={this.props.dataa.permission === true ? 'Card_1' : this.props.dataa.permission === false ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
