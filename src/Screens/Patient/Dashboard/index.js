@@ -55,8 +55,11 @@ const Dashboard = (props) => {
       getSetting()
   }, [])
 
+  const LogoutDashClick=()=>{
+    var forUpdate = {value: true, token: props?.stateLoginValueAim?.token, user: props?.stateLoginValueAim?.user}
+    props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props?.stateLoginValueAim?.token, () => {}, forUpdate, false, false, true);
+  }
   const getSetting = () => {
-    console.log('props?.stateLoginValueAim', props?.stateLoginValueAim, props)
     axios
       .get(
         sitedata.data.path + '/UserProfile/updateSetting',
@@ -97,6 +100,12 @@ const Dashboard = (props) => {
   ) {
     return <Redirect to={'/'} />;
   }
+  else if (props?.stateLoginValueAim.token !== 401 &&
+    props?.stateLoginValueAim.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' && 
+    !props?.stateLoginValueAim?.isVideoLoggedIn) {
+    return <Redirect to={'/patient/video_login'} />;
+  }
   else{
   return (
     <Grid
@@ -136,6 +145,8 @@ className={
               <p> Rate Aimedies Diagnostics</p>
             </div>
          </div>
+
+         <div className='logoutdash' onClick={()=>LogoutDashClick()}>Logout</div>
           </Grid>
         </Grid>
       </Grid>

@@ -21,12 +21,15 @@ class JobDetails extends Component {
 
     continue = e => {
         e.preventDefault();
-        console.log("this.props.dataa", this.props.dataa)
-        if (this.props.dataa.permission == true || this.props.dataa.permission == false) {
+        if((this.props.dataa.permission == true || this.props.dataa.permission == false) && this.state.CompareRequired == ' ' && this.state.OptionRequired == ' '  ){
             this.props.nextStep();
         }
-        else {
-            this.setState({ OptionRequired: "Please select a option" });
+        else if (this.state.CompareRequired == 'Please recharge top-up to continue, your top-up amount is low.'){
+            this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page"  });
+        }
+        else{
+            this.setState({ OptionRequired: "Please select a option"  });
+
         }
     }
 
@@ -41,13 +44,11 @@ class JobDetails extends Component {
     }
 
     click = (e, type) => {
-        // e.preventDefault();
-        // this.setState({ isActiv: false });
-        // this.setState({ isActive: !this.state.isActive });
-        this.props.onSelectLanguage1(e)
-        if (type == "top-up" && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value) {
-            this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low." });
-            this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page" });
+        this.props.onSelectLanguage1(e
+        if (type == "top-up" && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value ){
+            console.log("111")
+            this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low."  });
+            this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page"  });
 
         }
         else {
@@ -73,7 +74,7 @@ class JobDetails extends Component {
                     <Grid className="logRow" >
                         <Grid container justify="center" spacing="3" alignItems="center" direction="row" >
                             <Grid item xs={12} md={6} sm={6} >
-                                <Grid sx={{ maxWidth: 345 }} onClick={(e) => this.click(true, 'top-up')} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
+                                <Grid sm={{ maxWidth: 345 }} onClick={(e)=>this.click(true, 'top-up')} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
