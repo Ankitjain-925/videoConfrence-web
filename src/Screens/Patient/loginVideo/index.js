@@ -40,7 +40,7 @@ const LoginVideo = (props) => {
     if (_username !== "" && _password !== "") {
       confirmSubmit();
     } else {
-      setErrormsg("Username && password not empty");
+      setErrormsg("Username & password not empty");
       setError(true);
     }
   };

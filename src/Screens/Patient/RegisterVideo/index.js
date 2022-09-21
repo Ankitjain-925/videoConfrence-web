@@ -66,7 +66,7 @@ const RegisterVideo = (props) => {
     if (email !== "" && _password !== "") {
       confirmSubmit(paymentData);
     } else {
-      setErrormsg("Username && password not empty");
+      setErrormsg("Username & password not empty");
       setError(true);
     }
   };
@@ -117,7 +117,7 @@ const RegisterVideo = (props) => {
 
   const onPayment = () => {
     if (!email && !_password) {
-      setErrormsg("Username && password shouldn't be empty");
+      setErrormsg("Username & password shouldn't be empty");
       setError(true);
     } else if (!ITGuideline) {
       setErrormsg("Please accept IT Guideline");

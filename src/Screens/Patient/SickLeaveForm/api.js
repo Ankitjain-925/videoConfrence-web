@@ -51,6 +51,10 @@ export const fromEuroToCent = (amount, current) => {
   return parseInt(amount * 100);
 };
 
+export const fromMinToEuro = (min, current) => {
+  return parseInt(min * 500);
+};
+
 export const CancelClick = (current) => {
   current.props.history.push('/patient/request-list');
 };
@@ -138,6 +142,31 @@ export function getLink() {
     STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
   }
   return STRIPE_PUBLISHABLE;
+}
+
+export const CallTopUpApi_Add = (current, data) => {
+  let calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min) + parseInt(data?.data?.paymentData?.amount/500);
+  var info = {
+    used_talktime_data: {
+      datetime: data?.data?.paymentData?.Date,
+      amount: data?.data?.paymentData?.amount/100,
+      min: data?.data?.paymentData?.amount/500
+      },
+    prepaid_talktime_min: calPrePaid,
+    manage_for: "use",
+    _id: current.props.stateLoginValueAim?.VideoData?._id,
+  }
+  console.log("info", info)
+  current.setState({ loaderImage: true });
+  axios
+    .post(sitedata.data.path + '/vchat/managePrepaid',
+      info)
+    .then((res) => {
+      current.setState({ loaderImage: false });
+    })
+    .catch((err) => {
+      current.setState({ loaderImage: false });
+    })
 }
 
 // For payment stripe

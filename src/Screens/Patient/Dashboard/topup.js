@@ -58,6 +58,18 @@ const Dashboard = (props) => {
     Security
   } = translate;
 
+
+  const onKeyDownlogin = (e) => {
+    if (e.key === "Enter") {
+      onPayment();
+    }
+  };
+
+  const handleCancel = () => {
+    setOpenPayment(false);
+  };
+
+
   const profileLink = () => {
     history.push("/patient");
   };
@@ -83,11 +95,7 @@ const Dashboard = (props) => {
     fsetAmount(e/5);
   }
 
-  const onKeyDownlogin = (e) => {
-    if (e.key === "Enter") {
-      onPayment();
-    }
-  };
+
 
   //For close Model
   const handleCloseFancyLanguage = () => {
@@ -229,9 +237,10 @@ const Dashboard = (props) => {
                             <div className='custom-topup'>
 
                               <Payment
-                                // onCancel={handleCancel}
-                                usedFor={"register_video"}
-                              // onSuccessPayment={BtnSubmit}
+                                onCancel={handleCancel}
+                                usedFor={"top_up"}
+                                famount = {famount}
+                              
                               />
 
                             </div>
