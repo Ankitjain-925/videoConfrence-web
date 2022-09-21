@@ -66,7 +66,7 @@ class AllInfo extends Component {
                 commonHeader(user_token))
             .then((response) => {
                 var q = [item, response]
-                console.log("final", q)
+                // console.log("final", q)
                 this.props.onSelectLanguage(q, i, searchValue);
                 this.setState({ loaderImage: false });
                 this.setState({

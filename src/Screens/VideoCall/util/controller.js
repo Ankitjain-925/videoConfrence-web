@@ -27,7 +27,6 @@ export class CometChatManager {
                     resolve(user);
                     
                 }, error => {
-                    console.log(error);
                     reject(error);
                 });
 

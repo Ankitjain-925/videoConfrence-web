@@ -128,7 +128,7 @@ const VideoCallPat = (props) => {
                   // }
                 })
                 .catch((err) => {
-                  console.log('err', err);
+                  // console.log('err', err);
                   // this.setState({ sectionValue: 5, loaderImage: false });
                 });
             }

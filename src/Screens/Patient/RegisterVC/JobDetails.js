@@ -44,9 +44,7 @@ class JobDetails extends Component {
     }
 
     click = (e, type) => {
-        this.props.onSelectLanguage1(e
         if (type == "top-up" && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value ){
-            console.log("111")
             this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low."  });
             this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page"  });
 

@@ -329,7 +329,7 @@ export const saveUserData = (current) => {
     var parent_id = current.state.UpDataDetails.parent_id ? current.state.UpDataDetails.parent_id : '0';
 
     var tocheckWith = (current.state.UpDataDetails?.citizen_country && current.state.UpDataDetails?.citizen_country !=='') ? current.state.UpDataDetails?.citizen_country  :  current?.state?.flag_mobile;
-   console.log('tocheckWith', tocheckWith)
+//    console.log('tocheckWith', tocheckWith)
     var getBucket = contry && contry.length > 0 && contry.filter((value, key) =>  value.code === tocheckWith?.value ?  tocheckWith?.value : tocheckWith);
 
     axios.put(sitedata.data.path + '/UserProfile/Users/update', {

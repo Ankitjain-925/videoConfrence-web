@@ -56,7 +56,6 @@ class Index extends Component {
 
     //Success payment alert after payment is success
     const successPayment = (data) => {
-      console.log("aman", data)
       let translate = getLanguage(this.props.stateLanguageType);
       const { paymnt_processed, ok } = translate;
       confirmAlert({
@@ -156,7 +155,6 @@ class Index extends Component {
           amount: amount,
         })
         .then((data) => {
-          console.log("11112222", data)
           if (this.props.usedFor == "register_video") {
             this.props.onSuccessPayment(data)
           }
