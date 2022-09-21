@@ -50,8 +50,19 @@ class SelectDoctor extends Component {
   }
 
   continue = e => {
+    this.setState({ errMsg: "" })
+    const { dataa } = this.props;
     e.preventDefault();
-    this.props.nextStep();
+    if (dataa?.house_id) {
+      this.setState({ errMsg: "" })
+      this.props.nextStep();
+    } else {
+      window.scroll({
+        top: 0,
+        behavior: 'smooth'
+      })
+      this.setState({ errMsg: "Please select hospital first" })
+    }
   }
 
   updateAllEntrySec = (e, name) => {
@@ -80,11 +91,16 @@ class SelectDoctor extends Component {
 
             <Grid className="card-header">
               <Grid container direction="row">
-                <Grid item xs={12} sm={6} md={6} className="setDataImg">
+                <Grid item xs={12} sm={7} md={7} className="setDataImg">
                   <S3Image imgUrl={dataa?.doctor_detail[0]?.image} />
                   <Grid>
                     <h5 className="selectdoc-head"> {dataa?.doctor_detail[0]?.first_name}{' '}{dataa?.doctor_detail[0]?.last_name} </h5>
-                    <h6 className="selectdoc-head2"> ( {dataa?.doctor_detail[0]?.profile_id} )</h6>
+                    <h6 className="selectdoc-head2 selectdoc-head3"> ( {dataa?.doctor_detail[0]?.profile_id} )</h6>
+                    <h6 className="selectdoc-head3">  <img
+                      src={require("assets/images/email.svg")}
+                      alt=""
+                      title=""
+                    />{dataa?.doctor_detail[0]?.email}</h6>
                     {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                     <Grid className='selectdoc-button'>
                       <span>
@@ -94,7 +110,7 @@ class SelectDoctor extends Component {
                   </Grid>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={6}>
+                <Grid item xs={12} sm={5} md={5}>
                   <label>Select Hospital</label>
                   <Grid>
                     <Select
@@ -107,8 +123,10 @@ class SelectDoctor extends Component {
                       isMulti={false}
                       isSearchable={true}
                     />
+                    <div className="err_mesg">{this.state.errMsg}</div>
                   </Grid>
-                </Grid>    </Grid>
+                </Grid>
+              </Grid>
             </Grid>
             <Grid className='card-content'>
               {/* <Select

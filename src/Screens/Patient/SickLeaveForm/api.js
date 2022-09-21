@@ -79,7 +79,7 @@ export const DownloadCert = (data, current) => {
     });
 };
 
-// For send meeting link patient as well as doctor
+// For send meeting link sendLinkDocPatpatient as well as doctor
 export const sendLinkDocPat = (payValue, taskValue, current) => {
   var data = {};
   let patientEmail = current?.props?.stateLoginValueAim?.user?.email;
@@ -96,17 +96,17 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
   data.patient_id = taskValue?.patient_id;
   data.doctor_profile_id = taskValue?.assinged_to[0]?.profile_id;
   data.doctor_id = taskValue?.assinged_to[0]?.user_id;
-  var t1 = taskValue?.start.split(':');
-  var Datenew = new Date(taskValue?.date).setHours(t1[0]);
-  data.sesion_id = data.doctor_profile_id + data.patient_profile_id + Datenew;
-  let path = getLink();
-  let link = {
-    doctor_link:
-      path + '/video-call/' + data?.doctor_profile_id + '/' + data?.sesion_id,
-    patient_link:
-      path + '/video-call/' + data?.patient_profile_id + '/' + data?.sesion_id,
-  };
-  data.link = link;
+  // var t1 = taskValue?.start.split(':');
+  // var Datenew = new Date(taskValue?.date).setHours(t1[0]);
+  // data.sesion_id = data.doctor_profile_id + data.patient_profile_id + Datenew;
+  // let path = getLink();
+  // let link = {
+  //   doctor_link:
+  //     path + '/video-call/' + data?.doctor_profile_id + '/' + data?.sesion_id,
+  //   patient_link:
+  //     path + '/video-call/' + data?.patient_profile_id + '/' + data?.sesion_id,
+  // };
+  // data.link = link;
   current.setState({ loaderImage: true });
   axios
     .post(
@@ -124,60 +124,46 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
     });
 };
 
-export function getLink() {
-  let env = 'DEV';
-  let url = '';
-  if (typeof window !== 'undefined') {
-    let target = window.location.href;
-    env = target.match(/localhost/) ? 'DEV' : 'PRD';
-  }
-  let STRIPE_PUBLISHABLE;
-  if (env === 'DEV') {
-    STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
-  } else {
-    STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
-  }
-  return STRIPE_PUBLISHABLE;
-}
+// export function getLink() {
+//   let env = 'DEV';
+//   let url = '';
+//   if (typeof window !== 'undefined') {
+//     let target = window.location.href;
+//     env = target.match(/localhost/) ? 'DEV' : 'PRD';
+//   }
+//   let STRIPE_PUBLISHABLE;
+//   if (env === 'DEV') {
+//     STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
+//   } else {
+//     STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
+//   }
+//   return STRIPE_PUBLISHABLE;
+// }
 
 // For payment stripe
-export const saveOnDB1 = (payment, task, current) => {
-  let path = getLink();
-  var t1 = task?.start.split(':');
-  var Datenew = new Date(task?.date).setHours(t1[0]);
-  var sesion_id =
-    task?.assinged_to[0]?.profile_id + task?.patient?.profile_id + Datenew;
+export const saveOnDB1 = (data, task, current) => {
+  // let path = getLink();
+  var calRandomNo = Math.floor(Math.random() * 90 + 10);
+  var Access_key = `${data?.patient?.profile_id}-${data?.item?.doctor_detail[0]?.profile_id}-${calRandomNo}`;
+  // var t1 = task?.start.split(':');
   current.setState({ loaderImage: true });
-  if (current.state.updateEvaluate._id) {
+  if (task._id) {
     axios
       .put(
-        sitedata.data.path + '/vh/AddTask/' + current.state.updateEvaluate._id,
+        sitedata.data.path + '/vh/AddTask/' + task._id,
         {
-          payment_data: payment?.data?.paymentData,
-          amount: payment?.data?.paymentData?.amount,
+          // payment_data: payment?.data?.paymentData,
+          // amount: payment?.data?.paymentData?.amount,
           is_payment: true,
-          link: {
-            doctor_link:
-              path +
-              '/video-call/' +
-              task?.assinged_to[0]?.profile_id +
-              '/' +
-              sesion_id,
-            patient_link:
-              path +
-              '/video-call/' +
-              task?.patient?.profile_id +
-              '/' +
-              sesion_id,
-          },
+          payment_by: "Top-up"
         },
         commonHeader(current.props.stateLoginValueAim.token)
       )
       .then((responce) => {
-        sendLinkDocPat(payment, task, current);
+        sendLinkDocPat(data, task, current);
         current.setState({ loaderImage: false });
         if (responce.data.hassuccessed) {
-          current.props.history.push('/patient/request-list');
+          current.props.history.push('/appointment-list');
         }
       });
   } else {
@@ -2240,16 +2226,19 @@ export const CallTopUpApi = (current, data) => {
       amount: data?.item?.amount,
       min: data?.item?.time?.value
     },
+    _id: current.props.stateLoginValueAim?.VideoData?._id,
     prepaid_talktime_min: calPrePaid,
     manage_for: "use"
   }
-  console.log("info", info)
   current.setState({ loaderImage: true });
   axios
     .post(sitedata.data.path + '/vchat/managePrepaid',
       info)
     .then((res) => {
-      current.setState({ loaderImage: false });
+      if (res && res.data && res.data.hassuccessed) {
+        saveOnDB1(data, res?.data?.data, current);
+        current.setState({ loaderImage: false });
+      }
     })
     .catch((err) => {
       current.setState({ loaderImage: false });

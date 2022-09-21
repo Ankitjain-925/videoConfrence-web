@@ -21,12 +21,12 @@ class JobDetails extends Component {
 
     continue = e => {
         e.preventDefault();
-        if ((this.props.dataa.permission == true || this.props.dataa.permission == false) && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min >= this.props.dataa.time.value) {
-            this.props.nextStep();
-        }
-        else {
-            this.setState({ OptionRequired: "Please select a option" });
-        }
+        // if ((this.props.dataa.permission == true || this.props.dataa.permission == false) && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min >= this.props.dataa.time.value) {
+        this.props.nextStep();
+        // }
+        // else {
+        // this.setState({ OptionRequired: "Please select a option" });
+        // }
     }
 
     back = e => {
