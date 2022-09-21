@@ -18,10 +18,9 @@ class JobDetails extends Component {
         };
 
     }
-    
+
     continue = e => {
         e.preventDefault();
-        console.log("this.props.dataa",this.props.dataa)
         if((this.props.dataa.permission == true || this.props.dataa.permission == false) && this.state.CompareRequired == ' ' && this.state.OptionRequired == ' '  ){
             this.props.nextStep();
         }
@@ -30,6 +29,7 @@ class JobDetails extends Component {
         }
         else{
             this.setState({ OptionRequired: "Please select a option"  });
+
         }
     }
 
@@ -44,16 +44,16 @@ class JobDetails extends Component {
     }
 
     click = (e, type) => {
-        this.props.onSelectLanguage1(e)
+        this.props.onSelectLanguage1(e
         if (type == "top-up" && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value ){
             console.log("111")
             this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low."  });
             this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page"  });
 
         }
-        else{
-            this.setState({ CompareRequired: " "  });
-            this.setState({ OptionRequired: " "  });
+        else {
+            this.setState({ CompareRequired: " " });
+            this.setState({ OptionRequired: " " });
         }
 
     }
@@ -80,21 +80,21 @@ class JobDetails extends Component {
                                     <Grid container justify="space-between" className="padd_10">
                                         <Typography variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
                                         <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
-                                        
+
                                     </Grid>
 
                                     <CardContent>
                                         <Typography variant="body2">
-                                        Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'} 
+                                            Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'}
                                         </Typography>
                                     </CardContent>
-                                    <Grid className = "err_mesg1">{this.state.CompareRequired}</Grid>
-                                    
+                                    <Grid className="err_mesg1">{this.state.CompareRequired}</Grid>
+
                                 </Grid>
                             </Grid>
-                           
+
                             <Grid item xs={12} md={6} sm={6}>
-                                <Grid onClick={(e)=>this.click(false, 'credit-card')} className={this.props.dataa.permission === true ? 'Card_1' : this.props.dataa.permission === false ? 'Card_Sel Card_1' : 'Card_1'}>
+                                <Grid onClick={(e) => this.click(false, 'credit-card')} className={this.props.dataa.permission === true ? 'Card_1' : this.props.dataa.permission === false ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
@@ -103,13 +103,13 @@ class JobDetails extends Component {
                                     </Grid>
                                     <CardContent>
                                         <Typography variant="body2">
-                                            Click Here To Pay Through Credit Card 
+                                            Click Here To Pay Through Credit Card
                                         </Typography>
                                     </CardContent>
-                                    
+
                                 </Grid>
                             </Grid>
-                            <Grid className = "err_mesg">{this.state.OptionRequired}</Grid>
+                            <Grid className="err_mesg">{this.state.OptionRequired}</Grid>
                         </Grid>
                     </Grid>
 
@@ -120,7 +120,7 @@ class JobDetails extends Component {
                                 <input
                                     type="text"
                                     name="jobCompany"
-                                    
+
                                     placeholder="Enter Card Number"
                                 />
                             )}

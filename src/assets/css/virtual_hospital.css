@@ -17219,7 +17219,7 @@ a {
 
 
 .selectdoc-button {
-  margin-top: 8px;
+  /* margin-top: 8px; */
   border: 1px solid #1DD1A1;
   border-radius: 5px;
   padding: 0px 8px 0px 2px;
@@ -17359,6 +17359,21 @@ a {
   font-family: 'Muli';
   letter-spacing: 1px;
   /* box-shadow: 0 8px 24px 0 rgb(0 171 175 / 32%); */
+}
+
+.selectdoc-head3{
+margin-bottom: 0!important;
+margin-top: 0px!important;
+}
+
+.selectdoc-head3 img {
+  width: 8%;
+  height: 22px;
+  margin-bottom: 2px
+}
+
+.darkTheme .selectdoc-head3{
+color:#d9dada;
 }
 
 .selectdoc-head2 {
