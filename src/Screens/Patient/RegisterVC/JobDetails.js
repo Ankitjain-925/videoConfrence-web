@@ -16,20 +16,19 @@ class JobDetails extends Component {
             isActiv: false,
             value: ''
         };
-
     }
 
     continue = e => {
-        e.preventDefault();
-        if((this.props.dataa.permission == true || this.props.dataa.permission == false) && this.state.CompareRequired == ' ' && this.state.OptionRequired == ' '  ){
-            this.props.nextStep();
+       if (this.props.dataa.permission == true || this.props.dataa.permission == false) {
+            if (this.state.CompareRequired == 'Please recharge top-up to continue, your top-up amount is low.'){
+                this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page"  });
+            }
+            else{
+                this.props.nextStep();
+            }
         }
-        else if (this.state.CompareRequired == 'Please recharge top-up to continue, your top-up amount is low.'){
-            this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page"  });
-        }
-        else{
-            this.setState({ OptionRequired: "Please select a option"  });
-
+        else {
+            this.setState({ OptionRequired: "Please select a option" });
         }
     }
 
@@ -40,20 +39,18 @@ class JobDetails extends Component {
 
     onchange = e => {
         this.setState({ setData: e.target.value });
-
     }
 
     click = (e, type) => {
-        if (type == "top-up" && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value ){
-            this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low."  });
-            this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page"  });
-
+        this.props.onSelectLanguage1(e)
+        if (type == "top-up" && (!this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value)) {
+            this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low." });
+            this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page" });
         }
         else {
             this.setState({ CompareRequired: " " });
             this.setState({ OptionRequired: " " });
         }
-
     }
 
     // dssdd = e => {
@@ -72,7 +69,7 @@ class JobDetails extends Component {
                     <Grid className="logRow" >
                         <Grid container justify="center" spacing="3" alignItems="center" direction="row" >
                             <Grid item xs={12} md={6} sm={6} >
-                                <Grid sm={{ maxWidth: 345 }} onClick={(e)=>this.click(true, 'top-up')} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
+                                <Grid sx={{ maxWidth: 345 }} onClick={(e) => this.click(true, 'top-up')} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
@@ -83,7 +80,7 @@ class JobDetails extends Component {
 
                                     <CardContent>
                                         <Typography variant="body2">
-                                            Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'}
+                                            Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || 0}{' '}{'Min'}
                                         </Typography>
                                     </CardContent>
                                     <Grid className="err_mesg1">{this.state.CompareRequired}</Grid>

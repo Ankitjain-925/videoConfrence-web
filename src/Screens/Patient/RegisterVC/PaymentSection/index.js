@@ -45,7 +45,7 @@ class Index extends Component {
                 allData: this.props.location?.state?.data,
             });
         }
-        getAmountData(this);
+        // getAmountData(this);
     }
 
     render() {

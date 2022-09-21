@@ -59,7 +59,7 @@ const TopUpdetail = (props) => {
             <div className='settingbox form_full'>
                 <div >
                     <label>Your Aimedis Credit :</label>
-                    <p>{props?.stateLoginValueAim?.VideoData?.prepaid_talktime_min}{' '}{'Min'}</p>
+                    <p>{props?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || 0}{' '}{'Min'}</p>
                 </div>
                 <div>
                     {props.btnShow && <Button variant='contained' className="topupButton" onClick={()=>{props.history.push('/patient/top-up')}}>Top Up</Button>}

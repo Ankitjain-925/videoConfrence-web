@@ -46,7 +46,7 @@ class Index extends Component {
         updateEvaluate: this.props.location?.state?.data,
       });
     }
-    getAmountData(this);
+    // getAmountData(this);
   }
 
   render() {

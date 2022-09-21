@@ -157,7 +157,6 @@ export const CallTopUpApi_Add = (current, data) => {
     manage_for: "add",
     _id: current.props.stateLoginValueAim?.VideoData?._id,
   }
-  console.log("info", info)
   current.setState({ loaderImage: true });
   axios
     .post(sitedata.data.path + '/vchat/managePrepaid',
@@ -1151,7 +1150,6 @@ export const handleEvalSubmit = (current, value) => {
             }
           })
           .catch(function (error) {
-            console.log('error');
             current.setState({
               loaderImage: false,
             });
@@ -1201,7 +1199,6 @@ export const mailSendToDoc = (data, current) => {
       });
     })
     .catch(function (error) {
-      console.log('error');
     });
 };
 
@@ -1226,7 +1223,6 @@ export const updateTaskApi = (current, data) => {
       }
     })
     .catch(function (error) {
-      console.log(error);
     });
 };
 
@@ -2044,7 +2040,6 @@ export const onChange = (date, current) => {
             current.setState({ loaderImage: false })
           })
           .catch(function (error) {
-            console.log('error', error);
             current.setState({ loaderImage: false })
           });
       }
