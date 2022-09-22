@@ -144,7 +144,8 @@ export class StepForm extends Component {
             float: "right",
             left: "-30px",
             position: "relative",
-            margin: "10px"
+            margin: "10px",
+            top: "28px",
         };
 
         return (

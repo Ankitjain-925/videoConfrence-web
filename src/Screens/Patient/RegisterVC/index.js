@@ -16,6 +16,8 @@ import { connect } from "react-redux";
 import { LoginReducerAim } from "Screens/Login/actions";
 import { LanguageFetchReducer } from 'Screens/actions';
 import { Settings } from "Screens/Login/setting";
+import ButtJoin from "Screens/Components/Button/index";
+
 
 function RegisterVC(props) {
   const [value, setValue] = useState(0)
@@ -66,33 +68,27 @@ function RegisterVC(props) {
               <Notification />
               {/* Website Mid Content */}
               <Grid item xs={12} md={11} lg={10}>
-                <Grid className="docsOpinion">
-                  <Grid container direction="row" className="docsOpinLbl">
-                    <Grid item xs={12} md={6} className="label_1">
-                      <label>{book_appointment}</label>
+                <div className="settingPage">
+                  <Grid container direction="row">
+                    <Grid item xs={3} md={3} lg={3}>
+                      <h5 className="setting-h5">{book_appointment}</h5>
+
+                    </Grid>
+                    <Grid item xs={6} md={5} lg={2}>
+
+                    </Grid>
+                    <Grid item xs={3} md={4} lg={3}>
+
+                      <ButtJoin />
+                    </Grid>
+
+                    <Grid item xs={12} md={10} lg={8}>
+
+                      <Main />
+                      
                     </Grid>
                   </Grid>
-                </Grid>
-
-                <Grid item xs={12} md={10} lg={8}>
-
-                  {/* <Grid className="profilePkgIner1"> */}
-                  {/* Tabs  */}
-                  {/* <AppBar position="static" className="profileTabsUpr">
-                    <lable>Register </lable>
-                  </AppBar> */}
-                  {/* </Grid> */}
-                  
-
-                    <Main />
-                  
-                  {/* End of Tabs */}
-
-
-                </Grid>
-                {/* Website Right Content */}
-                <Grid item xs={12} md={3}></Grid>
-                {/* End of Website Right Content */}
+                </div>
               </Grid>
               {/* End of Website Right Content */}
             </Grid>
