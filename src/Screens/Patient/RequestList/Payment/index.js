@@ -17,6 +17,8 @@ import { OptionList } from 'Screens/Login/metadataaction';
 import StripeCheckout from 'react-stripe-checkout';
 import { confirmAlert } from 'react-confirm-alert';
 import { getPublishableKey } from 'Screens/Components/CardInput/getPriceId';
+import SuccessMsg from '../../Dashboard/successmsg';
+
 import {
   saveOnDB1,
   CancelClick,
@@ -57,7 +59,7 @@ class Index extends Component {
     //Success payment alert after payment is success
     const successPayment = (data) => {
       let translate = getLanguage(this.props.stateLanguageType);
-      const { paymnt_processed, ok } = translate;
+      const { paymnt_processed, ok_and_close, ok } = translate;
       confirmAlert({
         customUI: ({ onClose }) => {
           return (
@@ -66,22 +68,23 @@ class Index extends Component {
                 this.props.settings &&
                   this.props.settings.setting &&
                   this.props.settings.setting.mode === 'dark'
-                  ? 'dark-confirm react-confirm-alert-body'
-                  : 'react-confirm-alert-body'
+                  ? 'dark-confirm react-confirm-alert-body-c'
+                  : 'react-confirm-alert-body-c'
               }
             >
-              <h1>{paymnt_processed}</h1>
-              <div className="react-confirm-alert-button-group">
-                <button
-                  onClick={() => {
-                    onClose();
-                    CallTopUpApi_Add(this, data);
-                    saveOnDB1(data, this.state.updateEvaluate, this);
-                  }}
-                >
-                  {ok}
-                </button>
-              </div>
+              <SuccessMsg />
+
+              <button className='success-button'
+                onClick={() => {
+                  onClose();
+                  this.props.onCancel()
+                  CallTopUpApi_Add(this, data);
+                  saveOnDB1(data, this.state.updateEvaluate, this);
+                }}
+              >
+                {ok_and_close}
+              </button>
+
             </div>
           );
         },
@@ -199,16 +202,16 @@ class Index extends Component {
                         </Grid>
                       </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={8}>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
                       <Grid className="cnfrmDiaMain profilePkg cnfrmDiaMain1">
                         <div className="payment_sec_extra_ser1">
                           <div className="sbu_button">
                             <h2>{Payment}</h2>
                             <Grid container direction="row" spacing={2}>
-                              <Grid item xs={12} md={6}>
+                              <Grid item xs={12} sm={6} md={6}>
                                 <Checkout />
                               </Grid>
-                              <Grid item xs={12} md={6}>
+                              <Grid item xs={12} sm={6} md={6}>
                                 <button
                                   onClick={() => {
                                     this.props.usedFor == "register_video" ? this.props.onCancel() : this.props.usedFor == "top_up" ? this.props.onCancel() : CancelClick(this);

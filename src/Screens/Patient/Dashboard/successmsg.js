@@ -42,15 +42,15 @@ class SuccessMsg extends Component {
         <Grid container direction="row" alignItems="center">
           <Grid item xs={12} md={12}  >
             <div className='succss-pg'>
-        <img src={require('assets/virtual_images/Step.png')} />
-        <div className='success-header'>
-          Top up successfully processed!
-        </div>
-        <div className='success-sub-heading'>
-          120 minutes will be instantly added to your Aimedis balance.
-        </div>
-        <button className='success-button'>Close</button>
-      </div>
+              <img src={require('assets/virtual_images/Step.png')} />
+              <div className='success-header'>
+                Top up successfully processed!
+              </div>
+              <div className='success-sub-heading'>
+                120 minutes will be instantly added to your Aimedis balance.
+              </div>
+              {/* <button className='success-button'>Close</button> */}
+            </div>
           </Grid>
         </Grid>
       </Grid>
