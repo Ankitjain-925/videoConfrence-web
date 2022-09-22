@@ -202,16 +202,16 @@ class Index extends Component {
                         </Grid>
                       </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={8}>
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
                       <Grid className="cnfrmDiaMain profilePkg cnfrmDiaMain1">
                         <div className="payment_sec_extra_ser1">
                           <div className="sbu_button">
                             <h2>{Payment}</h2>
                             <Grid container direction="row" spacing={2}>
-                              <Grid item xs={12} md={6}>
+                              <Grid item xs={12} sm={6} md={6}>
                                 <Checkout />
                               </Grid>
-                              <Grid item xs={12} md={6}>
+                              <Grid item xs={12} sm={6} md={6}>
                                 <button
                                   onClick={() => {
                                     this.props.usedFor == "register_video" ? this.props.onCancel() : this.props.usedFor == "top_up" ? this.props.onCancel() : CancelClick(this);

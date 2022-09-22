@@ -211,9 +211,9 @@ const Dashboard = (props) => {
                       <Grid>
                         {openPayment && (
                           
-                          <div className='last-sec-setting form_full'>
+                          
 
-                            <div className='custom-topup'>
+                            
                             
                               <Payment
                                 onCancel={handleCancel}
@@ -222,9 +222,9 @@ const Dashboard = (props) => {
 
                               />
 
-                            </div>
+                            
 
-                          </div>
+                          
                         )}
                       </Grid>
                     </>
@@ -265,9 +265,9 @@ const Dashboard = (props) => {
                         )}
                         <Grid>
                           {openPayment && (
-                            <div className='last-sec-setting form_full'>
+                            
 
-                              <div className='custom-topup'>
+                              
 
                                 <Payment
                                   onCancel={handleCancel}
@@ -276,9 +276,9 @@ const Dashboard = (props) => {
 
                                 />
 
-                              </div>
+                              
 
-                            </div>
+                            
                           )}
                         </Grid>
 
