@@ -45,7 +45,7 @@ class Index extends Component {
                 allData: this.props.location?.state?.data,
             });
         }
-        getAmountData(this);
+        // getAmountData(this);
     }
 
     render() {
@@ -75,7 +75,7 @@ class Index extends Component {
                                 <button
                                     onClick={() => {
                                         onClose();
-                                        saveOnDB1(data, this.state.updateEvaluate, this);
+                                        saveOnDB1(data, allData, this);
                                     }}
                                 >
                                     {ok}
@@ -122,7 +122,7 @@ class Index extends Component {
         const Checkout = ({
             name = 'AIS',
             description = 'Stripe Payment',
-            amount = this.state.amountDta,
+            amount = allData?.amount,
             email = this.props.stateLoginValueAim.user.email,
         }) => (
             <StripeCheckout
@@ -149,7 +149,7 @@ class Index extends Component {
                 .post(sitedata.data.path + '/lms_stripeCheckout/intent-pop', {
                     source: token.id,
                     currency: CURRENCY,
-                    amount: fromEuroToCent(this.state.amountDta, this),
+                    amount: fromEuroToCent(allData?.amount, this),
                 })
                 .then(successPayment, this.setState({ addtocart: [] }))
                 .catch(errorPayment);
@@ -177,7 +177,7 @@ class Index extends Component {
                                         <Grid className="docsOpinion">
                                             <Grid container direction="row" className="docsOpinLbl">
                                                 <Grid item xs={12} md={6}>
-                                                    <label> {allData?.item?.permission ? "Top Up" : "Credit Card"} Payment</label>
+                                                    <label> {allData?.payment_by === "Top-Up" ? "Top Up" : "Credit Card"} Payment</label>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
@@ -188,7 +188,7 @@ class Index extends Component {
                                                         <h2>{Payment}</h2>
                                                         <Grid container direction="row" spacing={2}>
                                                             <Grid item xs={12} md={6}>
-                                                                {allData?.item?.permission ? <button
+                                                                {allData?.payment_by === "Top-Up" ? <button
                                                                     onClick={() => {
                                                                         CallTopUpApi(this, allData);
                                                                     }}

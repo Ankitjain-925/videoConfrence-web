@@ -21,13 +21,12 @@ class AllInfo extends Component {
             showRename: false,
             txtName: {},
             showinput: false,
-
+            loaderImage: false,
             isActive: false,
-
-
         };
     }
     SearchFilter1 = (e) => {
+        this.setState({ loaderImage: true });
         var user_token = this.props.redux_st.stateLoginValueAim.token
         var data1 = e.target.value.toLowerCase()
         this.props.onSelectLanguage('', '', '');
@@ -36,13 +35,10 @@ class AllInfo extends Component {
             .get(sitedata.data.path + "/vchat/Get_Doctor/" + data1,
                 commonHeader(user_token))
             .then((response) => {
-
-                this.setState({ loaderImage: false });
                 this.setState({
                     currentList: response.data.data,
-
+                    loaderImage: false
                 });
-
             })
             .catch((error) => {
                 this.setState({ loaderImage: false });
@@ -59,7 +55,7 @@ class AllInfo extends Component {
     }
 
     func = (item, i, searchValue) => {
-        this.setState({ load: i });
+        this.setState({ load: i, loaderImage: true });
         var user_token = this.props.redux_st.stateLoginValueAim.token
         axios
             .get(sitedata.data.path + "/vchat/getfeedbackfordoctor/" + item._id,
@@ -96,6 +92,7 @@ class AllInfo extends Component {
         return (
 
             <>
+                {this.state.loaderImage && <Loader />}
                 <Grid className="logForm form_full">
                     {/* Start of Bread Crumb */}
                     <Grid container direction="row" alignItems="center">
@@ -128,72 +125,72 @@ class AllInfo extends Component {
                                 {/* End of Bread Crumb */}
 
                                 {/* <Grid className="wardsGrupUpr"> */}
-                                    <Grid container direction="row">
-                                        {/* {console.log("this.props.dataa", this.props.dataa.doctor_detail.first_name)} */}
-                                        {this.props.dataa.doctor_detail ?
-                                                                                        <Grid
-                                                                                        item
-                                                                                        xs={6}
-                                                                                        md={6}
-                                                                                        lg={6}
-                                                                                        sm={6}
-                                                                                    >
-                                                <Grid className="card-header Card_Sel">
-                                                    <S3Image imgUrl={this.props.dataa.doctor_detail[0].image} />
+                                <Grid container direction="row">
+                                    {/* {console.log("this.props.dataa", this.props.dataa.doctor_detail.first_name)} */}
+                                    {this.props.dataa.doctor_detail ?
+                                        <Grid
+                                            item
+                                            xs={6}
+                                            md={6}
+                                            lg={6}
+                                            sm={6}
+                                        >
+                                            <Grid className="card-header Card_Sel">
+                                                <S3Image imgUrl={this.props.dataa.doctor_detail[0].image} />
+
+                                                <Grid>
+                                                    <h5 className="selectdoc-head"> {this.props.dataa.doctor_detail[0].first_name}{' '}{this.props.dataa.doctor_detail[0].last_name}</h5>
+                                                    <h5 className="selectdoc-head2"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>
+                                                    {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
+                                                    <Grid className='selectdoc-button'>
+                                                        <img className="v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
+
+
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                        :
+
+                                        this.state.currentList?.length > 0 &&
+                                        this.state.currentList.map((item, i) => (
+
+                                            <Grid
+                                                item
+                                                xs={6}
+                                                md={6}
+                                                lg={6}
+                                                sm={6}
+                                            >
+                                                {/* {console.log("1222",this.props.dataa.doctor_index )} */}
+
+
+                                                <Grid className={this.state.load === i ? 'Card_Sel card-header' : 'card-header'} onClick={() => {
+                                                    this.func(item, i, this.state.searchValue);
+                                                }}>
 
                                                     <Grid>
-                                                        <h5 className="selectdoc-head"> {this.props.dataa.doctor_detail[0].first_name}{' '}{this.props.dataa.doctor_detail[0].last_name}</h5>
-                                                        <h5 className="selectdoc-head2"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>
+                                                        <p><h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5></p>
+                                                        <h5 className="selectdoc-head"> {'('}{item.profile_id}{')'}</h5>
                                                         {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                                                         <Grid className='selectdoc-button'>
-                                                        <img className = "v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
+                                                            <img className="v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
 
 
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
-                                                </Grid>
-                                            :
-
-                                            this.state.currentList?.length > 0 &&
-                                            this.state.currentList.map((item, i) => (
-
-                                                <Grid
-                                                    item
-                                                    xs={6}
-                                                    md={6}
-                                                    lg={6}
-                                                    sm={6}
-                                                >
-                                                    {/* {console.log("1222",this.props.dataa.doctor_index )} */}
-
-                                                    
-                                                <Grid className={this.state.load === i ? 'Card_Sel card-header' : 'card-header'} onClick={() => {
-                                                        this.func(item, i, this.state.searchValue);
-                                                    }}>
-
-                                                                <Grid>
-                                                                    <p><h5 className="selectdoc-head"> {item.first_name}{' '}{item.last_name}</h5></p>
-                                                                    <h5 className="selectdoc-head"> {'('}{item.profile_id}{')'}</h5>
-                                                                    {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
-                                                                    <Grid className='selectdoc-button'>
-                                                                    <img className = "v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
 
 
-                                                        </Grid>
-                                                    </Grid>
-                                                </Grid>
-                                                       
+
+                                            </Grid>
 
 
-                                                </Grid>
+                                        ))
+                                    }
 
 
-                                            ))
-                                        }
-
-
-                                    </Grid>
+                                </Grid>
                                 {/* </Grid> */}
                             </Grid>
                             <Grid className="infoShwSave3 ">

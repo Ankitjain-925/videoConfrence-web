@@ -44,7 +44,7 @@ class Index extends Component {
         updateEvaluate: this.props.location?.state?.data,
       });
     }
-    getAmountData(this);
+    // getAmountData(this);
   }
 
   render() {
@@ -62,8 +62,8 @@ class Index extends Component {
             <div
               className={
                 this.props.settings &&
-                this.props.settings.setting &&
-                this.props.settings.setting.mode === 'dark'
+                  this.props.settings.setting &&
+                  this.props.settings.setting.mode === 'dark'
                   ? 'dark-confirm react-confirm-alert-body'
                   : 'react-confirm-alert-body'
               }
@@ -95,8 +95,8 @@ class Index extends Component {
             <div
               className={
                 this.props.setting &&
-                this.props.setting.setting &&
-                this.props.setting.setting.mode === 'dark'
+                  this.props.setting.setting &&
+                  this.props.setting.setting.mode === 'dark'
                   ? 'dark-confirm react-confirm-alert-body'
                   : 'react-confirm-alert-body'
               }
@@ -142,7 +142,7 @@ class Index extends Component {
     );
 
     //For payment
-    const onToken = (token) =>{
+    const onToken = (token) => {
       const amount = this.props.usedFor == "register_video" ? 20 : this.state.amountDta
       axios
         .post(sitedata.data.path + '/lms_stripeCheckout/intent-pop', {
@@ -150,24 +150,24 @@ class Index extends Component {
           currency: CURRENCY,
           amount: fromEuroToCent(amount, this),
         })
-        .then((data)=>{
-          if(this.props.usedFor == "register_video"){
+        .then((data) => {
+          if (this.props.usedFor == "register_video") {
             this.props.onSuccessPayment(data)
-          }else{
-            successPayment(data) 
+          } else {
+            successPayment(data)
             this.setState({ addtocart: [] })
           }
         })
         .catch(errorPayment);
-}
+    }
     return (
       <Grid>
         <Grid
           className={
             this.props.settings &&
-            this.props.settings.setting &&
-            this.props.settings.setting.mode &&
-            this.props.settings.setting.mode === 'dark'
+              this.props.settings.setting &&
+              this.props.settings.setting.mode &&
+              this.props.settings.setting.mode === 'dark'
               ? 'homeBg homeBgDrk'
               : 'homeBg'
           }
@@ -178,7 +178,7 @@ class Index extends Component {
               <Grid item xs={12} md={12}>
                 <Grid container direction="row">
                   {/* Website Menu */}
-                  {this.props.usedFor != "register_video" &&<LeftMenu isNotShow={true} currentPage="feedback" />}
+                  {this.props.usedFor != "register_video" && <LeftMenu isNotShow={true} currentPage="feedback" />}
                   {this.props.usedFor != 'register_video' && <LeftMenuMobile isNotShow={true} currentPage="feedback" />}
                   <Grid item xs={12} md={11} lg={10}>
                     <Grid className="docsOpinion">

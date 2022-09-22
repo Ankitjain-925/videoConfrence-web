@@ -71,7 +71,6 @@ class SelectDoctor extends Component {
 
   render() {
     const { dataa } = this.props;
-    console.log("dataa", dataa)
     let translate = getLanguage(this?.props?.redux_st?.stateLanguageType);
     let {
       my_profile,
