@@ -342,7 +342,7 @@ class CometChatCallScreen extends React.PureComponent {
           this.props.userListCall(userList);
         },
         onUserJoined: (user) => {
-          console.log('user', user);
+          // console.log('user', user);
         },
         onError: (error) => {
           if (this.context) {
@@ -357,11 +357,11 @@ class CometChatCallScreen extends React.PureComponent {
 
         onRecordingStarted: (recordingStartedBy) => {
           // This event will work in JS SDK v3.0.2-beta1 & later.
-          console.log('Listener => onRecordingStarted:', recordingStartedBy);
+          // console.log('Listener => onRecordingStarted:', recordingStartedBy);
         },
         onRecordingStopped: (recordingStoppedBy) => {
           // This event will work in JS SDK v3.0.2-beta1 & later.
-          console.log('Listener => onRecordingStopped:', recordingStoppedBy);
+          // console.log('Listener => onRecordingStopped:', recordingStoppedBy);
         },
       })
     );

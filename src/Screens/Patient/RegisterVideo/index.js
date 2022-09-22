@@ -66,7 +66,7 @@ const RegisterVideo = (props) => {
     if (email !== "" && _password !== "") {
       confirmSubmit(paymentData);
     } else {
-      setErrormsg("Username && password not empty");
+      setErrormsg("Username & password not empty");
       setError(true);
     }
   };
@@ -75,6 +75,11 @@ const RegisterVideo = (props) => {
       onPayment();
     }
   };
+
+  const toggleShow = () => {
+    setHidden(!hidden);
+  }
+
   const confirmSubmit = (paymentData) => {
     let _data = {
       email: userData.email || "",
@@ -117,7 +122,7 @@ const RegisterVideo = (props) => {
 
   const onPayment = () => {
     if (!email && !_password) {
-      setErrormsg("Username && password shouldn't be empty");
+      setErrormsg("Username & password shouldn't be empty");
       setError(true);
     } else if (!ITGuideline) {
       setErrormsg("Please accept IT Guideline");
@@ -196,20 +201,57 @@ const RegisterVideo = (props) => {
                           />
                         </Grid>
                       </Grid>
-                      <Grid className="logRow">
-                        <Grid>
-                          <label>{password}</label>
-                        </Grid>
-                        <Grid>
-                          <input
-                            type={hidden ? "password" : "text"}
-                            name="pass"
-                            onKeyDown={(e) => onKeyDownlogin(e)}
-                            value={_password}
-                            onChange={(e) => setPassword(e.target.value)}
-                          />
-                        </Grid>
-                      </Grid>
+                      <Grid className="logRow logpassInst">
+                          <Grid container direction="row">
+                            <Grid item xs={11} sm={6} md={6}>
+                              <label>{password}</label>
+                            </Grid>
+                            {/* <Grid
+                              item
+                              xs={11}
+                              sm={6}
+                              md={6}
+                              className="logFrgtpass"
+                            >
+                              <label>
+                                <a
+                                // onClick={forgotPassword}
+                                >
+                                  {login_Forgotpassword}
+                                </a>
+                              </label>
+                            </Grid> */}
+                          </Grid>
+                          <Grid className="logPass">
+                            {/* <Grid>
+                              <label>{password}</label>
+                            </Grid> */}
+                            <input
+                              type={hidden ? "password" : "text"}
+                              name="pass"
+                              onKeyDown={(e) => onKeyDownlogin(e)}
+                              value={_password}
+                              onChange={(e) => setPassword(e.target.value)}
+                            />
+                            {hidden && (
+                              <a onClick={toggleShow}>
+                                <img
+                                  src={require('assets/images/showeye.svg')}
+                                  alt=""
+                                  title=""
+                                />
+                              </a>
+                            )}
+                            {!hidden && (
+                              <a onClick={toggleShow}>
+                                <img
+                                  src={require('assets/images/hide.svg')}
+                                  alt=""
+                                  title=""
+                                />
+                              </a>
+                            )}
+                          </Grid></Grid>
 
                       <Grid className="aceptTermsPlcy">
                         <FormControlLabel

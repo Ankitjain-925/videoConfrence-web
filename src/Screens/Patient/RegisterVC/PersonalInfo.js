@@ -44,7 +44,6 @@ class PersonalInfo extends Component {
                         <label>Enter Time To Talk</label>
                     </Grid>
                     <Grid>
-                        {console.log("trfhgjk", this.props.dataa )}
                         <Select
                             value={this.props.dataa.time}
                             name="firstName"

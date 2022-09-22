@@ -19,10 +19,13 @@ class JobDetails extends Component {
     }
 
     continue = e => {
-        e.preventDefault();
-        console.log("this.props.dataa", this.props.dataa)
         if (this.props.dataa.permission == true || this.props.dataa.permission == false) {
-            this.props.nextStep();
+            if (this.state.CompareRequired == 'Please recharge top-up to continue, your top-up amount is low.') {
+                this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page" });
+            }
+            else {
+                this.props.nextStep();
+            }
         }
         else {
             this.setState({ OptionRequired: "Please select a option" });
@@ -39,11 +42,8 @@ class JobDetails extends Component {
     }
 
     click = (e, type) => {
-        // e.preventDefault();
-        // this.setState({ isActiv: false });
-        // this.setState({ isActive: !this.state.isActive });
         this.props.onSelectLanguage1(e)
-        if (type == "top-up" && this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value) {
+        if (type == "top-up" && (!this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value)) {
             this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low." });
             this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page" });
         }

@@ -54,7 +54,7 @@ class Index extends Component {
         this.setState({ showQuestion: state });
     };
     handleTaskSubmit =()=>{
-        console.log('data',this.state.showQuestion)
+        // console.log('data',this.state.showQuestion)
         let translate = getLanguage(this.props.stateLanguageType);
         let { Something_went_wrong } = translate;
         var data = this.state.showQuestion;

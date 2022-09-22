@@ -40,7 +40,7 @@ const LoginVideo = (props) => {
     if (_username !== "" && _password !== "") {
       confirmSubmit();
     } else {
-      setErrormsg("Username && password not empty");
+      setErrormsg("Username & password not empty");
       setError(true);
     }
   };
@@ -71,14 +71,12 @@ const LoginVideo = (props) => {
         }
       });
   };
-  console.log('pt1')
   if (
     props?.stateLoginValueAim.user === 'undefined' ||
     props?.stateLoginValueAim.token === 450 ||
     props?.stateLoginValueAim.token === 'undefined' ||
     props?.stateLoginValueAim.user.type !== 'patient'
   ) {
-    console.log('pt2')
     return <Redirect to={'/'} />;
   }
   else if (

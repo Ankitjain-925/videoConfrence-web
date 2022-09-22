@@ -39,7 +39,6 @@ export class StepForm extends Component {
 
 
     handleLanguage = (langValue, i, search) => {
-        console.log("dsfghjgfd", langValue)
         const state = this.state.mainState;
         state["doctor_detail"] = langValue;
         state["doctor_index"] = i;
@@ -48,7 +47,6 @@ export class StepForm extends Component {
     }
 
     handleLanguage1 = (lang) => {
-        console.log("lang", lang)
         const state = this.state.mainState;
         state["permission"] = lang;
         this.setState({ mainState: state });
@@ -69,14 +67,12 @@ export class StepForm extends Component {
 
 
     handleLanguage5 = (la, la2, la3) => {
-        console.log("gggg", la)
         const state = this.state.mainState2;
         state["la2"] = la2;
         state["la3"] = la3;
         // this.setState({ mainState2: la2 });
         // this.setState({ mainState3: la3 });
         if (la) {
-            console.log("check")
             this.setState({
                 step: 6
             });

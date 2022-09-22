@@ -30,7 +30,7 @@ const Index = (props) => {
     const handleSubmit = () => {
         if (codeValue && codeValue?.code) {
             history.push("/patient/video-call");
-            console.log("codevalue", codeValue)
+            // console.log("codevalue", codeValue)
             setcodeValue({ code: '' });
         }
         else {

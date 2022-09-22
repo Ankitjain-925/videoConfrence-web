@@ -124,8 +124,8 @@ class Index extends Component {
         commonHeader(user_token)
       )
       .then((response) => {
-        console.log('response.data.data', response.data.data);
-        this.setState({ loaderImage: false, LoggedInUser: response.data.data });
+        // console.log('response.data.data', response.data.data);
+       this.setState({ loaderImage: false, LoggedInUser: response.data.data });
       })
       .catch((error) => {
         this.setState({ loaderImage: false });

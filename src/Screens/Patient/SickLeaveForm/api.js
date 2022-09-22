@@ -51,6 +51,10 @@ export const fromEuroToCent = (amount, current) => {
   return parseInt(amount * 100);
 };
 
+export const fromMinToEuro = (min, current) => {
+  return parseInt(min * 500);
+};
+
 export const CancelClick = (current) => {
   current.props.history.push('/appointment-list');
 };
@@ -134,6 +138,47 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
     }).catch((err) => { })
 };
 
+// export function getLink() {
+//   let env = 'DEV';
+//   let url = '';
+//   if (typeof window !== 'undefined') {
+//     let target = window.location.href;
+//     env = target.match(/localhost/) ? 'DEV' : 'PRD';
+//   }
+//   let STRIPE_PUBLISHABLE;
+//   if (env === 'DEV') {
+//     STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
+//   } else {
+//     STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
+//   }
+//   return STRIPE_PUBLISHABLE;
+// }
+
+export const CallTopUpApi_Add = (current, data) => {
+  let calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min) + parseInt(data?.data?.paymentData?.amount / 500);
+  var info = {
+    paid_amount_obj: {
+      datetime: data?.data?.paymentData?.Date,
+      amount: data?.data?.paymentData?.amount / 100,
+      min: data?.data?.paymentData?.amount / 500,
+      payment_data: data?.data?.paymentData,
+    },
+    prepaid_talktime_min: calPrePaid,
+    manage_for: "add",
+    _id: current.props.stateLoginValueAim?.VideoData?._id,
+  }
+  current.setState({ loaderImage: true });
+  axios
+    .post(sitedata.data.path + '/vchat/managePrepaid',
+      info)
+    .then((res) => {
+      current.setState({ loaderImage: false });
+    })
+    .catch((err) => {
+      current.setState({ loaderImage: false });
+    })
+}
+
 // For payment stripe
 export const saveOnDB1 = (data, task, current) => {
   current.setState({ loaderImage: true });
@@ -160,7 +205,7 @@ export const saveOnDB1 = (data, task, current) => {
         commonHeader(current.props.stateLoginValueAim.token)
       )
       .then((responce) => {
-        sendLinkDocPat(task, data, current);
+        // sendLinkDocPat(task, data, current);
         current.setState({ loaderImage: false });
         if (responce.data.hassuccessed) {
           current.props.history.push('/appointment-list');
@@ -1127,7 +1172,6 @@ export const handleEvalSubmit = (current, value) => {
             }
           })
           .catch(function (error) {
-            console.log('error');
             current.setState({
               loaderImage: false,
             });
@@ -1202,7 +1246,6 @@ export const updateTaskApi = (current, data) => {
       }
     })
     .catch(function (error) {
-      console.log(error);
     });
 };
 
@@ -2020,7 +2063,6 @@ export const onChange = (date, current) => {
             current.setState({ loaderImage: false })
           })
           .catch(function (error) {
-            console.log('error', error);
             current.setState({ loaderImage: false })
           });
       }

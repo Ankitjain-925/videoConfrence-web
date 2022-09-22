@@ -1793,7 +1793,7 @@ a.moreMenu {
   display: block;
 }
 .profilMenuList li a {
-  color: #404646;
+  color: #404646 !important;
   font-family: Muli;
   font-size: 12px;
   font-weight: 600;
@@ -12846,7 +12846,7 @@ img.MenuImg {
 .suggent-time a {
   border-radius: 8px;
   background-color: #f2f2f2;
-  color: #7f8383;
+  color: #7f8383 !important;
   font-family: Muli;
   font-size: 12px;
   font-weight: bold;
