@@ -59,29 +59,29 @@ export const CancelClick = (current) => {
   current.props.history.push('/appointment-list');
 };
 
-//for downoading the pdf
-export const DownloadCert = (data, current) => {
-  current.setState({ loaderImage: true });
-  axios
-    .post(sitedata.data.path + '/vactive/downloadSickleaveCertificate', data, {
-      responseType: 'blob',
-    })
-    .then((responce) => {
-      current.setState({ loaderImage: false });
-      var data = new Blob([responce.data]);
-      if (typeof window.navigator.msSaveBlob === 'function') {
-        // If it is IE that support download blob directly.
-        window.navigator.msSaveBlob(data, 'report.pdf');
-      } else {
-        var blob = data;
-        var link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = 'report.pdf';
-        document.body.appendChild(link);
-        link.click(); // create an <a> element and simulate the click operation.
-      }
-    });
-};
+// //for downoading the pdf
+// export const DownloadCert = (data, current) => {
+//   current.setState({ loaderImage: true });
+//   axios
+//     .post(sitedata.data.path + '/vactive/downloadSickleaveCertificate', data, {
+//       responseType: 'blob',
+//     })
+//     .then((responce) => {
+//       current.setState({ loaderImage: false });
+//       var data = new Blob([responce.data]);
+//       if (typeof window.navigator.msSaveBlob === 'function') {
+//         // If it is IE that support download blob directly.
+//         window.navigator.msSaveBlob(data, 'report.pdf');
+//       } else {
+//         var blob = data;
+//         var link = document.createElement('a');
+//         link.href = window.URL.createObjectURL(blob);
+//         link.download = 'report.pdf';
+//         document.body.appendChild(link);
+//         link.click(); // create an <a> element and simulate the click operation.
+//       }
+//     });
+// };
 
 // For send meeting link sendLinkDocPatpatient as well as doctor
 export const sendLinkDocPat = (payValue, taskValue, current) => {
@@ -234,10 +234,10 @@ export const DownloadBill = (current, item) => {
       birthday: current.props.stateLoginValueAim?.user?.birthday,
     },
     task_id: item?._id,
-    type: 'sick_leave',
+    type: 'video_conference',
   };
   axios
-    .post(sitedata.data.path + "/vh/downloadPEBill", data, {
+    .post(sitedata.data.path + "/vchat/DownloadbillVC", data, {
       responseType: "blob",
     })
     .then((res) => {

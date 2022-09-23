@@ -23,6 +23,8 @@ import { LanguageFetchReducer } from "Screens/actions";
 import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
 import MiddleTopup from "./middleTopup";
+import ButtJoin from "Screens/Components/Button/index";
+
 
 function TabContainer(props) {
   return (
@@ -50,14 +52,14 @@ const Dashboard = (props) => {
   const profileLink = () => {
     history.push("/patient");
   };
-    // componentDidMount
-    useEffect(() => {
-      getSetting()
+  // componentDidMount
+  useEffect(() => {
+    getSetting()
   }, [])
 
-  const LogoutDashClick=()=>{
-    var forUpdate = {value: true, token: props?.stateLoginValueAim?.token, user: props?.stateLoginValueAim?.user}
-    props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props?.stateLoginValueAim?.token, () => {}, forUpdate, false, false, true);
+  const LogoutDashClick = () => {
+    var forUpdate = { value: true, token: props?.stateLoginValueAim?.token, user: props?.stateLoginValueAim?.user }
+    props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props?.stateLoginValueAim?.token, () => { }, forUpdate, false, false, true);
   }
   const getSetting = () => {
     axios
@@ -74,14 +76,14 @@ const Dashboard = (props) => {
           });
         }
         var languageValue = responce.data.data && responce.data.data.language
-        ? responce.data.data.language
-        : 'en';
+          ? responce.data.data.language
+          : 'en';
         setLanguageValue(languageValue);
         props.LanguageFetchReducer(languageValue);
       });
   };
 
-  
+
   //For open the model
   const openLanguageModel = () => {
     setOpenFancyLanguage(true);
@@ -102,65 +104,78 @@ const Dashboard = (props) => {
   }
   else if (props?.stateLoginValueAim.token !== 401 &&
     props?.stateLoginValueAim.token !== 450 &&
-    props?.stateLoginValueAim?.user?.type === 'patient' && 
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
     !props?.stateLoginValueAim?.isVideoLoggedIn) {
     return <Redirect to={'/patient/video_login'} />;
   }
-  else{
-  return (
-    <Grid
-className={
-  props.settings &&
-    props.settings.setting &&
-    props.settings.setting.mode &&
-    props.settings.setting.mode === 'dark'
-    ? 'homeBg darkTheme homeBgDrk'
-    : 'homeBg'
-}
->
-<Grid className="homeBgIner">
-<Grid container direction="row" justify="center">
-    <Grid item xs={12} md={12}>
-      <Grid container direction="row">
-        <LeftMenu isNotShow={true} currentPage="settings" />
-        <LeftMenuMobile isNotShow={true} currentPage="settings" />
-        <Grid item xs={12} md={10} lg={8}>
-          <div className="settingPage">
-            <h5 className="setting-h5">Settings</h5>
-            
-            <MiddleTopup btnShow={true}/>
+  else {
+    return (
+      <Grid
+        className={
+          props.settings &&
+            props.settings.setting &&
+            props.settings.setting.mode &&
+            props.settings.setting.mode === 'dark'
+            ? 'homeBg darkTheme homeBgDrk'
+            : 'homeBg'
+        }
+      >
+        <Grid className="homeBgIner">
+          <Grid container direction="row" justify="center">
+            <Grid item xs={12} md={12}>
+              <Grid container direction="row">
+                <LeftMenu isNotShow={true} currentPage="settings" />
+                <LeftMenuMobile isNotShow={true} currentPage="settings" />
+                <Grid item xs={12} md={10} lg={8}>
+                  <div className="settingPage">
+                    <Grid container direction="row" justify="center">
+                      <Grid item xs={3} md={3} lg={3}>
+                        <h5 className="setting-h5">Settings</h5>
 
-            <p className='settingbox-heading'>Account Settings</p>
-            <div className="last-sec-setting form_full">
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")}  /><div ><a onClick={profileLink}>Account</a></div></div>
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")}  /><div ><a onClick={openLanguageModel}>Language</a></div></div>
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")}  /><div >Units</div></div>
-              <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")}  /><div >Privact and notification</div></div>
-            </div>
-            <p className='settingbox-heading'>Other</p>
-            <div className="last-sec-setting form_full">
-              <p className='middle-setting-items'>About</p>
-              <p>Terms & Conditions </p>
-              <p> Privact Policy</p>
-              <p> Rate Aimedies Diagnostics</p>
-            </div>
-         </div>
+                      </Grid>
+                      <Grid item xs={6} md={5} lg={5}>
 
-         <div className='logoutdash' onClick={()=>LogoutDashClick()}>Logout</div>
+                      </Grid>
+                      <Grid item xs={3} md={4} lg={4}>
+
+                        <ButtJoin />
+                      </Grid>
+                    </Grid>
+
+
+                    <MiddleTopup btnShow={true} />
+
+                    <p className='settingbox-heading'>Account Settings</p>
+                    <div className="last-sec-setting form_full">
+                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")} /><div ><a onClick={profileLink}>Account</a></div></div>
+                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")} /><div ><a onClick={openLanguageModel}>Language</a></div></div>
+                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")} /><div >Units</div></div>
+                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")} /><div >Privact and notification</div></div>
+                    </div>
+                    <p className='settingbox-heading'>Other</p>
+                    <div className="last-sec-setting form_full">
+                      <p className='middle-setting-items'>About</p>
+                      <p>Terms & Conditions </p>
+                      <p> Privact Policy</p>
+                      <p> Rate Aimedies Diagnostics</p>
+                    </div>
+                  </div>
+
+                  <div className='logoutdash' onClick={() => LogoutDashClick()}>Logout</div>
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
+        <SetLanguage
+          getSetting={() => getSetting()}
+          openFancyLanguage={openFancyLanguage}
+          languageValue={languageValue}
+          handleCloseFancyLanguage={() => handleCloseFancyLanguage()}
+          openLanguageModel={() => openLanguageModel()}
+
+        />
       </Grid>
-    </Grid>
- </Grid>
-<SetLanguage  
-    getSetting={() => getSetting()}
-    openFancyLanguage={openFancyLanguage}
-    languageValue={languageValue}
-    handleCloseFancyLanguage={() => handleCloseFancyLanguage()}
-    openLanguageModel={() => openLanguageModel()}
-    
-  />
-</Grid>
     )
   }
 }

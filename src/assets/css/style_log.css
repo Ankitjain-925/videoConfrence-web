@@ -1,19 +1,71 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
 
-body{ margin: 0; padding: 0; font-family: Muli; color: #000808; font-weight:400; }
-h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: inherit; }
-.mt-10{ margin-top: 10px !important; }
-.mt-20{ margin-top: 20px !important; }
-.mt-30{ margin-top: 30px !important; }
-.mt-40{ margin-top: 40px !important; }
-.mt-50{ margin-top: 50px !important; }
-.mt-100{ margin-top: 100px !important; }
-.pt-40{ padding-top: 40px !important; }
-.mb-20{ margin-bottom: 20px !important; }
-.mb-40{ margin-bottom: 40px !important; }
-.height-100{ height: 100px !important; }
-.height-200{ height: 200px !important; }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Muli;
+    color: #000808;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7,
+p {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.mt-30 {
+    margin-top: 30px !important;
+}
+
+.mt-40 {
+    margin-top: 40px !important;
+}
+
+.mt-50 {
+    margin-top: 50px !important;
+}
+
+.mt-100 {
+    margin-top: 100px !important;
+}
+
+.pt-40 {
+    padding-top: 40px !important;
+}
+
+.mb-20 {
+    margin-bottom: 20px !important;
+}
+
+.mb-40 {
+    margin-bottom: 40px !important;
+}
+
+.height-100 {
+    height: 100px !important;
+}
+
+.height-200 {
+    height: 200px !important;
+}
 
 
 /* Registration page css */
@@ -27,30 +79,37 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     line-height: 54px;
     text-align: center;
 }
-.regSelectTop select{
+
+.regSelectTop select {
     margin-bottom: 0px !important;
 }
-.regFooter .copyright{
+
+.regFooter .copyright {
     margin-top: 0px !important;
     padding: 24px 0px;
 }
-.regFooter .footer_sec{
+
+.regFooter .footer_sec {
     padding-bottom: 0px !important;
 }
-.regFooter .footerRow{
+
+.regFooter .footerRow {
     display: none !important;
 }
+
 .registerForm {
     background: #ffffff;
     padding: 20px 26px;
     border-radius: 12px;
     background-color: #FFFFFF;
-    box-shadow: 0 8px 24px 0 rgba(0,8,8,0.08);
+    box-shadow: 0 8px 24px 0 rgba(0, 8, 8, 0.08);
     margin: 35px 30px 40px;
 }
+
 .regData {
     margin-top: 40px;
 }
+
 .registerForm label {
     color: #000808;
     font-family: Muli;
@@ -59,7 +118,9 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     line-height: 20px;
     margin-bottom: 6px;
 }
-.registerRow input[type="text"], .registerRow input[type="password"] {
+
+.registerRow input[type="text"],
+.registerRow input[type="password"] {
     border-radius: 7px;
     background-color: #f1f2f2;
     padding: 10px 12px;
@@ -67,9 +128,11 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     outline: none !important;
     border: none;
 }
+
 .registerRow {
     margin-bottom: 18px;
 }
+
 .regMob span {
     color: #404646;
     font-family: Muli;
@@ -77,27 +140,33 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     letter-spacing: 0;
     line-height: 15px;
 }
+
 .regMob span svg {
     color: #00ABAF !important;
 }
+
 .regMob {
     margin-bottom: 0px;
     margin-right: 0px;
 }
+
 .registerPass {
     position: relative;
 }
+
 .registerPass a {
     cursor: pointer;
     position: absolute;
     right: 10px;
     top: 8px;
 }
+
 .regMob {
     margin-right: 0px !important;
     margin-bottom: 0px !important;
 }
-.registerFormMain{
+
+.registerFormMain {
     background: url('../images/Group8Copy22.svg') no-repeat 38% 8%;
     display: block;
     width: 100%;
@@ -105,6 +174,7 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     background-size: 614px;
     margin-bottom: 125px;
 }
+
 .acPatient select {
     border-radius: 7px;
     background-color: #f7f7f7;
@@ -114,6 +184,7 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     outline: none !important;
     text-align-last: center;
 }
+
 .acPatientIner a {
     border-radius: 7px;
     background-color: #00ABAF;
@@ -130,9 +201,11 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     color: #ffffff !important;
     cursor: pointer;
 }
+
 .acPatientIner {
     margin-right: 5px;
 }
+
 .acPatient select {
     margin-left: 5px;
 }
@@ -151,12 +224,14 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     padding: 15px 12px;
     border-radius: 26.5px;
     background: linear-gradient(36.72deg, #00AAA6 0%, #00B1E6 100%);
-    box-shadow: 0 8px 19px 0 rgba(4,188,190,0.63);
+    box-shadow: 0 8px 19px 0 rgba(4, 188, 190, 0.63);
 }
+
 .regCrtAc {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
 .havAC p {
     font-family: Muli;
     text-align: center;
@@ -165,14 +240,17 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     letter-spacing: 0;
     line-height: 15px;
 }
-.havAC p a{
-  color: #00ABAF;
-  cursor: pointer;
+
+.havAC p a {
+    color: #00ABAF;
+    cursor: pointer;
 }
+
 .accountTyp {
     margin-top: 30px;
     margin-bottom: 28px;
 }
+
 .passInst p {
     color: #404646;
     font-family: Muli;
@@ -181,13 +259,16 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     line-height: 15px;
     margin-bottom: 5px;
 }
+
 .passInst ul {
     padding-left: 0px;
     margin-bottom: 0px;
 }
+
 .passInst li {
     list-style-type: none;
 }
+
 .passInst a {
     color: #404646;
     font-family: Muli;
@@ -196,28 +277,33 @@ h1,h2,h3,h4,h5,h6,h7,p{ margin:0; padding:0; font-size: inherit; font-weight: in
     letter-spacing: 0;
     line-height: 15px;
 }
+
 .passInst img {
     margin-right: 4px;
     vertical-align: sub;
 }
+
 .passInst {
     position: absolute;
     right: -228px;
     top: -13px;
     border-radius: 4px;
     background-color: #FFFFFF;
-    box-shadow: 0 2px 16px 0 rgba(0,8,8,0.08);
+    box-shadow: 0 2px 16px 0 rgba(0, 8, 8, 0.08);
     padding: 12px 12px;
 }
+
 .passInstMain {
     position: relative;
 }
+
 img.passArow {
     position: absolute;
     left: -24px;
     top: 41px;
     height: 28px;
 }
+
 .passInstIner {
     position: relative;
 }
@@ -226,6 +312,7 @@ img.passArow {
     white-space: pre-wrap;
     position: relative;
 }
+
 .changeLangIner button a.nav-link {
     padding: 0px !important;
     color: #797e7e !important;
@@ -237,10 +324,12 @@ img.passArow {
     margin-bottom: 0px;
     position: relative;
 }
+
 .changeLang li {
     list-style-type: none;
 }
-.changeLang a.dropdown-toggle.nav-link{
+
+.changeLang a.dropdown-toggle.nav-link {
     border: 1px solid #BFC1C1;
     border-radius: 20px;
     background-color: #383838;
@@ -259,102 +348,124 @@ img.passArow {
 .acType {
     margin-left: 5px;
 }
+
 .acType li {
     list-style-type: none;
 }
+
 .ProfSelect a.dropdown-toggle.nav-link {
-    background-color: #00abaf!important;
-    color: #fff!important;
-    font-weight: 600!important;
+    background-color: #00abaf !important;
+    color: #fff !important;
+    font-weight: 600 !important;
 }
+
 .acType a.dropdown-toggle.nav-link {
     border-radius: 7px;
     background-color: #f7f7f7;
     border: none;
     width: 100%;
     padding: 13px 9px;
-    outline: none!important;
+    outline: none !important;
     -moz-text-align-last: center;
     text-align-last: center;
     color: #000;
 }
+
 .acType .dropdown-toggle:after {
     position: absolute;
     top: 22px;
     right: 10px;
 }
+
 .acType .dropdown-toggle:after {
-    margin-left: 23px!important;
+    margin-left: 23px !important;
 }
+
 .acType .dropdown-menu .dropdown-item {
-    padding: 7px 20px!important;
+    padding: 7px 20px !important;
 }
+
 .dropdown-menu button {
     color: #7f8383;
     font-weight: 500;
     font-size: 13px;
-    outline: none!important;
+    outline: none !important;
 }
+
 .MuiGrid-root.changeLang {
     float: right;
 }
+
 .registerRow {
     margin-bottom: 18px;
 }
-.flag-select button{
+
+.flag-select button {
     z-index: 0 !important;
 }
+
 .flag-select {
-    border-radius: 7px 0 0 7px!important;
-    position: absolute!important;
-    height: 44px;
-    background: rgba(101,107,109,.09);
-    padding: 0!important;
-}
-.regMobNum input {
-    border-radius: 7px!important;
-    background-color: #f1f2f2!important;
-    width: 100%!important;
-    border: none!important;
-    outline: none!important;
-    height: 44px!important;
-    font-family: Muli!important;
-    padding: 10px 12px 10px 16%!important;
-}
-.regMobNum .flag-dropdown{
-    color: #4d4d4d;
-    border: none;
-    border-radius: 7px 0 0 7px!important;
+    border-radius: 7px 0 0 7px !important;
     position: absolute !important;
     height: 44px;
-    background: rgba(101,107,109,.09);
-    padding: 0!important;
+    background: rgba(101, 107, 109, .09);
+    padding: 0 !important;
 }
-@media (max-width: 992px){
-.registerFormMain{
-    padding: 0 15%;
-    background-size: 550px;
- }
- .passInst{
-    position: initial !important;
-    margin-top: 16px;
-  }
-  .passInstIner:after{
-    left: 0px !important;
-    top: -23px !important;
-  }
+
+.regMobNum input {
+    border-radius: 7px !important;
+    background-color: #f1f2f2 !important;
+    width: 100% !important;
+    border: none !important;
+    outline: none !important;
+    height: 44px !important;
+    font-family: Muli !important;
+    padding: 10px 12px 10px 16% !important;
 }
-@media screen and (max-width: 767px){
-.recFormMain, .rectFormMain, .registerFormMain {
-    padding: 0;
-    background-size: contain;
-  }
+
+.regMobNum .flag-dropdown {
+    color: #4d4d4d;
+    border: none;
+    border-radius: 7px 0 0 7px !important;
+    position: absolute !important;
+    height: 44px;
+    background: rgba(101, 107, 109, .09);
+    padding: 0 !important;
 }
-@media (max-width: 599px){
-.registerForm {
-    width: 90%!important;
- }
+
+@media (max-width: 992px) {
+    .registerFormMain {
+        padding: 0 15%;
+        background-size: 550px;
+    }
+
+    .passInst {
+        position: initial !important;
+        margin-top: 16px;
+    }
+
+    .passInstIner:after {
+        left: 0px !important;
+        top: -23px !important;
+    }
 }
+
+@media screen and (max-width: 767px) {
+
+    .recFormMain,
+    .rectFormMain,
+    .registerFormMain {
+        padding: 0;
+        background-size: contain;
+    }
+}
+
+@media (max-width: 599px) {
+    .registerForm {
+        width: 90% !important;
+    }
+}
+
 /* End Registration page css */
 
 /* Login page css */
@@ -371,8 +482,8 @@ img.passArow {
     border: none;
     padding: 15px 12px;
     border-radius: 26.5px;
-    background: linear-gradient(36.72deg,#00aaa6,#00b1e6);
-    box-shadow: 0 8px 19px 0 rgba(4,188,190,.63);
+    background: linear-gradient(36.72deg, #00aaa6, #00b1e6);
+    box-shadow: 0 8px 19px 0 rgba(4, 188, 190, .63);
 }
 
 .logData h1 {
@@ -384,7 +495,8 @@ img.passArow {
     line-height: 54px;
     text-align: center;
 }
-.logFormMain{
+
+.logFormMain {
     background: url('../images/Group8Copy22.svg') no-repeat 38% 8%;
     display: block;
     width: 100%;
@@ -393,17 +505,20 @@ img.passArow {
     margin-bottom: 29px;
     min-height: 575px;
 }
+
 .logForm {
     background: #ffffff;
     padding: 20px 26px;
     border-radius: 12px;
     background-color: #FFFFFF;
-    box-shadow: 0 8px 24px 0 rgba(0,8,8,0.08);
+    box-shadow: 0 8px 24px 0 rgba(0, 8, 8, 0.08);
     margin: 35px 30px 40px;
 }
+
 .logData {
     margin-top: 40px;
 }
+
 .logForm label {
     color: #000808;
     font-family: Muli;
@@ -414,7 +529,9 @@ img.passArow {
     font-weight: 600;
     margin: 10px;
 }
-.logForm input[type="text"], .logForm input[type="password"] {
+
+.logForm input[type="text"],
+.logForm input[type="password"] {
     border-radius: 7px;
     background-color: #f1f2f2;
     padding: 10px 12px;
@@ -422,25 +539,31 @@ img.passArow {
     outline: none !important;
     border: none;
 }
+
 .logpassInst {
     position: relative;
 }
+
 .logPass a {
     cursor: pointer;
     position: absolute;
     right: 10px;
     top: 8px;
 }
+
 .logPass {
     position: relative;
 }
+
 .logRow {
     margin-bottom: 18px;
 }
+
 p.regOnlog a {
     color: #00ABAF;
     cursor: pointer;
 }
+
 p.regOnlog {
     font-family: Muli;
     font-size: 12px;
@@ -450,6 +573,7 @@ p.regOnlog {
     text-align: center;
     margin-bottom: 5px;
 }
+
 .logFrgtpass label {
     color: #00ABAF;
     font-family: Muli;
@@ -457,127 +581,148 @@ p.regOnlog {
     letter-spacing: 0;
     line-height: 15px;
 }
+
 .logFrgtpass {
     text-align: right;
 }
-@media (max-width: 992px){
-.logFormMain {
-    padding: 0 10%;
-    background-size: contain;
-    min-height: 450px;
-  }
+
+@media (max-width: 992px) {
+    .logFormMain {
+        padding: 0 10%;
+        background-size: contain;
+        min-height: 450px;
+    }
 }
-@media screen and (max-width: 767px){
-.logForm {
-    padding: 20px 26px;
-    margin: 22px auto 30px;
-    width: 100%;
- }
+
+@media screen and (max-width: 767px) {
+    .logForm {
+        padding: 20px 26px;
+        margin: 22px auto 30px;
+        width: 100%;
+    }
 }
-@media (max-width: 599px){
-.logFormMain {
-    padding: 0 6%;
- }
- .regHead {
-    margin: 24px 0 10px;
-  }
+
+@media (max-width: 599px) {
+    .logFormMain {
+        padding: 0 6%;
+    }
+
+    .regHead {
+        margin: 24px 0 10px;
+    }
 }
-@media (max-width: 320px){
-.LogoForms img{
-    width: 100%;
-  }
+
+@media (max-width: 320px) {
+    .LogoForms img {
+        width: 100%;
+    }
 }
+
 .regHead {
     margin-top: 32px;
 }
+
 /* End Login page css */
 
 /* Added By ANKITA */
 
 .err_message {
     text-align: center !important;
-    color: red !important;;
+    color: red !important;
+    ;
     font-weight: 600;
 }
-.success_message
-{
+
+.success_message {
     text-align: center;
     color: #00abaf;
     font-weight: 600;
 }
+
 img.link_docs {
     width: 30px;
 }
-.onProfessional a
-{
-    background-color: #f7f7f7!important;
-    color: #000!important;
-    font-weight: 400!important;
+
+.onProfessional a {
+    background-color: #f7f7f7 !important;
+    color: #000 !important;
+    font-weight: 400 !important;
 }
-.ProfSelect a.dropdown-toggle.nav-link
-{
-    background-color: #00ABAF!important;
-    color: #fff!important;
-    font-weight: 600!important;
+
+.ProfSelect a.dropdown-toggle.nav-link {
+    background-color: #00ABAF !important;
+    color: #fff !important;
+    font-weight: 600 !important;
 }
-.mobileReg{
-    border-radius: 7px!important;
-    background-color: #f1f2f2!important;
-    width: 100%!important;
-    border: none!important;
-    outline: none!important;
-    height: 44px!important;
-    padding: 10px 12px 10px 48px!important;
-    font-family: Muli!important;
+
+.mobileReg {
+    border-radius: 7px !important;
+    background-color: #f1f2f2 !important;
+    width: 100% !important;
+    border: none !important;
+    outline: none !important;
+    height: 44px !important;
+    padding: 10px 12px 10px 48px !important;
+    font-family: Muli !important;
     padding-left: 16% !important;
 }
-.flag-select{
-    position: absolute!important;
+
+.flag-select {
+    position: absolute !important;
 }
-.flag-select__btn[aria-expanded="true"]:after
-{
-	margin-top: 25%;
+
+.flag-select__btn[aria-expanded="true"]:after {
+    margin-top: 25%;
 }
-.flag-select__btn:after
-{
-	margin-top: 25%;
+
+.flag-select__btn:after {
+    margin-top: 25%;
 }
+
 .flag-select__btn:after {
     border-top: 3px solid #4d4d4d !important;
     border-left: 3px solid transparent !important;
     border-right: 3px solid transparent !important;
     border-bottom: 0;
 }
+
 .flag-select__btn[aria-expanded="true"]:after {
     border-top: 0 !important;
     border-left: 3px solid transparent;
     border-right: 3px solid transparent;
     border-bottom: 3px solid #4d4d4d;
 }
+
 .flag-select__option__icon {
     width: 16px !important;
     height: 11px !important;
     top: 0px !important;
 }
+
 span.flag-select__option.flag-select__option--placeholder .flag-select__option__icon {
     top: 5px !important;
 }
+
 .flag-select__option {
     padding: 0 2px 3px 8px !important;
 }
+
 button#select_flag_button {
-    padding: 0px 5px 0px 0px!important;
+    padding: 0px 5px 0px 0px !important;
 }
+
 button:focus {
     outline: 0px dotted !important;
 }
+
 .flag-select {
-    border-radius: 7px 0px 0px 7px!important;
-    position: absolute!important;
+    border-radius: 7px 0px 0px 7px !important;
+    position: absolute !important;
     height: 44px;
     background: #656b6d17;
     padding: 0px !important;
 }
+
 .flag-select ul.flag-select__options {
     border: none;
     z-index: 999999 !important;
@@ -587,7 +732,7 @@ button:focus {
     position: absolute;
     padding: 0;
     margin: 10px 0 10px -1px;
-    box-shadow: 1px 2px 10px rgba(0,0,0,0.35);
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.35);
     background-color: white;
     width: 300px;
     max-height: 200px;
@@ -595,30 +740,46 @@ button:focus {
     border-radius: 0 0 3px 3px;
     margin-top: 17px;
 }
+
 ul.flag-select__options li {
     padding: 7px 9px !important;
 }
-.spaceforplus
-{
-    margin-bottom:10px!important;
+
+.spaceforplus {
+    margin-bottom: 10px !important;
 }
+
 .widthProfession {
     width: 95% !important;
 }
+
 .blogPagination li.active {
     border-radius: 28px;
     background-color: #00B6B4;
     color: #fff;
 }
-.SinglePageContent img , .SinglePageContent video, .SinglePageContent iframe  {
+
+.SinglePageContent img,
+.SinglePageContent video,
+.SinglePageContent iframe {
     width: 100%;
     height: auto;
     margin: 30px 0px;
 }
 
-.label_1{
-position: relative;
-left: -10px;
+.label_1 {
+    position: relative;
+    left: -10px;
+}
+
+.Meetlabel_2 button{
+    float: right;
+    background: #00ABAF;
+    border-radius: 5px;
+    margin-top: 35px;
+    padding: 7px 15px;
+    color: #fff;
+    border: 0px;
 }
 
 /*End By Ankita*/
