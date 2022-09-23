@@ -219,10 +219,10 @@ export const DownloadBill = (current, item) => {
       birthday: current.props.stateLoginValueAim?.user?.birthday,
     },
     task_id: item?._id,
-    type: 'sick_leave',
+    type: 'video_conference',
   };
   axios
-    .post(sitedata.data.path + "/vh/downloadPEBill", data, {
+    .post(sitedata.data.path + "/vchat/DownloadbillVC", data, {
       responseType: "blob",
     })
     .then((res) => {
