@@ -19,11 +19,11 @@ class JobDetails extends Component {
     }
 
     continue = e => {
-       if (this.props.dataa.permission == true || this.props.dataa.permission == false) {
-            if (this.state.CompareRequired == 'Please recharge top-up to continue, your top-up amount is low.'){
-                this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page"  });
+        if (this.props.dataa.permission == true || this.props.dataa.permission == false) {
+            if (this.state.CompareRequired == 'Please recharge top-up to continue, your top-up amount is low.') {
+                this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page" });
             }
-            else{
+            else {
                 this.props.nextStep();
             }
         }
@@ -80,7 +80,7 @@ class JobDetails extends Component {
 
                                     <CardContent>
                                         <Typography variant="body2">
-                                            Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || 0}{' '}{'Min'}
+                                            Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min ? this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min : 0}{' '}{'Min'}
                                         </Typography>
                                     </CardContent>
                                     <Grid className="err_mesg1">{this.state.CompareRequired}</Grid>

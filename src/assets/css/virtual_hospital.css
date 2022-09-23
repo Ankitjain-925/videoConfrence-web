@@ -18259,7 +18259,7 @@ a {
   background: #00ABAF;
   border-radius: 8px;
   margin-bottom: 10%;
-  
+
 }
 
 .dark-confirm .success-button {
@@ -18273,6 +18273,7 @@ a {
   margin-bottom: 10%;
 
 }
+
 .success-header {
   font-weight: 700;
   font-size: 24px;
@@ -18305,4 +18306,12 @@ a {
   text-align: center;
   color: #d9dada;
   margin: 35px;
+}
+
+.myst1 {
+  float: right;
+  left: -30px;
+  position: relative;
+  margin: 10px;
+  top: 28px;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, Component } from "react"
 import { Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LeftMenu from 'Screens/Components/Menus/PatientLeftMenu/index';
@@ -23,6 +23,8 @@ import { OptionList } from "Screens/Login/metadataaction";
 import { authy } from "Screens/Login/authy.js";
 import MiddleTopup from "./middleTopup";
 import Payment from "Screens/Patient/RequestList/Payment/index";
+import ButtJoin from "Screens/Components/Button/index";
+
 
 
 
@@ -86,7 +88,7 @@ const Dashboard = (props) => {
       setErrormsg("Amount shouldn't be empty");
       setError(true);
       setOpenPayment(true);
-      if (e == 40 || e == 60 || e == 120){
+      if (e == 40 || e == 60 || e == 120) {
         fsetAmount2(e)
       }
     } else {
@@ -136,10 +138,23 @@ const Dashboard = (props) => {
                 <LeftMenuMobile isNotShow={true} currentPage="topup" />
                 <Grid item xs={12} md={10} lg={8}>
                   <div className="settingPage">
-                  {!openPayment && (
-                    <h5 className="setting-h5">Balance</h5>
-                  )}
-                    
+                    {!openPayment && (<>
+                      <Grid container direction="row" justify="center">
+                        <Grid item xs={3} md={3} lg={3}>
+                          <h5 className="setting-h5">Balance</h5>
+                          
+                        </Grid>
+                        <Grid item xs={6} md={5} lg={5}>
+                          
+                        </Grid>
+                        <Grid item xs={3} md={4} lg={4}>
+                          
+                          <ButtJoin />
+                        </Grid>
+                      </Grid>
+                    </>
+                    )}
+
                     {!customAmount ? <>
                       {!openPayment && (<>
                         <MiddleTopup />
@@ -210,21 +225,21 @@ const Dashboard = (props) => {
                       )}
                       <Grid>
                         {openPayment && (
-                          
-                          
 
-                            
-                            
-                              <Payment
-                                onCancel={handleCancel}
-                                usedFor={"top_up"}
-                                famount={famount2}
 
-                              />
 
-                            
 
-                          
+
+                          <Payment
+                            onCancel={handleCancel}
+                            usedFor={"top_up"}
+                            famount={famount2}
+
+                          />
+
+
+
+
                         )}
                       </Grid>
                     </>
@@ -265,20 +280,20 @@ const Dashboard = (props) => {
                         )}
                         <Grid>
                           {openPayment && (
-                            
 
-                              
 
-                                <Payment
-                                  onCancel={handleCancel}
-                                  usedFor={"top_up"}
-                                  famount={famount}
 
-                                />
 
-                              
+                            <Payment
+                              onCancel={handleCancel}
+                              usedFor={"top_up"}
+                              famount={famount}
 
-                            
+                            />
+
+
+
+
                           )}
                         </Grid>
 

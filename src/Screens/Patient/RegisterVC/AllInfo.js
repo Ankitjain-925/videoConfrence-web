@@ -25,6 +25,7 @@ class AllInfo extends Component {
         };
     }
     SearchFilter1 = (e) => {
+        this.setState({ loaderImage: true });
         var user_token = this.props.redux_st.stateLoginValueAim.token
         var data1 = e.target.value.toLowerCase()
         this.props.onSelectLanguage('', '', '');
@@ -33,13 +34,10 @@ class AllInfo extends Component {
             .get(sitedata.data.path + "/vchat/Get_Doctor/" + data1,
                 commonHeader(user_token))
             .then((response) => {
-
-                this.setState({ loaderImage: false });
                 this.setState({
                     currentList: response.data.data,
-
+                    loaderImage: false
                 });
-
             })
             .catch((error) => {
                 this.setState({ loaderImage: false });
@@ -56,7 +54,7 @@ class AllInfo extends Component {
     }
 
     func = (item, i, searchValue) => {
-        this.setState({ load: i });
+        this.setState({ load: i, loaderImage: true });
         var user_token = this.props.redux_st.stateLoginValueAim.token
         axios
             .get(sitedata.data.path + "/vchat/getfeedbackfordoctor/" + item._id,
@@ -93,6 +91,7 @@ class AllInfo extends Component {
         return (
 
             <>
+                {this.state.loaderImage && <Loader />}
                 <Grid className="logForm form_full">
                     {/* Start of Bread Crumb */}
                     <Grid container direction="row" alignItems="center">
@@ -160,7 +159,7 @@ class AllInfo extends Component {
                                                 lg={6}
                                                 sm={6}
                                             >
-                                                {/* {console.log("1222ß",this.props.dataa.doctor_index )} */}
+                                                {/* {console.log("1222",this.props.dataa.doctor_index )} */}
 
 
                                                 <Grid className={this.state.load === i ? 'Card_Sel card-header' : 'card-header'} onClick={() => {

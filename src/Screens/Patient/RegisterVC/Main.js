@@ -136,18 +136,10 @@ export class StepForm extends Component {
 
     render() {
         const { step } = this.state;
-        const myst1 = {
-            float: "right",
-            left: "-30px",
-            position: "relative",
-            margin: "10px"
-        };
 
         return (
             <>
-
-
-                <h1 style={myst1}>Step {step} of 6.</h1>
+                <h1 class="myst1">Step {step} of 6.</h1>
                 {this.showStep()}
 
 
