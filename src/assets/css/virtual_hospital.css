@@ -18213,11 +18213,10 @@ a {
 }
 
 .err_mesg1 {
-  text-align: left !important;
+  text-align: center !important;
   color: red !important;
   font-weight: 600;
-  font-size: x-small;
-  font-family: 'Muli';
+  font-size: 12px;
 }
 
 .setDataImg {
