@@ -91,6 +91,9 @@ class Index extends Component {
     const { AllDataSec } = this.state;
     let translate = getLanguage(this.props.stateLanguageType);
     let {
+      payment_type,
+      top_up,
+      credit_card,
       meeting,
       time,
       date,
@@ -617,6 +620,10 @@ class Index extends Component {
                               <h3>{appointment_time}</h3>
                               {this.state.newTask?.start} -{' '}
                               {this.state.newTask?.end}
+                            </Grid>
+                            <Grid>
+                              <h3>{payment_type}</h3>
+                              {this.state.newTask?.payment_by === "Top-Up" ? top_up : credit_card}
                             </Grid>
                             {this.state.newTask.headache === 'yes' && (
                               <Grid>
