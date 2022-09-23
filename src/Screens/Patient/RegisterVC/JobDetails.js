@@ -128,14 +128,13 @@ class JobDetails extends Component {
                             type="button"
                             value="« Back"
                             onClick={this.back}
-
                         />
-                        <input
+                        {this.state.CompareRequired !== 'Please recharge top-up to continue, your top-up amount is low.' && <input
                             type="button"
                             value="Next »"
                             onClick={this.continue}
 
-                        />
+                        />}
                     </Grid>
                 </Grid>
 

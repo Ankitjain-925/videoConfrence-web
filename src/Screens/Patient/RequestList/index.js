@@ -20,6 +20,8 @@ import PainPoint from 'Screens/Components/PointPain/index';
 import { OptionList } from 'Screens/Login/metadataaction';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { EditRequest, DownloadCert, DownloadBill } from '../SickLeaveForm/api';
+import ButtJoin from "Screens/Components/Button/index";
+
 import {
   PaymentDue,
   handleOpenDetail,
@@ -216,7 +218,10 @@ class Index extends Component {
                     <Grid className="docsOpinion docsAllOption">
                       <Grid container direction="row" className="docsOpinLbl">
                         <Grid item xs={12} md={6}>
-                          <label>{appointments}</label>
+                        <h5 className="setting-h5">{appointments}</h5>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <ButtJoin />
                         </Grid>
                       </Grid>
                       <Grid className="presPkgIner2">
@@ -459,7 +464,7 @@ class Index extends Component {
                                                 </a>
                                               </li>
                                             )}
-                                          {item && item.certificate && (
+                                          {/* {item && item.certificate && (
                                             <li
                                               onClick={() => {
                                                 DownloadCert(
@@ -477,7 +482,7 @@ class Index extends Component {
                                                 <>{download_certificate}</>
                                               </a>
                                             </li>
-                                          )}
+                                          )} */}
                                           {item.link?.patient_link &&
                                             (!item?.is_decline ||
                                               item?.is_decline === false) &&

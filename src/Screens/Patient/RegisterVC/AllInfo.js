@@ -21,7 +21,6 @@ class AllInfo extends Component {
             showRename: false,
             txtName: {},
             showinput: false,
-            loaderImage: false,
             isActive: false,
         };
     }
@@ -144,8 +143,6 @@ class AllInfo extends Component {
                                                     {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                                                     <Grid className='selectdoc-button'>
                                                         <img className="v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
-
-
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
@@ -175,17 +172,10 @@ class AllInfo extends Component {
                                                         {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                                                         <Grid className='selectdoc-button'>
                                                             <img className="v_c_img" src={require('assets/images/video-call-copy2.svg')} alt="" title="" />on-line
-
-
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
-
-
-
                                             </Grid>
-
-
                                         ))
                                     }
 

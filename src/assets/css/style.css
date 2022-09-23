@@ -2111,6 +2111,7 @@ a.profilMenu {
   }
   .docsOpinion {
     margin-left: 0px !important;
+    margin-right: 0px !important;
     margin-top: 0px !important;
     padding: 12px 12px !important;
   }
@@ -3783,8 +3784,6 @@ a.profilMenu {
   border-radius: 12px;
   background-color: #ffffff;
   box-shadow: 0 1px 8px 0 rgba(0, 8, 8, 0.04);
-  margin-left: 48px;
-  margin-top: 42px;
 }
 .profileId {
   border-radius: 12px;
@@ -4109,10 +4108,11 @@ button.aboutTabsIner {
 .editCourse {
   padding: 18px 30px 12px 30px;
   border-bottom: 1px solid #f2f2f2;
+  position: relative;
 }
 .editCloseBtn {
   text-align: right;
-  margin-bottom: 4px;
+  margin-bottom: 0px;
 }
 .editCloseBtn img {
   width: 26px;
@@ -4121,7 +4121,8 @@ button.aboutTabsIner {
 .editCourse label {
   color: #000808;
   font-family: Muli;
-  font-size: 20px;
+  font-size: 16px;
+  padding-right: 40px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 32px;
@@ -5746,12 +5747,8 @@ span.revwRed {
 .dataSrvcImg img {
   height: 32px;
 }
-.docsOpinion {
-  margin-left: 70px;
-  margin-top: 41px;
-}
 .docsOpinLbl {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 .docsOpinion label {
   color: #000808;
@@ -5832,7 +5829,7 @@ button.presTabsIner {
   font-weight: 800;
   letter-spacing: 0;
   line-height: 12px;
-  padding: 30px 18px 12px 18px !important;
+  padding: 30px 12px 12px 12px !important;
   }
 
 .presOpinionIner tbody tr {
@@ -7062,7 +7059,7 @@ a.diaCDActv {
   line-height: 16px;
   text-align: center;
   padding: 12px 8px;
-  margin-top: 20px;
+  margin-top: 10px;
   outline: none;
 }
 .infoShwSave3 input:first-child {
@@ -12550,19 +12547,19 @@ span.srchMobIcon img {
 }
 .fltrHdngLft a {
   color: #000808;
-  font-family: Muli;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 16px;
+  font-family: Muli;
 }
 .fltrHdngRght a {
   color: #00abaf;
-  font-family: Muli;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 12px;
+  font-family: Muli;
 }
 .fltrHdngRght {
   text-align: right;
@@ -12617,11 +12614,11 @@ a.srtEvrTim {
 }
 a.srtDiaTim {
   color: #7f8383;
-  font-family: Muli;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 12px;
+  font-family: Muli;
 }
 .aplyFltrMob input {
   border-radius: 8px;
@@ -13767,7 +13764,7 @@ h5.selectdoc-head2 {
   border-radius: 8px;
   padding: 8px 8%;
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 @media (max-width: 768px) {
   .menuItems {
@@ -13778,6 +13775,9 @@ h5.selectdoc-head2 {
   }
   .menuItems ul li .profilMenuList ul li:last-child:not(.doctor-menu) {
     margin-top: 0px !important;
+  }
+  .custom-topup {
+    width: 100% !important;
   }
 }
 .mnMxBtn1 {
@@ -14181,9 +14181,7 @@ span.ccl-dtls-section-listitem-link {
   color: #fff !important;
   padding: 5px !important;
 }
-.sbu_button {
-  margin-top: 10px;
-}
+
 .homeBgDrk .payment_sec_extra_ser .StripeElement {
   border-bottom: 1px solid #bfc1c1 !important;
 }
@@ -16995,7 +16993,7 @@ select:-webkit-autofill:focus {
 }
 @media (min-width: 641px) {
   .presOpinionIner td.pivoted {
-    padding: 12px 18px !important;
+    padding: 10px 10px !important;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 959px) {
@@ -18075,7 +18073,16 @@ ul.duringCovid li:last-child {
 .darkTheme > div:nth-child(4) a.ant-picker-today-btn {
   color: #00abaf;
 }
-
+.homeBgDrk .regSelectTop .dropdown-item:hover, 
+.homeBgDrk .regSelectTop .dropdown-item:focus {
+  background-color: #000;
+}
+.homeBgDrk .regSelectTop .dropdown-item a.nav-link {
+  color: #bfc1c1 !important;
+}
+.homeBgDrk .regSelectTop .dropdown-item:hover a.nav-link {
+  color: #ffffff !important;
+}
 .dropdown-class-name-3 .ant-picker-panel-container .ant-picker-panel {
   background: #404646;
 }
@@ -18188,6 +18195,9 @@ ul.duringCovid li:last-child {
 .darkTheme .cnfrmDiaMain2 {
   background-color: #404646;
 }
+.homeBgDrk a.openScndhrf img {
+  background-color: #192020;
+}
 .addStnd {
   display: flex;
   align-items: center;
@@ -18262,12 +18272,8 @@ span.PIC_Condition:hover {
   cursor: pointer;
 }
 .top-up-mid1-inner {
-  padding: 22px;
-  margin: 8px;
-  grid-gap: 20px;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 12px rgb(35 35 35 / 4%);
-  border-radius: 8px;
+    margin: 8px;
+    grid-gap: 20px;
 }
 .top-up-head {
   font-size: 18px;
@@ -18277,29 +18283,28 @@ span.PIC_Condition:hover {
 .top-up-minnute {
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 0px;
 }
 .top-up-cost {
   font-size: 14px;
   font-weight: 700;
-  margin-top: 12px;
-  margin-bottom: 8px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 button.top-up-buybtn {
-  font-size: 13px;
-  color: #fff !important;
-  background-color: #00ABAF !important;
-  border-radius: 4px;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 500;
-  line-height: 1.75;
-  border-radius: 4px;
-  letter-spacing: 0.02857em;
-  text-transform: uppercase;
-  border: none;
-  display: block;
-  width: 100%;
-  padding: 6px 4px;
+    height: initial !important;
+    font-size: 12px;
+    color: #fff !important;
+    background-color: #00ABAF !important;
+    font-weight: 500;
+    border-radius: 4px;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    border: none;
+    display: block;
+    width: 100%;
+    padding: 8px 4px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 .logRow input[type="text"] {
   background-color: hsl(0,0%,100%);
@@ -18314,4 +18319,53 @@ button.top-up-buybtn {
 }
 h6.selectdoc-head2 {
   margin: 5px 0px 12px;
+}
+.MuiTypography-root.adv2 {
+  font-size: 13px !important;
+  line-height: initial;
+  padding: 4px 6px;
+  margin: 0px;
+  border-radius: 2px;
+}
+.logRow .Card_1 .MuiGrid-root.padd_10.MuiGrid-container {
+  align-items: center;
+}
+.MuiTypography-root.adv1 {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Muli;
+}
+.infoShwSave3.label_1 input[type="button"] {
+  margin-left: 10px;
+}
+.docsOpinLbl .MuiGrid-grid-xs-12.MuiGrid-grid-md-6,
+.docsOpinLbl .MuiGrid-grid-sm-12.MuiGrid-grid-md-8 {
+  max-width: 100% !important;
+  flex: 100%;
+}
+.last-sec-setting.form_full .MuiGrid-grid-xs-12.MuiGrid-grid-md-11.MuiGrid-grid-lg-10, 
+.last-sec-setting.form_full .MuiGrid-grid-xs-12.MuiGrid-grid-sm-12.MuiGrid-grid-md-8 {
+  max-width: 100%;
+  flex: 100%;
+  padding: 18px 16px;
+}
+.custom-topup .homeBgIner, .custom-topup .homeBg.homeBgDrk {
+  min-height: initial !important;
+}
+.docsOpinion.docsAllOption .docsOpinLbl label {
+  margin-top: 38px !important;
+}
+.presOpinionIner.presOpinionInerSec {
+  margin: 0px 38px;
+}
+.last-sec-setting.form_full .homeBg {
+  min-height: initial !important;
+}
+.editBoxCntnt .editCloseBtn {
+  position: absolute;
+  top: 19px;
+  right: 16px;
+}
+.langInerFooter.dropdown-menu.show .nav-link {
+  padding: 0px;
 }
