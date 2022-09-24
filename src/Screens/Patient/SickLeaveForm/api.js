@@ -96,13 +96,13 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
   };
   data.patient_info = patient_info;
   var doctor_info = {
-    // first_name: taskValue?.assinged_to[0]?.first_name,
-    // last_name: taskValue?.assinged_to[0]?.last_name,
-    // alies_id: taskValue?.assinged_to[0]?.alies_id,
+    first_name: "Ankit",
+    last_name: "jain",
+    alies_id: "D_QRW7IAGTg",
     profile_id: taskValue?.assinged_to[0]?.profile_id,
     user_id: taskValue?.assinged_to[0]?.user_id,
   }
-  data.doctor_info = doctor_info;
+  data.docProfile = doctor_info;
   let patientEmail = current?.props?.stateLoginValueAim?.user?.email;
   data.task_type = 'video_conference';
   data.task_id = taskValue?._id;
@@ -205,7 +205,7 @@ export const saveOnDB1 = (data, task, current) => {
         commonHeader(current.props.stateLoginValueAim.token)
       )
       .then((responce) => {
-        // sendLinkDocPat(task, data, current);
+        sendLinkDocPat(task, data, current);
         current.setState({ loaderImage: false });
         if (responce.data.hassuccessed) {
           current.props.history.push('/appointment-list');
