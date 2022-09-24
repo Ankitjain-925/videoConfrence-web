@@ -215,7 +215,7 @@ class Index extends Component {
                     <Grid className="docsOpinion docsAllOption">
                       <Grid container direction="row" className="docsOpinLbl">
                         <Grid item xs={12} md={6}>
-                        <h5 className="setting-h5">{appointments}</h5>
+                          <h5 className="setting-h5">{appointments}</h5>
                         </Grid>
                         <Grid item xs={12} md={6}>
                           <ButtJoin />
@@ -460,6 +460,24 @@ class Index extends Component {
                                                   {payment_due}
                                                 </a>
                                               </li>
+                                            )}
+                                            {item?.approved == true &&
+                                            (!item.is_payment ||
+                                              item.is_payment == true) && (
+                                              <li
+                                              onClick={() => {
+                                                this.props.history.push("/patient/access-key");
+                                              }}
+                                            >
+                                              <a>
+                                                <img
+                                                  src={require('assets/images/details.svg')}
+                                                  alt=""
+                                                  title=""
+                                                />
+                                                <>{join_meeting}</>
+                                              </a>
+                                            </li>
                                             )}
                                           {/* {item && item.certificate && (
                                             <li
