@@ -23,18 +23,25 @@ class Index extends Component {
 
         };
     }
-    openbutton = () => {
-        this.setState({ openModal: true });
-        
-    }
+    // openbutton = () => {
+    //     this.setState({ openModal: true });
+
+    // }
     closeFullQues = () => {
-        this.setState({ openModal: false });
+        this.setState({ openModal: false }, () => { this.props.history.push("/patient/video-call") });
+
     }
-   
-   render() {
-    let translate = getLanguage(this.props.stateLanguageType);
-    let {FeedBack
-    } = translate;
+
+    componentDidMount() {
+        if (this.props.location.state) {
+            this.setState({ openModal: true });
+        }
+    }
+
+    render() {
+        let translate = getLanguage(this.props.stateLanguageType);
+        let { FeedBack
+        } = translate;
         return (
             <Grid
                 className={
@@ -61,7 +68,7 @@ class Index extends Component {
                                             </Grid>
                                         </Grid>
                                         <Grid>
-                                            <Grid className="formopen label_1 ">
+                                            {/* <Grid className="formopen label_1 ">
                                                 <input
                                                     type="button"
                                                     value={FeedBack}
@@ -70,14 +77,14 @@ class Index extends Component {
                                                     }
 
                                                 />
-                                            </Grid>
+                                            </Grid> */}
                                         </Grid>
                                         <FeedQuestion
                                             closeFullQues={() => this.closeFullQues()}
                                             openModal={this.state.openModal}
-                                           
+
                                         />
-                                        </Grid>
+                                    </Grid>
                                 </Grid>
 
                             </Grid>
