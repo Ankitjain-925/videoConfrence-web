@@ -85,7 +85,6 @@ export const CancelClick = (current) => {
 
 // For send meeting link sendLinkDocPatpatient as well as doctor
 export const sendLinkDocPat = (payValue, taskValue, current) => {
-  console.log("1", "taskValue", taskValue, "payValue", payValue)
   var data = {};
   var patient_info = {
     first_name: current.props.stateLoginValueAim?.user?.first_name,
@@ -182,8 +181,9 @@ export const CallTopUpApi_Add = (current, data) => {
 // For payment stripe
 export const saveOnDB1 = (data, task, current) => {
   current.setState({ loaderImage: true });
-  if (task._id) {
+  if (data._id || task && task.payment_by && task.payment_by === "Credit-Card" && task._id) {
     if (task && task.payment_by && task.payment_by === "Credit-Card") {
+      var id = task?._id;
       var Spdata = {
         payment_data: data?.data?.paymentData,
         amount: data?.data?.paymentData?.amount,
@@ -192,6 +192,7 @@ export const saveOnDB1 = (data, task, current) => {
       }
     }
     else {
+      id = data?._id;
       Spdata = {
         amount: data?.amount,
         is_payment: true,
@@ -200,14 +201,19 @@ export const saveOnDB1 = (data, task, current) => {
     }
     axios
       .put(
-        sitedata.data.path + '/vh/AddTask/' + task._id,
+        sitedata.data.path + '/vh/AddTask/' + id,
         Spdata,
         commonHeader(current.props.stateLoginValueAim.token)
       )
       .then((responce) => {
-        sendLinkDocPat(task, data, current);
-        current.setState({ loaderImage: false });
         if (responce.data.hassuccessed) {
+          if (task && task.payment_by && task.payment_by === "Credit-Card") {
+            sendLinkDocPat(data, task, current);
+          }
+          else {
+            sendLinkDocPat(task, data, current);
+          }
+          current.setState({ loaderImage: false });
           current.props.history.push('/appointment-list');
         }
       });
