@@ -165,7 +165,7 @@ const Dashboard = (props) => {
                     
                           </div> */}
                         <Grid container direction="row" justify="center" alignItems="center">
-                          <Grid item xs={4} md={4} sm={4}>
+                          <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
                                 <div className='top-up-head'>Starter</div>
@@ -182,7 +182,7 @@ const Dashboard = (props) => {
                             </div>
                           </Grid>
 
-                          <Grid item xs={4} md={4} sm={4}>
+                          <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
                                 <div className='top-up-head'>Standard</div>
@@ -199,7 +199,7 @@ const Dashboard = (props) => {
                             </div>
                           </Grid>
 
-                          <Grid item xs={4} md={4} sm={4}>
+                          <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
                                 <div className='top-up-head'>Premium</div>
@@ -280,10 +280,6 @@ const Dashboard = (props) => {
                         )}
                         <Grid>
                           {openPayment && (
-
-
-
-
                             <Payment
                               onCancel={handleCancel}
                               usedFor={"top_up"}

@@ -7678,6 +7678,9 @@ a.hideDots {
 /* .homeBgDrk .presOpinionIner thead th {
     color: #BFC1C1 !important;
 } */
+.homeBgDrk .setting-h5 {
+  color: #d9dada !important;
+}
 .homeBgDrk .totalOutOff a,
 .homeBgDrk .prevNxtpag a {
   color: #d9dada !important;
@@ -17186,7 +17189,7 @@ select:-webkit-autofill:focus {
   border: none;
 }
 .homeBgDrk .mr_sel, .homeBgDrk .logForm input[type='text'] {
-  border: 1px solid #9a9a9a !important;
+  border: 1px solid #dfdfdf !important;
   color: #bfc1c1 !important;
 }
 .homeBg .ccl-right-panel {
@@ -17221,9 +17224,9 @@ select:-webkit-autofill:focus {
   border-radius: 12px;
 }
 .creatTaskCntnt {
-  height: 537px;
-  overflow-y: scroll;
-  padding: 20px 0px;
+  height: 428px;
+  overflow-y: auto;
+  padding: 10px 0px;
 }
 .creatLbl {
   padding: 0px 20px;
@@ -18195,6 +18198,7 @@ ul.duringCovid li:last-child {
 .darkTheme .cnfrmDiaMain2 {
   background-color: #404646;
 }
+
 .homeBgDrk a.openScndhrf img {
   background-color: #192020;
 }

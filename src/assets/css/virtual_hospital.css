@@ -16923,7 +16923,7 @@ label.errMsgStyleSecPart {
 }
 
 .pending-msgPopup {
-  padding: 12px;
+  padding: 12px 0px;
   color: red !important;
   font-weight: 700;
 }
@@ -17139,7 +17139,7 @@ label.errMsgStyleSecPart {
 }
 
 .settingPage {
-  margin: 10px 10px 10px 50px;
+  margin: 25px 10px 10px 50px;
   padding: 10px;
 }
 
@@ -17809,13 +17809,12 @@ a {
     color:#EE5253
   }
   .top-up-mid1-inner {
-  background: #FFFFFF;
-  box-shadow: 0px 4px 12px rgba(35, 35, 35, 0.04);
-  border-radius: 8px;
-  float: left;
-  padding: 20px;
-  margin-right: 12px
-}
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgb(35 35 35 / 4%);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
   .top-up-buybtn{
     border:none;
     justify-content: center;
