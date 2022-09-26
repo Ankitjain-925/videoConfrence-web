@@ -32,13 +32,14 @@ class Index extends Component {
         let translate = getLanguage(this?.props?.redux_st?.stateLanguageType);
         let {
             my_profile,
-            Security
+            Security,
+            join_meeting
         } = translate;
         return (
             <Grid>
                 <Grid className="Meetlabel_2">
                     <button onClick={() => this.joinmeet()}>
-                    <b>Join Meeting</b>
+                    <b>{join_meeting}</b>
                   </button>
                 </Grid>
             </Grid>
