@@ -47,7 +47,7 @@ class SuccessMsg extends Component {
                 Top up successfully processed!
               </div>
               <div className='success-sub-heading'>
-                120 minutes will be instantly added to your Aimedis balance.
+              {this.props?.Minutes?.data?.paymentData?.amount/500} minutes will be instantly added to your Aimedis balance.
               </div>
               {/* <button className='success-button'>Close</button> */}
             </div>
