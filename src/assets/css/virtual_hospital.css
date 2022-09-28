@@ -16904,6 +16904,7 @@ label.errMsgStyleSecPart {
   text-align: center;
   margin-top: 20%;
   color: #696969;
+  width: 100%;
 }
 
 .declineListCol .homeBgDrk .presOpinionIner td.pivoted {
@@ -17065,6 +17066,14 @@ label.errMsgStyleSecPart {
   color: #404646;
   margin-bottom: 0px;
 }
+
+.allSickVideoSec{
+  height: 524px;
+  overflow: auto;
+  height: 524px;
+  padding: 10px;
+  overflow: auto
+  }
 
 .darkTheme .allSickVideoSec label,
 .darkTheme .allSickVideoSec h3 {
@@ -17748,13 +17757,12 @@ a {
 }
 
 .cssCall .css-1yrthcx {
-  /* top: 95px!important;
-  left: 60px!important; */
-  width: 85%;
+  /* top: 95px!important; */
+  left: 11px!important;
+  width: 95%;
   border-radius: 8px;
-  height: 400px;
-  position: relative
-  
+  height: 556px;
+  position: relative;
 }
 
 .top-up-1 {

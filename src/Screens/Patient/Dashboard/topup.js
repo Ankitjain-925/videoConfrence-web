@@ -142,13 +142,13 @@ const Dashboard = (props) => {
                       <Grid container direction="row" justify="center">
                         <Grid item xs={3} md={3} lg={3}>
                           <h5 className="setting-h5">Balance</h5>
-                          
+
                         </Grid>
                         <Grid item xs={6} md={5} lg={5}>
-                          
+
                         </Grid>
                         <Grid item xs={3} md={4} lg={4}>
-                          
+
                           <ButtJoin />
                         </Grid>
                       </Grid>
@@ -226,19 +226,12 @@ const Dashboard = (props) => {
                       <Grid>
                         {openPayment && (
 
-
-
-
-
                           <Payment
                             onCancel={handleCancel}
                             usedFor={"top_up"}
                             famount={famount2}
 
                           />
-
-
-
 
                         )}
                       </Grid>

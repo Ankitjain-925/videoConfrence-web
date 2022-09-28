@@ -29,8 +29,10 @@ const Index = (props) => {
 
     const handleSubmit = () => {
         if (codeValue && codeValue?.code) {
-            history.push("/patient/video-call");
-            // console.log("codevalue", codeValue)
+            history.push({
+                pathname: "/patient/video-call",
+                state: codeValue,
+            });
             setcodeValue({ code: '' });
         }
         else {
