@@ -46,7 +46,19 @@ const Dashboard = (props) => {
   let translate = getLanguage(props.stateLanguageType);
   let {
     my_profile,
-    Security
+    Security,
+    settings,
+    account_settings,
+    account,
+    language,
+    units,
+    privact_and_notification,
+    other,
+    about,
+    terms_conditions,
+    privact_policy,
+    rate_aimedies_diagnostics,
+    logout_sec,
   } = translate;
 
   const profileLink = () => {
@@ -145,23 +157,23 @@ const Dashboard = (props) => {
 
                     <MiddleTopup btnShow={true} />
 
-                    <p className='settingbox-heading'>Account Settings</p>
+                    <p className='settingbox-heading'>{account_settings}</p>
                     <div className="last-sec-setting form_full">
-                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")} /><div ><a onClick={profileLink}>Account</a></div></div>
-                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")} /><div ><a onClick={openLanguageModel}>Language</a></div></div>
-                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")} /><div >Units</div></div>
-                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")} /><div >Privact and notification</div></div>
+                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Account.png")} /><div ><a onClick={profileLink}>{account}</a></div></div>
+                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Language.png")} /><div ><a onClick={openLanguageModel}>{language}</a></div></div>
+                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Units.png")} /><div >{units}</div></div>
+                      <div className='middle-setting-items'><img src={require("assets/virtual_images/Privactandnotifications.png")} /><div >{privact_and_notification}</div></div>
                     </div>
-                    <p className='settingbox-heading'>Other</p>
+                    <p className='settingbox-heading'>{other}</p>
                     <div className="last-sec-setting form_full">
-                      <p className='middle-setting-items'>About</p>
-                      <p>Terms & Conditions </p>
-                      <p> Privact Policy</p>
-                      <p> Rate Aimedies Diagnostics</p>
+                      <p className='middle-setting-items'>{about}</p>
+                      <p>{terms_conditions}</p>
+                      <p>{privact_policy}</p>
+                      <p>{rate_aimedies_diagnostics}</p>
                     </div>
                   </div>
 
-                  <div className='logoutdash' onClick={() => LogoutDashClick()}>Logout</div>
+                  <div className='logoutdash' onClick={() => LogoutDashClick()}>{logout_sec}</div>
                 </Grid>
               </Grid>
             </Grid>

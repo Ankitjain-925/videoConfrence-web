@@ -43,7 +43,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      updateQues:this.props.dataa2.la2?this.props.dataa2.la2: {},
+      updateQues: this.props.dataa2.la2 ? this.props.dataa2.la2 : {},
       Allsituation: [],
       allMetadata: [],
       DataprotectionRules: this.props.dataa2.la3,
@@ -123,11 +123,11 @@ class Index extends Component {
       appointDate,
     } = this.state;
     return (
-      
+
       <Grid className="logForm form_full">
         <Grid container direction="row" justify="center">
           <Grid item xs={12} md={12} lg={12}>
-          {this.props.onSelectLanguage5(openCalendar, updateQues, DataprotectionRules)}
+            {this.props.onSelectLanguage5(openCalendar, updateQues, DataprotectionRules)}
             {/* <Grid container direction="row"> */}
             {/* Website Menu */}
             {/* <LeftMenu isNotShow={true} currentPage="picture" />

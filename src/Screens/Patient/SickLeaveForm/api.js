@@ -2037,6 +2037,7 @@ export const onChange = (date, current) => {
       break;
   }
   let appointmentData = current.state.appointmentData;
+  console.log("current.state.appointmentData", current.state.appointmentData)
   var appointDate;
   if (appointmentData) {
     Object.entries(appointmentData).map(([key, value]) => {
@@ -2171,7 +2172,7 @@ export const getCalendarData = (current) => {
   var user_token = current.props.stateLoginValueAim?.token;
   axios
     .post(
-      sitedata.data.path + "/vchat/DynamicSlots/",
+      sitedata.data.path + "/vchat/DynamicSlots",
       {
 
         _id: current.props.dataa.doctor_detail[0]._id,
@@ -2226,7 +2227,7 @@ export const SelectTimeSlot = (AppointDay, Ai, data, current) => {
   if (data && data.isBooked) {
     current.setState({ currentSelected: Ai, bookedError: this_time_slot_is_already_booked + ' ' + please_select + ' ' + another_one });
   } else if (data && data.isAlreadyExist) {
-    current.setState({ currentSelected: Ai, bookedError: please_select + ' ' + upcoming_slots });
+    current.setState({ currentSelected: Ai, bookedError: '' });
   } else {
     current.setState({ bookedError: '', currentSelected: Ai });
   }

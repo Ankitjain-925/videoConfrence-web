@@ -28,6 +28,7 @@ class Index extends Component {
             openModal: this.props.openModal,
             settings: this.props.settings,
             comesFrom: this.props.comesFrom,
+            allDoctorData: this.props.allDoctorData,
             showQuestion: {},
             loaderImage: false,
             errorMsg: "",
@@ -54,6 +55,7 @@ class Index extends Component {
         this.setState({ showQuestion: state });
     };
     handleTaskSubmit = () => {
+        const { allDoctorData } = this.props;
         let translate = getLanguage(this.props.stateLanguageType);
         let { Something_went_wrong } = translate;
         var data = this.state.showQuestion;
@@ -66,17 +68,17 @@ class Index extends Component {
         }
         var doctor_infos
             = {
-            first_name: "Ankit",
-            last_name: "jain",
-            alies_id: "D_QRW7IAGTg",
-            profile_id: "D_QRW7IAGTg",
-            email: "ankitjain.webnexus@gmail.com",
-            profile_image: "https://aimedis-0001.s3.amazonaws.com/D_QRW7IAGTg/1660719470481-doctor image.jpg.jpg&bucket=aimedis-0001"
+            first_name: allDoctorData?.first_name,
+            last_name: allDoctorData?.last_name,
+            alies_id: allDoctorData?.alies_id,
+            profile_id: allDoctorData?.profile_id,
+            email: allDoctorData?.email,
+            profile_image: allDoctorData?.image
         }
         data.patient_info = patient_infos;
         data.doctor_info = doctor_infos;
         data.patient_id = this.props.stateLoginValueAim?.user?._id;
-        data.doctor_id = "62a41f1ec627873603accc6c"
+        data.doctor_id = allDoctorData?.user_id;
         this.setState({ loaderImage: true });
         axios
             .post(

@@ -28,13 +28,15 @@ class Index extends Component {
 
     // }
     closeFullQues = () => {
-        this.setState({ openModal: false }, () => { this.props.history.push("/patient/video-call") });
+        this.setState({ openModal: false }, () => { this.props.history.push("/appointment-list") });
 
     }
 
     componentDidMount() {
+        let { openModal, allDoctorData } = this.props.location?.state;
+        console.log("this.props.location?.state", this.props.location?.state)
         if (this.props.location.state) {
-            this.setState({ openModal: true });
+            this.setState({ openModal: openModal, allDoctorData: allDoctorData });
         }
     }
 
@@ -82,6 +84,7 @@ class Index extends Component {
                                         <FeedQuestion
                                             closeFullQues={() => this.closeFullQues()}
                                             openModal={this.state.openModal}
+                                            allDoctorData={this.state.allDoctorData}
 
                                         />
                                     </Grid>
