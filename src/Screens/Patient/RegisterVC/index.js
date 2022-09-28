@@ -116,7 +116,3 @@ export default withRouter(
     Settings
   })(RegisterVC)
 );
-
-
-
-

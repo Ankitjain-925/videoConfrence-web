@@ -139,7 +139,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Settings"}</span>
+                <span>{"Health Profile"}</span>
               </a>
             </li>
             <li
@@ -192,7 +192,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{appointments}</span>
+                <span>{"Assesments"}</span>
               </a>
             </li>
             <li
@@ -342,7 +342,7 @@ class Index extends Component {
                 </div>
               </a>
             </li>
-              </ul>
+          </ul>
               </Grid>
             </Menu>
           </Grid>
