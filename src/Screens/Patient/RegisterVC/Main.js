@@ -43,7 +43,7 @@ export class StepForm extends Component {
         state["doctor_detail"] = langValue;
         state["doctor_index"] = i;
         state["doctor_search"] = search;
-        this.setState({ mainState: state });
+        this.setState({ mainState: state, doctorData: langValue });
     }
 
     handleLanguage1 = (lang) => {
@@ -125,6 +125,7 @@ export class StepForm extends Component {
             />);
         if (step === 5 || step === 6)
             return (<Form5
+                doctorData={this.state.doctorData}
                 dataa2={mainState2}
                 onSelectLanguage5={this.handleLanguage5}
                 dataa={mainState}
@@ -135,6 +136,7 @@ export class StepForm extends Component {
 
 
     render() {
+        console.log("current.props.dataa", this.state.mainState)
         const { step } = this.state;
 
         return (
