@@ -1917,6 +1917,42 @@
     "Give_rating_Doctor":"Give rating to the Doctor",
     "payment_type":"Payment Type:",
     "top_up": "Top Up",
-    "credit_card": "Credit Card"
+    "credit_card": "Credit Card",
+    "account_settings":"Account Settings",
+    "account":"Account",
+    "language":"Language",
+    "units":"Units",
+    "privact_and_notification":"Privact and notification",
+    "terms_conditions":"Terms & Conditions",
+    "privact_policy":"Privact Policy",
+    "rate_aimedies_diagnostics":"Rate Aimedies Diagnostics",
+    "logout_sec":"Logout",
+    "your_aimedis_credit":"Your Aimedis Credit :",
+    "list_requests":"List Requests",
+    "confirmation_access_key":"Confirmation Access Key",
+    "enter_access_key":"Enter Access Key",
+    "enter_key":"Enter key",
+    "join_call":"Join Call",
+    "balance":"Balance",
+    "top_your_balance":"Top up your balance",
+    "starter":"Starter",
+    "forty_min":"40min",
+    "aenean_lectus_posuere":"Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.",
+    "two_hundered_euro":"200 €",
+    "buy_now":"Buy Now",
+    "standard":"Standard",
+    "sixty_min":"60min",
+    "three_hundred_euro":"300 €",
+    "premium":"Premium",
+    "onehundred_twenty_min":"120min",
+    "six_hundred_uero":"600 €",
+    "choose_custom_amount":"or choose a custom amount",
+    "back_sec":"Back",
+    "add_custom_amount":"Add a custom amount",
+    "will_recieve":"You will recieve:",
+    "Continue":"Continue"
+    
+   
+    
   }
 }

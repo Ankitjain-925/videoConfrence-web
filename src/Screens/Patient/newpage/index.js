@@ -43,7 +43,11 @@ const Index = (props) => {
     let translate = getLanguage(props.stateLanguageType);
     let {
         my_profile,
-        Security
+        Security,
+        confirmation_access_key,
+        enter_access_key,
+        enter_key,
+        join_call,
     } = translate;
 
 
@@ -68,7 +72,7 @@ const Index = (props) => {
                                 <Grid className="docsOpinion">
                                     <Grid container direction="row" className="docsOpinLbl">
                                         <Grid item xs={12} md={6} className="label_1">
-                                            <label>Confirmation Access Key</label>
+                                            <label>{confirmation_access_key}</label>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -80,14 +84,14 @@ const Index = (props) => {
                                         <Grid className="logRow">
                                             <Grid className="label_1">
                                                 <div className="err_message">{error}</div>
-                                                <label>Enter Access Key</label>
+                                                <label>{enter_access_key}</label>
                                             </Grid>
                                             <Grid>
                                                 <input
                                                     type="text"
                                                     name="code"
                                                     value={codeValue?.code}
-                                                    placeholder="Enter key"
+                                                    placeholder={enter_key}
                                                     onChange={(e) => handleChange(e)}
                                                 />
                                             </Grid>
@@ -96,7 +100,7 @@ const Index = (props) => {
                                         <Grid className="infoShwSave3 label_1 ">
                                             <input
                                                 type="button"
-                                                value="Join Call"
+                                                value={join_call}
                                                 onClick={() => handleSubmit()}
 
                                             />

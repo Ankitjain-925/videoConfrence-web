@@ -89,6 +89,9 @@ class Index extends Component {
       manage_prepaid_talktime,
       dashboard,
       appointments,
+      settings,
+      top_up,
+      list_requests,
     } = translate;
     return (
       <Grid
@@ -139,7 +142,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Settings"}</span>
+                <span>{settings}</span>
               </a>
             </li>
             <li
@@ -167,7 +170,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Top-up"}</span>
+                <span>{top_up}</span>
               </a>
             </li>
             <li
@@ -220,7 +223,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"List Requests"}</span>
+                <span>{list_requests}</span>
               </a>
             </li>
             </>

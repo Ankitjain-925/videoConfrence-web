@@ -62,6 +62,8 @@ class Index extends Component {
       const { paymnt_processed, ok_and_close, ok } = translate;
       confirmAlert({
         customUI: ({ onClose }) => {
+          CallTopUpApi_Add(this, data);
+          this.props.history.push("/patient/settings");
           return (
             <div
               className={
@@ -72,13 +74,13 @@ class Index extends Component {
                   : 'react-confirm-alert-body-c'
               }
             >
-              <SuccessMsg />
+              <SuccessMsg Minutes={data} />
 
               <button className='success-button'
                 onClick={() => {
                   onClose();
                   this.props.onCancel()
-                  CallTopUpApi_Add(this, data);
+                  // CallTopUpApi_Add(this, data);
                   saveOnDB1(data, this.state.updateEvaluate, this);
                 }}
               >
