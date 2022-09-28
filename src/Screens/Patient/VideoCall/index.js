@@ -49,6 +49,7 @@ TabContainer.propTypes = {
 
 const VideoCallPat = (props) => {
   const [slideItems, setSlideItems] = useState([]);
+  const [allDoctorData, setallDoctorData] = useState({});
   const [time, setTime] = useState({});
   const [timer, setTimer] = useState([]);
   const [allTasks, setTaskData] = useState({});
@@ -190,6 +191,8 @@ const VideoCallPat = (props) => {
       .then((response) => {
         if (response && response.data && response.data.hassuccessed) {
           if (response.data.message === 'link active') {
+            console.log("response?.data?.data.doctor_info", response?.data?.data.doctor_info)
+            setallDoctorData(response?.data?.data.doctor_info);
             var taskData = response.data.data.Task;
             var gender = response.data.data.gender;
             CometChat.login(profile_id, COMETCHAT_CONSTANTS.AUTH_KEY)
@@ -245,6 +248,7 @@ const VideoCallPat = (props) => {
       axios
         .put(APIs3.joinmeeting + task_id)
         .then((responce) => {
+          history.push({ pathname: "/patient/Feed-back", state: { allDoctorData: allDoctorData, openModal: true } })
           setLoaderImage(false);
         })
         .catch(() => {
@@ -288,16 +292,16 @@ const VideoCallPat = (props) => {
   //         }
   //       }, 1000)
   //   })
-  //   //   this.setState({
-  //   //     time: ,
-  //   //     distance1: distance1,
-  //   //   }, () => {
-  //   //     if (distance1 < 0) {
-  //   //       this.setState({ sectionValue: 6 });
-  //   //       clearInterval(timer);
-  //   //     }
-  //   //   });
-  //   // }, 1000)
+  //   this.setState({
+  //     time: ,
+  //     distance1: distance1,
+  //   }, () => {
+  //     if (distance1 < 0) {
+  //       this.setState({ sectionValue: 6 });
+  //       clearInterval(timer);
+  //     }
+  //   });
+  // }, 1000)
   // }
 
   const secondsToTime = (distance) => {
@@ -347,14 +351,14 @@ const VideoCallPat = (props) => {
                                 {" "}
                                 Latest review for
                               </span> */}
-                              <Grid className="infoShwSave3 label_1 ">
+                              {/* <Grid className="infoShwSave3 label_1 ">
                                 <input
                                   type="button"
                                   value="Review For Doctor"
                                   onClick={() => history.push({ pathname: "/patient/Feed-back", state: true })}
 
                                 />
-                              </Grid>
+                              </Grid> */}
                             </div>
                           </div>
 
@@ -403,9 +407,9 @@ const VideoCallPat = (props) => {
                               <Grid item xs={12} md={10} lg={8}>
                                 <Grid className="cssCall">
                                   <>
-                                    {/* <Grid>
+                                    <Grid>
                                       <TimerIcon className="timerIcon" />
-                                      <label className="formviewhead"> {time.h}h : {time.m}m</label></Grid> */}
+                                      <label className="formviewhead"> {time.h}h : {time.m}m</label></Grid>
                                     <CometChatOutgoingDirectCall
                                       open
                                       userListCall={(userList) =>
