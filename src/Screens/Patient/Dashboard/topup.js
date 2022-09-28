@@ -159,14 +159,16 @@ const Dashboard = (props) => {
                     {!openPayment && (<>
                       <Grid container direction="row" justify="center">
                         <Grid item xs={3} md={3} lg={3}>
+
                           <h5 className="setting-h5">{balance}</h5>
                           
+
                         </Grid>
                         <Grid item xs={6} md={5} lg={5}>
-                          
+
                         </Grid>
                         <Grid item xs={3} md={4} lg={4}>
-                          
+
                           <ButtJoin />
                         </Grid>
                       </Grid>
@@ -183,7 +185,7 @@ const Dashboard = (props) => {
                     
                           </div> */}
                         <Grid container direction="row" justify="center" alignItems="center">
-                          <Grid item xs={4} md={4} sm={4}>
+                          <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
                                 <div className='top-up-head'>{starter}</div>
@@ -200,7 +202,7 @@ const Dashboard = (props) => {
                             </div>
                           </Grid>
 
-                          <Grid item xs={4} md={4} sm={4}>
+                          <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
                                 <div className='top-up-head'>{standard}</div>
@@ -217,7 +219,7 @@ const Dashboard = (props) => {
                             </div>
                           </Grid>
 
-                          <Grid item xs={4} md={4} sm={4}>
+                          <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
                                 <div className='top-up-head'>{premium}</div>
@@ -244,19 +246,12 @@ const Dashboard = (props) => {
                       <Grid>
                         {openPayment && (
 
-
-
-
-
                           <Payment
                             onCancel={handleCancel}
                             usedFor={"top_up"}
                             famount={famount2}
 
                           />
-
-
-
 
                         )}
                       </Grid>
@@ -298,10 +293,6 @@ const Dashboard = (props) => {
                         )}
                         <Grid>
                           {openPayment && (
-
-
-
-
                             <Payment
                               onCancel={handleCancel}
                               usedFor={"top_up"}
