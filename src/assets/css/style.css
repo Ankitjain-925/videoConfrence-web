@@ -3860,17 +3860,8 @@ a.profilMenu {
 .profileInfoIner {
   margin-bottom: 10px;
 }
-.mr_sel .css-yk16xz-control {
-  height: 36px !important;
-  min-height: initial;
-}
 span.css-1okebmr-indicatorSeparator {
   background-color: transparent;
-}
-.mr_sel .css-yk16xz-control div {
-  outline: 1px !important;
-  border: none !important;
-  min-height: initial !important;
 }
 @media (min-width: 960px) {
   .titleDegre .MuiGrid-grid-md-4 {
@@ -18076,6 +18067,9 @@ ul.duringCovid li:last-child {
 .darkTheme > div:nth-child(4) a.ant-picker-today-btn {
   color: #00abaf;
 }
+.darkTheme .react-calendar__month-view__weekdays__weekday {
+  color: #00ABAF;
+}
 .homeBgDrk .regSelectTop .dropdown-item:hover, 
 .homeBgDrk .regSelectTop .dropdown-item:focus {
   background-color: #000;
@@ -18085,6 +18079,26 @@ ul.duringCovid li:last-child {
 }
 .homeBgDrk .regSelectTop .dropdown-item:hover a.nav-link {
   color: #ffffff !important;
+}
+.homeBgDrk .react-calendar__month-view__days,
+.homeBgDrk .react-calendar__tile:disabled {
+  background: transparent !important;
+}
+.homeBgDrk .react-calendar__tile:disabled {
+  color: #dfdfdf !important;
+}
+.homeBgDrk button.react-calendar__month-view__days__day {
+  color: #00ABAF !important;
+}
+.homeBgDrk .selCalenderUpr .react-calendar__navigation button:disabled,
+.homeBgDrk .selCalenderUpr button.react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.homeBgDrk .selCalenderUpr button.react-calendar__navigation__arrow.react-calendar__navigation__next2-button {
+  background-color: #232323;
+  background: #232323;
+  color: #ffffff;
+}
+.homeBgDrk .selCalender span.react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+  color: #00ABAF !important;
 }
 .dropdown-class-name-3 .ant-picker-panel-container .ant-picker-panel {
   background: #404646;
@@ -18241,8 +18255,7 @@ span.PIC_Condition {
 span.PIC_Condition:hover {
   background-color: transparent;
 }
-.bgncmnSpc,
-.haveCmnSpc {
+.bgncmnSpc, .haveCmnSpc {
   margin-bottom: 18px;
 }
 .bgncmnSpc span.MuiFormControlLabel-label {
@@ -18310,7 +18323,8 @@ button.top-up-buybtn {
     padding: 8px 4px;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
-.logRow input[type="text"] {
+.logRow input[type="text"], 
+.MuiGrid-root.logPass input[type="password"] {
   background-color: hsl(0,0%,100%);
   border-color: hsl(0,0%,80%);
   border-radius: 4px;
@@ -18372,4 +18386,14 @@ h6.selectdoc-head2 {
 }
 .langInerFooter.dropdown-menu.show .nav-link {
   padding: 0px;
+}
+.last-sec-setting.form_full p.middle-setting-items {
+  line-height: initial;
+}
+.infoShwSave3 {
+  margin-top: 18px;
+}
+.card-content .FeedbackCss {
+  width: 100%;
+  text-align: right;
 }
