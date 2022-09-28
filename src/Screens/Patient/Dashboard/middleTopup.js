@@ -42,7 +42,9 @@ const TopUpdetail = (props) => {
   let translate = getLanguage(props.stateLanguageType);
   let {
     my_profile,
-    Security
+    Security,
+    your_aimedis_credit,
+    top_up,
   } = translate;
 
   if (
@@ -58,11 +60,11 @@ const TopUpdetail = (props) => {
         <Grid>
             <div className='settingbox form_full'>
                 <div >
-                    <label>Your Aimedis Credit :</label>
+                    <label>{your_aimedis_credit}</label>
                     <p>{props?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || 0}{' '}{'Min'}</p>
                 </div>
                 <div>
-                    {props.btnShow && <Button variant='contained' className="topupButton" onClick={()=>{props.history.push('/patient/top-up')}}>Top Up</Button>}
+                    {props.btnShow && <Button variant='contained' className="topupButton" onClick={()=>{props.history.push('/patient/top-up')}}>{top_up}</Button>}
                 </div>
             </div>    
         </Grid>

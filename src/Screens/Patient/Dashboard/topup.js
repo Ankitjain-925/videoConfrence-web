@@ -59,7 +59,25 @@ const Dashboard = (props) => {
   let translate = getLanguage(props.stateLanguageType);
   let {
     my_profile,
-    Security
+    Security,
+    balance,
+    top_your_balance,
+    starter,
+    forty_min,
+    aenean_lectus_posuere,
+    two_hundered_euro,
+    buy_now,
+    standard,
+    sixty_min,
+    three_hundred_euro,
+    premium,
+    onehundred_twenty_min,
+    six_hundred_uero,
+    choose_custom_amount,
+    back_sec,
+    add_custom_amount,
+    will_recieve,
+    Continue,
   } = translate;
 
 
@@ -141,7 +159,9 @@ const Dashboard = (props) => {
                     {!openPayment && (<>
                       <Grid container direction="row" justify="center">
                         <Grid item xs={3} md={3} lg={3}>
-                          <h5 className="setting-h5">Balance</h5>
+
+                          <h5 className="setting-h5">{balance}</h5>
+                          
 
                         </Grid>
                         <Grid item xs={6} md={5} lg={5}>
@@ -160,7 +180,7 @@ const Dashboard = (props) => {
                         <MiddleTopup />
 
 
-                        <p className='settingbox-heading'>Top up your balance</p>
+                        <p className='settingbox-heading'>{top_your_balance}</p>
                         {/* <div className="last-sec-setting form_full">
                     
                           </div> */}
@@ -168,16 +188,16 @@ const Dashboard = (props) => {
                           <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
-                                <div className='top-up-head'>Starter</div>
-                                <div className='top-up-minnute'>40min</div>
+                                <div className='top-up-head'>{starter}</div>
+                                <div className='top-up-minnute'>{forty_min}</div>
                               </div>
                               <div>
-                                <div className="top-up-content">Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                                <div className="top-up-content">{aenean_lectus_posuere}
                                 </div>
                               </div>
-                              <div className='top-up-cost'>200 €</div>
+                              <div className='top-up-cost'>{two_hundered_euro}</div>
                               <div>
-                                <button className='top-up-buybtn' onClick={(e) => onPayment(40)}>Buy Now</button>
+                                <button className='top-up-buybtn' onClick={(e) => onPayment(40)}>{buy_now}</button>
                               </div>
                             </div>
                           </Grid>
@@ -185,16 +205,16 @@ const Dashboard = (props) => {
                           <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
-                                <div className='top-up-head'>Standard</div>
-                                <div className='top-up-minnute'>60min</div>
+                                <div className='top-up-head'>{standard}</div>
+                                <div className='top-up-minnute'>{sixty_min}</div>
                               </div>
                               <div>
-                                <div className='top-up-content'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                                <div className='top-up-content'>{aenean_lectus_posuere}
                                 </div>
                               </div>
-                              <div className='top-up-cost'>300 €</div>
+                              <div className='top-up-cost'>{three_hundred_euro}</div>
                               <div>
-                                <button className='top-up-buybtn' onClick={(e) => onPayment(60)}>Buy Now</button>
+                                <button className='top-up-buybtn' onClick={(e) => onPayment(60)}>{buy_now}</button>
                               </div>
                             </div>
                           </Grid>
@@ -202,16 +222,16 @@ const Dashboard = (props) => {
                           <Grid item xs={12} md={4} sm={12}>
                             <div className="top-up-mid1-inner form_full">
                               <div className="top-up-head-1">
-                                <div className='top-up-head'>Premium</div>
-                                <div className='top-up-minnute'>120min</div>
+                                <div className='top-up-head'>{premium}</div>
+                                <div className='top-up-minnute'>{onehundred_twenty_min}</div>
                               </div>
                               <div>
-                                <div className='top-up-content'>Aenean at lectus posuere enim id nec. Molestie neque, sed fusce faucibus.
+                                <div className='top-up-content'>{aenean_lectus_posuere}
                                 </div>
                               </div>
-                              <div className='top-up-cost'>600 €</div>
+                              <div className='top-up-cost'>{six_hundred_uero}</div>
                               <div>
-                                <button className='top-up-buybtn' onClick={(e) => onPayment(120)}>Buy Now</button>
+                                <button className='top-up-buybtn' onClick={(e) => onPayment(120)}>{buy_now}</button>
                               </div>
                             </div>
                           </Grid>
@@ -219,7 +239,7 @@ const Dashboard = (props) => {
                         </Grid>
 
                         <Grid className="goto-custom-topup" onClick={() => { SetcustomAmount(true) }}>
-                          or choose a custom amount
+                          {choose_custom_amount}
                         </Grid>
                       </>
                       )}
@@ -240,10 +260,10 @@ const Dashboard = (props) => {
                       <>
                         {!openPayment && (
                           <div className='last-sec-setting form_full'>
-                            <div className="custom-topup-Back" onClick={() => { SetcustomAmount(false) }}> {'« Back'}  </div>
+                            <div className="custom-topup-Back" onClick={() => { SetcustomAmount(false) }}> « {back_sec}  </div>
                             <div className='custom-topup form_full_bl'>
                               <div>
-                                <h2 className="custom-topup-head">Add a custom amount</h2>
+                                <h2 className="custom-topup-head">{add_custom_amount}</h2>
                               </div>
                               <div className="custom-topup-field form_full">
                                 <MMHG
@@ -261,9 +281,9 @@ const Dashboard = (props) => {
                                 <div>
                                 </div>
                               </div>
-                              <div className="custom-topup-recieve">You will recieve: <span className="custom-topup-rmin">{famount}{' '}{'Min'}</span></div>
+                              <div className="custom-topup-recieve">{will_recieve}<span className="custom-topup-rmin">{famount}{' '}{'Min'}</span></div>
                               <div className="continueBTN-topup">
-                                <Button variant='contained' onClick={() => onPayment()}>Continue</Button>
+                                <Button variant='contained' onClick={() => onPayment()}>{Continue}</Button>
 
                               </div>
 
