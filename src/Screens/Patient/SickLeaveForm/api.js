@@ -154,7 +154,12 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
 // }
 
 export const CallTopUpApi_Add = (current, data) => {
-  let calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min) + parseInt(data?.data?.paymentData?.amount / 500);
+  var calPrePaid = 0;
+  if(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min && parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min  )>0){
+    calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min  );
+  }
+
+  calPrePaid = calPrePaid + parseInt(data?.data?.paymentData?.amount / 500)
   var info = {
     paid_amount_obj: {
       datetime: data?.data?.paymentData?.Date,
@@ -172,6 +177,10 @@ export const CallTopUpApi_Add = (current, data) => {
       info)
     .then((res) => {
       current.setState({ loaderImage: false });
+      var user_token = current.props.stateLoginValueAim.token
+      var forUpdate = {value: true, token: user_token, user: current.props?.stateLoginValueAim?.user}
+      var VideoData = res.data?.data
+      current.props.LoginReducerAim(current.props?.stateLoginValueAim?.user?.email, '', current.props?.stateLoginValueAim?.user_token, () => {}, forUpdate, current.props?.stateLoginValueAim?.isVideoLoggedIn, VideoData, current.props?.stateLoginValueAim?.is_vedio_registered);
     })
     .catch((err) => {
       current.setState({ loaderImage: false });

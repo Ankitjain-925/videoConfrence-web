@@ -468,7 +468,7 @@ p.regOnlog {
 }
 @media screen and (max-width: 767px){
 .logForm {
-    padding: 20px 26px;
+    padding: 16px 16px;
     margin: 22px auto 30px;
     width: 100%;
  }

@@ -9382,7 +9382,6 @@ td.phrImg p {
 
 /* ------------------ */
 .presBoxCntnt {
-  /* height: 1137px; */
   width: 762px;
   background: #fff;
   margin: 0 auto;
@@ -15986,7 +15985,7 @@ input#graduationYear {
   z-index: 99999999999 !important;
 }
 .selCalenderUpr .selTimeSlot .selTimeAM {
-  height: 328px;
+  height: 238px;
   overflow-y: scroll;
 }
 @media (min-width: 1466px) {
@@ -16824,6 +16823,29 @@ select:-webkit-autofill:focus {
     margin-top: 17px !important;
     margin-bottom: 12px !important;
   }
+  .Meetlabel_2 button {
+    float: initial !important;
+    margin-top: 0px !important;
+    margin-bottom: 36px !important;
+  }
+  .MuiGrid-root.logForm.form_full .card-header {
+    margin: 0px !important;
+    margin-bottom: 7px !important;
+    padding: 15px;
+  }
+  .relexStressRght a {
+    font-size: 12px !important;
+    padding: 12px 6px !important;
+  }
+  .fatiqueQues a {
+    font-size: 12px !important;
+    padding: 0px 4px !important;
+    min-width: 35px !important;
+    margin-right: 4px !important;
+ }
+ .selTimeSlot {
+    width: 100% !important;
+  }
 }
 @media (max-width: 959px) {
   .presSrch a {
@@ -16890,6 +16912,19 @@ select:-webkit-autofill:focus {
     margin-right: 8px !important;
     margin-top: 14px !important;
   }
+  .MuiGrid-root.infoShwSave3.cardioArea {
+    display: block !important;
+  }
+  .infoShwSave3 input {
+    width: 100% !important;
+    margin-right: 0px !important;
+    display: block !important;
+  }
+  .card-content .FeedbackCss {
+    text-align: left !important;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
 }
 @media screen and (min-width: 700px) and (max-width: 959px) {
   .srchFilter .ant-picker-range.allTimeSel1.comonSel {
@@ -16933,10 +16968,12 @@ select:-webkit-autofill:focus {
   .selTimeSlot {
     margin-left: 0px !important;
     margin-right: 0px !important;
-    width: 375px !important;
-    /* margin: 0 auto !important; */
+    width: 100% !important;
     border: 1px solid #f2f2f2;
     padding: 0px !important;
+  }
+  .selCalender {
+    width: 100% !important;
   }
   .delQues {
     padding: 8px 8px 8px 8px !important;
@@ -18087,9 +18124,6 @@ ul.duringCovid li:last-child {
 .homeBgDrk .react-calendar__tile:disabled {
   color: #dfdfdf !important;
 }
-.homeBgDrk button.react-calendar__month-view__days__day {
-  color: #00ABAF !important;
-}
 .homeBgDrk .selCalenderUpr .react-calendar__navigation button:disabled,
 .homeBgDrk .selCalenderUpr button.react-calendar__navigation__arrow.react-calendar__navigation__next-button,
 .homeBgDrk .selCalenderUpr button.react-calendar__navigation__arrow.react-calendar__navigation__next2-button {
@@ -18161,6 +18195,9 @@ ul.duringCovid li:last-child {
 .profileInfoDate .ant-picker-clear {
   right: 5px !important;
 }
+.MuiGrid-root.docsOpinion {
+  margin-top: 42px;
+}
 @media (max-width: 959px) {
   .menuItems ul li ul li a {
     margin-bottom: 24px !important;
@@ -18172,6 +18209,19 @@ ul.duringCovid li:last-child {
   }
   .drListRght2 label {
     font-size: 12px;
+  }
+  .MuiGrid-root.logForm.accessForm {
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+    width: 94% !important;
+  }
+  a.Serc_img img {
+    height: 17px;
+  }
+  .srchLft a {
+    position: absolute;
+    top: 22px;
+    right: 7px;
   }
 }
 .drListLft2 {
@@ -18212,7 +18262,11 @@ ul.duringCovid li:last-child {
 .darkTheme .cnfrmDiaMain2 {
   background-color: #404646;
 }
-
+.darkTheme .selTimeSlot a:hover, .darkTheme .suggent-time a:hover, 
+.darkTheme .suggent-time a.current_selected {
+  background-color: #00abaf;
+  color: #ffffff !important;
+}
 .homeBgDrk a.openScndhrf img {
   background-color: #192020;
 }
@@ -18396,4 +18450,8 @@ h6.selectdoc-head2 {
 .card-content .FeedbackCss {
   width: 100%;
   text-align: right;
+}
+.MuiGrid-root.logForm.accessForm {
+  margin-top: 50px;
+  margin-left: 45px;
 }
