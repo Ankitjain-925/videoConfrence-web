@@ -77,10 +77,9 @@ const Index = (props) => {
                                     </Grid>
                                 </Grid>
 
-                                <Grid item xs={12} sm={6}>
+                                <Grid item xs={12} sm={12} md={6}>
                                     {/* <Grid className="profilePkgIner2"> */}
                                     <Grid className="logForm accessForm">
-
                                         <Grid className="logRow">
                                             <Grid className="label_1">
                                                 <div className="err_message">{error}</div>
@@ -96,20 +95,16 @@ const Index = (props) => {
                                                 />
                                             </Grid>
                                         </Grid>
-
                                         <Grid className="infoShwSave3 label_1 ">
                                             <input
                                                 type="button"
                                                 value={join_call}
                                                 onClick={() => handleSubmit()}
-
                                             />
                                         </Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>
-
-
                         </Grid>
                     </Grid>
                 </Grid>
