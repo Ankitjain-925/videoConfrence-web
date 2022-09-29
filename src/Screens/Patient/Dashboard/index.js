@@ -143,7 +143,7 @@ const Dashboard = (props) => {
                   <div className="settingPage">
                     <Grid container direction="row" justify="center">
                       <Grid item xs={3} md={3} lg={3}>
-                        <h5 className="setting-h5">{settings}</h5>
+                        <h5 className="setting-h5">Health Profile</h5>
 
                       </Grid>
                       <Grid item xs={6} md={5} lg={5}>

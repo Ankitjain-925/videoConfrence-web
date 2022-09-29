@@ -56,8 +56,7 @@ function RegisterVC(props) {
           props.settings.setting.mode === 'dark'
           ? 'homeBg darkTheme homeBgDrk'
           : 'homeBg'
-      }
-    >
+      }>
       <Grid className="homeBgIner">
         <Grid container direction="row" justify="center">
           <Grid item xs={12} md={12}>
@@ -68,25 +67,17 @@ function RegisterVC(props) {
               <Notification />
               {/* Website Mid Content */}
               <Grid item xs={12} md={11} lg={10}>
-                <div className="settingPage">
+                <div className="settingPage 77">
                   <Grid container direction="row">
-                    <Grid item xs={3} md={3} lg={3}>
-                      <h5 className="setting-h5">{book_appointment}</h5>
-
+                    <Grid item xs={12} sm={12} md={10} lg={8}>
+                      <Grid container direction="row">
+                         <Grid item xs={12} sm={6} md={6} lg={6}><h5 className="setting-h5">{book_appointment}</h5></Grid>
+                         <Grid item xs={12} sm={6} md={6} lg={6}><ButtJoin /></Grid>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6} md={5} lg={2}>
-
-                    </Grid>
-                    <Grid item xs={3} md={4} lg={3}>
-
-                      <ButtJoin />
-                    </Grid>
-
-                    <Grid item xs={12} md={10} lg={8}>
-
-                      <Main />
-                      
-                    </Grid>
+                  </Grid>
+                  <Grid container direction="row">
+                    <Grid item xs={12} sm={12} md={10} lg={8}><Main /></Grid>
                   </Grid>
                 </div>
               </Grid>

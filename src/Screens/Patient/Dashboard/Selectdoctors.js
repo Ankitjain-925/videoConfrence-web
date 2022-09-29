@@ -158,18 +158,11 @@ class SelectDoctor extends Component {
 
               {dataa?.doctor_detail[1]?.data?.data?.length > 0 &&
                 dataa?.doctor_detail[1]?.data?.data?.map((item, i) => (
-                  <Grid
-                    item
-                    xs={12}
-                    md={12}
-                    lg={12}
-                  >
+                  <Grid item xs={12} md={12} lg={12}>
                     <Grid className='call-feedback-part'>
                       <Grid container direction="row" alignItems="center">
-                        <Grid item xs={6} md={6} sm={6}>
+                        <Grid item xs={12} md={6} sm={6}>
                           <Grid className='call-feadback-header'>
-
-
                             <Grid className='call-feadbackimg'>
                               <S3Image imgUrl={item?.patient_info?.image} />
                             </Grid>
@@ -179,7 +172,7 @@ class SelectDoctor extends Component {
                             </Grid>
                           </Grid>
                         </Grid>
-                        <Grid item xs={6} md={6} sm={6}>
+                        <Grid item xs={12} md={6} sm={6}>
                           <Grid className="setDataSym">
                             <SymptomQuestions
                               updateEntryState1={(e) =>

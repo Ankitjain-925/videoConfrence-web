@@ -395,11 +395,10 @@ img.passArow {
 }
 .logForm {
     background: #ffffff;
-    padding: 20px 26px;
+    padding: 28px 26px;
     border-radius: 12px;
     background-color: #FFFFFF;
-    box-shadow: 0 8px 24px 0 rgba(0,8,8,0.08);
-    margin: 35px 30px 40px;
+    box-shadow: 0 8px 24px 0 rgb(0 8 8 / 8%);
 }
 .logData {
     margin-top: 40px;
@@ -469,7 +468,7 @@ p.regOnlog {
 }
 @media screen and (max-width: 767px){
 .logForm {
-    padding: 20px 26px;
+    padding: 16px 16px;
     margin: 22px auto 30px;
     width: 100%;
  }
