@@ -94,6 +94,7 @@ export class StepForm extends Component {
 
         if (step === 1)
             return (<PersonalInfo
+                stateLanguageType={this.props.stateLanguageType}
                 dataa={mainState}
                 onSelectLanguage2={this.handleLanguage2}
                 nextStep={this.nextStep}
@@ -101,6 +102,7 @@ export class StepForm extends Component {
             />);
         if (step === 2)
             return (<JobDetails
+                stateLanguageType={this.props.stateLanguageType}
                 redux_st={this.props}
                 dataa={mainState}
                 onSelectLanguage1={this.handleLanguage1}

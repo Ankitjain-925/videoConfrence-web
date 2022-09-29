@@ -74,7 +74,13 @@ class SelectDoctor extends Component {
     let translate = getLanguage(this?.props?.redux_st?.stateLanguageType);
     let {
       my_profile,
-      Security
+      Security,
+      back_symbol,
+      next_symbol,
+      select_hospitals,
+      search_select,
+      I_would_like,
+      video_call,
     } = translate;
     return (
       <Grid className="logForm form_full">
@@ -110,12 +116,12 @@ class SelectDoctor extends Component {
                 </Grid>
 
                 <Grid item xs={12} sm={5} md={5}>
-                  <label>Select Hospital</label>
+                  <label>{select_hospitals}</label>
                   <Grid>
                     <Select
                       name="for_hospital"
                       options={dataa?.doctor_detail[0]?.houses}
-                      placeholder="Search Select"
+                      placeholder={search_select}
                       onChange={(e) => this.props.onSelectLanguage6(e?.value)}
                       value={dataa?.doctor_detail[0]?.houses.filter(obj => obj?.value === dataa?.house_id)}
                       className="addStafSelect"
@@ -138,8 +144,8 @@ class SelectDoctor extends Component {
                     className="mr_sel"
                   /> */}
               <Grid className='card-label'>
-                <p >I would like to:
-                  {' '}<b>Video-Call</b> </p></Grid>
+                <p >{I_would_like}
+                  {' '}<b>{video_call}</b> </p></Grid>
 
 
 
@@ -198,13 +204,13 @@ class SelectDoctor extends Component {
               <Grid className="infoShwSave3 ">
                 <input
                   type="button"
-                  value="« Back"
+                  value={back_symbol}
                   onClick={this.back}
 
                 />
                 <input
                   type="button"
-                  value="Next »"
+                  value={next_symbol}
                   onClick={this.continue}
 
                 />

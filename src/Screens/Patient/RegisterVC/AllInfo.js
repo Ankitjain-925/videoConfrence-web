@@ -86,6 +86,8 @@ class AllInfo extends Component {
         let translate = getLanguage(this.props.redux_st.stateLanguageType);
         let {
             search_by_name_email_speciality_id_doc,
+            back_symbol,
+            next_symbol,
         } = translate;
 
         return (
@@ -186,7 +188,7 @@ class AllInfo extends Component {
                             <Grid className="infoShwSave3 ">
                                 <input
                                     type="button"
-                                    value="« Back"
+                                    value={back_symbol}
                                     onClick={this.back}
 
                                 />
@@ -194,7 +196,7 @@ class AllInfo extends Component {
 
                                     <input
                                         type="button"
-                                        value="Next »"
+                                        value={next_symbol}
                                         onClick={this.continue}
 
                                     /> : ''
