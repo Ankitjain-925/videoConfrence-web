@@ -60,6 +60,7 @@ const Dashboard = (props) => {
     rate_aimedies_diagnostics,
     logout_sec,
   } = translate;
+  
 
   const profileLink = () => {
     history.push("/patient");

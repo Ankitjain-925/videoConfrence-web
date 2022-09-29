@@ -1882,7 +1882,23 @@
     "back_sec":"Der Rücken",
     "add_custom_amount":"Fügen Sie einen benutzerdefinierten Betrag hinzu",
     "will_recieve":"Du wirst erhalten:",
-    "Continue":"Fortfahren"
+    "Continue":"Fortfahren",
+    "enter_time_talk":"Geben Sie Gesprächszeit ein",
+    "estimated_amount":"Geschätzter Betrag",
+    "total_payable_amount":"Zu zahlender Gesamtbetrag",
+    "select_time_talk":"Wählen Sie Gesprächszeit aus",
+    "top_up_credit":"Aufladen",
+    "your_topup_amount":"Ihr Aufladebetrag beträgt:",
+    "credit_card": "Kreditkarte",
+    "click_topay_credit_card":"Klicken Sie hier, um per Kreditkarte zu bezahlen",
+    "back_symbol":"« Der Rücken",
+    "next_symbol":"Nächste »",
+    "select_hospitals":"Krankenhaus auswählen",
+    "search_select":"Suche auswählen",
+    "I_would_like":"Ich möchte:",
+    "video_call":"Videoanruf",
+    "username": "Nutzername",
+    "login_video_confrence": "Melden Sie sich bei der Videokonferenz an"
 
   }
 }

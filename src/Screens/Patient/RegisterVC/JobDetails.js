@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { getLanguage } from 'translations/index';
 
 
 class JobDetails extends Component {
@@ -62,6 +63,15 @@ class JobDetails extends Component {
 
 
     render() {
+    let translate = getLanguage(this.props.stateLanguageType);
+    let {
+        top_up_credit,
+        your_topup_amount,
+        credit_card,
+        click_topay_credit_card,
+        back_symbol,
+        next_symbol,
+    } = translate;
         return (
             <>
                 <Grid className="logForm form_full">
@@ -73,14 +83,14 @@ class JobDetails extends Component {
 
 
                                     <Grid container justify="space-between" className="padd_10">
-                                        <Typography variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
+                                        <Typography variant="h6" component="div" align="left" className="adv1">{top_up_credit}</Typography>
                                         <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
 
                                     </Grid>
 
                                     <CardContent>
                                         <Typography variant="body2">
-                                            Your Top-Up Amount is: {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min ? this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min : 0}{' '}{'Min'}
+                                            {your_topup_amount} {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min ? this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min : 0}{' '}{'Min'}
                                         </Typography>
                                     </CardContent>
                                     <Grid className="err_mesg1">{this.state.CompareRequired}</Grid>
@@ -93,12 +103,12 @@ class JobDetails extends Component {
 
 
                                     <Grid container justify="space-between" className="padd_10">
-                                        <Typography variant="h6" component="div" align="left" className="adv1">Credit Card</Typography>
+                                        <Typography variant="h6" component="div" align="left" className="adv1">{credit_card}</Typography>
                                         <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
                                     </Grid>
                                     <CardContent>
                                         <Typography variant="body2">
-                                            Click Here To Pay Through Credit Card
+                                            {click_topay_credit_card}
                                         </Typography>
                                     </CardContent>
 
@@ -126,13 +136,13 @@ class JobDetails extends Component {
                     <Grid className="infoShwSave3">
                         <input
                             type="button"
-                            value="« Back"
+                            value={back_symbol}
                             onClick={this.back}
                         />
                         {/* {this.state.CompareRequired !== 'Please recharge top-up to continue, your top-up amount is low.' && */}
                         <input
                             type="button"
-                            value="Next »"
+                            value={next_symbol}
                             onClick={this.continue}
                         />
                         {/* } */}

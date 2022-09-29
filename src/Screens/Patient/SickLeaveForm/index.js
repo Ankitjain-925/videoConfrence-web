@@ -102,6 +102,8 @@ class Index extends Component {
       you_have_cough_and_snees,
       rules_and_regulations_of_aimedis,
       you_have_fever,
+      back_symbol,
+      next_symbol,
     } = translate;
     const { stateLoginValueAim } = this.props;
     if (
@@ -454,13 +456,13 @@ class Index extends Component {
                 <Grid className="infoShwSave3 cardioArea">
                   <input
                     type="button"
-                    value="« Back"
+                    value={back_symbol}
                     onClick={this.back}
 
                   />
                   <input
                     type="submit"
-                    value="Next »"
+                    value={next_symbol}
                     onClick={() => handleEvalSubmit(this, 1)}
                   ></input>
                 </Grid>
