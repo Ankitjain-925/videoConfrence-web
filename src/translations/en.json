@@ -1950,7 +1950,9 @@
     "back_sec":"Back",
     "add_custom_amount":"Add a custom amount",
     "will_recieve":"You will recieve:",
-    "Continue":"Continue"
+    "Continue":"Continue",
+    "only_for_patient":"Only for patient" ,
+    "You_dont_have_an_access_of_this_meeting":"You don't have an access of this meeting"
     
    
     
