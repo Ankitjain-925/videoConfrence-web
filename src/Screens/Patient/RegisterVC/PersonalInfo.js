@@ -21,7 +21,7 @@ class PersonalInfo extends Component {
             this.props.nextStep();
         }
         else{
-            this.setState({ TimeRequired: "Please Enter Time"  });
+            this.setState({ TimeRequired: 'Please Enter Time' });
         }
         
     }
@@ -43,6 +43,7 @@ class PersonalInfo extends Component {
         next,
         total_payable_amount,
         select_time_talk,
+        please_enter_time,
     } = translate;
 
 

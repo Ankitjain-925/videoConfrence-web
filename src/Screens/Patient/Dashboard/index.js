@@ -41,7 +41,7 @@ const Dashboard = (props) => {
   const history = useHistory();
   const [value, setValue] = useState(0);
   const [languageValue, setLanguageValue] = useState(null);
-  const [openFancyLanguage, setOpenFancyLanguage] = useState(false)
+  const [openFancyLanguage, setOpenFancyLanguage] = useState(false);
 
   let translate = getLanguage(props.stateLanguageType);
   let {
