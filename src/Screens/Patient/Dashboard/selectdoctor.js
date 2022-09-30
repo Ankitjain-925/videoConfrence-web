@@ -83,19 +83,24 @@ render() {
                 <Grid className="settingPage">
                   {/* <h5 className="setting-h5">Settings</h5> */}
                   <Grid className='last-sec-setting form_full'>
+
+
+
                     {/* Card Menu */}
-                <Grid className="card-header">
+                    <Grid className="cardDisplay-select">
+                      <Grid className='card-section'>
+                        <Grid className="card-header">
                           <S3Image imgUrl={dataa.image} />
 
                           <Grid>
-                            <h5 className="selectdoc-head"> {dataa.first_name}{' '}{dataa.last_name}{' ,'}{dataa.speciality} </h5>
+                            <h5 className="selectdoc-head"> {dataa.first_name}{' '}{dataa.last_name}{','}{dataa.speciality} </h5>
                             {/* <p className='selectdoc-content'>Thu, Feb 3-8:30 am EST</p> */}
                             <Grid className='selectdoc-button'>
                               <span>on-line</span>
 
                             </Grid>
                           </Grid>
-              </Grid>
+                        </Grid>
                         <Grid className='card-content'>
                           <Select
                             value={''}
@@ -131,13 +136,8 @@ render() {
                                   </Grid>
                                 </Grid>
                                 <Grid className="call-comment-patient">
-                                  <p>
-                                  “Sed ut perspiciatis unde omnis iste 
-                                  natus error sit voluptatem accusantium doloremque laudantium, 
-                                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.”
-                                  </p>
+                                  “Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.”
                                 </Grid>
-
                               </Grid>
                               <Grid>
                                 <Grid className='call-feadback-header'>
@@ -151,17 +151,11 @@ render() {
                                   </Grid>
                                 </Grid>
                                 <Grid className="call-comment-patient">
-                                  <p>
-                                  “Sed ut perspiciatis unde omnis iste 
-                                  natus error sit voluptatem accusantium doloremque laudantium, 
-                                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis 
-                                  et quasi architecto beatae.”
-                                  </p>
+                                  “Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.”
                                 </Grid>
                               </Grid>
                             </Grid>
-                          
-                            <Grid className="infoShwSave2 ">
+                            <Grid className="infoShwSave3 ">
                               <input
                                 type="button"
                                 value="« Back"
@@ -175,11 +169,11 @@ render() {
 
                               />
                             </Grid>
-               
 
                           </Grid>
                         </Grid>
-                  
+                      </Grid>
+                    </Grid>
                   </Grid>
                 </Grid>
 
