@@ -76,21 +76,6 @@ class JobDetails extends Component {
             <>
                 <Grid className="logForm form_full">
 
-<<<<<<< HEAD
-
-                <Grid className="logRow" >
-                        <Grid container direction="row" >
-                            <Grid item xs={12} md={5} className="Card_1" >
-
-
-
-                                <Grid sx={{ maxWidth: 345 }} onClick={this.dssd} className={this.state.isActive ? 'Card_Sel' : ''}>
-
-
-                                    <Grid container justify="space-between" className="padd_10">
-                                        <Typography variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
-                                        <Typography variant="h6" component="div" align="right" className="adv2">10 Min</Typography>
-=======
                     <Grid className="logRow" >
                         <Grid container justify="center" spacing="3" alignItems="center" direction="row" >
                             <Grid item xs={12} md={6} sm={6} >
@@ -101,16 +86,11 @@ class JobDetails extends Component {
                                         <Typography variant="h6" component="div" align="left" className="adv1">{top_up_credit}</Typography>
                                         <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
 
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
                                     </Grid>
 
                                     <CardContent>
                                         <Typography variant="body2">
-<<<<<<< HEAD
-                                        Your Top-Up Amount is: 
-=======
                                             {your_topup_amount} {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min ? this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min : 0}{' '}{'Min'}
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
                                         </Typography>
                                     </CardContent>
                                     <Grid className="err_mesg1">{this.state.CompareRequired}</Grid>
@@ -123,21 +103,12 @@ class JobDetails extends Component {
 
 
                                     <Grid container justify="space-between" className="padd_10">
-<<<<<<< HEAD
-                                        <Typography variant="h6" component="div" align="left" className="adv1">Credit Card</Typography>
-                                        <Typography variant="h6" component="div" align="right" className="adv2">20 Min</Typography>
-                                    </Grid>
-                                    <CardContent>
-                                        <Typography variant="body2">
-                                            Click Here To Pay Through Credit Card 
-=======
                                         <Typography variant="h6" component="div" align="left" className="adv1">{credit_card}</Typography>
                                         <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
                                     </Grid>
                                     <CardContent>
                                         <Typography variant="body2">
                                             {click_topay_credit_card}
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
                                         </Typography>
                                     </CardContent>
 

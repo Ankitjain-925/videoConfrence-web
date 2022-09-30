@@ -10,11 +10,7 @@ import { Settings } from 'Screens/Login/setting';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from "@material-ui/core";
 import NotesEditor from "../Editor/index";
-<<<<<<< HEAD
-import SymptomQuestions from '../TimelineComponent/CovidSymptomsField/SymptomQuestions'; 
-=======
 import SymptomQuestions from '../TimelineComponent/CovidSymptomsField/SymptomQuestions';
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
 import axios from "axios";
 import sitedata from "sitedata";
 import { commonHeader } from "component/CommonHeader/index";
@@ -32,16 +28,6 @@ class Index extends Component {
             openModal: this.props.openModal,
             settings: this.props.settings,
             comesFrom: this.props.comesFrom,
-<<<<<<< HEAD
-            showQuestion: {},
-            loaderImage: false,
-            errorMsg: "",
-            
-        };
-    }
-  
-   componentDidUpdate = (prevProps) => {
-=======
             allDoctorData: this.props.allDoctorData,
             showQuestion: {},
             loaderImage: false,
@@ -51,7 +37,6 @@ class Index extends Component {
     }
 
     componentDidUpdate = (prevProps) => {
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
         if (prevProps.openModal !== this.props.openModal) {
             this.setState({ openModal: this.props.openModal });
         }
@@ -61,18 +46,6 @@ class Index extends Component {
     closeFullQues = () => {
         this.props.closeFullQues();
         this.setState({ showQuestion: {} });
-<<<<<<< HEAD
-       
-    }
-    // Set the state of questions
-    updateAllEntrySec = (e, name) => {
-       var state = this.state.showQuestion;
-      state[name] = e;
-        this.setState({ showQuestion: state });
-    };
-    handleTaskSubmit =()=>{
-        console.log('data',this.state.showQuestion)
-=======
 
     }
     // Set the state of questions
@@ -83,7 +56,6 @@ class Index extends Component {
     };
     handleTaskSubmit = () => {
         const { allDoctorData } = this.props;
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
         let translate = getLanguage(this.props.stateLanguageType);
         let { Something_went_wrong } = translate;
         var data = this.state.showQuestion;
@@ -93,43 +65,6 @@ class Index extends Component {
             image: this.props.stateLoginValueAim?.user?.image,
             alies_id: this.props.stateLoginValueAim?.user?.alies_id,
             profile_id: this.props.stateLoginValueAim?.user?.profile_id,
-<<<<<<< HEAD
-         }
-         var doctor_infos
-         = {
-            first_name: "Ankit",
-            last_name: "jain",
-            alies_id: "D_QRW7IAGTg",
-            profile_id: "D_QRW7IAGTg",
-            email:"ankitjain.webnexus@gmail.com",
-            profile_image:"https://aimedis-0001.s3.amazonaws.com/D_QRW7IAGTg/1660719470481-doctor image.jpg.jpg&bucket=aimedis-0001"
-         }
-          data.patient_info = patient_infos;
-          data.doctor_info = doctor_infos;
-          data.patient_id =this.props.stateLoginValueAim?.user?._id;
-          data.doctor_id="62a41f1ec627873603accc6c"
-          this.setState({ loaderImage: true });
-        axios
-      .post(
-        sitedata.data.path + "/vchat/givefeedback",
-       data,
-        commonHeader(this.props.stateLoginValueAim.token)
-      )
-      .then((responce) => {
-        this.setState({ loaderImage: false });
-        if (responce.data.hassuccessed) {
-            this.closeFullQues();
-            this.setState({ showQuestion: {}});
-         
-        } else {
-          this.setState({ errorMsg:Something_went_wrong});
-        }
-      });
-       
-    }
-  
-  
-=======
         }
         var doctor_infos
             = {
@@ -165,7 +100,6 @@ class Index extends Component {
     }
 
 
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
     render() {
         let translate = getLanguage(this.props.stateLanguageType)
         let {
@@ -175,11 +109,7 @@ class Index extends Component {
             Give_rating_Doctor
         } = translate;
 
-<<<<<<< HEAD
-    return (
-=======
         return (
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
             <Grid>
                 {/* Model setup */}
                 <Modal
@@ -307,26 +237,6 @@ class Index extends Component {
                                 </Grid>
                                 <Grid className="setDetail-eval">
                                     <Grid className="fillDiaAll2 ">
-<<<<<<< HEAD
-                                    <label>{Give_Comment_Doctor}</label>
-                                        <NotesEditor
-                                            name="Comment"
-                                            onChange={(e) => this.updateAllEntrySec(e,'Comment')}
-                                            value={this.state.showQuestion || "" }
-                                        />
-                                     </Grid>
-                              </Grid>
-                                <Grid className="setDetail-eval">
-                                    <Grid item xs={12} md={12} className="saveTasks">
-                                        <Button
-                                          onClick={() =>
-                                            this.handleTaskSubmit()
-                                          }
-                                        >
-                                            {Submit}
-                                        </Button>
-                                  </Grid>
-=======
                                         <label>{Give_Comment_Doctor}</label>
                                         <NotesEditor
                                             name="Comment"
@@ -345,7 +255,6 @@ class Index extends Component {
                                             {Submit}
                                         </Button>
                                     </Grid>
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -361,35 +270,12 @@ class Index extends Component {
 
 const mapStateToProps = (state) => {
     const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
-<<<<<<< HEAD
-      state.LoginReducerAim;
-=======
         state.LoginReducerAim;
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
     const { stateLanguageType } = state.LanguageReducer;
     const { settings } = state.Settings;
     const { verifyCode } = state.authy;
     const { metadata } = state.OptionList;
     return {
-<<<<<<< HEAD
-      stateLanguageType,
-      stateLoginValueAim,
-      loadingaIndicatoranswerdetail,
-      settings,
-      verifyCode,
-      metadata,
-    };
-  };
-  export default withRouter(
-    connect(mapStateToProps, {
-      LoginReducerAim,
-      LanguageFetchReducer,
-      Settings,
-      authy,
-      OptionList,
-    })(Index)
-  );
-=======
         stateLanguageType,
         stateLoginValueAim,
         loadingaIndicatoranswerdetail,
@@ -407,4 +293,3 @@ export default withRouter(
         OptionList,
     })(Index)
 );
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b

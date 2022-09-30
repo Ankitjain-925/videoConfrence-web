@@ -82,12 +82,6 @@ class Index extends Component {
     this.props.history.push('/patient/top-up');
   };
 
-
-   //For feedback page
-   feedBack = () => {
-    this.props.history.push("/patient/Feed-back");
-  };
-
   render() {
     let translate = getLanguage(this.props.stateLanguageType);
     let {
@@ -220,56 +214,15 @@ class Index extends Component {
 
               <a onClick={this.gotoAppointmentList}>
 
-                  {this.props.settings &&
-                    this.props.settings.setting &&
-                    this.props.settings.setting.mode &&
-                    this.props.settings.setting.mode === "dark" ? (
-                    <img
-                      src={require("assets/images/archive2.png")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                      src={require("assets/images/archive.png")}
-                      alt=""
-                      title=""
-                    />
-                  )}
-                  <span>{"List Requests"}</span>
-                </a>
-              </li>
-              <li
-                className={
-                  this.props.currentPage === "feedback" ? "menuActv" : ""
-                }
-              >
-             
-
-                <a onClick={this.feedBack}>
-
-                  {this.props.settings &&
-                    this.props.settings.setting &&
-                    this.props.settings.setting.mode &&
-                    this.props.settings.setting.mode === "dark" ? (
-                      <img
-                      src={require("assets/images/nav-journal-white.svg")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                    src={require("assets/images/nav-journal.svg")}
+                {this.props.settings &&
+                  this.props.settings.setting &&
+                  this.props.settings.setting.mode &&
+                  this.props.settings.setting.mode === "dark" ? (
+                  <img
+                    src={require("assets/images/archive2.png")}
                     alt=""
                     title=""
                   />
-<<<<<<< HEAD
-                  )}
-                  <span>{"Feed Back"}</span>
-                </a>
-              </li>
-           
-=======
                 ) : (
                   <img
                     src={require("assets/images/archive.png")}
@@ -282,7 +235,6 @@ class Index extends Component {
             </li>
             </>
            }
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
 
             <li
               className={this.props.currentPage === "profile" ? "menuActv" : ""}

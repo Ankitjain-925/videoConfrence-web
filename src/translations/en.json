@@ -1895,29 +1895,6 @@
     "active": "Active",
     "inactive": "Inactive",
     "meeting": "Meeting",
-<<<<<<< HEAD
-    "this_time_slot_is_already_booked":"This time slot is already booked,",
-    "another_one":"another one!",
-    "try_after_some_time":"There is no doctor availiable yet please try after some time!",
-    "payment_process_must_be_within_15_min":"The payment process must be within 15 min, and time is exceeded now. Please create a new request again, this request will go to the archive automatically after some time!",
-    "upcoming_slots":"upcoming time slots",
-    "aimedis_elements_au" : "Aimedis Video Conference",
-    "check_your_meeting_key_or_link_again":"Meeting not available please check your meeting key or link again",
-    "meeting_time_out":"Meeting time out",
-
-		"change_citizenship": "Do you want to change the Citizenship country according your new mobile country code?",
-		"fill_citizenship":"Please fill the Citizenship country",
-    "click_on_accept_it_guidline" : "Click here to accept IT guideline !",
-    "view_guidelines" : "View Guideline",
-    "login_video_confrence" : "Login to Video-Confrence",
-
-
-
-    "FeedBack":"Feed Back",
-    "Give_Comment_Doctor":"Give Comment to the Doctor",
-    "Give_rating_Doctor":"Give rating to the Doctor"
-   
-=======
     "this_time_slot_is_already_booked": "This time slot is already booked,",
     "another_one": "another one!",
     "try_after_some_time": "There is no doctor availiable yet please try after some time!",
@@ -1975,7 +1952,7 @@
     "will_recieve":"You will recieve:",
     "Continue":"Continue",
     "only_for_patient":"Only for patient" ,
-    "You_dont_have_an_access_of_this_meeting":"You don't have an access of this meeting"
+    "You_dont_have_an_access_of_this_meeting":"You don't have an access of this meeting",
     "enter_time_talk":"Enter Time To Talk",
     "estimated_amount":"Estimated Amount",
     "total_payable_amount":"Total Payable Amount",
@@ -1990,6 +1967,5 @@
     "I_would_like":"I would like to:",
     "video_call":"Video-Call" 
     
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
   }
 }
