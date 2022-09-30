@@ -143,6 +143,7 @@ const VideoCallPat = (props) => {
     activate_very_soon,
     link_has_been_expired,
     meeting_time_out,
+    You_dont_have_an_access_of_this_meeting,
     Oops,
     check_your_meeting_key_or_link_again,
     meeting_has_ended
@@ -191,29 +192,33 @@ const VideoCallPat = (props) => {
       .then((response) => {
         if (response && response.data && response.data.hassuccessed) {
           if (response.data.message === 'link active') {
-            console.log("response?.data?.data.doctor_info", response?.data?.data.doctor_info)
-            setallDoctorData(response?.data?.data.doctor_info);
-            var taskData = response.data.data.Task;
-            var gender = response.data.data.gender;
-            CometChat.login(profile_id, COMETCHAT_CONSTANTS.AUTH_KEY)
-              .then((resp) => {
-                axios
-                  .post(APIs1.cometUserList, {
-                    profile_id: profile_id,
-                  })
-                  .then((response) => {
-                    setLoaderImage(false);
-                    setStartCall(1);
-                    setTaskData(taskData);
-                    setGender(gender);
-                    // startTimer(taskData);
-                  })
-                  .catch((err) => {
-                    setLoaderImage(false);
-                  });
-              }).catch((err) => {
-                setLoaderImage(false);
-              });
+            if (response?.data?.data.doctor_info?.user_id === stateLoginValueAim?.user?._id || response?.data?.data?.Session?.patient_id === stateLoginValueAim?.user?._id) {
+              setallDoctorData(response?.data?.data.doctor_info);
+              var taskData = response.data.data.Task;
+              var gender = response.data.data.gender;
+              CometChat.login(profile_id, COMETCHAT_CONSTANTS.AUTH_KEY)
+                .then((resp) => {
+                  axios
+                    .post(APIs1.cometUserList, {
+                      profile_id: profile_id,
+                    })
+                    .then((response) => {
+                      setLoaderImage(false);
+                      setStartCall(1);
+                      setTaskData(taskData);
+                      setGender(gender);
+                      // startTimer(taskData);
+                    })
+                    .catch((err) => {
+                      setLoaderImage(false);
+                    });
+                }).catch((err) => {
+                  setLoaderImage(false);
+                });
+            } else {
+              setStartCall(7);
+              setLoaderImage(false);
+            }
           }
         }
         else {
@@ -1556,6 +1561,12 @@ const VideoCallPat = (props) => {
                   <p>
                     {meeting_time_out}
                   </p>
+                </Grid>
+              )}
+              {startCall === 7 && (
+                <Grid className="msgSectionCss">
+                  {/* <label className="formviewhead"></label> */}
+                  <p>{You_dont_have_an_access_of_this_meeting}</p>
                 </Grid>
               )}
 

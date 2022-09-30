@@ -223,6 +223,7 @@ class Index extends Component {
 
     let translate = getLanguage(this.props.stateLanguageType);
     let {
+      only_for_patient,
       Log_into,
       aimedis_elements_au,
       Register_email,
@@ -412,6 +413,14 @@ class Index extends Component {
                 </Grid>
                 <Grid className="logFormMain">
                   <Grid className="logForm">
+                    <div className="err_message">
+                      {stateLoginValueAim &&
+                        stateLoginValueAim?.user &&
+                        stateLoginValueAim?.user?.type &&
+                        stateLoginValueAim?.user?.type === "nurse" ||
+                        stateLoginValueAim?.user?.type === "adminstaff" ||
+                        stateLoginValueAim?.user?.type === "doctor" ? only_for_patient : ''}
+                    </div>
                     <div className="err_message">
                       {this.state.loginError1
                         ? code_not_verified
