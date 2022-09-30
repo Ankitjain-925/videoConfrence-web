@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import Select from "react-select";
+import { getLanguage } from 'translations/index';
 
 class PersonalInfo extends Component {
     constructor(props) {
@@ -32,7 +33,17 @@ class PersonalInfo extends Component {
     // }
 
 
+
     render() {
+
+    let translate = getLanguage(this.props.stateLanguageType);
+    let {
+        enter_time_talk,
+        estimated_amount,
+        next,
+        total_payable_amount,
+        select_time_talk,
+    } = translate;
 
 
         return (
@@ -41,14 +52,14 @@ class PersonalInfo extends Component {
 
                 <Grid className="logRow">
                     <Grid className="label_1">
-                        <label>Enter Time To Talk</label>
+                        <label>{enter_time_talk}</label>
                     </Grid>
                     <Grid>
                         <Select
                             value={this.props.dataa.time}
                             name="firstName"
                             options={this.props.title_degreeData}
-                            placeholder="Select Time To Talk "
+                            placeholder={select_time_talk}
                             isSearchable={false}
                             className="mr_sel"
                             onChange={(e) => {this.props.onSelectLanguage2(e) }}
@@ -58,7 +69,7 @@ class PersonalInfo extends Component {
                 </Grid>
                 <Grid className="logRow">
                     <Grid className="label_1">
-                        <label>Estimated Amount</label>
+                        <label>{estimated_amount}</label>
                     </Grid>
                     
                     <Grid className= "mys">
@@ -68,7 +79,7 @@ class PersonalInfo extends Component {
                             readOnly
                             name="lastName"
                             value={this.props.dataa.amount}
-                            placeholder="Total Payable Amount"
+                            placeholder={total_payable_amount}
                         />
                            <p className="euroamount">€</p>
                     </Grid>
@@ -77,7 +88,7 @@ class PersonalInfo extends Component {
                 <Grid className="infoShwSave3 label_1 ">
                     <input
                         type="button"
-                        value="Next"
+                        value={next}
                         onClick={this.continue}
 
                     />

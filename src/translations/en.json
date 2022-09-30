@@ -1953,8 +1953,19 @@
     "Continue":"Continue",
     "only_for_patient":"Only for patient" ,
     "You_dont_have_an_access_of_this_meeting":"You don't have an access of this meeting"
-    
-   
+    "enter_time_talk":"Enter Time To Talk",
+    "estimated_amount":"Estimated Amount",
+    "total_payable_amount":"Total Payable Amount",
+    "select_time_talk":"Select Time To Talk",
+    "top_up_credit":"Top-Up",
+    "your_topup_amount":"Your Top-Up Amount is:",
+    "click_topay_credit_card":"Click Here To Pay Through Credit Card",
+    "back_symbol":"« Back",
+    "next_symbol":"Next »",
+    "select_hospitals":"Select Hospital",
+    "search_select":"Search Select",
+    "I_would_like":"I would like to:",
+    "video_call":"Video-Call" 
     
   }
 }
