@@ -120,7 +120,7 @@ class Index extends Component {
         };
 
         const Checkout = ({
-            name = 'AIS',
+            name = 'Aimedis Video Conference',
             description = 'Stripe Payment',
             amount = allData?.amount,
             email = this.props.stateLoginValueAim.user.email,

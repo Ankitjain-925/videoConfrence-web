@@ -2587,8 +2587,8 @@ a.bedNum img {
 
 .srchLft a {
   position: absolute;
-  top: 21px;
-  right: 18px;
+  top: 8px;
+  right: 13px;
 }
 
 .srchLft {
@@ -17454,6 +17454,10 @@ a {
 .darkTheme .form_full .card-section {
   background-color: #404646;
 }
+<<<<<<< HEAD
+
+
+=======
 .darkTheme .top-up-mid1-inner {
   background-color: #404646;
 }
@@ -17475,6 +17479,7 @@ a {
 .darkTheme .settingPage h5 {
   color: #ffffff;
 }
+>>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
 .Card_1 {
   cursor: pointer;
   border-radius: 5px;
@@ -17550,11 +17555,28 @@ a {
 .call-img {
   width: 100px;
   border-radius: 8px;
-  margin-right: 20px;
+  background-color: #00abaf;
+  border: 2px solid #00abaf;
+  width: 240px;
+  color: #ffffff;
+  font-family: Muli;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: center;
+  padding: 12px 8px;
+  margin-top: 20px;
+  margin-bottom: 2px;
+  outline: none;
+  margin: 16px;
+}
+.infoShwSave2 input:hover {
+  background: transparent;
+  color: #00abaf;
 }
 .inprogress-call {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 4px 10px 6px;

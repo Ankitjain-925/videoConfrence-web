@@ -42,7 +42,7 @@ export const checkVideo = async (data) => {
     .post(
       sitedata.data.path + "/vchat/getuserchat",
       {
-        _id: data.user._id,
+        email: data.user.email,
       },
       commonHeader(data.token)
     )
@@ -93,6 +93,7 @@ export const LoginReducerAim = (email, password, logintoken, SendCallback = () =
             SendCallback();
           } else {
             checkVideo(response.data).then((getVerify) => {
+              console.log('getVerify', getVerify)
               tmp = {
                 token: response.data.token,
                 user: response.data.user,

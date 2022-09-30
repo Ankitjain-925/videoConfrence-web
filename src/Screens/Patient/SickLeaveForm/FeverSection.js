@@ -195,7 +195,44 @@ function Index(props) {
           </Grid>
         </Grid>
       )}
-      <Grid className="fillDiaAll">
+
+<Grid className="bgncmnSpc">
+        <Grid className="fatiqueQues fatiqueQuess1">
+          <FatiqueQuestion
+            updateAllEntrySec={(e) =>
+              props.updateAllEntrySec(e, 'fever_have_a_Sputum')
+            }
+            label={sputum_what_consistency_and_color}
+            value={props.updateQues?.fever_have_a_Sputum}
+          />
+        </Grid>
+        {props.error_section == 61 && (
+          <div className="err_message2">{props.errorChrMsg}</div>
+        )}
+        {props.updateQues &&
+          props.updateQues?.fever_have_a_Sputum === 'yes' && (
+            <>
+              <Grid container direction="row" spacing="1">
+          <Grid item md={12} sm={12} className="textFieldArea1">
+            <Grid className="fillDia">
+            <NotesEditor
+              name="fever_sputum"
+              onChange={(e) => props.updateAllEntrySec(e, 'fever_sputum')}
+              value={props.updateQues?.fever_sputum}
+            />
+            {props.error_section == 30 && (
+              <div className="err_message2">{props.errorChrMsg}</div>
+            )}
+          </Grid>
+         
+              </Grid>
+              </Grid>
+            </>
+          )}
+      </Grid>
+
+
+      {/* <Grid className="fillDiaAll">
         <label>{sputum_what_consistency_and_color}</label>
         <NotesEditor
           name="fever_sputum"
@@ -205,7 +242,7 @@ function Index(props) {
         {props.error_section == 30 && (
           <div className="err_message2">{props.errorChrMsg}</div>
         )}
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }
