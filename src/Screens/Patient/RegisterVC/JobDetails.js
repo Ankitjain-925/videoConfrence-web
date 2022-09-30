@@ -6,21 +6,31 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { getLanguage } from 'translations/index';
 
 
 class JobDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: '', }
         this.state = {
             isActive: false,
             isActiv: false,
+            value: ''
         };
-
     }
+
     continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
+        if (this.props.dataa.permission == true || this.props.dataa.permission == false) {
+            if (this.state.CompareRequired == 'Please recharge top-up to continue, your top-up amount is low.') {
+                this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page" });
+            }
+            else {
+                this.props.nextStep();
+            }
+        }
+        else {
+            this.setState({ OptionRequired: "Please select a option" });
+        }
     }
 
     back = e => {
@@ -30,32 +40,43 @@ class JobDetails extends Component {
 
     onchange = e => {
         this.setState({ setData: e.target.value });
-
     }
 
-    dssd = e => {
-        e.preventDefault();
-        this.setState({ isActiv: false });
-        this.setState({ isActive: !this.state.isActive });
-        this.props.onSelectLanguage1(true);
-
+    click = (e, type) => {
+        this.props.onSelectLanguage1(e)
+        if (type == "top-up" && (!this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min < this.props.dataa.time.value)) {
+            this.setState({ CompareRequired: "Please recharge top-up to continue, your top-up amount is low." });
+            this.setState({ OptionRequired: "Select credit card payment option / Go to manage prepaid page" });
+        }
+        else {
+            this.setState({ CompareRequired: " " });
+            this.setState({ OptionRequired: " " });
+        }
     }
 
-    dssdd = e => {
-        e.preventDefault();
-        this.setState({ isActive: false });
-        this.setState({ isActiv: !this.state.isActiv });
-    }
+    // dssdd = e => {
+    //     e.preventDefault();
+    //     this.setState({ isActive: false });
+    //     this.setState({ isActiv: !this.state.isActiv });
+    // }
 
 
 
     render() {
-
-        const { jobTitle, jobCompany, jobLocation, handleChange } = this.props;
+    let translate = getLanguage(this.props.stateLanguageType);
+    let {
+        top_up_credit,
+        your_topup_amount,
+        credit_card,
+        click_topay_credit_card,
+        back_symbol,
+        next_symbol,
+    } = translate;
         return (
             <>
                 <Grid className="logForm form_full">
 
+<<<<<<< HEAD
 
                 <Grid className="logRow" >
                         <Grid container direction="row" >
@@ -69,37 +90,60 @@ class JobDetails extends Component {
                                     <Grid container justify="space-between" className="padd_10">
                                         <Typography variant="h6" component="div" align="left" className="adv1">Top-Up</Typography>
                                         <Typography variant="h6" component="div" align="right" className="adv2">10 Min</Typography>
-                                    </Grid>
-
-
-                                    <CardContent>
-                                        <Typography variant="body2">
-                                        Your Top-Up Amount is: 
-                                        </Typography>
-                                    </CardContent>
-                                    
-                                </Grid>
-                            </Grid>
-                            <Grid item xs={12} md={1}>
-
-                            </Grid>
-                            <Grid item xs={12} md={5} className="Card_1">
-                                <Grid sx={{ maxWidth: 345 }} onClick={this.dssdd} className={this.state.isActiv ? 'Card_Sel' : ''}>
+=======
+                    <Grid className="logRow" >
+                        <Grid container justify="center" spacing="3" alignItems="center" direction="row" >
+                            <Grid item xs={12} md={6} sm={6} >
+                                <Grid sx={{ maxWidth: 345 }} onClick={(e) => this.click(true, 'top-up')} className={this.props.dataa.permission === true ? 'Card_Sel Card_1' : 'Card_1'}>
 
 
                                     <Grid container justify="space-between" className="padd_10">
+                                        <Typography variant="h6" component="div" align="left" className="adv1">{top_up_credit}</Typography>
+                                        <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
+
+>>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
+                                    </Grid>
+
+                                    <CardContent>
+                                        <Typography variant="body2">
+<<<<<<< HEAD
+                                        Your Top-Up Amount is: 
+=======
+                                            {your_topup_amount} {this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min ? this?.props?.redux_st?.stateLoginValueAim?.VideoData?.prepaid_talktime_min : 0}{' '}{'Min'}
+>>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
+                                        </Typography>
+                                    </CardContent>
+                                    <Grid className="err_mesg1">{this.state.CompareRequired}</Grid>
+
+                                </Grid>
+                            </Grid>
+
+                            <Grid item xs={12} md={6} sm={6}>
+                                <Grid onClick={(e) => this.click(false, 'credit-card')} className={this.props.dataa.permission === true ? 'Card_1' : this.props.dataa.permission === false ? 'Card_Sel Card_1' : 'Card_1'}>
+
+
+                                    <Grid container justify="space-between" className="padd_10">
+<<<<<<< HEAD
                                         <Typography variant="h6" component="div" align="left" className="adv1">Credit Card</Typography>
                                         <Typography variant="h6" component="div" align="right" className="adv2">20 Min</Typography>
                                     </Grid>
                                     <CardContent>
                                         <Typography variant="body2">
                                             Click Here To Pay Through Credit Card 
+=======
+                                        <Typography variant="h6" component="div" align="left" className="adv1">{credit_card}</Typography>
+                                        <Typography variant="h6" component="div" align="right" className="adv2">{this.props.dataa.time.value}{' '}{"Min"}</Typography>
+                                    </Grid>
+                                    <CardContent>
+                                        <Typography variant="body2">
+                                            {click_topay_credit_card}
+>>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
                                         </Typography>
                                     </CardContent>
-                                    
+
                                 </Grid>
                             </Grid>
-
+                            <Grid className="err_mesg">{this.state.OptionRequired}</Grid>
                         </Grid>
                     </Grid>
 
@@ -110,8 +154,7 @@ class JobDetails extends Component {
                                 <input
                                     type="text"
                                     name="jobCompany"
-                                    value={jobLocation}
-                                    onChange={handleChange('jobLocation')}
+
                                     placeholder="Enter Card Number"
                                 />
                             )}
@@ -122,16 +165,16 @@ class JobDetails extends Component {
                     <Grid className="infoShwSave3">
                         <input
                             type="button"
-                            value="« Back"
+                            value={back_symbol}
                             onClick={this.back}
-
                         />
+                        {/* {this.state.CompareRequired !== 'Please recharge top-up to continue, your top-up amount is low.' && */}
                         <input
                             type="button"
-                            value="Next »"
+                            value={next_symbol}
                             onClick={this.continue}
-
                         />
+                        {/* } */}
                     </Grid>
                 </Grid>
 

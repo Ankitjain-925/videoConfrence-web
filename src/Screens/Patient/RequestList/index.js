@@ -20,6 +20,8 @@ import PainPoint from 'Screens/Components/PointPain/index';
 import { OptionList } from 'Screens/Login/metadataaction';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { EditRequest, DownloadCert, DownloadBill } from '../SickLeaveForm/api';
+import ButtJoin from "Screens/Components/Button/index";
+
 import {
   PaymentDue,
   handleOpenDetail,
@@ -91,6 +93,9 @@ class Index extends Component {
     const { AllDataSec } = this.state;
     let translate = getLanguage(this.props.stateLanguageType);
     let {
+      payment_type,
+      top_up,
+      credit_card,
       meeting,
       time,
       date,
@@ -213,7 +218,10 @@ class Index extends Component {
                     <Grid className="docsOpinion docsAllOption">
                       <Grid container direction="row" className="docsOpinLbl">
                         <Grid item xs={12} md={6}>
-                          <label>{appointments}</label>
+                          <h5 className="setting-h5">{appointments}</h5>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <ButtJoin />
                         </Grid>
                       </Grid>
                       <Grid className="presPkgIner2">
@@ -456,7 +464,25 @@ class Index extends Component {
                                                 </a>
                                               </li>
                                             )}
-                                          {item && item.certificate && (
+                                            {item?.approved == true &&
+                                            (!item.is_payment ||
+                                              item.is_payment == true) && (
+                                              <li
+                                              onClick={() => {
+                                                this.props.history.push("/patient/access-key");
+                                              }}
+                                            >
+                                              <a>
+                                                <img
+                                                  src={require('assets/images/details.svg')}
+                                                  alt=""
+                                                  title=""
+                                                />
+                                                <>{join_meeting}</>
+                                              </a>
+                                            </li>
+                                            )}
+                                          {/* {item && item.certificate && (
                                             <li
                                               onClick={() => {
                                                 DownloadCert(
@@ -474,7 +500,7 @@ class Index extends Component {
                                                 <>{download_certificate}</>
                                               </a>
                                             </li>
-                                          )}
+                                          )} */}
                                           {item.link?.patient_link &&
                                             (!item?.is_decline ||
                                               item?.is_decline === false) &&
@@ -617,6 +643,10 @@ class Index extends Component {
                               <h3>{appointment_time}</h3>
                               {this.state.newTask?.start} -{' '}
                               {this.state.newTask?.end}
+                            </Grid>
+                            <Grid>
+                              <h3>{payment_type}</h3>
+                              {this.state.newTask?.payment_by === "Top-Up" ? top_up : credit_card}
                             </Grid>
                             {this.state.newTask.headache === 'yes' && (
                               <Grid>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import Select from "react-select";
-
+import { getLanguage } from 'translations/index';
 
 class PersonalInfo extends Component {
     constructor(props) {
@@ -17,13 +17,34 @@ class PersonalInfo extends Component {
     }
     continue = e => {
         e.preventDefault();
-        this.props.nextStep();
+        if(this.props.dataa.time){
+            this.props.nextStep();
+        }
+        else{
+            this.setState({ TimeRequired: "Please Enter Time"  });
+        }
+        
     }
+    // ValueName = (value) => {
+        
+    //     var sec = value.value * 5;
+    //     this.setState({ title2: sec });
+    //     this.props.onSelectLanguage2(value);
+    // }
 
 
 
     render() {
-        const { firstName, lastName, handleChange } = this.props;
+
+    let translate = getLanguage(this.props.stateLanguageType);
+    let {
+        enter_time_talk,
+        estimated_amount,
+        next,
+        total_payable_amount,
+        select_time_talk,
+    } = translate;
+
 
         return (
             <> <Grid className="logForm form_full">
@@ -31,39 +52,43 @@ class PersonalInfo extends Component {
 
                 <Grid className="logRow">
                     <Grid className="label_1">
-                        <label>Enter Time To Talk</label>
+                        <label>{enter_time_talk}</label>
                     </Grid>
                     <Grid>
                         <Select
-                            value={firstName}
+                            value={this.props.dataa.time}
                             name="firstName"
-                            options={this.state.title_degreeData}
-                            placeholder="Select Time To Talk "
+                            options={this.props.title_degreeData}
+                            placeholder={select_time_talk}
                             isSearchable={false}
                             className="mr_sel"
-                            onChange={handleChange('firstName')}
+                            onChange={(e) => {this.props.onSelectLanguage2(e) }}
                         />
+                        <Grid className = "err_mesg">{this.state.TimeRequired}</Grid>
                     </Grid>
                 </Grid>
                 <Grid className="logRow">
                     <Grid className="label_1">
-                        <label>Estimated Amount</label>
+                        <label>{estimated_amount}</label>
                     </Grid>
-                    <Grid>
+                    
+                    <Grid className= "mys">
+                    
                         <input
                             type="text"
+                            readOnly
                             name="lastName"
-                            value={lastName}
-                            placeholder="Total Payable Amount"
-                            onChange={handleChange('lastName')}
+                            value={this.props.dataa.amount}
+                            placeholder={total_payable_amount}
                         />
+                           <p className="euroamount">€</p>
                     </Grid>
                 </Grid>
 
                 <Grid className="infoShwSave3 label_1 ">
                     <input
                         type="button"
-                        value="Next"
+                        value={next}
                         onClick={this.continue}
 
                     />

@@ -314,7 +314,6 @@ class CometChatCallScreen extends React.PureComponent {
     // const customCSS = this.context.UIKitSettings.customCSS;
     const showRecordingButton = true;
     // this.context.UIKitSettings.showCallRecordingOption;
-
     const callSettings = new CometChat.CallSettingsBuilder()
       .enableDefaultLayout(true)
       .setSessionID(sessionId)
@@ -342,9 +341,9 @@ class CometChatCallScreen extends React.PureComponent {
         onUserListUpdated: (userList) => {
           this.props.userListCall(userList);
         },
-        // onUserJoined: (user) => {
-        //   console.log('user', user);
-        // },s
+        onUserJoined: (user) => {
+          // console.log('user', user);
+        },
         onError: (error) => {
           if (this.context) {
             this.context.setCallInProgress(null, '');
@@ -358,11 +357,11 @@ class CometChatCallScreen extends React.PureComponent {
 
         onRecordingStarted: (recordingStartedBy) => {
           // This event will work in JS SDK v3.0.2-beta1 & later.
-          console.log('Listener => onRecordingStarted:', recordingStartedBy);
+          // console.log('Listener => onRecordingStarted:', recordingStartedBy);
         },
         onRecordingStopped: (recordingStoppedBy) => {
           // This event will work in JS SDK v3.0.2-beta1 & later.
-          console.log('Listener => onRecordingStopped:', recordingStoppedBy);
+          // console.log('Listener => onRecordingStopped:', recordingStoppedBy);
         },
       })
     );
@@ -460,25 +459,25 @@ class CometChatCallScreen extends React.PureComponent {
   };
 
   render() {
-    const resizeText = Translator.translate('RESIZE', this.props.lang);
-    let iconView = <i css={iconStyle(minimizeIcon)} title={resizeText}></i>;
-    if (this.state.maximized === false) {
-      iconView = <i css={iconStyle(maximizeIcon)} title={resizeText}></i>;
-    }
+    // const resizeText = Translator.translate('RESIZE', this.props.lang);
+    // let iconView = <i css={iconStyle(minimizeIcon)} title={resizeText}></i>;
+    // if (this.state.maximized === false) {
+    //   iconView = <i css={iconStyle(maximizeIcon)} title={resizeText}></i>;
+    // }
 
     return (
       <React.Fragment>
-      <div
+        <div
           css={callScreenBackgroundStyle(this.state)}
           ref={this.callScreenBackgroundEl}
         ></div>
-          <div
+        <div
           ref={this.callScreenEl}
           className="callscreen__container"
           css={callScreenContainerStyle(this.props)}
           style={{ top: this.state.y + 'px', left: this.state.x + 'px' }}
         >
-           <div
+          <div
             css={callScreenInnerBackgroundStyle()}
             ref={this.callScreenInnerBackgroundEl}
           ></div>
@@ -487,7 +486,7 @@ class CometChatCallScreen extends React.PureComponent {
             className="callscreen__header"
             onMouseDown={this.enableDragging}
           >
-            <div css={headerTitleStyle()}>&nbsp;</div>
+            {/* <div css={headerTitleStyle()}>&nbsp;</div>
             <div
               className="callscreen__resize"
               css={headerButtonStyle()}
@@ -497,7 +496,7 @@ class CometChatCallScreen extends React.PureComponent {
               <button type="button" title={resizeText}>
                 {iconView}
               </button>
-            </div>
+            </div> */}
           </div>
           <div
             css={callScreenWrapperStyle(this.props, keyframes)}
@@ -511,7 +510,7 @@ class CometChatCallScreen extends React.PureComponent {
             className="callscreen__resizer-both"
             onMouseDown={this.initResize}
           ></div>
-        </div> 
+        </div>
       </React.Fragment>
     );
   }

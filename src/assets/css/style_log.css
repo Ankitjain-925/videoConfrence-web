@@ -253,7 +253,7 @@ img.passArow {
     width: 113px;
     padding: 12px 0px 12px 32px;
     outline: none !important;
-    margin-bottom: 18px;
+    margin-bottom: 2px;
 }
 
 .acType {
@@ -395,11 +395,10 @@ img.passArow {
 }
 .logForm {
     background: #ffffff;
-    padding: 20px 26px;
+    padding: 28px 26px;
     border-radius: 12px;
     background-color: #FFFFFF;
-    box-shadow: 0 8px 24px 0 rgba(0,8,8,0.08);
-    margin: 35px 30px 40px;
+    box-shadow: 0 8px 24px 0 rgb(0 8 8 / 8%);
 }
 .logData {
     margin-top: 40px;
@@ -469,7 +468,7 @@ p.regOnlog {
 }
 @media screen and (max-width: 767px){
 .logForm {
-    padding: 20px 26px;
+    padding: 16px 16px;
     margin: 22px auto 30px;
     width: 100%;
  }
@@ -508,8 +507,7 @@ p.regOnlog {
 img.link_docs {
     width: 30px;
 }
-.onProfessional a
-{
+.onProfessional a {
     background-color: #f7f7f7!important;
     color: #000!important;
     font-weight: 400!important;
@@ -598,8 +596,7 @@ button:focus {
 ul.flag-select__options li {
     padding: 7px 9px !important;
 }
-.spaceforplus
-{
+.spaceforplus {
     margin-bottom:10px!important;
 }
 .widthProfession {
@@ -619,6 +616,16 @@ ul.flag-select__options li {
 .label_1{
 position: relative;
 left: -10px;
+}
+
+.Meetlabel_2 button{
+    float: right;
+    background: #00ABAF;
+    border-radius: 5px;
+    margin-top: 35px;
+    padding: 7px 15px;
+    color: #fff;
+    border: 0px;
 }
 
 /*End By Ankita*/

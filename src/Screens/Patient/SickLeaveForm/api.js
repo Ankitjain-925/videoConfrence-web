@@ -23,90 +23,103 @@ export function getHouseId() {
   return HouseId;
 }
 
-export const getAmountData = (current) => {
-  current.setState({ loaderImage: true });
-  var house_id = getHouseId();
-  axios
-    .get(
-      sitedata.data.path +
-      '/vactive/GetAmount/' + house_id,
-      commonHeader(current.props.stateLoginValueAim.token)
-    )
-    .then((response) => {
-      if (response.data.hassuccessed) {
-        current.setState({
-          amountDta: response?.data?.sickleave_certificate_amount,
+// export const getAmountData = (current) => {
+//   current.setState({ loaderImage: true });
+//   var house_id = getHouseId();
+//   axios
+//     .get(
+//       sitedata.data.path +
+//       '/vactive/GetAmount/' + house_id,
+//       commonHeader(current.props.stateLoginValueAim.token)
+//     )
+//     .then((response) => {
+//       if (response.data.hassuccessed) {
+//         current.setState({
+//           amountDta: response?.data?.sickleave_certificate_amount,
 
-          loaderImage: false,
-        });
-      }
-    })
-    .catch((err) => {
-      current.setState({ loaderImage: false });
-    });
-};
+//           loaderImage: false,
+//         });
+//       }
+//     })
+//     .catch((err) => {
+//       current.setState({ loaderImage: false });
+//     });
+// };
 
 //Not need yet this for the payment
 export const fromEuroToCent = (amount, current) => {
   return parseInt(amount * 100);
 };
 
+export const fromMinToEuro = (min, current) => {
+  return parseInt(min * 500);
+};
+
 export const CancelClick = (current) => {
-  current.props.history.push('/patient/request-list');
+  current.props.history.push('/appointment-list');
 };
 
-//for downoading the pdf
-export const DownloadCert = (data, current) => {
-  current.setState({ loaderImage: true });
-  axios
-    .post(sitedata.data.path + '/vactive/downloadSickleaveCertificate', data, {
-      responseType: 'blob',
-    })
-    .then((responce) => {
-      current.setState({ loaderImage: false });
-      var data = new Blob([responce.data]);
-      if (typeof window.navigator.msSaveBlob === 'function') {
-        // If it is IE that support download blob directly.
-        window.navigator.msSaveBlob(data, 'report.pdf');
-      } else {
-        var blob = data;
-        var link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = 'report.pdf';
-        document.body.appendChild(link);
-        link.click(); // create an <a> element and simulate the click operation.
-      }
-    });
-};
+// //for downoading the pdf
+// export const DownloadCert = (data, current) => {
+//   current.setState({ loaderImage: true });
+//   axios
+//     .post(sitedata.data.path + '/vactive/downloadSickleaveCertificate', data, {
+//       responseType: 'blob',
+//     })
+//     .then((responce) => {
+//       current.setState({ loaderImage: false });
+//       var data = new Blob([responce.data]);
+//       if (typeof window.navigator.msSaveBlob === 'function') {
+//         // If it is IE that support download blob directly.
+//         window.navigator.msSaveBlob(data, 'report.pdf');
+//       } else {
+//         var blob = data;
+//         var link = document.createElement('a');
+//         link.href = window.URL.createObjectURL(blob);
+//         link.download = 'report.pdf';
+//         document.body.appendChild(link);
+//         link.click(); // create an <a> element and simulate the click operation.
+//       }
+//     });
+// };
 
-// For send meeting link patient as well as doctor
+// For send meeting link sendLinkDocPatpatient as well as doctor
 export const sendLinkDocPat = (payValue, taskValue, current) => {
   var data = {};
+  var patient_info = {
+    first_name: current.props.stateLoginValueAim?.user?.first_name,
+    last_name: current.props.stateLoginValueAim?.user?.last_name,
+    alies_id: current.props.stateLoginValueAim?.user?.alies_id,
+    profile_id: current.props.stateLoginValueAim?.user?.profile_id,
+    // user_id: current.props.stateLoginValueAim?.user.user?._id,
+  };
+  data.patient_info = patient_info;
+  var doctor_info = {
+    first_name: "Ankit",
+    last_name: "jain",
+    alies_id: "D_QRW7IAGTg",
+    profile_id: taskValue?.assinged_to[0]?.profile_id,
+    user_id: taskValue?.assinged_to[0]?.user_id,
+  }
+  data.docProfile = doctor_info;
   let patientEmail = current?.props?.stateLoginValueAim?.user?.email;
+  data.task_type = 'video_conference';
   data.task_id = taskValue?._id;
   data.date = taskValue?.date;
   var tq1 = taskValue?.start.split(':');
   var tq2 = taskValue?.end.split(':');
+  var calRandomNo = Math.floor(Math.random() * 90 + 10);
+  var Access_key = `${taskValue?.patient?.profile_id}-${taskValue?.assinged_to[0]?.profile_id}-${calRandomNo}`;
+  data.sesion_id = Access_key;
   data.start_time = new Date(
     new Date(taskValue?.date).setHours(tq1[0], tq1[1])
   );
   data.end_time = new Date(new Date(taskValue?.date).setHours(tq2[0], tq2[1]));
   data.patient_mail = patientEmail;
   data.patient_profile_id = taskValue?.patient?.profile_id;
-  data.patient_id = taskValue?.patient_id;
+  data.patient_id = current.props.stateLoginValueAim?.user?._id;
   data.doctor_profile_id = taskValue?.assinged_to[0]?.profile_id;
   data.doctor_id = taskValue?.assinged_to[0]?.user_id;
-  var t1 = taskValue?.start.split(':');
-  var Datenew = new Date(taskValue?.date).setHours(t1[0]);
-  data.sesion_id = data.doctor_profile_id + data.patient_profile_id + Datenew;
-  let path = getLink();
-  let link = {
-    doctor_link:
-      path + '/video-call/' + data?.doctor_profile_id + '/' + data?.sesion_id,
-    patient_link:
-      path + '/video-call/' + data?.patient_profile_id + '/' + data?.sesion_id,
-  };
-  data.link = link;
   current.setState({ loaderImage: true });
   axios
     .post(
@@ -117,67 +130,100 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
     .then((responce) => {
       if (responce.data.hassuccessed) {
         current.setState({ loaderImage: false });
-        current.props.history.push('/patient/request-list');
+        current.props.history.push('/appointment-list');
       } else {
         current.setState({ loaderImage: false });
       }
-    });
+    }).catch((err) => { })
 };
 
-export function getLink() {
-  let env = 'DEV';
-  let url = '';
-  if (typeof window !== 'undefined') {
-    let target = window.location.href;
-    env = target.match(/localhost/) ? 'DEV' : 'PRD';
+// export function getLink() {
+//   let env = 'DEV';
+//   let url = '';
+//   if (typeof window !== 'undefined') {
+//     let target = window.location.href;
+//     env = target.match(/localhost/) ? 'DEV' : 'PRD';
+//   }
+//   let STRIPE_PUBLISHABLE;
+//   if (env === 'DEV') {
+//     STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
+//   } else {
+//     STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-conference';
+//   }
+//   return STRIPE_PUBLISHABLE;
+// }
+
+export const CallTopUpApi_Add = (current, data) => {
+  var calPrePaid = 0;
+  if (current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min && parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min) > 0) {
+    calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min);
   }
-  let STRIPE_PUBLISHABLE;
-  if (env === 'DEV') {
-    STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-confrance';
-  } else {
-    STRIPE_PUBLISHABLE = 'https://virtualhospital.aidoc.io/video-confrance';
+
+  calPrePaid = calPrePaid + parseInt(data?.data?.paymentData?.amount / 500)
+  var info = {
+    paid_amount_obj: {
+      datetime: data?.data?.paymentData?.Date,
+      amount: data?.data?.paymentData?.amount / 100,
+      min: data?.data?.paymentData?.amount / 500,
+      payment_data: data?.data?.paymentData,
+    },
+    prepaid_talktime_min: calPrePaid,
+    manage_for: "add",
+    _id: current.props.stateLoginValueAim?.VideoData?._id,
   }
-  return STRIPE_PUBLISHABLE;
+  current.setState({ loaderImage: true });
+  axios
+    .post(sitedata.data.path + '/vchat/managePrepaid',
+      info)
+    .then((res) => {
+      current.setState({ loaderImage: false });
+      var user_token = current.props.stateLoginValueAim.token
+      var forUpdate = { value: true, token: user_token, user: current.props?.stateLoginValueAim?.user }
+      var VideoData = res.data?.data
+      current.props.LoginReducerAim(current.props?.stateLoginValueAim?.user?.email, '', current.props?.stateLoginValueAim?.user_token, () => { }, forUpdate, current.props?.stateLoginValueAim?.isVideoLoggedIn, VideoData, current.props?.stateLoginValueAim?.is_vedio_registered);
+    })
+    .catch((err) => {
+      current.setState({ loaderImage: false });
+    })
 }
 
 // For payment stripe
-export const saveOnDB1 = (payment, task, current) => {
-  let path = getLink();
-  var t1 = task?.start.split(':');
-  var Datenew = new Date(task?.date).setHours(t1[0]);
-  var sesion_id =
-    task?.assinged_to[0]?.profile_id + task?.patient?.profile_id + Datenew;
+export const saveOnDB1 = (data, task, current) => {
   current.setState({ loaderImage: true });
-  if (current.state.updateEvaluate._id) {
+  if (data._id || task && task.payment_by && task.payment_by === "Credit-Card" && task._id) {
+    if (task && task.payment_by && task.payment_by === "Credit-Card") {
+      var id = task?._id;
+      var Spdata = {
+        payment_data: data?.data?.paymentData,
+        amount: data?.data?.paymentData?.amount,
+        is_payment: true,
+        pay_with_topup: false
+      }
+    }
+    else {
+      id = data?._id;
+      Spdata = {
+        amount: data?.amount,
+        is_payment: true,
+        pay_with_topup: true
+      }
+    }
     axios
       .put(
-        sitedata.data.path + '/vh/AddTask/' + current.state.updateEvaluate._id,
-        {
-          payment_data: payment?.data?.paymentData,
-          amount: payment?.data?.paymentData?.amount,
-          is_payment: true,
-          link: {
-            doctor_link:
-              path +
-              '/video-call/' +
-              task?.assinged_to[0]?.profile_id +
-              '/' +
-              sesion_id,
-            patient_link:
-              path +
-              '/video-call/' +
-              task?.patient?.profile_id +
-              '/' +
-              sesion_id,
-          },
-        },
+        sitedata.data.path + '/vh/AddTask/' + id,
+        Spdata,
         commonHeader(current.props.stateLoginValueAim.token)
       )
       .then((responce) => {
-        sendLinkDocPat(payment, task, current);
-        current.setState({ loaderImage: false });
         if (responce.data.hassuccessed) {
-          current.props.history.push('/patient/request-list');
+          if (task && task.payment_by && task.payment_by === "Credit-Card") {
+            sendLinkDocPat(data, task, current);
+          }
+          else {
+            sendLinkDocPat(task, data, current);
+          }
+          current.setState({ loaderImage: false });
+          current.props.history.push('/appointment-list');
         }
       });
   } else {
@@ -203,10 +249,10 @@ export const DownloadBill = (current, item) => {
       birthday: current.props.stateLoginValueAim?.user?.birthday,
     },
     task_id: item?._id,
-    type: 'sick_leave',
+    type: 'video_conference',
   };
   axios
-    .post(sitedata.data.path + "/vh/downloadPEBill", data, {
+    .post(sitedata.data.path + "/vchat/DownloadbillVC", data, {
       responseType: "blob",
     })
     .then((res) => {
@@ -253,7 +299,7 @@ export const allgetData = (patient_id, current) => {
   let { Something_went_wrong } = translate;
   axios
     .get(
-      sitedata.data.path + '/vactive/GetAllPatientData/' + patient_id,
+      sitedata.data.path + '/vchat/GetVideoTask/' + patient_id,
       commonHeader(current.props.stateLoginValueAim.token)
     )
     .then((responce) => {
@@ -302,7 +348,6 @@ export const PaymentDue = (data, current) => {
   let approvedTimes = moment(data?.approved_date);
   let currentTime = moment();
   // if (moment(currentDate).isSame(approvedDate)) {
-
   if (currentDate === approvedDate) {
     let approvedTime = currentTime.diff(approvedTimes, 'minutes');
     if (approvedTime >= 15) {
@@ -310,10 +355,13 @@ export const PaymentDue = (data, current) => {
       setTimeout(() => { current.setState({ errorChrMsg: '' }) }, 10000);
       MoveTop(0);
     } else {
+      var check = data?.payment_by;
       current.props.history.push({
-        pathname: '/patient/request-list/payment',
-        state: { data: data },
-      });
+        pathname: check === "Top-Up" ? "/payment/top-up" : "/payment/credit-card",
+        state: {
+          data: data
+        }
+      })
     }
   } else {
     current.setState({ error_section: 90, errorChrMsg: payment_process_must_be_within_15_min });
@@ -390,7 +438,6 @@ export const MoveTop = (top) => {
 
 export const handleEvalSubmit = (current, value) => {
   let translate = getLanguage(current.props.stateLanguageType);
-
   let {
     please_select,
     data_protection_rules_and_regulations_of_aimedis,
@@ -412,18 +459,25 @@ export const handleEvalSubmit = (current, value) => {
     alies_id: current.props.stateLoginValueAim?.user?.alies_id,
     profile_id: current.props.stateLoginValueAim?.user?.profile_id,
     user_id: current.props.stateLoginValueAim?.user.user?._id,
-    // image: current.props.stateLoginValueAim?.user.user?.image,
   };
   data.patient = patient;
   data.patient_id = current.props.stateLoginValueAim?.user?._id;
-  data.task_name = 'Sick leave certificate from patient';
-  data.task_type = 'sick_leave';
+  data.task_name = 'Video Conference from patient';
+  data.task_type = 'video_conference';
   data.done_on = '';
   data.priority = 0;
   data.archived = false;
+  data.is_payment = false;
   data.status = 'open';
   data.created_at = new Date();
-  data.house_id = getHouseId();
+  data.house_id = current.props.dataa?.house_id;
+  data.amount = current.props.dataa?.amount;
+  data.total_time = current.props.dataa?.time;
+  if (current.props.dataa && current.props.dataa.permission) {
+    data.payment_by = "Top-Up";
+  } else {
+    data.payment_by = "Credit-Card";
+  }
   if (!data?.due_on?.date) {
     let due_on = data?.due_on || {};
     due_on['date'] = new Date();
@@ -1121,12 +1175,18 @@ export const handleEvalSubmit = (current, value) => {
             commonHeader(current.props.stateLoginValueAim?.token)
           )
           .then((responce) => {
-            mailSendToDoc(data, current);
-
-            current.props.history.push('/patient/request-list');
+            // mailSendToDoc(data, current);
+            if (responce && responce.data && responce.data.hassuccessed) {
+              var check = responce?.data?.data?.payment_by;
+              current.props.history.push({
+                pathname: check === "Top-Up" ? "/payment/top-up" : "/payment/credit-card",
+                state: {
+                  data: responce?.data?.data
+                }
+              })
+            }
           })
           .catch(function (error) {
-            console.log('error');
             current.setState({
               loaderImage: false,
             });
@@ -1141,44 +1201,44 @@ export const handleEvalSubmit = (current, value) => {
   }
 };
 
-export const mailSendToDoc = (data, current) => {
-  var data1 = {};
-  var first_name = current.props.stateLoginValueAim?.user?.first_name;
-  var last_name = current.props.stateLoginValueAim?.user?.last_name;
-  var profile_id = current.props.stateLoginValueAim?.user?.profile_id;
-  data1.start = data.start;
-  data1.end = data.end;
-  data1.profile_id = profile_id;
-  data1.first_name = first_name;
-  data1.last_name = last_name;
-  data1.email = data.assinged_to[0].email;
-  data1.date =
-    current.state.date &&
-    getDate(
-      current.state.date,
-      current.props.settings &&
-      current.props.settings?.setting &&
-      current.props.settings?.setting?.date_format
-    );
-  axios
-    .post(
-      sitedata.data.path + '/vactive/DoctorMail',
-      data1,
-      commonHeader(current.props.stateLoginValueAim?.token)
-    )
-    .then((responce) => {
-      current.setState({
-        updateQues: {},
-        loaderImage: false,
-        openCalendar: false,
-        DataprotectionRules: false,
-        currentSelected: -1,
-      });
-    })
-    .catch(function (error) {
-      console.log('error');
-    });
-};
+// export const mailSendToDoc = (data, current) => {
+//   var data1 = {};
+//   var first_name = current.props.stateLoginValueAim?.user?.first_name;
+//   var last_name = current.props.stateLoginValueAim?.user?.last_name;
+//   var profile_id = current.props.stateLoginValueAim?.user?.profile_id;
+//   data1.start = data.start;
+//   data1.end = data.end;
+//   data1.profile_id = profile_id;
+//   data1.first_name = first_name;
+//   data1.last_name = last_name;
+//   data1.email = data.assinged_to[0].email;
+//   data1.date =
+//     current.state.date &&
+//     getDate(
+//       current.state.date,
+//       current.props.settings &&
+//       current.props.settings?.setting &&
+//       current.props.settings?.setting?.date_format
+//     );
+//   axios
+//     .post(
+//       sitedata.data.path + '/vactive/DoctorMail',
+//       data1,
+//       commonHeader(current.props.stateLoginValueAim?.token)
+//     )
+//     .then((responce) => {
+//       current.setState({
+//         updateQues: {},
+//         loaderImage: false,
+//         openCalendar: false,
+//         DataprotectionRules: false,
+//         currentSelected: -1,
+//       });
+//     })
+//     .catch(function (error) {
+//       console.log('error');
+//     });
+// };
 
 export const updateTaskApi = (current, data) => {
   data.is_decline = false;
@@ -1201,7 +1261,6 @@ export const updateTaskApi = (current, data) => {
       }
     })
     .catch(function (error) {
-      console.log(error);
     });
 };
 
@@ -1956,25 +2015,25 @@ export const onChange = (date, current) => {
   let days;
   switch (day_num) {
     case 1:
-      days = 'monday';
+      days = 'Monday';
       break;
     case 2:
-      days = 'tuesday';
+      days = 'Tuesday';
       break;
     case 3:
-      days = 'wednesday';
+      days = 'Wednesday';
       break;
     case 4:
-      days = 'thursday';
+      days = 'Thursday';
       break;
     case 5:
-      days = 'friday';
+      days = 'Friday';
       break;
     case 6:
-      days = 'saturday';
+      days = 'Saturday';
       break;
     case 0:
-      days = 'sunday';
+      days = 'Sunday';
       break;
   }
   let appointmentData = current.state.appointmentData;
@@ -1984,6 +2043,7 @@ export const onChange = (date, current) => {
       if (key == days) {
         appointDate = value;
         current.setState({ appointDate: appointDate });
+
         let DoctorSlot = [];
         appointDate.map((item, i) => {
           if (i < appointDate?.length - 1) {
@@ -1995,10 +2055,11 @@ export const onChange = (date, current) => {
         }
         // nextDay.setDate(day.getDate()+1);
         var localDateTime = new Date(new Date().setDate(new Date(date).getDate()));
-        var id = current.state.doctorData?._id;
+        // var id = current.state.doctorData?._id;
+        var id = current.props.dataa.doctor_detail[0]._id;
         axios
           .post(
-            sitedata.data.path + '/vactive/SelectDocforSickleave2',
+            sitedata.data.path + '/vchat/getSlotTime',
             {
               date: localDateTime,
               doctor_id: id
@@ -2017,7 +2078,6 @@ export const onChange = (date, current) => {
             current.setState({ loaderImage: false })
           })
           .catch(function (error) {
-            console.log('error', error);
             current.setState({ loaderImage: false })
           });
       }
@@ -2110,22 +2170,26 @@ export const getCalendarData = (current) => {
   let { try_after_some_time } = translate;
   var user_token = current.props.stateLoginValueAim?.token;
   axios
-    .get(
-      sitedata.data.path + '/vactive/SelectDocforSickleave',
-      commonHeader(user_token)
-    )
+    .post(
+      sitedata.data.path + "/vchat/DynamicSlots",
+      {
+
+        _id: current.props.dataa.doctor_detail[0]._id,
+        duration_of_timeslots: current.props.dataa.time.value,
+      },
+      commonHeader(user_token))
     .then((response) => {
       if (response?.data && response?.data?.data) {
         var data1 = response?.data?.data[0]?.data;
-        var data = response?.data?.data[0]?.sickleave[0];
+        var data = response?.data?.data[0]?.slot[0];
         if (
-          response?.data?.data[0]?.sickleave?.length > 0 &&
-          (data?.monday?.length > 0 ||
-            data?.tuesday?.length > 0 ||
-            data?.wednesday?.length > 0 ||
-            data?.thursday?.length > 0 ||
-            data?.friday?.length > 0 ||
-            data?.saturday?.length > 0)
+          response?.data?.data[0]?.slot?.length > 0 &&
+          (data?.Monday?.length > 0 ||
+            data?.Tuesday?.length > 0 ||
+            data?.Wednesday?.length > 0 ||
+            data?.Thursday?.length > 0 ||
+            data?.Friday?.length > 0 ||
+            data?.Saturday?.length > 0)
         ) {
           current.setState({
             errorChrMsg1: '',
@@ -2216,3 +2280,31 @@ export const SelectTimeSlot = (AppointDay, Ai, data, current) => {
 //       current.setState({ loaderImage: false });
 //     });
 // };
+
+export const CallTopUpApi = (current, data) => {
+  let talktimeMin = current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min ? current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min : 0;
+  let calPrePaid = talktimeMin - data?.total_time?.value;
+  var info = {
+    used_talktime: {
+      datetime: data?.date,
+      amount: data?.amount,
+      min: data?.total_time?.value
+    },
+    _id: current.props.stateLoginValueAim?.VideoData?._id,
+    prepaid_talktime_min: calPrePaid,
+    manage_for: "use"
+  }
+  current.setState({ loaderImage: true });
+  axios
+    .post(sitedata.data.path + '/vchat/managePrepaid',
+      info)
+    .then((res) => {
+      if (res && res.data && res.data.hassuccessed) {
+        saveOnDB1(data, res?.data?.data, current);
+        current.setState({ loaderImage: false });
+      }
+    })
+    .catch((err) => {
+      current.setState({ loaderImage: false });
+    })
+}

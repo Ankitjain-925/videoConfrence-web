@@ -128,7 +128,7 @@ class Index extends Component {
         }
       })
       .catch((err) => {
-        console.log('err', err);
+        // console.log('err', err);
         this.setState({ sectionValue: 5, loaderImage: false });
       });
   };
@@ -303,14 +303,15 @@ class Index extends Component {
                         <Grid className="manageVideoCall">
                           <Grid className="timerandLabel">
                             <TimerIcon className="timerIcon" />
-                            <label className="formviewhead"> {this.state.time.h}h : {this.state.time.m}m</label></Grid>
+                            <label className="formviewhead"> {this.state.time.h}h : {this.state.time.m}m</label>
+                          </Grid>
                           <CometChatOutgoingDirectCall
                             open
                             userListCall={(userList) =>
                               this.userListCall(userList)
                             }
                             endCallScreen={(value) => this.endCallScreen(value)}
-                            sessionID={this.state.AllIds?.sesion_id}
+                            sessionID="12345"
                             theme={this.props.theme}
                             item={this.state.item}
                             type={this.state.type}

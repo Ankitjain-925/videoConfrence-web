@@ -79,7 +79,7 @@ class Index extends Component {
   };
 
   topupPage = () => {
-    // this.props.history.push('/topupPage');
+    this.props.history.push('/patient/top-up');
   };
 
 
@@ -99,6 +99,9 @@ class Index extends Component {
       dashboard,
       appointments,
       manage_prepaid_talktime,
+      settings,
+      top_up,
+      list_requests,
     } = translate;
     return (
       <Grid
@@ -128,7 +131,9 @@ class Index extends Component {
         </Grid>
         <Grid className="menuItems">
           <ul>
-            <li
+            {this.props.stateLoginValueAim?.isVideoLoggedIn && 
+            <>
+             <li
               className={
                 this.props.currentPage === "settings" ? "menuActv" : ""
               }
@@ -150,7 +155,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Settings"}</span>
+                <span>{"Health Profile"}</span>
               </a>
             </li>
             <li
@@ -178,7 +183,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Top-up"}</span>
+                <span>{top_up}</span>
               </a>
             </li>
             <li
@@ -203,7 +208,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{appointments}</span>
+                <span>{"Assesments"}</span>
               </a>
             </li>
             <li
@@ -258,11 +263,26 @@ class Index extends Component {
                     alt=""
                     title=""
                   />
+<<<<<<< HEAD
                   )}
                   <span>{"Feed Back"}</span>
                 </a>
               </li>
            
+=======
+                ) : (
+                  <img
+                    src={require("assets/images/archive.png")}
+                    alt=""
+                    title=""
+                  />
+                )}
+                <span>{list_requests}</span>
+              </a>
+            </li>
+            </>
+           }
+>>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
 
             <li
               className={this.props.currentPage === "profile" ? "menuActv" : ""}

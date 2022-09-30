@@ -43,10 +43,10 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      updateQues: {},
+      updateQues: this.props.dataa2.la2 ? this.props.dataa2.la2 : {},
       Allsituation: [],
       allMetadata: [],
-      DataprotectionRules: false,
+      DataprotectionRules: this.props.dataa2.la3,
       error_section: 0,
       errorChrMsg: '',
       loaderImage: false,
@@ -60,7 +60,10 @@ class Index extends Component {
       bookedError: ''
     };
   }
-
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  }
   updateAllEntrySec = (value, name) => {
     var state = this.state.updateQues;
     state[name] = value;
@@ -99,6 +102,8 @@ class Index extends Component {
       you_have_cough_and_snees,
       rules_and_regulations_of_aimedis,
       you_have_fever,
+      back_symbol,
+      next_symbol,
     } = translate;
     const { stateLoginValueAim } = this.props;
     if (
@@ -120,508 +125,508 @@ class Index extends Component {
       appointDate,
     } = this.state;
     return (
-      <Grid
-        className={
-          this.props.settings &&
-            this.props.settings.setting &&
-            this.props.settings.setting.mode &&
-            this.props.settings.setting.mode === 'dark'
-            ? 'homeBg darkTheme homeBgDrk'
-            : 'homeBg'
-        }
-      >
-        {this.state.loaderImage && <Loader />}
-        <Grid className="homeBgIner">
-          <Grid container direction="row" justify="center">
-            <Grid item xs={12} md={12}>
-              <Grid container direction="row">
-                {/* Website Menu */}
-                {/* <LeftMenu isNotShow={true} currentPage="picture" />
+
+      <Grid className="logForm form_full">
+        <Grid container direction="row" justify="center">
+          <Grid item xs={12} md={12} lg={12}>
+            {this.props.onSelectLanguage5(openCalendar, updateQues, DataprotectionRules)}
+            {/* <Grid container direction="row"> */}
+            {/* Website Menu */}
+            {/* <LeftMenu isNotShow={true} currentPage="picture" />
                 <LeftMenuMobile isNotShow={true} currentPage="picture" /> */}
-                <Grid item xs={12} md={11} lg={10}>
-                  <Grid className="docsOpinion">
+            {/* <Grid item xs={12} md={12} lg={12}> */}
+            {/* <Grid className="docsOpinion">
                     <Grid container direction="row" className="docsOpinLbl">
-                      <Grid item xs={12} md={12}>
-                        <label>{sick_leave_certificate}</label>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={8}>
+                    <Grid className="cnfrmDiaMain2"> */}
+            {!openCalendar === true && (
+              <Grid>
+                <Grid className="sickQuesSec">
+                  <Grid className="fatiqueQues fatiqueQuess1">
+                    <FatiqueQuestion
+                      updateAllEntrySec={(e) =>
+                        updateAllEntrySec(e, 'headache', this)
+                      }
+                      label={you_have_a_headache}
+                      value={updateQues.headache}
+                    />
+                  </Grid>
+                  {error_section == 48 && (
+                    <div className="err_message2">{errorChrMsg}</div>
+                  )}
+                </Grid>
+                {updateQues && updateQues?.headache === 'yes' && (
+                  <HeadacheSection
+                    updateAllEntrySec2={(e) => {
+                      updateAllEntrySec2(e, this);
+                    }}
+                    updateAllEntrySec={(e, name) =>
+                      updateAllEntrySec(e, name, this)
+                    }
+                    updateAllEntrySec1={(e) =>
+                      updateAllEntrySec1(e, this)
+                    }
+                    updateQues={this.state.updateQues}
+                    error_section={this.state.error_section}
+                    Allsituation={this.state.Allsituation}
+                    errorChrMsg={this.state.errorChrMsg}
+                    stateLanguageType={this.props.stateLanguageType}
+                  />
+                )}
+
+                <Grid className="sickQuesSec">
+                  <Grid className="fatiqueQues fatiqueQuess1">
+                    <FatiqueQuestion
+                      updateAllEntrySec={(e) =>
+                        updateAllEntrySec(e, 'stomach_problems', this)
+                      }
+                      label={you_have_stomach_problems}
+                      value={updateQues?.stomach_problems}
+                    />
+                  </Grid>
+                  {error_section == 49 && (
+                    <div className="err_message2">{errorChrMsg}</div>
+                  )}
+                </Grid>
+                {updateQues &&
+                  updateQues?.stomach_problems === 'yes' && (
+                    <StomachSection
+                      updateAllEntrySec2={(e) => {
+                        updateAllEntrySec2(e, this);
+                      }}
+                      updateAllEntrySec={(e, name) =>
+                        updateAllEntrySec(e, name, this)
+                      }
+                      updateAllEntrySec1={(e) =>
+                        updateAllEntrySec1(e, this)
+                      }
+                      updateQues={this.state.updateQues}
+                      error_section={this.state.error_section}
+                      Allsituation={this.state.Allsituation}
+                      errorChrMsg={this.state.errorChrMsg}
+                      user={this.props.stateLoginValueAim?.user}
+                      stateLanguageType={this.props.stateLanguageType}
+                    />
+                  )}
+
+                <Grid className="sickQuesSec">
+                  <Grid className="fatiqueQues fatiqueQuess1">
+                    <FatiqueQuestion
+                      updateAllEntrySec={(e) =>
+                        updateAllEntrySec(e, 'diarrhea', this)
+                      }
+                      label={you_have_diarrhea}
+                      value={updateQues?.diarrhea}
+                    />
+                  </Grid>
+                  {error_section == 50 && (
+                    <div className="err_message2">{errorChrMsg}</div>
+                  )}
+                </Grid>
+
+                {updateQues && updateQues?.diarrhea === 'yes' && (
+                  <DiarheaaSection
+                    updateAllEntrySec2={(e) => {
+                      updateAllEntrySec2(e, this);
+                    }}
+                    updateAllEntrySec={(e, name) =>
+                      updateAllEntrySec(e, name, this)
+                    }
+                    updateAllEntrySec1={(e) =>
+                      updateAllEntrySec1(e, this)
+                    }
+                    updateQues={this.state.updateQues}
+                    error_section={this.state.error_section}
+                    Allsituation={this.state.Allsituation}
+                    errorChrMsg={this.state.errorChrMsg}
+                    stateLanguageType={this.props.stateLanguageType}
+                  />
+                )}
+
+                <Grid className="sickQuesSec">
+                  <Grid className="fatiqueQues fatiqueQuess1">
+                    <FatiqueQuestion
+                      updateAllEntrySec={(e) =>
+                        updateAllEntrySec(e, 'have_fever', this)
+                      }
+                      label={you_have_fever}
+                      value={updateQues?.have_fever}
+                    />
+                  </Grid>
+                  {error_section == 51 && (
+                    <div className="err_message2">{errorChrMsg}</div>
+                  )}
+                </Grid>
+
+                {updateQues && updateQues?.have_fever === 'yes' && (
+                  <FeverSection
+                    updateAllEntrySec2={(e) => {
+                      updateAllEntrySec2(e, this);
+                    }}
+                    updateAllEntrySec={(e, name) =>
+                      updateAllEntrySec(e, name, this)
+                    }
+                    updateAllEntrySec1={(e) =>
+                      updateAllEntrySec1(e, this)
+                    }
+                    updateQues={this.state.updateQues}
+                    error_section={this.state.error_section}
+                    Allsituation={this.state.Allsituation}
+                    errorChrMsg={this.state.errorChrMsg}
+                    stateLanguageType={this.props.stateLanguageType}
+                  />
+                )}
+
+                <Grid className="sickQuesSec">
+                  <Grid className="fatiqueQues fatiqueQuess1">
+                    <FatiqueQuestion
+                      updateAllEntrySec={(e) =>
+                        updateAllEntrySec(e, 'back_pain', this)
+                      }
+                      label={you_have_back_pain}
+                      value={updateQues?.back_pain}
+                    />
+                  </Grid>
+                  {error_section == 52 && (
+                    <div className="err_message2">{errorChrMsg}</div>
+                  )}
+                </Grid>
+
+                {updateQues && updateQues?.back_pain === 'yes' && (
+                  <BackPainSection
+                    updateAllEntrySec2={(e) => {
+                      updateAllEntrySec2(e, this);
+                    }}
+                    updateAllEntrySec={(e, name) =>
+                      updateAllEntrySec(e, name, this)
+                    }
+                    updateAllEntrySec1={(e) =>
+                      updateAllEntrySec1(e, this)
+                    }
+                    updateQues={this.state.updateQues}
+                    error_section={this.state.error_section}
+                    Allsituation={this.state.Allsituation}
+                    errorChrMsg={this.state.errorChrMsg}
+                    DateFormat={
+                      this.props.Settings?.setting?.date_format
+                    }
+                    stateLanguageType={this.props.stateLanguageType}
+                  />
+                )}
+
+                <Grid className="sickQuesSec">
+                  <Grid className="fatiqueQues fatiqueQuess1">
+                    <FatiqueQuestion
+                      updateAllEntrySec={(e) =>
+                        updateAllEntrySec(e, 'cough_and_snees', this)
+                      }
+                      label={you_have_cough_and_snees}
+                      value={updateQues?.cough_and_snees}
+                    />
+                  </Grid>
+                  {error_section == 53 && (
+                    <div className="err_message2">{errorChrMsg}</div>
+                  )}
+                </Grid>
+
+                {updateQues && updateQues?.cough_and_snees === 'yes' && (
+                  <SneezSection
+                    updateAllEntrySec2={(e) => {
+                      updateAllEntrySec2(e, this);
+                    }}
+                    updateAllEntrySec={(e, name) =>
+                      updateAllEntrySec(e, name, this)
+                    }
+                    updateAllEntrySec1={(e) =>
+                      updateAllEntrySec1(e, this)
+                    }
+                    updateQues={this.state.updateQues}
+                    error_section={this.state.error_section}
+                    Allsituation={this.state.Allsituation}
+                    errorChrMsg={this.state.errorChrMsg}
+                    stateLanguageType={this.props.stateLanguageType}
+                  />
+                )}
+                <Grid className="sickQuesSec">
+                  <Grid className="fatiqueQues fatiqueQuess1">
+                    <FatiqueQuestion
+                      updateAllEntrySec={(e) =>
+                        updateAllEntrySec(e, 'feel_depressed', this)
+                      }
+                      label={you_feel_depressed}
+                      value={updateQues?.feel_depressed}
+                    />
+                  </Grid>
+                  {error_section == 54 && (
+                    <div className="err_message2">{errorChrMsg}</div>
+                  )}
+                </Grid>
+
+                {updateQues && updateQues?.feel_depressed === 'yes' && (
+                  <DepressedSection
+                    updateAllEntrySec2={(e) => {
+                      updateAllEntrySec2(e, this);
+                    }}
+                    updateAllEntrySec={(e, name) =>
+                      updateAllEntrySec(e, name, this)
+                    }
+                    updateAllEntrySec1={(e) =>
+                      updateAllEntrySec1(e, this)
+                    }
+                    updateQues={this.state.updateQues}
+                    error_section={this.state.error_section}
+                    Allsituation={this.state.Allsituation}
+                    errorChrMsg={this.state.errorChrMsg}
+                    stateLanguageType={this.props.stateLanguageType}
+                  />
+                )}
+                <Grid className="sickQuesSec">
+                  <Grid className="fatiqueQues fatiqueQuess1">
+                    <FatiqueQuestion
+                      updateAllEntrySec={(e) =>
+                        updateAllEntrySec(e, 'cardiac_problems', this)
+                      }
+                      label={you_have_cardiac_problems}
+                      value={updateQues?.cardiac_problems}
+                    />
+                  </Grid>
+                  {error_section == 55 && (
+                    <div className="err_message2">{errorChrMsg}</div>
+                  )}
+                </Grid>
+
+                {updateQues &&
+                  updateQues?.cardiac_problems === 'yes' && (
+                    <CPSection
+                      updateAllEntrySec2={(e) => {
+                        updateAllEntrySec2(e, this);
+                      }}
+                      updateAllEntrySec={(e, name) =>
+                        updateAllEntrySec(e, name, this)
+                      }
+                      updateAllEntrySec1={(e) =>
+                        updateAllEntrySec1(e, this)
+                      }
+                      updateQues={this.state.updateQues}
+                      error_section={this.state.error_section}
+                      Allsituation={this.state.Allsituation}
+                      errorChrMsg={this.state.errorChrMsg}
+                      stateLanguageType={this.props.stateLanguageType}
+                    />
+                  )}
+                {this.state.updateQues &&
+                  !this.state.updateQues?._id && (
+                    <Grid>
+                      <Grid className="sickCheckSec">
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              name="DataprotectionRules"
+                              value={
+                                DataprotectionRules &&
+                                  DataprotectionRules == true
+                                  ? false
+                                  : true
+                              }
+                              color="#00ABAF"
+                              checked={DataprotectionRules}
+                              onChange={(e) => {
+                                updateAllEntrySec2(e, this);
+                              }}
+                              className="PIC_Condition"
+                            />
+                          }
+                          label={rules_and_regulations_of_aimedis}
+                        />
                       </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12}>
-                    <Grid className="cnfrmDiaMain2">
-                      {!openCalendar === true && (
-                        <Grid>
-                          <Grid className="sickQuesSec">
-                            <Grid className="fatiqueQues fatiqueQuess1">
-                              <FatiqueQuestion
-                                updateAllEntrySec={(e) =>
-                                  updateAllEntrySec(e, 'headache', this)
-                                }
-                                label={you_have_a_headache}
-                                value={updateQues.headache}
-                              />
-                            </Grid>
-                            {error_section == 48 && (
-                              <div className="err_message2">{errorChrMsg}</div>
-                            )}
-                          </Grid>
-                          {updateQues && updateQues?.headache === 'yes' && (
-                            <HeadacheSection
-                              updateAllEntrySec2={(e) => {
-                                updateAllEntrySec2(e, this);
-                              }}
-                              updateAllEntrySec={(e, name) =>
-                                updateAllEntrySec(e, name, this)
-                              }
-                              updateAllEntrySec1={(e) =>
-                                updateAllEntrySec1(e, this)
-                              }
-                              updateQues={this.state.updateQues}
-                              error_section={this.state.error_section}
-                              Allsituation={this.state.Allsituation}
-                              errorChrMsg={this.state.errorChrMsg}
-                              stateLanguageType={this.props.stateLanguageType}
-                            />
-                          )}
-
-                          <Grid className="sickQuesSec">
-                            <Grid className="fatiqueQues fatiqueQuess1">
-                              <FatiqueQuestion
-                                updateAllEntrySec={(e) =>
-                                  updateAllEntrySec(e, 'stomach_problems', this)
-                                }
-                                label={you_have_stomach_problems}
-                                value={updateQues?.stomach_problems}
-                              />
-                            </Grid>
-                            {error_section == 49 && (
-                              <div className="err_message2">{errorChrMsg}</div>
-                            )}
-                          </Grid>
-                          {updateQues &&
-                            updateQues?.stomach_problems === 'yes' && (
-                              <StomachSection
-                                updateAllEntrySec2={(e) => {
-                                  updateAllEntrySec2(e, this);
-                                }}
-                                updateAllEntrySec={(e, name) =>
-                                  updateAllEntrySec(e, name, this)
-                                }
-                                updateAllEntrySec1={(e) =>
-                                  updateAllEntrySec1(e, this)
-                                }
-                                updateQues={this.state.updateQues}
-                                error_section={this.state.error_section}
-                                Allsituation={this.state.Allsituation}
-                                errorChrMsg={this.state.errorChrMsg}
-                                user={this.props.stateLoginValueAim?.user}
-                                stateLanguageType={this.props.stateLanguageType}
-                              />
-                            )}
-
-                          <Grid className="sickQuesSec">
-                            <Grid className="fatiqueQues fatiqueQuess1">
-                              <FatiqueQuestion
-                                updateAllEntrySec={(e) =>
-                                  updateAllEntrySec(e, 'diarrhea', this)
-                                }
-                                label={you_have_diarrhea}
-                                value={updateQues?.diarrhea}
-                              />
-                            </Grid>
-                            {error_section == 50 && (
-                              <div className="err_message2">{errorChrMsg}</div>
-                            )}
-                          </Grid>
-
-                          {updateQues && updateQues?.diarrhea === 'yes' && (
-                            <DiarheaaSection
-                              updateAllEntrySec2={(e) => {
-                                updateAllEntrySec2(e, this);
-                              }}
-                              updateAllEntrySec={(e, name) =>
-                                updateAllEntrySec(e, name, this)
-                              }
-                              updateAllEntrySec1={(e) =>
-                                updateAllEntrySec1(e, this)
-                              }
-                              updateQues={this.state.updateQues}
-                              error_section={this.state.error_section}
-                              Allsituation={this.state.Allsituation}
-                              errorChrMsg={this.state.errorChrMsg}
-                              stateLanguageType={this.props.stateLanguageType}
-                            />
-                          )}
-
-                          <Grid className="sickQuesSec">
-                            <Grid className="fatiqueQues fatiqueQuess1">
-                              <FatiqueQuestion
-                                updateAllEntrySec={(e) =>
-                                  updateAllEntrySec(e, 'have_fever', this)
-                                }
-                                label={you_have_fever}
-                                value={updateQues?.have_fever}
-                              />
-                            </Grid>
-                            {error_section == 51 && (
-                              <div className="err_message2">{errorChrMsg}</div>
-                            )}
-                          </Grid>
-
-                          {updateQues && updateQues?.have_fever === 'yes' && (
-                            <FeverSection
-                              updateAllEntrySec2={(e) => {
-                                updateAllEntrySec2(e, this);
-                              }}
-                              updateAllEntrySec={(e, name) =>
-                                updateAllEntrySec(e, name, this)
-                              }
-                              updateAllEntrySec1={(e) =>
-                                updateAllEntrySec1(e, this)
-                              }
-                              updateQues={this.state.updateQues}
-                              error_section={this.state.error_section}
-                              Allsituation={this.state.Allsituation}
-                              errorChrMsg={this.state.errorChrMsg}
-                              stateLanguageType={this.props.stateLanguageType}
-                            />
-                          )}
-
-                          <Grid className="sickQuesSec">
-                            <Grid className="fatiqueQues fatiqueQuess1">
-                              <FatiqueQuestion
-                                updateAllEntrySec={(e) =>
-                                  updateAllEntrySec(e, 'back_pain', this)
-                                }
-                                label={you_have_back_pain}
-                                value={updateQues?.back_pain}
-                              />
-                            </Grid>
-                            {error_section == 52 && (
-                              <div className="err_message2">{errorChrMsg}</div>
-                            )}
-                          </Grid>
-
-                          {updateQues && updateQues?.back_pain === 'yes' && (
-                            <BackPainSection
-                              updateAllEntrySec2={(e) => {
-                                updateAllEntrySec2(e, this);
-                              }}
-                              updateAllEntrySec={(e, name) =>
-                                updateAllEntrySec(e, name, this)
-                              }
-                              updateAllEntrySec1={(e) =>
-                                updateAllEntrySec1(e, this)
-                              }
-                              updateQues={this.state.updateQues}
-                              error_section={this.state.error_section}
-                              Allsituation={this.state.Allsituation}
-                              errorChrMsg={this.state.errorChrMsg}
-                              DateFormat={
-                                this.props.Settings?.setting?.date_format
-                              }
-                              stateLanguageType={this.props.stateLanguageType}
-                            />
-                          )}
-
-                          <Grid className="sickQuesSec">
-                            <Grid className="fatiqueQues fatiqueQuess1">
-                              <FatiqueQuestion
-                                updateAllEntrySec={(e) =>
-                                  updateAllEntrySec(e, 'cough_and_snees', this)
-                                }
-                                label={you_have_cough_and_snees}
-                                value={updateQues?.cough_and_snees}
-                              />
-                            </Grid>
-                            {error_section == 53 && (
-                              <div className="err_message2">{errorChrMsg}</div>
-                            )}
-                          </Grid>
-
-                          {updateQues && updateQues?.cough_and_snees === 'yes' && (
-                            <SneezSection
-                              updateAllEntrySec2={(e) => {
-                                updateAllEntrySec2(e, this);
-                              }}
-                              updateAllEntrySec={(e, name) =>
-                                updateAllEntrySec(e, name, this)
-                              }
-                              updateAllEntrySec1={(e) =>
-                                updateAllEntrySec1(e, this)
-                              }
-                              updateQues={this.state.updateQues}
-                              error_section={this.state.error_section}
-                              Allsituation={this.state.Allsituation}
-                              errorChrMsg={this.state.errorChrMsg}
-                              stateLanguageType={this.props.stateLanguageType}
-                            />
-                          )}
-                          <Grid className="sickQuesSec">
-                            <Grid className="fatiqueQues fatiqueQuess1">
-                              <FatiqueQuestion
-                                updateAllEntrySec={(e) =>
-                                  updateAllEntrySec(e, 'feel_depressed', this)
-                                }
-                                label={you_feel_depressed}
-                                value={updateQues?.feel_depressed}
-                              />
-                            </Grid>
-                            {error_section == 54 && (
-                              <div className="err_message2">{errorChrMsg}</div>
-                            )}
-                          </Grid>
-
-                          {updateQues && updateQues?.feel_depressed === 'yes' && (
-                            <DepressedSection
-                              updateAllEntrySec2={(e) => {
-                                updateAllEntrySec2(e, this);
-                              }}
-                              updateAllEntrySec={(e, name) =>
-                                updateAllEntrySec(e, name, this)
-                              }
-                              updateAllEntrySec1={(e) =>
-                                updateAllEntrySec1(e, this)
-                              }
-                              updateQues={this.state.updateQues}
-                              error_section={this.state.error_section}
-                              Allsituation={this.state.Allsituation}
-                              errorChrMsg={this.state.errorChrMsg}
-                              stateLanguageType={this.props.stateLanguageType}
-                            />
-                          )}
-                          <Grid className="sickQuesSec">
-                            <Grid className="fatiqueQues fatiqueQuess1">
-                              <FatiqueQuestion
-                                updateAllEntrySec={(e) =>
-                                  updateAllEntrySec(e, 'cardiac_problems', this)
-                                }
-                                label={you_have_cardiac_problems}
-                                value={updateQues?.cardiac_problems}
-                              />
-                            </Grid>
-                            {error_section == 55 && (
-                              <div className="err_message2">{errorChrMsg}</div>
-                            )}
-                          </Grid>
-
-                          {updateQues &&
-                            updateQues?.cardiac_problems === 'yes' && (
-                              <CPSection
-                                updateAllEntrySec2={(e) => {
-                                  updateAllEntrySec2(e, this);
-                                }}
-                                updateAllEntrySec={(e, name) =>
-                                  updateAllEntrySec(e, name, this)
-                                }
-                                updateAllEntrySec1={(e) =>
-                                  updateAllEntrySec1(e, this)
-                                }
-                                updateQues={this.state.updateQues}
-                                error_section={this.state.error_section}
-                                Allsituation={this.state.Allsituation}
-                                errorChrMsg={this.state.errorChrMsg}
-                                stateLanguageType={this.props.stateLanguageType}
-                              />
-                            )}
-                          {this.state.updateQues &&
-                            !this.state.updateQues?._id && (
-                              <Grid>
-                                <Grid className="sickCheckSec">
-                                  <FormControlLabel
-                                    control={
-                                      <Checkbox
-                                        name="DataprotectionRules"
-                                        value={
-                                          DataprotectionRules &&
-                                            DataprotectionRules == true
-                                            ? false
-                                            : true
-                                        }
-                                        color="#00ABAF"
-                                        checked={DataprotectionRules}
-                                        onChange={(e) => {
-                                          updateAllEntrySec2(e, this);
-                                        }}
-                                        className="PIC_Condition"
-                                      />
-                                    }
-                                    label={rules_and_regulations_of_aimedis}
-                                  />
-                                </Grid>
-                                {error_section == 73 && (
-                                  <div className="err_message2 err_message3">
-                                    {errorChrMsg}
-                                  </div>
-                                )}
-                                {error_section == 45 && (
-                                  <div className="err_message2">
-                                    {errorChrMsg}
-                                  </div>
-                                )}
-                              </Grid>
-                            )}
-                          <Grid className="infoShwSave3">
-                            <input
-                              type="submit"
-                              value={Submit}
-                              onClick={() => handleEvalSubmit(this, 1)}
-                            ></input>
-                          </Grid>
-                        </Grid>
+                      {error_section == 73 && (
+                        <div className="err_message2 err_message3">
+                          {errorChrMsg}
+                        </div>
                       )}
-                      {openCalendar === true && (
-                        <Grid>
-                          <Grid className="selCalenderUpr">
-                            <Grid className="selCalender">
-                              <Calendar2
-                                onChange={(e) => onChange(e, this)}
-                                value={this.state.date}
-                                minDate={new Date()}
-                                minTime={new Date()}
-                              />
-                            </Grid>
-                            <Grid className="selTimeSlot">
-                              <Grid>
-                                <label>{slct_time_slot}</label>
-                              </Grid>
-                              <Grid className="selTimeAM">
-                                {' '}
-                                {this.state.appointDate &&
-                                  this.state.appointDate.length > 0 ? (
-                                  Availabledays(
-                                    this.state.selectedDate,
-                                    this.state.appointmentData.appointment_days
-                                  ) ? (
-                                    <Grid>
-                                      <span>{NotAvailable}</span>
-                                    </Grid>
-                                  ) : ExitinHoliday(
-                                    this.state.selectedDate,
-                                    this.state.appointmentData.holidays_start,
-                                    this.state.appointmentData.holidays_end
-                                  ) ? (
-                                    <Grid>
-                                      <span>{holiday}</span>
-                                    </Grid>
-                                  ) : (
-                                    this.state.allSlotes && this.state.allSlotes.map((data, iA) => {
-                                      if (
-                                        Isintime(
-                                          this.state.appointDate[iA],
-                                          this.state.appointmentData
-                                            .breakslot_start,
-                                          this.state.appointmentData
-                                            .breakslot_end,
-                                          this.state.appointmentData
-                                            .holidays_start,
-                                          this.state.appointmentData
-                                            .holidays_end
-                                        )
-                                      )
-                                        return;
-
-                                      return (
-                                        <Grid>
-                                          {this.state.appointDate[iA + 1] &&
-                                            this.state.appointDate[iA + 1] !==
-                                            'undefined' &&
-                                            iA === 0 ? (
-                                            <Grid className={
-                                              (data?.isBooked || data?.isAlreadyExist) && "bookedSlotCss"
-                                            }>
-                                              <a
-                                                className={
-                                                  this.state.currentSelected ===
-                                                  0 && 'current_selected'
-                                                }
-                                                onClick={() => {
-                                                  SelectTimeSlot(
-                                                    this.state.apointDay,
-                                                    iA,
-                                                    data,
-                                                    this
-                                                  );
-                                                }}
-                                              >
-                                                {data.slot}
-                                              </a>
-                                            </Grid>
-                                          ) : (
-                                            this.state.appointDate[iA + 1] &&
-                                            this.state.appointDate[iA + 1] !==
-                                            'undefined' && (
-                                              <Grid className={
-                                                (data?.isBooked || data?.isAlreadyExist) && "bookedSlotCss"
-                                              }>
-                                                <a
-                                                  className={
-                                                    this.state.currentSelected &&
-                                                      this.state.currentSelected ===
-                                                      iA
-                                                      ? 'current_selected'
-                                                      : ''
-                                                  }
-                                                  onClick={() => {
-                                                    SelectTimeSlot(
-                                                      this.state.apointDay,
-                                                      iA,
-                                                      data,
-                                                      this
-                                                    );
-                                                  }}
-                                                >
-                                                  {data?.slot}
-                                                </a>
-                                              </Grid >
-                                            )
-                                          )}
-                                        </Grid>
-                                      );
-                                    })
-                                  )
-                                ) : this.state.appointDate !== undefined ? (
-                                  <Grid>
-                                    <span>{NotAvailable}</span>
-                                  </Grid>
-                                ) : (
-                                  <Grid>
-                                    <span>{NotAvailable}</span>
-                                  </Grid>
-                                )}
-                              </Grid>
-                            </Grid>
-                            {/* <Grid>{this.state.allSlotes?.slot}</Grid> */}
-                          </Grid>
-                          {/* {error_section == 70 && ( */}
-                          <div className="err_message2 err_message3">
-                            {this.state.errorChrMsg1}
-                          </div>
-                          <div className="err_message2 err_message3">
-                            {this.state.bookedError}
-                          </div>
-                          {/* )} */}
-                          <Grid className="infoShwSave3">
-                            <input
-                              type="submit"
-                              value={Submit}
-                              disabled={this.state.appointDate.length == 0}
-                              onClick={() => handleEvalSubmit(this, 2)}
-                            ></input>
-                          </Grid>
-                        </Grid>
+                      {error_section == 45 && (
+                        <div className="err_message2">
+                          {errorChrMsg}
+                        </div>
                       )}
                     </Grid>
-                  </Grid>
+                  )}
+                <Grid className="infoShwSave3 cardioArea">
+                  <input
+                    type="button"
+                    value={back_symbol}
+                    onClick={this.back}
 
-                  {/* <Grid className="stripePromiseClss"> */}
-
-                  {/* </Grid> */}
+                  />
+                  <input
+                    type="submit"
+                    value={next_symbol}
+                    onClick={() => handleEvalSubmit(this, 1)}
+                  ></input>
                 </Grid>
               </Grid>
-            </Grid>
+            )}
+            {openCalendar === true && (
+              <Grid>
+                <Grid className="selCalenderUpr">
+                  <Grid className="selCalender">
+                    <Calendar2
+                      onChange={(e) => onChange(e, this)}
+                      value={this.state.date}
+                      minDate={new Date()}
+                      minTime={new Date()}
+                    />
+                  </Grid>
+                  <Grid className="selTimeSlot">
+                    <Grid>
+                      <label>{slct_time_slot}</label>
+                    </Grid>
+                    <Grid className="selTimeAM">
+                      {' '}
+                      {this.state.appointDate &&
+                        this.state.appointDate.length > 0 ? (
+                        Availabledays(
+                          this.state.selectedDate,
+                          this.state.appointmentData.appointment_days
+                        ) ? (
+                          <Grid>
+                            <span>{NotAvailable}</span>
+                          </Grid>
+                        ) : ExitinHoliday(
+                          this.state.selectedDate,
+                          this.state.appointmentData.holidays_start,
+                          this.state.appointmentData.holidays_end
+                        ) ? (
+                          <Grid>
+                            <span>{holiday}</span>
+                          </Grid>
+                        ) : (
+                          this.state.allSlotes && this.state.allSlotes.map((data, iA) => {
+                            if (
+                              Isintime(
+                                this.state.appointDate[iA],
+                                this.state.appointmentData
+                                  .breakslot_start,
+                                this.state.appointmentData
+                                  .breakslot_end,
+                                this.state.appointmentData
+                                  .holidays_start,
+                                this.state.appointmentData
+                                  .holidays_end
+                              )
+                            )
+                              return;
+
+                            return (
+                              <Grid>
+                                {this.state.appointDate[iA + 1] &&
+                                  this.state.appointDate[iA + 1] !==
+                                  'undefined' &&
+                                  iA === 0 ? (
+                                  <Grid className={
+                                    (data?.isBooked || data?.isAlreadyExist) && "bookedSlotCss"
+                                  }>
+                                    <a
+                                      className={
+                                        this.state.currentSelected ===
+                                        0 && 'current_selected'
+                                      }
+                                      onClick={() => {
+                                        SelectTimeSlot(
+                                          this.state.apointDay,
+                                          iA,
+                                          data,
+                                          this
+                                        );
+                                      }}
+                                    >
+                                      {data.slot}
+                                    </a>
+                                  </Grid>
+                                ) : (
+                                  this.state.appointDate[iA + 1] &&
+                                  this.state.appointDate[iA + 1] !==
+                                  'undefined' && (
+                                    <Grid className={
+                                      (data?.isBooked || data?.isAlreadyExist) && "bookedSlotCss"
+                                    }>
+                                      <a
+                                        className={
+                                          this.state.currentSelected &&
+                                            this.state.currentSelected ===
+                                            iA
+                                            ? 'current_selected'
+                                            : ''
+                                        }
+                                        onClick={() => {
+                                          SelectTimeSlot(
+                                            this.state.apointDay,
+                                            iA,
+                                            data,
+                                            this
+                                          );
+                                        }}
+                                      >
+                                        {data?.slot}
+                                      </a>
+                                    </Grid >
+                                  )
+                                )}
+                              </Grid>
+                            );
+                          })
+                        )
+                      ) : this.state.appointDate !== undefined ? (
+                        <Grid>
+                          <span>{NotAvailable}</span>
+                        </Grid>
+                      ) : (
+                        <Grid>
+                          <span>{NotAvailable}</span>
+                        </Grid>
+                      )}
+                    </Grid>
+                  </Grid>
+                  <Grid>{this.state.allSlotes?.slot}</Grid>
+                </Grid>
+                {/* {error_section == 70 && ( */}
+                <div className="err_message2 err_message3">
+                  {this.state.errorChrMsg1}
+                </div>
+                <div className="err_message2 err_message3">
+                  {this.state.bookedError}
+                </div>
+                {/* )} */}
+                <Grid className="infoShwSave3 cardioArea">
+                  <input
+                    type="button"
+                    value="« Back"
+                    onClick={() => this.setState({ openCalendar: false })}
+
+                  />
+                  <input
+                    type="submit"
+                    value={Submit}
+                    disabled={this.state.appointDate.length == 0}
+                    onClick={() => handleEvalSubmit(this, 2)}
+                  ></input>
+                </Grid>
+              </Grid>
+            )}
+            {/* </Grid>
+                  </Grid> */}
+
+            {/* <Grid className="stripePromiseClss"> */}
+
+            {/* </Grid> */}
+            {/* </Grid>
+              </Grid> */}
           </Grid>
         </Grid>
       </Grid>
+
     );
   }
 }
