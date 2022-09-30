@@ -29,7 +29,7 @@ class Index extends Component {
 
     render() {
         const { dataa } = this.props;
-        let translate = getLanguage(this?.props?.redux_st?.stateLanguageType);
+        let translate = getLanguage(this.props.stateLanguageType);
         let {
             my_profile,
             Security,

@@ -1898,7 +1898,10 @@
     "I_would_like":"Ich möchte:",
     "video_call":"Videoanruf",
     "username": "Nutzername",
-    "login_video_confrence": "Melden Sie sich bei der Videokonferenz an"
+    "login_video_confrence": "Melden Sie sich bei der Videokonferenz an",
+    "please_enter_access_key":"Bitte geben Sie zuerst den Zugangsschlüssel ein",
+    "assesments":"Bewertung",
+    "please_enter_time":"Bitte geben Sie die Zeit ein"
 
   }
 }

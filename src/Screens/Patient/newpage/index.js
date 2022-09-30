@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { Button } from "@material-ui/core/index";
 import { handleEvalSubmit } from "../SickLeaveForm/api";
 import useAllSetting from '../../Hooks/Setting'
+import useAllLanguage from '../../Hooks/Language'
 import { useHistory } from "react-router-dom";
 
 
@@ -19,6 +20,7 @@ const Index = (props) => {
     const settings = useAllSetting();
     const history = useHistory();
     const [error, setError] = useState('');
+    const language =useAllLanguage();
 
 
     const handleChange = (e) => {
@@ -40,7 +42,7 @@ const Index = (props) => {
         }
 
     }
-    let translate = getLanguage(props.stateLanguageType);
+    let translate = getLanguage(language);
     let {
         my_profile,
         Security,
@@ -48,6 +50,7 @@ const Index = (props) => {
         enter_access_key,
         enter_key,
         join_call,
+        please_enter_access_key,
     } = translate;
 
 

@@ -1963,7 +1963,10 @@
     "select_hospitals":"Select Hospital",
     "search_select":"Search Select",
     "I_would_like":"I would like to:",
-    "video_call":"Video-Call"
+    "video_call":"Video-Call",
+    "please_enter_access_key":"Please enter Access Key first",
+    "assesments":"Assesments",
+    "please_enter_time":"Please Enter Time"
     
     
     

@@ -96,6 +96,8 @@ class Index extends Component {
       settings,
       top_up,
       list_requests,
+      health_profile,
+      assesments,
     } = translate;
     return (
       <Grid
@@ -149,7 +151,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Health Profile"}</span>
+                <span>{health_profile}</span>
               </a>
             </li>
             <li
@@ -202,7 +204,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Assesments"}</span>
+                <span>{assesments}</span>
               </a>
             </li>
             <li
