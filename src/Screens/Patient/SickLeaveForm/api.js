@@ -155,8 +155,8 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
 
 export const CallTopUpApi_Add = (current, data) => {
   var calPrePaid = 0;
-  if(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min && parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min  )>0){
-    calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min  );
+  if (current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min && parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min) > 0) {
+    calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min);
   }
 
   calPrePaid = calPrePaid + parseInt(data?.data?.paymentData?.amount / 500)
@@ -178,9 +178,9 @@ export const CallTopUpApi_Add = (current, data) => {
     .then((res) => {
       current.setState({ loaderImage: false });
       var user_token = current.props.stateLoginValueAim.token
-      var forUpdate = {value: true, token: user_token, user: current.props?.stateLoginValueAim?.user}
+      var forUpdate = { value: true, token: user_token, user: current.props?.stateLoginValueAim?.user }
       var VideoData = res.data?.data
-      current.props.LoginReducerAim(current.props?.stateLoginValueAim?.user?.email, '', current.props?.stateLoginValueAim?.user_token, () => {}, forUpdate, current.props?.stateLoginValueAim?.isVideoLoggedIn, VideoData, current.props?.stateLoginValueAim?.is_vedio_registered);
+      current.props.LoginReducerAim(current.props?.stateLoginValueAim?.user?.email, '', current.props?.stateLoginValueAim?.user_token, () => { }, forUpdate, current.props?.stateLoginValueAim?.isVideoLoggedIn, VideoData, current.props?.stateLoginValueAim?.is_vedio_registered);
     })
     .catch((err) => {
       current.setState({ loaderImage: false });
@@ -2037,7 +2037,6 @@ export const onChange = (date, current) => {
       break;
   }
   let appointmentData = current.state.appointmentData;
-  console.log("current.state.appointmentData", current.state.appointmentData)
   var appointDate;
   if (appointmentData) {
     Object.entries(appointmentData).map(([key, value]) => {
@@ -2227,7 +2226,7 @@ export const SelectTimeSlot = (AppointDay, Ai, data, current) => {
   if (data && data.isBooked) {
     current.setState({ currentSelected: Ai, bookedError: this_time_slot_is_already_booked + ' ' + please_select + ' ' + another_one });
   } else if (data && data.isAlreadyExist) {
-    current.setState({ currentSelected: Ai, bookedError: '' });
+    current.setState({ currentSelected: Ai, bookedError: please_select + ' ' + upcoming_slots });
   } else {
     current.setState({ bookedError: '', currentSelected: Ai });
   }
