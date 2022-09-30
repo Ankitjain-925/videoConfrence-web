@@ -126,7 +126,7 @@ class Index extends Component {
     };
 
     const Checkout = ({
-      name = 'AIS',
+      name = 'Aimedis Video Conference',
       description = 'Stripe Payment',
       amount = this.props.usedFor == "register_video" ? fromEuroToCent(20, this) : this.props.usedFor == "top_up" ? fromMinToEuro(this?.props?.famount, this) : this.state.amountDta,
 
