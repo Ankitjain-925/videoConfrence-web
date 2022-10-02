@@ -84,7 +84,8 @@ export const CancelClick = (current) => {
 // };
 
 // For send meeting link sendLinkDocPatpatient as well as doctor
-export const sendLinkDocPat = (payValue, taskValue, current) => {
+export const sendLinkDocPat = (taskValue, current) => {
+  console.log('call on credit card too')
   var data = {};
   var patient_info = {
     first_name: current.props.stateLoginValueAim?.user?.first_name,
@@ -94,10 +95,11 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
     // user_id: current.props.stateLoginValueAim?.user.user?._id,
   };
   data.patient_info = patient_info;
+  console.log('taskValue?.assinged_to[0]', taskValue?.assinged_to[0])
   var doctor_info = {
-    first_name: "Ankit",
-    last_name: "jain",
-    alies_id: "D_QRW7IAGTg",
+    first_name: taskValue?.assinged_to[0]?.first_name,
+    last_name: taskValue?.assinged_to[0]?.last_name,
+    alies_id: taskValue?.assinged_to[0]?.alies_id,
     profile_id: taskValue?.assinged_to[0]?.profile_id,
     user_id: taskValue?.assinged_to[0]?.user_id,
   }
@@ -119,6 +121,7 @@ export const sendLinkDocPat = (payValue, taskValue, current) => {
   data.patient_profile_id = taskValue?.patient?.profile_id;
   data.patient_id = current.props.stateLoginValueAim?.user?._id;
   data.doctor_profile_id = taskValue?.assinged_to[0]?.profile_id;
+ console.log('taskValue?.assinged_to[0]?.user_id', taskValue?.assinged_to[0]?.user_id)
   data.doctor_id = taskValue?.assinged_to[0]?.user_id;
   current.setState({ loaderImage: true });
   axios
@@ -216,11 +219,13 @@ export const saveOnDB1 = (data, task, current) => {
       )
       .then((responce) => {
         if (responce.data.hassuccessed) {
+          console.log('frombackend',responce.data.data)
+
           if (task && task.payment_by && task.payment_by === "Credit-Card") {
-            sendLinkDocPat(data, task, current);
+            sendLinkDocPat(responce.data.data, current);
           }
           else {
-            sendLinkDocPat(task, data, current);
+            sendLinkDocPat(responce.data.data, current);
           }
           current.setState({ loaderImage: false });
           current.props.history.push('/appointment-list');
