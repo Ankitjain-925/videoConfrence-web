@@ -21,6 +21,8 @@ import { OptionList } from 'Screens/Login/metadataaction';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { EditRequest, DownloadCert, DownloadBill } from '../SickLeaveForm/api';
 import ButtJoin from "Screens/Components/Button/index";
+import FeedQuestion from '../../Components/FeedQuestion/index';
+
 
 import {
   PaymentDue,
@@ -59,6 +61,21 @@ class Index extends Component {
       GetLanguageMetadata(this);
     }
   };
+
+  openFeedback = (data) => {
+    this.setState({
+      showComponent: true,
+      allDoctorData: data?.assinged_to[0]
+    });
+
+  }
+  closeFullQues = () => {
+    this.setState({
+      showComponent: false,
+      openModal: false
+    });
+
+  }
 
   onChangePage = (pageNumber) => {
     this.setState({
@@ -196,6 +213,14 @@ class Index extends Component {
 
     return (
       <Grid>
+        {this.state.showComponent ?
+          <FeedQuestion
+            closeFullQues={() => this.closeFullQues()}
+            openModal={true}
+            allDoctorData={this.state.allDoctorData}
+          /> :
+          null
+        }
         <Grid
           className={
             this.props.settings &&
@@ -464,23 +489,23 @@ class Index extends Component {
                                                 </a>
                                               </li>
                                             )}
-                                            {item?.approved == true &&
+                                          {item?.approved == true &&
                                             (!item.is_payment ||
                                               item.is_payment == true) && (
                                               <li
-                                              onClick={() => {
-                                                this.props.history.push("/patient/access-key");
-                                              }}
-                                            >
-                                              <a>
-                                                <img
-                                                  src={require('assets/images/details.svg')}
-                                                  alt=""
-                                                  title=""
-                                                />
-                                                <>{join_meeting}</>
-                                              </a>
-                                            </li>
+                                                onClick={() => {
+                                                  this.props.history.push("/patient/access-key");
+                                                }}
+                                              >
+                                                <a>
+                                                  <img
+                                                    src={require('assets/images/details.svg')}
+                                                    alt=""
+                                                    title=""
+                                                  />
+                                                  <>{join_meeting}</>
+                                                </a>
+                                              </li>
                                             )}
                                           {/* {item && item.certificate && (
                                             <li
@@ -547,6 +572,22 @@ class Index extends Component {
                                                 </a>
                                               </li>
                                             )}
+                                          {item.meetingjoined && (
+                                            <li
+                                              onClick={() => {
+                                                this.openFeedback(item)
+                                              }}
+                                            >
+                                              <a>
+                                                <img
+                                                  src={require('assets/images/details.svg')}
+                                                  alt=""
+                                                  title=""
+                                                />
+                                                Feedback Form
+                                              </a>
+                                            </li>
+                                          )}
                                         </ul>
                                       </a>
                                     </Td>

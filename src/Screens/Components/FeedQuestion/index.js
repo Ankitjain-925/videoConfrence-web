@@ -16,7 +16,7 @@ import sitedata from "sitedata";
 import { commonHeader } from "component/CommonHeader/index";
 import { LoginReducerAim } from 'Screens/Login/actions';
 import { OptionList } from 'Screens/Login/metadataaction';
-
+import Loader from 'Screens/Components/Loader/index';
 
 
 
@@ -30,9 +30,8 @@ class Index extends Component {
             comesFrom: this.props.comesFrom,
             allDoctorData: this.props.allDoctorData,
             showQuestion: {},
-            loaderImage: false,
             errorMsg: "",
-
+            loaderImage: false
         };
     }
 
@@ -101,6 +100,7 @@ class Index extends Component {
 
 
     render() {
+        console.log("check")
         let translate = getLanguage(this.props.stateLanguageType)
         let {
             FeedBack,
@@ -111,6 +111,7 @@ class Index extends Component {
 
         return (
             <Grid>
+                {this.state.loaderImage && <Loader />}
                 {/* Model setup */}
                 <Modal
                     open={this.state.openModal}

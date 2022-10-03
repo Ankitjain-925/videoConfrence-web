@@ -77,12 +77,12 @@ class Routermain extends Component {
               path="/patient/video_login"
               render={(props) => <LoginVideo {...props} />}
             />
-             <Route
+            <Route
               exact
               path="/patient/SuccessMsg"
               render={(props) => <SuccessMsg {...props} />}
             />
-            
+
             <Route
               exact={true}
               path="/payment/:id"
@@ -124,8 +124,8 @@ class Routermain extends Component {
               path="/patient/Feed-back"
               render={(props) => <FeedBack {...props} />}
             />
-         
-          {/* Need to route required component */}
+
+            {/* Need to route required component */}
             <Route
               path="*"
               exact={true}
