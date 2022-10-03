@@ -2587,8 +2587,8 @@ a.bedNum img {
 
 .srchLft a {
   position: absolute;
-  top: 8px;
-  right: 13px;
+  top: 21px;
+  right: 18px;
 }
 
 .srchLft {
@@ -12582,8 +12582,8 @@ p.more-change-staff-img2 {
 }
 
 .creatTaskCntnt {
-  height: 537px;
-  overflow-y: scroll;
+  height: 475px;
+  overflow-y: auto;
   padding: 20px 0px;
 }
 
@@ -15052,7 +15052,7 @@ ul.patientHint li {
 }
 
 .darkTheme .stndQues label {
-  color: #00abaf;
+  color: #00abaf !important;
 }
 
 .darkTheme .stndQues span {
@@ -17454,10 +17454,7 @@ a {
 .darkTheme .form_full .card-section {
   background-color: #404646;
 }
-<<<<<<< HEAD
 
-
-=======
 .darkTheme .top-up-mid1-inner {
   background-color: #404646;
 }
@@ -17479,7 +17476,7 @@ a {
 .darkTheme .settingPage h5 {
   color: #ffffff;
 }
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
+
 .Card_1 {
   cursor: pointer;
   border-radius: 5px;
@@ -17577,6 +17574,7 @@ a {
 }
 .inprogress-call {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 4px 10px 6px;
@@ -18043,7 +18041,7 @@ a {
       left: -14px;
       float: right;
       position: relative;
-      bottom: 38px;
+     bottom: 34px;
     }
     .err_mesg{
       text-align: left!important;

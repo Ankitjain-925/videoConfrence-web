@@ -31,6 +31,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      onlyPaitent: false,
       hidden: true,
       password: '',
       dropDownValue: 'Select',
@@ -138,6 +139,11 @@ class Index extends Component {
         }
         this.setState({ otherUser: false });
         this.props.LoginReducerAim(email, password, logintoken, () => {
+          if( this.props.stateLoginValueAim &&
+            this.props.stateLoginValueAim?.user &&
+            !this.props.stateLoginValueAim?.user?.type !=='patient'){
+            this.setState({onlyPaitent: true})
+          }
           this.setState({ myLogin: true });
           this.setState({ loaderImage: false });
           if (
@@ -414,12 +420,7 @@ class Index extends Component {
                 <Grid className="logFormMain">
                   <Grid className="logForm">
                     <div className="err_message">
-                      {stateLoginValueAim &&
-                        stateLoginValueAim?.user &&
-                        stateLoginValueAim?.user?.type &&
-                        stateLoginValueAim?.user?.type === "nurse" ||
-                        stateLoginValueAim?.user?.type === "adminstaff" ||
-                        stateLoginValueAim?.user?.type === "doctor" ? only_for_patient : ''}
+                      {this.state.onlyPaitent ? only_for_patient : ''}
                     </div>
                     <div className="err_message">
                       {this.state.loginError1

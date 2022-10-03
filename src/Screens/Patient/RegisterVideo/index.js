@@ -105,6 +105,10 @@ const RegisterVideo = (props) => {
       )
       .then((response) => {
         if(response.data.hassuccessed){
+          var user_token = props.stateLoginValueAim.token
+          var forUpdate = { value: true, token: user_token, user: props?.stateLoginValueAim?.user }
+          props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props?.stateLoginValueAim?.user_token, () => { }, forUpdate, false, {}, true);
+
           history.push({
             pathname: "/patient/video_login",
           });
@@ -180,7 +184,7 @@ const RegisterVideo = (props) => {
                   </Grid>
                 </Grid>
 
-                <Grid item xs={12} md={10} lg={8}>
+                <Grid item xs={12} md={12} lg={12}>
                   {/* <Grid className="profilePkg"> */}
                   <Grid className="profilePkgIner3 border-radious-10">
                     <Grid className="logForm form_full">

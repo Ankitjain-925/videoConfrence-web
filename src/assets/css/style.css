@@ -1947,6 +1947,9 @@ a.profilMenu {
   text-align: center;
   margin-bottom: 0px;
 }
+.MuiGrid-root.docsOpinLbl.MuiGrid-container {
+  padding: 0px 40px;
+}
 /* End of inbox page css */
 
 /* mobile css */
@@ -2045,6 +2048,16 @@ a.profilMenu {
   }
   .scndOpinionIner td {
     font-size: 13px !important;
+  }
+    .presOpinionIner.presOpinionInerSec {
+    margin: 0px !important;
+  }
+  .MuiGrid-root.docsOpinLbl.MuiGrid-container {
+    padding: 0px !important;
+  }
+  .MuiGrid-root.profilePkgIner3.border-radious-10 {
+    padding-left: 0px !important;
+    width: 95% !important;
   }
 }
 @media (max-width: 599px) {
@@ -16956,7 +16969,10 @@ select:-webkit-autofill:focus {
   }
 }
 @media (max-width: 960px) {
-  .selCalender {
+  .selCalenderUpr .react-calendar {
+    width: 100% !important;
+  }
+  .selCalenderUpr .selCalender {
     width: 100% !important;
   }
   .selCalenderUpr {
@@ -18267,6 +18283,9 @@ ul.duringCovid li:last-child {
   background-color: #00abaf;
   color: #ffffff !important;
 }
+.darkTheme .stndQues1 h3 {
+  color: #00abaf !important;
+}
 .homeBgDrk a.openScndhrf img {
   background-color: #192020;
 }
@@ -18454,4 +18473,18 @@ h6.selectdoc-head2 {
 .MuiGrid-root.logForm.accessForm {
   margin-top: 50px;
   margin-left: 45px;
+}
+.cnfrmDiaMain.profilePkg.cnfrmDiaMain1 {
+  margin: 22px 45px;
+}
+.cnfrmDiaMain.profilePkg.cnfrmDiaMain1 {
+  width: 80%;
+  margin: 0 auto !important;
+  margin-top: 41px !important;
+}
+.MuiGrid-root.profilePkgIner3.border-radious-10 {
+  width: 80%;
+  margin: 0 auto !important;
+  margin-top: 32px !important;
+  padding-left: 0px !important;
 }
