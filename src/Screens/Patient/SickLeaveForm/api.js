@@ -1311,6 +1311,7 @@ export const validatePainHeart = (check, value, item, current) => {
     top_value,
     fever_low_body_temp,
     of_body_temprature,
+    please_select_situation,
   } = translate;
 
   var bpPattern = /^[0-9]+$/;
@@ -2076,7 +2077,17 @@ export const validatePainHeart = (check, value, item, current) => {
         MoveTop(200);
         MoveTop(0);
         return false;
-      } else if (calHba1c > 64 / 10) {
+      } 
+      else if(!value.headache_situation){
+        current.setState({
+          error_section: 58,
+          errorChrMsg: please_select_situation,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
+      }
+      else if (calHba1c > 64 / 10) {
         current.setState({
           error_section: 56,
           errorChrMsg: Hba1c_should_between,

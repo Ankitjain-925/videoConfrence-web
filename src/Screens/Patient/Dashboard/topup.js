@@ -155,26 +155,14 @@ const Dashboard = (props) => {
                 <LeftMenu isNotShow={true} currentPage="topup" />
                 <LeftMenuMobile isNotShow={true} currentPage="topup" />
                 <Grid item xs={12} md={10} lg={8}>
-                  <div className="settingPage">
+                  <div className="settingPage 66">
                     {!openPayment && (<>
-                      <Grid container direction="row" justify="center">
-                        <Grid item xs={3} md={3} lg={3}>
-
-                          <h5 className="setting-h5">{balance}</h5>
-                          
-
-                        </Grid>
-                        <Grid item xs={6} md={5} lg={5}>
-
-                        </Grid>
-                        <Grid item xs={3} md={4} lg={4}>
-
-                          <ButtJoin />
-                        </Grid>
+                      <Grid container direction="row" justify="center" alignItems="center">
+                                               <Grid item xs={12} sm={6} md={6} lg={6}><h5 className="setting-h5">{balance}</h5></Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={6}><ButtJoin /></Grid>
                       </Grid>
                     </>
                     )}
-
                     {!customAmount ? <>
                       {!openPayment && (<>
                         <MiddleTopup />
