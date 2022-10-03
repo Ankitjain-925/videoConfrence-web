@@ -769,7 +769,7 @@ class Index extends Component {
 
                                 <Grid>
                                   <Grid>
-                                    <h1>{blood_pressure}</h1>
+                                    <h3>{blood_pressure}</h3>
                                   </Grid>
                                   <Grid container xs={12} md={12}>
                                     <Grid item xs={6} md={6}>
@@ -1429,7 +1429,7 @@ class Index extends Component {
                                   </p>
                                 </Grid>
                                 <Grid>
-                                  <h1>{body_temp}</h1>
+                                  <h3>{body_temp}</h3>
                                 </Grid>
                                 <Grid>
                                   <Grid>
@@ -1473,7 +1473,7 @@ class Index extends Component {
                                   <h3>{feel_depressed}</h3>
                                 </Grid>
                                 <Grid>
-                                  <Grid className="sickAllMngSec">
+                                  <Grid className="">
                                     <label>{depressed_symptoms_begin}</label>
                                   </Grid>
                                   <p>
@@ -1542,7 +1542,7 @@ class Index extends Component {
                                   <h3>{cardiac_problems}</h3>
                                 </Grid>
                                 <Grid>
-                                  <h1>{blood_pressure}</h1>
+                                  <h3>{blood_pressure}</h3>
                                 </Grid>
                                 <Grid container xs={12} md={12}>
                                   <Grid xs={6} md={6}>
