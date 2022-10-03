@@ -16673,7 +16673,7 @@ label.newrole {
 }
 
 .stndQues1 h1 {
-  font-weight: 700;
+  font-weight: 800;
   margin-top: 10px;
 }
 
@@ -17454,10 +17454,6 @@ a {
 .darkTheme .form_full .card-section {
   background-color: #404646;
 }
-<<<<<<< HEAD
-
-
-=======
 .darkTheme .top-up-mid1-inner {
   background-color: #404646;
 }
@@ -17479,7 +17475,6 @@ a {
 .darkTheme .settingPage h5 {
   color: #ffffff;
 }
->>>>>>> 42e8515fbcc38403b99ae4997f49a7ac753fb08b
 .Card_1 {
   cursor: pointer;
   border-radius: 5px;
@@ -18152,4 +18147,14 @@ a {
 }
 .card-header p {
   margin-bottom: 6px;
+}
+
+.darkTheme .stndQues1 h3{
+  color:#00ABAF!important;
+}
+.darkTheme .stndQues1 h1{
+  color:#00ABAF!important;
+}
+.darkTheme .stndQues label {
+  color: #00abaf!important;
 }
