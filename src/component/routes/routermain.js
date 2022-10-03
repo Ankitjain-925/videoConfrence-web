@@ -124,12 +124,7 @@ class Routermain extends Component {
               path="/patient/Feed-back"
               render={(props) => <FeedBack {...props} />}
             />
-            {/* added by tanya */}
-            <Route
-              exact
-              path="/patient/Feed-back"
-              render={(props) => <FeedBack {...props} />}
-            />
+         
           {/* Need to route required component */}
             <Route
               path="*"
