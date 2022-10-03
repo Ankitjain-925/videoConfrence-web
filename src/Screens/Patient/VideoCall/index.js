@@ -153,36 +153,38 @@ const VideoCallPat = (props) => {
     if (props.location?.state?.code) {
       var accessKey = props.location?.state?.code;
     }
-    callCometChat(accessKey);
-    axios
-      .get(
-        APIs.getfeedbackfordoctor + "/62a41f1ec627873603accc6c",
-        commonHeader(stateLoginValueAim.token)
-      )
-      .then((response) => {
-        let { data, hassuccessed } = response.data;
-        if (hassuccessed) {
-          const sliderItems = data.length > 2 ? 2 : data.length;
-          const items = [];
-          for (let i = 0; i < data.length; i += sliderItems) {
-            if (i % sliderItems === 0) {
-              items.push(
-                <Card raised className="Banner" key={i.toString()}>
-                  <Grid container spacing={0} className="BannerGrid">
-                    {data.slice(i, i + sliderItems).map((da, index) => {
-                      return <Item key={index.toString()} item={da} />;
-                    })}
-                  </Grid>
-                </Card>
-              );
-            }
-          }
-          setSlideItems(items)
-        }
-      });
+    callCometChat(accessKey);  
   }, [time]);
 
-
+  const getFeedbackIssue = (allTasks)=>{
+    console.log('allTasks', allTasks)
+    axios
+    .get(
+      APIs.getfeedbackfordoctor + "/"+ allTasks?.doctor_info?.user_id,
+      commonHeader(stateLoginValueAim.token)
+    )
+    .then((response) => {
+      let { data, hassuccessed } = response.data;
+      if (hassuccessed) {
+        const sliderItems = data.length > 2 ? 2 : data.length;
+        const items = [];
+        for (let i = 0; i < data.length; i += sliderItems) {
+          if (i % sliderItems === 0) {
+            items.push(
+              <Card raised className="Banner" key={i.toString()}>
+                <Grid container spacing={0} className="BannerGrid">
+                  {data.slice(i, i + sliderItems).map((da, index) => {
+                    return <Item key={index.toString()} item={da} />;
+                  })}
+                </Grid>
+              </Card>
+            );
+          }
+        }
+        setSlideItems(items)
+      }
+    });
+  }
   const callCometChat = (accessKey) => {
     var profile_id = stateLoginValueAim?.user?.profile_id;
     let callType = 'DIRECT';
@@ -196,6 +198,7 @@ const VideoCallPat = (props) => {
               setallDoctorData(response?.data?.data.doctor_info);
               var taskData = response.data.data.Task;
               var gender = response.data.data.gender;
+              getFeedbackIssue(response?.data?.data);
               CometChat.login(profile_id, COMETCHAT_CONSTANTS.AUTH_KEY)
                 .then((resp) => {
                   axios

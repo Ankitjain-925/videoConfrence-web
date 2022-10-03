@@ -112,7 +112,60 @@ function Index(props) {
       {props.error_section == 8 && (
         <div className="err_message2">{props.errorChrMsg}</div>
       )}
-      <Grid className="haveCmnSpc">
+
+<Grid className="bgncmnSpc">
+        <Grid className="fatiqueQues fatiqueQuess1">
+          <FatiqueQuestion
+            updateAllEntrySec={(e) =>
+              props.updateAllEntrySec(e, 'stomach_blood_pressure')
+            }
+            label={Do_you_suffer_from_high_or_low_blood}
+            value={props.updateQues?.stomach_blood_pressure}
+          />
+        </Grid>
+        {props.error_section == 67 && (
+          <div className="err_message2">{props.errorChrMsg}</div>
+        )}
+        {props.updateQues &&
+          props.updateQues?.stomach_blood_pressure === 'yes' && (
+            <>
+               <Grid container direction="row" spacing="1">
+               <Grid item md={6} sm={6}>
+            <Grid className="fillDia">
+              <MMHG
+                name="stomach_rr_systolic"
+                Unit="mmHg"
+                label={rr_systolic}
+                onChange={(e) => props.updateAllEntrySec1(e)}
+                value={props.updateQues?.stomach_rr_systolic}
+              />
+            </Grid>
+            {props.error_section == 14 && (
+              <div className="err_message2">{props.errorChrMsg}</div>
+            )}
+          </Grid>
+          <Grid item md={6} sm={6}>
+            <Grid className="fillDia">
+              <MMHG
+                name="stomach_rr_diastolic"
+                Unit="mmHg"
+                label={RR_diastolic}
+                onChange={(e) => props.updateAllEntrySec1(e)}
+                value={props.updateQues?.stomach_rr_diastolic}
+              />
+            </Grid>
+            {props.error_section == 15 && (
+              <div className="err_message2">{props.errorChrMsg}</div>
+            )}
+          </Grid>
+        </Grid> 
+            </>
+          )}
+      </Grid>
+
+
+
+      {/* <Grid className="haveCmnSpc">
         <Grid className="bgncmnLbl">
           <label>{Do_you_suffer_from_high_or_low_blood}</label>
         </Grid>
@@ -146,7 +199,7 @@ function Index(props) {
             )}
           </Grid>
         </Grid>
-      </Grid>{' '}
+      </Grid>{' '} */}
       <Grid className="fatiqueQues fatiqueQuess1">
         <FatiqueQuestion
           updateAllEntrySec={(e) =>
@@ -213,7 +266,45 @@ function Index(props) {
       {props.error_section == 16 && (
         <div className="err_message2">{props.errorChrMsg}</div>
       )}
-      <Grid className="textFieldArea1">
+
+<Grid className="bgncmnSpc">
+        <Grid className="fatiqueQues fatiqueQuess1">
+          <FatiqueQuestion
+            updateAllEntrySec={(e) =>
+              props.updateAllEntrySec(e, 'stomache_have_temprature')
+            }
+            label={temperature_please_tell_me_in_C}
+            value={props.updateQues?.stomache_have_temprature}
+          />
+        </Grid>
+        {props.error_section == 59 && (
+          <div className="err_message2">{props.errorChrMsg}</div>
+        )}
+        {props.updateQues &&
+          props.updateQues?.stomache_have_temprature === 'yes' && (
+            <>
+              <Grid container direction="row" spacing="1">
+          <Grid item md={12} sm={12} className="textFieldArea1">
+            <Grid className="fillDia">
+            <input
+            type="number"
+            placeholder="36.6"
+            name="stomach_body_temp"
+            onChange={(e) => props.updateAllEntrySec1(e, 'stomach_body_temp')}
+            // className={forError ? 'setRedColor' : ''}
+            value={props.updateQues?.stomach_body_temp}
+          ></input>
+          {props.error_section == 17 && (
+            <div className="err_message2">{props.errorChrMsg}</div>
+          )}
+          </Grid>
+         
+              </Grid>
+              </Grid>
+            </>
+          )}
+      </Grid>
+      {/* <Grid className="textFieldArea1">
         <Grid className="bgncmnSpc">
           <Grid className="bgncmnLbl">
             <label>{temperature_please_tell_me_in_C}</label>
@@ -232,7 +323,7 @@ function Index(props) {
             <div className="err_message2">{props.errorChrMsg}</div>
           )}
         </Grid>
-      </Grid>
+      </Grid> */}
       <Grid className="bgncmnSpc">
         <Grid className="fatiqueQues fatiqueQuess1">
           <FatiqueQuestion

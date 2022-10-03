@@ -1968,11 +1968,8 @@
     "video_call":"Video-Call",
     "please_enter_access_key":"Please enter Access Key first",
     "assesments":"Assesments",
-    "please_enter_time":"Please Enter Time"
-    
-    
-    
-   
+    "please_enter_time":"Please Enter Time",
+    "note_already":"Note: Time slots in red is already booked"
     
   }
 }

@@ -104,6 +104,7 @@ class Index extends Component {
       you_have_fever,
       back_symbol,
       next_symbol,
+      note_already
     } = translate;
     const { stateLoginValueAim } = this.props;
     if (
@@ -470,6 +471,7 @@ class Index extends Component {
             )}
             {openCalendar === true && (
               <Grid>
+                 <p className="err_message">{note_already}</p>
                 <Grid className="selCalenderUpr">
                   <Grid className="selCalender">
                     <Calendar2
