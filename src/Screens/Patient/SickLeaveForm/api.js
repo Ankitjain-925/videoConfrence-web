@@ -85,7 +85,6 @@ export const CancelClick = (current) => {
 
 // For send meeting link sendLinkDocPatpatient as well as doctor
 export const sendLinkDocPat = (taskValue, current) => {
-  console.log('call on credit card too')
   var data = {};
   var patient_info = {
     first_name: current.props.stateLoginValueAim?.user?.first_name,
@@ -95,7 +94,6 @@ export const sendLinkDocPat = (taskValue, current) => {
     // user_id: current.props.stateLoginValueAim?.user.user?._id,
   };
   data.patient_info = patient_info;
-  console.log('taskValue?.assinged_to[0]', taskValue?.assinged_to[0])
   var doctor_info = {
     first_name: taskValue?.assinged_to[0]?.first_name,
     last_name: taskValue?.assinged_to[0]?.last_name,
@@ -121,7 +119,6 @@ export const sendLinkDocPat = (taskValue, current) => {
   data.patient_profile_id = taskValue?.patient?.profile_id;
   data.patient_id = current.props.stateLoginValueAim?.user?._id;
   data.doctor_profile_id = taskValue?.assinged_to[0]?.profile_id;
- console.log('taskValue?.assinged_to[0]?.user_id', taskValue?.assinged_to[0]?.user_id)
   data.doctor_id = taskValue?.assinged_to[0]?.user_id;
   current.setState({ loaderImage: true });
   axios
@@ -219,7 +216,6 @@ export const saveOnDB1 = (data, task, current) => {
       )
       .then((responce) => {
         if (responce.data.hassuccessed) {
-          console.log('frombackend',responce.data.data)
 
           if (task && task.payment_by && task.payment_by === "Credit-Card") {
             sendLinkDocPat(responce.data.data, current);
@@ -521,127 +517,127 @@ export const handleEvalSubmit = (current, value) => {
                   current
                 )
               ) {
-              if (
-                validatePainHeart(
-                  data.headache,
-                  data.headache_body_temp,
-                  'headache_body_temp',
-                  current
-                )
-              ) {
-               
                 if (
                   validatePainHeart(
                     data.headache,
-                    data,
-                    'headache_have_diabetes',
+                    data.headache_body_temp,
+                    'headache_body_temp',
                     current
                   )
                 ) {
+
                   if (
                     validatePainHeart(
                       data.headache,
-                      data.headache_quality_of_pain,
-                      'headache_quality_of_pain',
+                      data,
+                      'headache_have_diabetes',
                       current
                     )
                   ) {
                     if (
-                      validatePainHeart1(
+                      validatePainHeart(
                         data.headache,
-                        data.headache_need_to_vomit,
-                        'headache_need_to_vomit',
+                        data.headache_quality_of_pain,
+                        'headache_quality_of_pain',
                         current
                       )
                     ) {
                       if (
                         validatePainHeart1(
                           data.headache,
-                          data.headache_onset_of_pain,
-                          'headache_onset_of_pain',
+                          data.headache_need_to_vomit,
+                          'headache_need_to_vomit',
                           current
                         )
                       ) {
                         if (
                           validatePainHeart1(
                             data.headache,
-                            data.headache_take_painkillers,
-                            'headache_take_painkillers',
+                            data.headache_onset_of_pain,
+                            'headache_onset_of_pain',
                             current
                           )
                         ) {
                           if (
-                            validatePainHeart(
+                            validatePainHeart1(
                               data.headache,
-                              data.headache_pain_intensity,
-                              'headache_pain_intensity',
+                              data.headache_take_painkillers,
+                              'headache_take_painkillers',
                               current
                             )
                           ) {
                             if (
                               validatePainHeart(
                                 data.headache,
-                                data.headache_undergoing_treatment,
-                                'headache_undergoing_treatment',
+                                data.headache_pain_intensity,
+                                'headache_pain_intensity',
                                 current
                               )
                             ) {
                               if (
-                                validatePainHeart1(
-                                  data.stomach_problems,
-                                  data,
-                                  'stomach_problems',
+                                validatePainHeart(
+                                  data.headache,
+                                  data.headache_undergoing_treatment,
+                                  'headache_undergoing_treatment',
                                   current
                                 )
                               ) {
                                 if (
-                                  validatePainHeart(
+                                  validatePainHeart1(
                                     data.stomach_problems,
-                                    data.stomach_painbegin_painPoint,
-                                    'stomach_painbegin_painPoint',
+                                    data,
+                                    'stomach_problems',
                                     current
                                   )
                                 ) {
                                   if (
                                     validatePainHeart(
                                       data.stomach_problems,
-                                      data.stomach_hurtnow_painPoint,
-                                      'stomach_hurtnow_painPoint',
+                                      data.stomach_painbegin_painPoint,
+                                      'stomach_painbegin_painPoint',
                                       current
                                     )
                                   ) {
                                     if (
-                                      validatePainHeart1(
+                                      validatePainHeart(
                                         data.stomach_problems,
-                                        data.stomach_behind_the_sternum,
-                                        'stomach_behind_the_sternum',
+                                        data.stomach_hurtnow_painPoint,
+                                        'stomach_hurtnow_painPoint',
                                         current
                                       )
                                     ) {
                                       if (
                                         validatePainHeart1(
                                           data.stomach_problems,
-                                          data.stomach_heart_attack,
-                                          'stomach_heart_attack',
+                                          data.stomach_behind_the_sternum,
+                                          'stomach_behind_the_sternum',
                                           current
                                         )
                                       ) {
                                         if (
                                           validatePainHeart1(
                                             data.stomach_problems,
-                                            data.stomach_heart_failure,
-                                            'stomach_heart_failure',
+                                            data.stomach_heart_attack,
+                                            'stomach_heart_attack',
                                             current
                                           )
                                         ) {
                                           if (
-                                            validatePainHeart(
+                                            validatePainHeart1(
                                               data.stomach_problems,
-                                              data,
-                                              'stomach_blood_pressure',
+                                              data.stomach_heart_failure,
+                                              'stomach_heart_failure',
                                               current
                                             )
                                           ) {
+                                            if (
+                                              validatePainHeart(
+                                                data.stomach_problems,
+                                                data,
+                                                'stomach_blood_pressure',
+                                                current
+                                              )
+                                            ) {
 
                                               if (
                                                 validatePainHeart(
@@ -651,7 +647,7 @@ export const handleEvalSubmit = (current, value) => {
                                                   current
                                                 )
                                               ) {
-                                               
+
                                                 if (
                                                   validatePainHeart(
                                                     data.stomach_problems,
@@ -716,9 +712,9 @@ export const handleEvalSubmit = (current, value) => {
                                                                   current
                                                                 )
                                                               ) {
-                                                              if (
-                                                                validatePainHeart(
-                                                                  data.diarrhea,
+                                                                if (
+                                                                  validatePainHeart(
+                                                                    data.diarrhea,
                                                                     data.diarrhea_envi_suffer_symtoms,
                                                                     'diarrhea_envi_suffer_symtoms',
                                                                     current
@@ -788,27 +784,19 @@ export const handleEvalSubmit = (current, value) => {
                                                                                     current
                                                                                   )
                                                                                 ) {
-                                                                                if (
-                                                                                  validatePainHeart(
-                                                                                    data.have_fever,
-                                                                                    data.fever_sputum,
-                                                                                    'fever_sputum',
-                                                                                    current
-                                                                                  )
-                                                                                ) {
                                                                                   if (
-                                                                                    validatePainHeart1(
-                                                                                      data.back_pain,
-                                                                                      data,
-                                                                                      'back_pain',
+                                                                                    validatePainHeart(
+                                                                                      data.have_fever,
+                                                                                      data.fever_sputum,
+                                                                                      'fever_sputum',
                                                                                       current
                                                                                     )
                                                                                   ) {
                                                                                     if (
-                                                                                      validatePainHeart(
+                                                                                      validatePainHeart1(
                                                                                         data.back_pain,
-                                                                                        data.back_pain_symptoms_begin,
-                                                                                        'back_pain_symptoms_begin',
+                                                                                        data,
+                                                                                        'back_pain',
                                                                                         current
                                                                                       )
                                                                                     ) {
@@ -821,53 +809,61 @@ export const handleEvalSubmit = (current, value) => {
                                                                                         )
                                                                                       ) {
                                                                                         if (
-                                                                                          validatePainHeart1(
+                                                                                          validatePainHeart(
                                                                                             data.back_pain,
-                                                                                            data.back_pain_been_injured,
-                                                                                            'back_pain_been_injured',
+                                                                                            data.back_pain_symptoms_begin,
+                                                                                            'back_pain_symptoms_begin',
                                                                                             current
                                                                                           )
                                                                                         ) {
                                                                                           if (
                                                                                             validatePainHeart1(
                                                                                               data.back_pain,
-                                                                                              data.back_pain_physically_strained,
-                                                                                              'back_pain_physically_strained',
+                                                                                              data.back_pain_been_injured,
+                                                                                              'back_pain_been_injured',
                                                                                               current
                                                                                             )
                                                                                           ) {
                                                                                             if (
                                                                                               validatePainHeart1(
                                                                                                 data.back_pain,
-                                                                                                data.back_pain_stress_depression,
-                                                                                                'back_pain_stress_depression',
+                                                                                                data.back_pain_physically_strained,
+                                                                                                'back_pain_physically_strained',
                                                                                                 current
                                                                                               )
                                                                                             ) {
                                                                                               if (
                                                                                                 validatePainHeart1(
                                                                                                   data.back_pain,
-                                                                                                  data.back_pain_heart_attack,
-                                                                                                  'back_pain_heart_attack',
+                                                                                                  data.back_pain_stress_depression,
+                                                                                                  'back_pain_stress_depression',
                                                                                                   current
                                                                                                 )
                                                                                               ) {
                                                                                                 if (
                                                                                                   validatePainHeart1(
                                                                                                     data.back_pain,
-                                                                                                    data.back_pain_heart_failure,
-                                                                                                    'back_pain_heart_failure',
+                                                                                                    data.back_pain_heart_attack,
+                                                                                                    'back_pain_heart_attack',
                                                                                                     current
                                                                                                   )
                                                                                                 ) {
                                                                                                   if (
-                                                                                                    validatePainHeart(
+                                                                                                    validatePainHeart1(
                                                                                                       data.back_pain,
-                                                                                                      data,
-                                                                                                      'back_pain_blood_pressure',
+                                                                                                      data.back_pain_heart_failure,
+                                                                                                      'back_pain_heart_failure',
                                                                                                       current
                                                                                                     )
                                                                                                   ) {
+                                                                                                    if (
+                                                                                                      validatePainHeart(
+                                                                                                        data.back_pain,
+                                                                                                        data,
+                                                                                                        'back_pain_blood_pressure',
+                                                                                                        current
+                                                                                                      )
+                                                                                                    ) {
                                                                                                       if (
                                                                                                         validatePainHeart1(
                                                                                                           data.cough_and_snees,
@@ -1414,7 +1410,7 @@ export const validatePainHeart = (check, value, item, current) => {
     }
   }
   else if (
-    (item === 'back_pain_blood_pressure' ) &&
+    (item === 'back_pain_blood_pressure') &&
     check === 'yes'
   ) {
     if (!value.back_pain_blood_pressure) {
@@ -1453,7 +1449,7 @@ export const validatePainHeart = (check, value, item, current) => {
         });
         MoveTop(250);
         return false;
-      }  
+      }
       else if (!value.back_pain_rr_diastolic) {
         current.setState({
           error_section: 34,
@@ -1482,7 +1478,7 @@ export const validatePainHeart = (check, value, item, current) => {
         });
         MoveTop(250);
         return false;
-      } 
+      }
       else {
         return true;
       }
@@ -1490,11 +1486,11 @@ export const validatePainHeart = (check, value, item, current) => {
     else {
       return true;
     }
-  
+
   }
-  
+
   else if (
-    (item === 'stomach_blood_pressure' ) &&
+    (item === 'stomach_blood_pressure') &&
     check === 'yes'
   ) {
     if (!value.stomach_blood_pressure) {
@@ -1533,7 +1529,7 @@ export const validatePainHeart = (check, value, item, current) => {
         });
         MoveTop(250);
         return false;
-      } 
+      }
       else if (!value.stomach_rr_diastolic) {
         current.setState({
           error_section: 15,
@@ -1562,7 +1558,7 @@ export const validatePainHeart = (check, value, item, current) => {
         });
         MoveTop(250);
         return false;
-      } 
+      }
       else {
         return true;
       }
@@ -1570,10 +1566,10 @@ export const validatePainHeart = (check, value, item, current) => {
     else {
       return true;
     }
-  
-  }  
+
+  }
   else if (
-    (item === 'cough_have_temprature' ) &&
+    (item === 'cough_have_temprature') &&
     check === 'yes'
   ) {
     if (!value.cough_have_temprature) {
@@ -1585,30 +1581,30 @@ export const validatePainHeart = (check, value, item, current) => {
       return false;
     } else if (value && value.cough_have_temprature === 'yes') {
       if (!value?.cough_body_temp) {
-          current.setState({
-            error_section: 36,
-            errorChrMsg: please_enter + ' ' + body_temp,
-          });
-          MoveTop(550);
-          return false;
-        } else if (value?.cough_body_temp < 36 || value?.cough_body_temp > 41) {
-          current.setState({
-            error_section: 36,
-            errorChrMsg: please_select + ' ' + Body_temp_bet,
-          });
-          MoveTop(550);
-          return false;
-        } else {
-          return true;
-        }
+        current.setState({
+          error_section: 36,
+          errorChrMsg: please_enter + ' ' + body_temp,
+        });
+        MoveTop(550);
+        return false;
+      } else if (value?.cough_body_temp < 36 || value?.cough_body_temp > 41) {
+        current.setState({
+          error_section: 36,
+          errorChrMsg: please_select + ' ' + Body_temp_bet,
+        });
+        MoveTop(550);
+        return false;
+      } else {
+        return true;
+      }
     }
     else {
       return true;
     }
-  
-  } 
+
+  }
   else if (
-    (item === 'stomache_have_temprature' ) &&
+    (item === 'stomache_have_temprature') &&
     check === 'yes'
   ) {
     if (!value.stomache_have_temprature) {
@@ -1620,27 +1616,27 @@ export const validatePainHeart = (check, value, item, current) => {
       return false;
     } else if (value && value.stomache_have_temprature === 'yes') {
       if (!value?.stomach_body_temp) {
-          current.setState({
-            error_section: 17,
-            errorChrMsg: please_enter + ' ' + body_temp,
-          });
-          MoveTop(550);
-          return false;
-        } else if (value?.stomach_body_temp < 36 || value?.stomach_body_temp > 41) {
-          current.setState({
-            error_section: 17,
-            errorChrMsg: please_select + ' ' + Body_temp_bet,
-          });
-          MoveTop(550);
-          return false;
-        } else {
-          return true;
-        }
+        current.setState({
+          error_section: 17,
+          errorChrMsg: please_enter + ' ' + body_temp,
+        });
+        MoveTop(550);
+        return false;
+      } else if (value?.stomach_body_temp < 36 || value?.stomach_body_temp > 41) {
+        current.setState({
+          error_section: 17,
+          errorChrMsg: please_select + ' ' + Body_temp_bet,
+        });
+        MoveTop(550);
+        return false;
+      } else {
+        return true;
+      }
     }
     else {
       return true;
     }
-  
+
   }
   else if (item === 'stomach_take_painkillers' && check === 'yes') {
     if (!value) {
@@ -1665,9 +1661,9 @@ export const validatePainHeart = (check, value, item, current) => {
     } else {
       return true;
     }
-  } 
+  }
   else if (
-    (item === 'Cough_allergies' ) &&
+    (item === 'Cough_allergies') &&
     check === 'yes'
   ) {
     if (!value.Cough_allergies) {
@@ -1679,24 +1675,24 @@ export const validatePainHeart = (check, value, item, current) => {
       return false;
     } else if (value && value.Cough_allergies === 'yes') {
       var section = 38;
-    if (!value.cough_suffer_from_allergies || value.cough_suffer_from_allergies === '<p><br></p>' || value.cough_suffer_from_allergies === '<p></p>') {
-      current.setState({
-        error_section: 38,
-        errorChrMsg: please_enter + ' ' + 'allergies',
-      });
-      MoveTop(450);
-      return false;
-    } else {
-      return true;
-    }
+      if (!value.cough_suffer_from_allergies || value.cough_suffer_from_allergies === '<p><br></p>' || value.cough_suffer_from_allergies === '<p></p>') {
+        current.setState({
+          error_section: 38,
+          errorChrMsg: please_enter + ' ' + 'allergies',
+        });
+        MoveTop(450);
+        return false;
+      } else {
+        return true;
+      }
     }
     else {
       return true;
     }
-  
-  } 
+
+  }
   else if (
-    (item === 'fever_have_a_Sputum' ) &&
+    (item === 'fever_have_a_Sputum') &&
     check === 'yes'
   ) {
     if (!value.fever_have_a_Sputum) {
@@ -1708,24 +1704,24 @@ export const validatePainHeart = (check, value, item, current) => {
       return false;
     } else if (value && value.fever_have_a_Sputum === 'yes') {
       var section = 30;
-    if (!value.fever_sputum || value.fever_sputum === '<p><br></p>' || value.fever_sputum === '<p></p>') {
-      current.setState({
-        error_section: 30,
-        errorChrMsg: please_enter + ' ' + sputum_intensity,
-      });
-      MoveTop(450);
-      return false;
-    } else {
-      return true;
-    }
+      if (!value.fever_sputum || value.fever_sputum === '<p><br></p>' || value.fever_sputum === '<p></p>') {
+        current.setState({
+          error_section: 30,
+          errorChrMsg: please_enter + ' ' + sputum_intensity,
+        });
+        MoveTop(450);
+        return false;
+      } else {
+        return true;
+      }
     }
     else {
       return true;
     }
-  
-  } 
+
+  }
   else if (
-    (item === 'diarrhea_have_temprature' ) &&
+    (item === 'diarrhea_have_temprature') &&
     check === 'yes'
   ) {
     if (!value.diarrhea_have_temprature) {
@@ -1737,28 +1733,28 @@ export const validatePainHeart = (check, value, item, current) => {
       return false;
     } else if (value && value.diarrhea_have_temprature === 'yes') {
       if (!value?.diarrhea_body_temp) {
-          current.setState({
-            error_section: 23,
-            errorChrMsg: please_enter + ' ' + body_temp,
-          });
-          MoveTop(550);
-          return false;
-        } else if (value?.diarrhea_body_temp < 36 || value?.diarrhea_body_temp > 41) {
-          current.setState({
-            error_section: 23,
-            errorChrMsg: please_select + ' ' + Body_temp_bet,
-          });
-          MoveTop(550);
-          return false;
-        } else {
-          return true;
-        }
+        current.setState({
+          error_section: 23,
+          errorChrMsg: please_enter + ' ' + body_temp,
+        });
+        MoveTop(550);
+        return false;
+      } else if (value?.diarrhea_body_temp < 36 || value?.diarrhea_body_temp > 41) {
+        current.setState({
+          error_section: 23,
+          errorChrMsg: please_select + ' ' + Body_temp_bet,
+        });
+        MoveTop(550);
+        return false;
+      } else {
+        return true;
+      }
     }
     else {
       return true;
     }
-  
-  } 
+
+  }
   else if (item === 'diarrhea_suffer_from_vomiting' && check === 'yes') {
     if (!value) {
       current.setState({
@@ -1828,7 +1824,7 @@ export const validatePainHeart = (check, value, item, current) => {
     } else {
       return true;
     }
-  } 
+  }
   // else if (
   //   (item === 'cough_suffer_from_allergies') &&
   //   check === 'yes'
@@ -1886,7 +1882,7 @@ export const validatePainHeart = (check, value, item, current) => {
         ? 3
         : item === 'stomach_rr_systolic'
           ? 14
-            : 42;
+          : 42;
     if (!value) {
       current.setState({
         error_section: section,
@@ -1929,7 +1925,7 @@ export const validatePainHeart = (check, value, item, current) => {
         ? 4
         : item === 'stomach_rr_diastolic'
           ? 15
-            : 43;
+          : 43;
     if (!value) {
       current.setState({
         error_section: section,
@@ -1988,7 +1984,7 @@ export const validatePainHeart = (check, value, item, current) => {
     }
   }
   else if (
-    (item === 'headache_have_temprature' ) &&
+    (item === 'headache_have_temprature') &&
     check === 'yes'
   ) {
     if (!value.headache_have_temprature) {
@@ -2000,28 +1996,28 @@ export const validatePainHeart = (check, value, item, current) => {
       return false;
     } else if (value && value.headache_have_temprature === 'yes') {
       if (!value?.headache_body_temp) {
-          current.setState({
-            error_section: 5,
-            errorChrMsg: please_enter + ' ' + body_temp,
-          });
-          MoveTop(550);
-          return false;
-        } else if (value?.headache_body_temp < 36 || value?.headache_body_temp > 41) {
-          current.setState({
-            error_section: 5,
-            errorChrMsg: please_select + ' ' + Body_temp_bet,
-          });
-          MoveTop(550);
-          return false;
-        } else {
-          return true;
-        }
+        current.setState({
+          error_section: 5,
+          errorChrMsg: please_enter + ' ' + body_temp,
+        });
+        MoveTop(550);
+        return false;
+      } else if (value?.headache_body_temp < 36 || value?.headache_body_temp > 41) {
+        current.setState({
+          error_section: 5,
+          errorChrMsg: please_select + ' ' + Body_temp_bet,
+        });
+        MoveTop(550);
+        return false;
+      } else {
+        return true;
+      }
     }
     else {
       return true;
     }
-  
-  } 
+
+  }
   else if (item === 'headache_have_diabetes' && check === 'yes') {
     if (!value.headache_have_diabetes) {
       current.setState({
