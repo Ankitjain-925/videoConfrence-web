@@ -474,6 +474,9 @@ function Index(props) {
                   value={props.updateQues?.headache_situation}
                 />
               </Grid>
+              {props.error_section == 58 && (
+                <div className="err_message2">{props.errorChrMsg}</div>
+              )}
             </>
           )}
       </Grid>
