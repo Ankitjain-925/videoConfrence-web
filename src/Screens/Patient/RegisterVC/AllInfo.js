@@ -129,16 +129,9 @@ class AllInfo extends Component {
                                 <Grid container direction="row">
                                     {/* {console.log("this.props.dataa", this.props.dataa.doctor_detail.first_name)} */}
                                     {this.props.dataa.doctor_detail ?
-                                        <Grid
-                                            item
-                                            xs={6}
-                                            md={6}
-                                            lg={6}
-                                            sm={6}
-                                        >
+                                        <Grid item xs={12} sm={12} md={6} lg={6}>
                                             <Grid className="card-header Card_Sel">
                                                 <S3Image imgUrl={this.props.dataa.doctor_detail[0].image} />
-
                                                 <Grid>
                                                     <h5 className="selectdoc-head"> {this.props.dataa.doctor_detail[0].first_name}{' '}{this.props.dataa.doctor_detail[0].last_name}</h5>
                                                     <h5 className="selectdoc-head2"> {'('}{this.props.dataa.doctor_detail[0].profile_id}{')'}</h5>

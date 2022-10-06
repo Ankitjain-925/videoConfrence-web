@@ -153,37 +153,37 @@ const VideoCallPat = (props) => {
     if (props.location?.state?.code) {
       var accessKey = props.location?.state?.code;
     }
-    callCometChat(accessKey);  
+    callCometChat(accessKey);
   }, [time]);
 
-  const getFeedbackIssue = (allTasks)=>{
+  const getFeedbackIssue = (allTasks) => {
     console.log('allTasks', allTasks)
     axios
-    .get(
-      APIs.getfeedbackfordoctor + "/"+ allTasks?.doctor_info?.user_id,
-      commonHeader(stateLoginValueAim.token)
-    )
-    .then((response) => {
-      let { data, hassuccessed } = response.data;
-      if (hassuccessed) {
-        const sliderItems = data.length > 2 ? 2 : data.length;
-        const items = [];
-        for (let i = 0; i < data.length; i += sliderItems) {
-          if (i % sliderItems === 0) {
-            items.push(
-              <Card raised className="Banner" key={i.toString()}>
-                <Grid container spacing={0} className="BannerGrid">
-                  {data.slice(i, i + sliderItems).map((da, index) => {
-                    return <Item key={index.toString()} item={da} />;
-                  })}
-                </Grid>
-              </Card>
-            );
+      .get(
+        APIs.getfeedbackfordoctor + "/" + allTasks?.doctor_info?.user_id,
+        commonHeader(stateLoginValueAim.token)
+      )
+      .then((response) => {
+        let { data, hassuccessed } = response.data;
+        if (hassuccessed) {
+          const sliderItems = data.length > 2 ? 2 : data.length;
+          const items = [];
+          for (let i = 0; i < data.length; i += sliderItems) {
+            if (i % sliderItems === 0) {
+              items.push(
+                <Card raised className="Banner" key={i.toString()}>
+                  <Grid container spacing={0} className="BannerGrid">
+                    {data.slice(i, i + sliderItems).map((da, index) => {
+                      return <Item key={index.toString()} item={da} />;
+                    })}
+                  </Grid>
+                </Card>
+              );
+            }
           }
+          setSlideItems(items)
         }
-        setSlideItems(items)
-      }
-    });
+      });
   }
   const callCometChat = (accessKey) => {
     var profile_id = stateLoginValueAim?.user?.profile_id;
@@ -256,7 +256,6 @@ const VideoCallPat = (props) => {
       axios
         .put(APIs3.joinmeeting + task_id)
         .then((responce) => {
-          history.push({ pathname: "/patient/Feed-back", state: { allDoctorData: allDoctorData, openModal: true } })
           setLoaderImage(false);
         })
         .catch(() => {
@@ -285,31 +284,31 @@ const VideoCallPat = (props) => {
 
   // const countDown = (data) => {
 
-  //   setInterval(() => {
-  //     let [t0, t1] = data?.end.split(':');
-  //     let date = new Date().setHours(t0, t1)
-  //     var countDownDate = new Date(date).getTime();
-  //     var now = new Date().getTime();
-  //     var distance = countDownDate - now;
-  //     let distance1 = distance - 1;
-  //     setTime(secondsToTime(distance1)
-  //       , () => {
-  //         if (distance1 < 0) {
-  //           setStartCall(6);
-  //           clearInterval(timer);
-  //         }
-  //       }, 1000)
-  //   })
-  //   this.setState({
-  //     time: ,
-  //     distance1: distance1,
-  //   }, () => {
-  //     if (distance1 < 0) {
-  //       this.setState({ sectionValue: 6 });
-  //       clearInterval(timer);
-  //     }
-  //   });
-  // }, 1000)
+  // setInterval(() => {
+  //   let [t0, t1] = data?.end.split(':');
+  //   let date = new Date().setHours(t0, t1)
+  //   var countDownDate = new Date(date).getTime();
+  //   var now = new Date().getTime();
+  //   var distance = countDownDate - now;
+  //   let distance1 = distance - 1;
+  //   setTime(secondsToTime(distance1)
+  //     , () => {
+  //       if (distance1 < 0) {
+  //         setStartCall(6);
+  //         clearInterval(timer);
+  //       }
+  //     }, 1000)
+  // })
+  //     this.setState({
+  //       time: ,
+  //       distance1: distance1,
+  //     }, () => {
+  //       if (distance1 < 0) {
+  //         this.setState({ sectionValue: 6 });
+  //         clearInterval(timer);
+  //       }
+  //     });
+  //   }, 1000)
   // }
 
   const secondsToTime = (distance) => {

@@ -248,7 +248,8 @@ const Dashboard = (props) => {
                       <>
                         {!openPayment && (
                           <div className='last-sec-setting form_full'>
-                            <div className="custom-topup-Back" onClick={() => { SetcustomAmount(false) }}> « {back_sec}  </div>
+                            <div className="custom-topup-Back addImgArow" onClick={() => { SetcustomAmount(false) }}>  
+                             <img src={require("assets/images/Right.svg")} alt="" title="" />{back_sec}</div>
                             <div className='custom-topup form_full_bl'>
                               <div>
                                 <h2 className="custom-topup-head">{add_custom_amount}</h2>
@@ -287,10 +288,6 @@ const Dashboard = (props) => {
                               famount={famount}
 
                             />
-
-
-
-
                           )}
                         </Grid>
 
