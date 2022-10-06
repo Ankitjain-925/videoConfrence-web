@@ -239,6 +239,9 @@ function Index(props) {
                   value={props.updateQues?.stomach_Hba1c}
                 />
               </Grid>
+              {props.error_section == 300 && (
+                    <div className="err_message2">{props.errorChrMsg}</div>
+                  )}
             </Grid>
           </Grid>
           <Grid className="fillDia">
