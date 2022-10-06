@@ -14170,11 +14170,6 @@ ul.patientHint li {
   color: #fafafa;
 }
 
-.darkTheme .insrnceTbl table th {
-  color: #00abaf;
-  font-size: 15px;
-}
-
 .darkTheme .insrnceTbl table td {
   color: #bfc1c1;
 }
@@ -16897,7 +16892,6 @@ label.errMsgStyleSecPart {
 }
 
 .msgSectionCss {
-  width: 100%;
   font-weight: 600;
   font-size: 23px;
   text-align: center;
@@ -17845,14 +17839,6 @@ a {
     line-height: 28px;
     margin-bottom: 10px;
   }
-  .darkTheme .top-up-cost {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 48px;
-    padding: 22px 0px;
-    color: #d9dada
-  }
   .custom-topup-head{
     text-align: center;
     margin-bottom: 3px;
@@ -17971,11 +17957,6 @@ a {
     }
     .creatTaskModel.creatTaskModel11 {
       padding: 0px;
-    }
-    .creatTaskCntnt {
-      height: 537px;
-      overflow-y: scroll;
-      padding: 20px 0px;
     }
     .symptomsType a:hover .symptomsWht {
       display: block !important;
@@ -18148,13 +18129,4 @@ a {
 }
 .card-header p {
   margin-bottom: 6px;
-}
-.darkTheme .stndQues1 h3{
-  color:#00ABAF!important;
-}
-.darkTheme .stndQues1 h1{
-  color:#00ABAF!important;
-}
-.darkTheme .stndQues label {
-  color: #00abaf!important;
 }

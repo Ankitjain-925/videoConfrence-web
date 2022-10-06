@@ -288,10 +288,6 @@ const Dashboard = (props) => {
                               famount={famount}
 
                             />
-
-
-
-
                           )}
                         </Grid>
 
