@@ -2240,8 +2240,8 @@ a.profilMenu {
     line-height: 18px !important;
   }
   .scndOptionIner ul {
-    padding: 12px 8px !important;
-    min-width: 182px !important;
+    padding: 7px 8px !important;
+    min-width: 112px !important;
   }
 
   /* Tabs scrollbar for mobile */
@@ -3794,9 +3794,11 @@ a.profilMenu {
   line-height: 18px;
 }
 .profilePkg {
+  margin-top: 27px;
+  margin-left: 27px;
   border-radius: 12px;
   background-color: #ffffff;
-  box-shadow: 0 1px 8px 0 rgba(0, 8, 8, 0.04);
+  box-shadow: 0 1px 8px 0 rgb(0 8 8 / 4%);
 }
 .profileId {
   border-radius: 12px;
@@ -3838,8 +3840,9 @@ a.profilMenu {
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0;
-  line-height: 12px;
+  line-height: 17px;
   cursor: pointer;
+  display: block;
 }
 .profileIdRght {
   text-align: right;
@@ -3949,7 +3952,8 @@ span.css-1okebmr-indicatorSeparator {
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 0;
-  line-height: 32px;
+  line-height: 22px;
+  margin-bottom: 10px;
 }
 .insrnceTbl .table th {
   padding-left: 4px;
@@ -16847,13 +16851,15 @@ select:-webkit-autofill:focus {
     padding: 15px;
   }
   .relexStressRght a {
-    font-size: 12px !important;
-    padding: 12px 6px !important;
+    font-size: 11px !important;
+    padding: 12px 4px !important;
   }
   .fatiqueQues a {
     font-size: 12px !important;
     padding: 0px 4px !important;
     min-width: 35px !important;
+    margin-top: 2px;
+    margin-bottom: 2px;
     margin-right: 4px !important;
  }
  .selTimeSlot {
@@ -18239,6 +18245,25 @@ ul.duringCovid li:last-child {
     top: 22px;
     right: 7px;
   }
+  .profilePkgIner2 {
+    min-height: initial !important;
+    margin-bottom: 18px;
+    padding: 16px 14px !important;
+    padding-bottom: 0px !important;
+  }
+  .insrnceTbl .table th {
+    font-size: 10px !important;
+  }
+  .editPinform {
+    padding: 18px 22px 20px 22px !important;
+  }
+  .editCourse label {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+  .profileIdRght {
+    text-align: left !important;
+  }
 }
 .drListLft2 {
   width: 20%;
@@ -18375,12 +18400,6 @@ span.PIC_Condition:hover {
   font-weight: 700;
   margin-bottom: 0px;
 }
-.top-up-cost {
-  font-size: 14px;
-  font-weight: 700;
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
 button.top-up-buybtn {
     height: initial !important;
     font-size: 12px;
@@ -18487,4 +18506,13 @@ h6.selectdoc-head2 {
   margin: 0 auto !important;
   margin-top: 32px !important;
   padding-left: 0px !important;
+}
+.MuiGrid-spacing-xs-1 .MuiGrid-root.textFieldArea1 input[type="number"] {
+  margin-top: 8px;
+}
+.addImgArow img {
+  transform: rotate(180deg);
+  margin-right: 2px;
+  margin-top: 1px;
+  margin-left: 0px !important;
 }

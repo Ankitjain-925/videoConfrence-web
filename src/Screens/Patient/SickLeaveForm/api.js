@@ -2080,7 +2080,7 @@ export const validatePainHeart = (check, value, item, current) => {
       }
       else if (!value.headache_situation) {
         current.setState({
-          error_section: 58,
+          error_section: 85,
           errorChrMsg: please_select_situation,
         });
         MoveTop(200);

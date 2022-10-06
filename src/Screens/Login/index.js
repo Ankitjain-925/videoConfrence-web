@@ -141,7 +141,7 @@ class Index extends Component {
         this.props.LoginReducerAim(email, password, logintoken, () => {
           if( this.props.stateLoginValueAim &&
             this.props.stateLoginValueAim?.user &&
-            !this.props.stateLoginValueAim?.user?.type !=='patient'){
+            this.props.stateLoginValueAim?.user?.type !=='patient'){
             this.setState({onlyPaitent: true})
           }
           this.setState({ myLogin: true });
