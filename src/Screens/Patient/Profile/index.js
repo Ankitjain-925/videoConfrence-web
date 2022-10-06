@@ -155,6 +155,7 @@ class Index extends Component {
       date_time,
       kyc,
       delete_account,
+      deactivate_account
     } = translate;
 
     return (
@@ -196,8 +197,8 @@ class Index extends Component {
                             className="aboutTabsIner"
                           />
                           <Tab label={kyc} className="aboutTabsIner" />
-                          <Tab label={date_time} className="aboutTabsIner" />
-                          <Tab label={delete_account} className="aboutTabsIner" /> */}
+                          <Tab label={date_time} className="aboutTabsIner" /> */}
+                          <Tab label={deactivate_account} className="aboutTabsIner" />
                         </Tabs>
                       </AppBar>
                     </Grid>
@@ -221,6 +222,18 @@ class Index extends Component {
                         </TabContainer>
                       )}
                       {/* End of Security */}
+
+                       {/* Start of Delete */}
+                       {value === 2 && (
+                        <TabContainer>
+                          <DeleteAccountSection
+                            user_token={this.props.stateLoginValueAim.token}
+                            LoggedInUser={this.state.LoggedInUser}
+                            getUserData={this.getUserData}
+                          />
+                        </TabContainer>
+                      )}
+                      {/* End of Delete */}
 
                       {/* Start of MyDoctor */}
                       {/* {value === 2 && (
@@ -270,18 +283,7 @@ class Index extends Component {
                         </TabContainer>
                       )} */}
                       {/* End of DateTime */}
-                      {/* Start of Delete */}
-                      {/* {value === 7 && (
-                        <TabContainer>
-                          <DeleteAccountSection
-                            user_token={this.props.stateLoginValueAim.token}
-                            LoggedInUser={this.state.LoggedInUser}
-                            getUserData={this.getUserData}
-                          />
-                        </TabContainer>
-                      )} */}
-                      {/* End of Delete */}
-                    </Grid>
+                      </Grid>
                     {/* End of Tabs */}
                   </Grid>
                 </Grid>

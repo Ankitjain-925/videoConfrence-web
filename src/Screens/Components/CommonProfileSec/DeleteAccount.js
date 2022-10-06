@@ -128,6 +128,8 @@ class Index extends Component {
       delete_your_account,
       delete_account,
       current_pass_not_match,
+      deactivate_your_account,
+      deactivate_account
     } = translate;
 
     return (
@@ -141,7 +143,7 @@ class Index extends Component {
           <Grid item xs={12} md={5}>
               
             <Grid className="chngPasswrd">
-              <h2>{delete_your_account}</h2>
+              <h2>{deactivate_your_account}</h2>
               {/* <p>{supportive_text}</p> */}
             </Grid>
             <Grid className="infoSub">
@@ -149,7 +151,7 @@ class Index extends Component {
                 type="submit"
                 className=""
                 onClick={()=>{this.setState({enterpass: true})}}
-                value={delete_account}
+                value={deactivate_account}
                 />
             </Grid>
             {this.state.enterpass && 
