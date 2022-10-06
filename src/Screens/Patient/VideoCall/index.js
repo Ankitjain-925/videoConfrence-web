@@ -395,6 +395,21 @@ class VideoCallPat extends Component {
         <Grid className="homeBgIner">
           <Grid container direction="row" justify="center">
             <Grid item xs={12} md={12}>
+              <Grid
+                className="backFlow backFlow34 adhsjs"
+                onClick={() => {
+                  this.props.history.push("/appointment-list")
+                }}
+              >
+                <a>
+                  <img
+                    src={require('assets/virtual_images/rightArrow.png')}
+                    alt=""
+                    title=""
+                  />
+                  Back
+                </a>
+              </Grid>
               <Grid container direction="row">
                 {/* <LeftMenu isNotShow={true} currentPage="settings" /> */}
                 {/* <LeftMenuMobile isNotShow={true} currentPage="settings" /> */}
