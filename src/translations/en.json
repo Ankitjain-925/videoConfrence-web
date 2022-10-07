@@ -1890,6 +1890,9 @@
     "FeedBack":"Feed Back",
     "Give_Comment_Doctor":"Give Comment to the Doctor",
     "Give_rating_Doctor":"Give rating to the Doctor",
+    "deactivate_account":"Deactivate Account",
+    "deactivate_your_account":"Deactivate Your Account",
+   
     "payment_type":"Payment Type:",
     "top_up": "Top Up",
     "credit_card": "Credit Card",
