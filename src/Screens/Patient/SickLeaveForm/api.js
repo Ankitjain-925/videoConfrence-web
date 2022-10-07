@@ -2018,7 +2018,7 @@ export const validatePainHeart = (check, value, item, current) => {
     }
 
   }
-  else if (item === 'headache_have_diabetes' && check === 'yes') {
+ else if (item === 'headache_have_diabetes' && check === 'yes') {
     if (!value.headache_have_diabetes) {
       current.setState({
         error_section: 46,
@@ -2032,88 +2032,76 @@ export const validatePainHeart = (check, value, item, current) => {
       let calHba1c = value.headache_Hba1c && value.headache_Hba1c / 10;
       if (!value.headache_blood_sugar) {
         current.setState({
-          error_section: 46,
-          errorChrMsg: please_select + ' ' + diabetes + ' ' + with_yes_no,
+          error_section: 47,
+          errorChrMsg: enter_blood_sugar,
         });
         MoveTop(200);
         return false;
-      } else if (value && value.headache_have_diabetes === 'yes') {
-        var bpPattern = /^[0-9]+$/;
-        var valid = bpPattern.test(value.headache_blood_sugar);
-        let calHba1c = value.headache_Hba1c && value.headache_Hba1c / 10;
-        if (!value.headache_blood_sugar) {
-          current.setState({
-            error_section: 47,
-            errorChrMsg: enter_blood_sugar,
-          });
-          MoveTop(200);
-          return false;
-        } else if (!valid) {
-          current.setState({
-            error_section: 47,
-            errorChrMsg: blood_sugar_in_number,
-          });
-          MoveTop(200);
-          MoveTop(0);
-          return false;
-        } else if (value?.headache_blood_sugar < 160) {
-          current.setState({
-            error_section: 47,
-            errorChrMsg: blood_sugar_between,
-          });
-          MoveTop(200);
-          MoveTop(0);
-          return false;
-        } else if (value?.headache_blood_sugar > 240) {
-          current.setState({
-            error_section: 47,
-            errorChrMsg: blood_sugar_between,
-          });
-          MoveTop(200);
-          MoveTop(0);
-          return false;
-        } else if (!value.headache_Hba1c) {
-          current.setState({
-            error_section: 300,
-            errorChrMsg: enter_hba1c,
-          });
-          MoveTop(200);
-          MoveTop(0);
-          return false;
-        } else if (calHba1c < 57 / 10) {
-          current.setState({
-            error_section: 300,
-            errorChrMsg: Hba1c_should_between,
-          });
-          MoveTop(200);
-          MoveTop(0);
-          return false;
-        } 
-        else if(!value.headache_situation){
-          current.setState({
-            error_section: 85,
-            errorChrMsg: please_select_situation,
-          });
-          MoveTop(200);
-          MoveTop(0);
-          return false;
-        }
-        else if (calHba1c > 64 / 10) {
-          current.setState({
-            error_section: 56,
-            errorChrMsg: Hba1c_should_between,
-          });
-          MoveTop(200);
-          MoveTop(0);
-          return false;
-        } else {
-          return true;
-        }
+      } else if (!valid) {
+        current.setState({
+          error_section: 47,
+          errorChrMsg: blood_sugar_in_number,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
+      } else if (value?.headache_blood_sugar < 160) {
+        current.setState({
+          error_section: 47,
+          errorChrMsg: blood_sugar_between,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
+      } else if (value?.headache_blood_sugar > 240) {
+        current.setState({
+          error_section: 47,
+          errorChrMsg: blood_sugar_between,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
+      } else if (!value.headache_Hba1c) {
+        current.setState({
+          error_section: 56,
+          errorChrMsg: enter_hba1c,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
+      } else if (calHba1c < 57 / 10) {
+        current.setState({
+          error_section: 56,
+          errorChrMsg: Hba1c_should_between,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
+      }
+      else if(!value.headache_situation){
+        current.setState({
+          error_section: 85,
+          errorChrMsg: please_select_situation,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
+      }
+      else if (calHba1c > 64 / 10) {
+        current.setState({
+          error_section: 56,
+          errorChrMsg: Hba1c_should_between,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
       } else {
         return true;
       }
-
+    } else {
+      return true;
     }
+
     
   } else if (item === 'fever_have_a_cough' && check === 'yes') {
     if (!value.fever_have_a_cough) {
