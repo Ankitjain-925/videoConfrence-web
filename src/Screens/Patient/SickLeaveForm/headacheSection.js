@@ -358,7 +358,7 @@ function Index(props) {
         </Grid>
       </Grid>
 
-      <Grid className="bgncmnSpc">
+      {/* <Grid className="bgncmnSpc">
         <Grid className="textFieldArea1">
           <Grid className="bgncmnLbl">
             <label>{temperature_please_tell_me_in_C}</label>
@@ -375,7 +375,47 @@ function Index(props) {
             <div className="err_message2">{props.errorChrMsg}</div>
           )}
         </Grid>
+      </Grid> */}
+      
+      <Grid className="bgncmnSpc">
+        <Grid className="fatiqueQues fatiqueQuess1">
+          <FatiqueQuestion
+            updateAllEntrySec={(e) =>
+              props.updateAllEntrySec(e, 'headache_have_temprature')
+            }
+            label={temperature_please_tell_me_in_C}
+            value={props.updateQues?.headache_have_temprature}
+          />
+        </Grid>
+        {props.error_section == 58 && (
+          <div className="err_message2">{props.errorChrMsg}</div>
+        )}
+        {props.updateQues &&
+          props.updateQues?.headache_have_temprature === 'yes' && (
+            <>
+              <Grid container direction="row" spacing="1">
+          <Grid item md={12} sm={12} className="textFieldArea1">
+            <Grid className="fillDia">
+            <input
+            type="number"
+            placeholder="36.6"
+            name="headache_body_temp"
+            onChange={(e) => props.updateAllEntrySec1(e, 'headache_body_temp')}
+            // className={forError ? 'setRedColor' : ''}
+            value={props.updateQues?.headache_body_temp}
+          ></input>
+          {props.error_section == 5 && (
+            <div className="err_message2">{props.errorChrMsg}</div>
+          )}
+          </Grid>
+         
+              </Grid>
+              </Grid>
+            </>
+          )}
       </Grid>
+
+
 
       <Grid className="bgncmnSpc">
         <Grid className="fatiqueQues fatiqueQuess1">
@@ -434,6 +474,9 @@ function Index(props) {
                   value={props.updateQues?.headache_situation}
                 />
               </Grid>
+              {props.error_section == 85 && (
+                <div className="err_message2">{props.errorChrMsg}</div>
+              )}
             </>
           )}
       </Grid>

@@ -10,13 +10,13 @@ import { Settings } from 'Screens/Login/setting';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from "@material-ui/core";
 import NotesEditor from "../Editor/index";
-import SymptomQuestions from '../TimelineComponent/CovidSymptomsField/SymptomQuestions'; 
+import SymptomQuestions from '../TimelineComponent/CovidSymptomsField/SymptomQuestions';
 import axios from "axios";
 import sitedata from "sitedata";
 import { commonHeader } from "component/CommonHeader/index";
 import { LoginReducerAim } from 'Screens/Login/actions';
 import { OptionList } from 'Screens/Login/metadataaction';
-
+import Loader from 'Screens/Components/Loader/index';
 
 
 
@@ -28,14 +28,14 @@ class Index extends Component {
             openModal: this.props.openModal,
             settings: this.props.settings,
             comesFrom: this.props.comesFrom,
+            allDoctorData: this.props.allDoctorData,
             showQuestion: {},
-            loaderImage: false,
             errorMsg: "",
-            
+            loaderImage: false
         };
     }
-  
-   componentDidUpdate = (prevProps) => {
+
+    componentDidUpdate = (prevProps) => {
         if (prevProps.openModal !== this.props.openModal) {
             this.setState({ openModal: this.props.openModal });
         }
@@ -45,16 +45,16 @@ class Index extends Component {
     closeFullQues = () => {
         this.props.closeFullQues();
         this.setState({ showQuestion: {} });
-       
+
     }
     // Set the state of questions
     updateAllEntrySec = (e, name) => {
-       var state = this.state.showQuestion;
-      state[name] = e;
+        var state = this.state.showQuestion;
+        state[name] = e;
         this.setState({ showQuestion: state });
     };
-    handleTaskSubmit =()=>{
-        console.log('data',this.state.showQuestion)
+    handleTaskSubmit = () => {
+        const { allDoctorData } = this.props;
         let translate = getLanguage(this.props.stateLanguageType);
         let { Something_went_wrong } = translate;
         var data = this.state.showQuestion;
@@ -64,42 +64,43 @@ class Index extends Component {
             image: this.props.stateLoginValueAim?.user?.image,
             alies_id: this.props.stateLoginValueAim?.user?.alies_id,
             profile_id: this.props.stateLoginValueAim?.user?.profile_id,
-         }
-         var doctor_infos
-         = {
-            first_name: "Ankit",
-            last_name: "jain",
-            alies_id: "D_QRW7IAGTg",
-            profile_id: "D_QRW7IAGTg",
-            email:"ankitjain.webnexus@gmail.com",
-            profile_image:"https://aimedis-0001.s3.amazonaws.com/D_QRW7IAGTg/1660719470481-doctor image.jpg.jpg&bucket=aimedis-0001"
-         }
-          data.patient_info = patient_infos;
-          data.doctor_info = doctor_infos;
-          data.patient_id =this.props.stateLoginValueAim?.user?._id;
-          data.doctor_id="62a41f1ec627873603accc6c"
-          this.setState({ loaderImage: true });
-        axios
-      .post(
-        sitedata.data.path + "/vchat/givefeedback",
-       data,
-        commonHeader(this.props.stateLoginValueAim.token)
-      )
-      .then((responce) => {
-        this.setState({ loaderImage: false });
-        if (responce.data.hassuccessed) {
-            this.closeFullQues();
-            this.setState({ showQuestion: {}});
-         
-        } else {
-          this.setState({ errorMsg:Something_went_wrong});
         }
-      });
-       
+        var doctor_infos
+            = {
+            first_name: allDoctorData?.first_name,
+            last_name: allDoctorData?.last_name,
+            alies_id: allDoctorData?.alies_id,
+            profile_id: allDoctorData?.profile_id,
+            email: allDoctorData?.email,
+            profile_image: allDoctorData?.image
+        }
+        data.patient_info = patient_infos;
+        data.doctor_info = doctor_infos;
+        data.patient_id = this.props.stateLoginValueAim?.user?._id;
+        data.doctor_id = allDoctorData?.user_id;
+        this.setState({ loaderImage: true });
+        axios
+            .post(
+                sitedata.data.path + "/vchat/givefeedback",
+                data,
+                commonHeader(this.props.stateLoginValueAim.token)
+            )
+            .then((responce) => {
+                this.setState({ loaderImage: false });
+                if (responce.data.hassuccessed) {
+                    this.closeFullQues();
+                    this.setState({ showQuestion: {} });
+
+                } else {
+                    this.setState({ errorMsg: Something_went_wrong });
+                }
+            });
+
     }
-  
-  
+
+
     render() {
+        console.log("check")
         let translate = getLanguage(this.props.stateLanguageType)
         let {
             FeedBack,
@@ -108,8 +109,9 @@ class Index extends Component {
             Give_rating_Doctor
         } = translate;
 
-    return (
+        return (
             <Grid>
+                {this.state.loaderImage && <Loader />}
                 {/* Model setup */}
                 <Modal
                     open={this.state.openModal}
@@ -236,24 +238,24 @@ class Index extends Component {
                                 </Grid>
                                 <Grid className="setDetail-eval">
                                     <Grid className="fillDiaAll2 ">
-                                    <label>{Give_Comment_Doctor}</label>
+                                        <label>{Give_Comment_Doctor}</label>
                                         <NotesEditor
                                             name="Comment"
-                                            onChange={(e) => this.updateAllEntrySec(e,'Comment')}
-                                            value={this.state.showQuestion || "" }
+                                            onChange={(e) => this.updateAllEntrySec(e, 'Comment')}
+                                            value={this.state.showQuestion || ""}
                                         />
-                                     </Grid>
-                              </Grid>
+                                    </Grid>
+                                </Grid>
                                 <Grid className="setDetail-eval">
                                     <Grid item xs={12} md={12} className="saveTasks">
                                         <Button
-                                          onClick={() =>
-                                            this.handleTaskSubmit()
-                                          }
+                                            onClick={() =>
+                                                this.handleTaskSubmit()
+                                            }
                                         >
                                             {Submit}
                                         </Button>
-                                  </Grid>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -269,26 +271,26 @@ class Index extends Component {
 
 const mapStateToProps = (state) => {
     const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
-      state.LoginReducerAim;
+        state.LoginReducerAim;
     const { stateLanguageType } = state.LanguageReducer;
     const { settings } = state.Settings;
     const { verifyCode } = state.authy;
     const { metadata } = state.OptionList;
     return {
-      stateLanguageType,
-      stateLoginValueAim,
-      loadingaIndicatoranswerdetail,
-      settings,
-      verifyCode,
-      metadata,
+        stateLanguageType,
+        stateLoginValueAim,
+        loadingaIndicatoranswerdetail,
+        settings,
+        verifyCode,
+        metadata,
     };
-  };
-  export default withRouter(
+};
+export default withRouter(
     connect(mapStateToProps, {
-      LoginReducerAim,
-      LanguageFetchReducer,
-      Settings,
-      authy,
-      OptionList,
+        LoginReducerAim,
+        LanguageFetchReducer,
+        Settings,
+        authy,
+        OptionList,
     })(Index)
-  );
+);

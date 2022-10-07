@@ -31,6 +31,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      onlyPaitent: false,
       hidden: true,
       password: '',
       dropDownValue: 'Select',
@@ -138,6 +139,11 @@ class Index extends Component {
         }
         this.setState({ otherUser: false });
         this.props.LoginReducerAim(email, password, logintoken, () => {
+          if( this.props.stateLoginValueAim &&
+            this.props.stateLoginValueAim?.user &&
+            this.props.stateLoginValueAim?.user?.type !=='patient'){
+            this.setState({onlyPaitent: true})
+          }
           this.setState({ myLogin: true });
           this.setState({ loaderImage: false });
           if (
@@ -223,6 +229,7 @@ class Index extends Component {
 
     let translate = getLanguage(this.props.stateLanguageType);
     let {
+      only_for_patient,
       Log_into,
       aimedis_elements_au,
       Register_email,
@@ -250,13 +257,13 @@ class Index extends Component {
       this.props.verifyCode.code
     ) {
 
-      if(stateLoginValueAim.is_vedio_registered){
+      if (stateLoginValueAim.is_vedio_registered) {
         return <Redirect to={'/patient/video_login'} />;
       }
-      else{
+      else {
         return <Redirect to={'/patient/video_register'} />;
-      } 
-    } 
+      }
+    }
     else {
 
       return (
@@ -334,7 +341,7 @@ class Index extends Component {
                               >
                                 <NavLink>German</NavLink>
                               </DropdownItem>
-                              <DropdownItem
+                              {/* <DropdownItem
                                 onClick={() => {
                                   this.changeValue('ch', 'Chinese');
                                 }}
@@ -389,7 +396,7 @@ class Index extends Component {
                                 }}
                               >
                                 <NavLink>Turkish</NavLink>
-                              </DropdownItem>
+                              </DropdownItem> */}
                             </DropdownMenu>
                           </UncontrolledDropdown>
                         </Grid>
@@ -412,6 +419,9 @@ class Index extends Component {
                 </Grid>
                 <Grid className="logFormMain">
                   <Grid className="logForm">
+                    <div className="err_message">
+                      {this.state.onlyPaitent ? only_for_patient : ''}
+                    </div>
                     <div className="err_message">
                       {this.state.loginError1
                         ? code_not_verified

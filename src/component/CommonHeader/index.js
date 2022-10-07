@@ -15,7 +15,6 @@ export const commonNoTokentHeader = () => {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            _origin: "video-confrance"
             // authorization:
             // authorization: "Aimedis23"
         }

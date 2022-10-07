@@ -1793,7 +1793,7 @@ a.moreMenu {
   display: block;
 }
 .profilMenuList li a {
-  color: #404646;
+  color: #404646 !important;
   font-family: Muli;
   font-size: 12px;
   font-weight: 600;
@@ -1947,6 +1947,9 @@ a.profilMenu {
   text-align: center;
   margin-bottom: 0px;
 }
+.MuiGrid-root.docsOpinLbl.MuiGrid-container {
+  padding: 0px 40px;
+}
 /* End of inbox page css */
 
 /* mobile css */
@@ -2046,6 +2049,16 @@ a.profilMenu {
   .scndOpinionIner td {
     font-size: 13px !important;
   }
+    .presOpinionIner.presOpinionInerSec {
+    margin: 0px !important;
+  }
+  .MuiGrid-root.docsOpinLbl.MuiGrid-container {
+    padding: 0px !important;
+  }
+  .MuiGrid-root.profilePkgIner3.border-radious-10 {
+    padding-left: 0px !important;
+    width: 95% !important;
+  }
 }
 @media (max-width: 599px) {
   .chatContact {
@@ -2111,6 +2124,7 @@ a.profilMenu {
   }
   .docsOpinion {
     margin-left: 0px !important;
+    margin-right: 0px !important;
     margin-top: 0px !important;
     padding: 12px 12px !important;
   }
@@ -2226,8 +2240,8 @@ a.profilMenu {
     line-height: 18px !important;
   }
   .scndOptionIner ul {
-    padding: 12px 8px !important;
-    min-width: 182px !important;
+    padding: 7px 8px !important;
+    min-width: 112px !important;
   }
 
   /* Tabs scrollbar for mobile */
@@ -3780,11 +3794,11 @@ a.profilMenu {
   line-height: 18px;
 }
 .profilePkg {
+  margin-top: 27px;
+  margin-left: 27px;
   border-radius: 12px;
   background-color: #ffffff;
-  box-shadow: 0 1px 8px 0 rgba(0, 8, 8, 0.04);
-  margin-left: 48px;
-  margin-top: 42px;
+  box-shadow: 0 1px 8px 0 rgb(0 8 8 / 4%);
 }
 .profileId {
   border-radius: 12px;
@@ -3826,8 +3840,9 @@ a.profilMenu {
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0;
-  line-height: 12px;
+  line-height: 17px;
   cursor: pointer;
+  display: block;
 }
 .profileIdRght {
   text-align: right;
@@ -3861,17 +3876,8 @@ a.profilMenu {
 .profileInfoIner {
   margin-bottom: 10px;
 }
-.mr_sel .css-yk16xz-control {
-  height: 36px !important;
-  min-height: initial;
-}
 span.css-1okebmr-indicatorSeparator {
   background-color: transparent;
-}
-.mr_sel .css-yk16xz-control div {
-  outline: 1px !important;
-  border: none !important;
-  min-height: initial !important;
 }
 @media (min-width: 960px) {
   .titleDegre .MuiGrid-grid-md-4 {
@@ -3946,7 +3952,8 @@ span.css-1okebmr-indicatorSeparator {
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 0;
-  line-height: 32px;
+  line-height: 22px;
+  margin-bottom: 10px;
 }
 .insrnceTbl .table th {
   padding-left: 4px;
@@ -4109,10 +4116,11 @@ button.aboutTabsIner {
 .editCourse {
   padding: 18px 30px 12px 30px;
   border-bottom: 1px solid #f2f2f2;
+  position: relative;
 }
 .editCloseBtn {
   text-align: right;
-  margin-bottom: 4px;
+  margin-bottom: 0px;
 }
 .editCloseBtn img {
   width: 26px;
@@ -4121,7 +4129,8 @@ button.aboutTabsIner {
 .editCourse label {
   color: #000808;
   font-family: Muli;
-  font-size: 20px;
+  font-size: 16px;
+  padding-right: 40px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 32px;
@@ -4276,8 +4285,8 @@ button.aboutTabsIner {
   line-height: 18px;
 }
 .factorAuth {
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 14px;
 }
 .factorAuthEnbl h4 {
   color: #404646;
@@ -5746,12 +5755,8 @@ span.revwRed {
 .dataSrvcImg img {
   height: 32px;
 }
-.docsOpinion {
-  margin-left: 70px;
-  margin-top: 41px;
-}
 .docsOpinLbl {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 .docsOpinion label {
   color: #000808;
@@ -5832,7 +5837,7 @@ button.presTabsIner {
   font-weight: 800;
   letter-spacing: 0;
   line-height: 12px;
-  padding: 30px 18px 12px 18px !important;
+  padding: 30px 12px 12px 12px !important;
   }
 
 .presOpinionIner tbody tr {
@@ -7062,10 +7067,11 @@ a.diaCDActv {
   line-height: 16px;
   text-align: center;
   padding: 12px 8px;
-  margin-top: 20px;
-  margin-bottom: 2px;
+  margin-top: 10px;
   outline: none;
-  margin: 16px;
+}
+.infoShwSave3 input:first-child {
+  margin-right: 12px;
 }
 .infoShwSave3 input:hover {
   background: transparent;
@@ -7680,6 +7686,9 @@ a.hideDots {
 /* .homeBgDrk .presOpinionIner thead th {
     color: #BFC1C1 !important;
 } */
+.homeBgDrk .setting-h5 {
+  color: #d9dada !important;
+}
 .homeBgDrk .totalOutOff a,
 .homeBgDrk .prevNxtpag a {
   color: #d9dada !important;
@@ -8028,6 +8037,10 @@ a.hideDots {
 }
 .homeBgDrk .loginSite .logFrgtpass label {
   color: #00abaf !important;
+}
+.homeBgDrk .selectdoc-head, .homeBgDrk h5.selectdoc-head2,
+.homeBgDrk h6.selectdoc-head2 {
+  color: #d9dada !important;
 }
 /* End of dark screen css */
 
@@ -9386,7 +9399,6 @@ td.phrImg p {
 
 /* ------------------ */
 .presBoxCntnt {
-  /* height: 1137px; */
   width: 762px;
   background: #fff;
   margin: 0 auto;
@@ -12545,19 +12557,19 @@ span.srchMobIcon img {
 }
 .fltrHdngLft a {
   color: #000808;
-  font-family: Muli;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 16px;
+  font-family: Muli;
 }
 .fltrHdngRght a {
   color: #00abaf;
-  font-family: Muli;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 12px;
+  font-family: Muli;
 }
 .fltrHdngRght {
   text-align: right;
@@ -12612,11 +12624,11 @@ a.srtEvrTim {
 }
 a.srtDiaTim {
   color: #7f8383;
-  font-family: Muli;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 12px;
+  font-family: Muli;
 }
 .aplyFltrMob input {
   border-radius: 8px;
@@ -12841,7 +12853,7 @@ img.MenuImg {
 .suggent-time a {
   border-radius: 8px;
   background-color: #f2f2f2;
-  color: #7f8383;
+  color: #7f8383 !important;
   font-family: Muli;
   font-size: 12px;
   font-weight: bold;
@@ -13578,6 +13590,11 @@ a.academy_ul ul li img {
   background-color: #e1f7f7;
   outline: none !important;
 }
+h5.selectdoc-head2 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 4px 0px 10px;
+}
 /* End of admin pages css */
 
 /*Added By ankita*/
@@ -13757,7 +13774,7 @@ a.academy_ul ul li img {
   border-radius: 8px;
   padding: 8px 8%;
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 @media (max-width: 768px) {
   .menuItems {
@@ -13768,6 +13785,9 @@ a.academy_ul ul li img {
   }
   .menuItems ul li .profilMenuList ul li:last-child:not(.doctor-menu) {
     margin-top: 0px !important;
+  }
+  .custom-topup {
+    width: 100% !important;
   }
 }
 .mnMxBtn1 {
@@ -14171,9 +14191,7 @@ span.ccl-dtls-section-listitem-link {
   color: #fff !important;
   padding: 5px !important;
 }
-.sbu_button {
-  margin-top: 10px;
-}
+
 .homeBgDrk .payment_sec_extra_ser .StripeElement {
   border-bottom: 1px solid #bfc1c1 !important;
 }
@@ -14908,6 +14926,12 @@ ul.insuranceHint1 li {
 .darkTheme .checkHelthLbl a:hover {
   color: #00abaf;
 }
+.darkTheme .profileIdRght a {
+  color: #f1f1f1 !important;
+}
+.darkTheme .profileInfoDate {
+    color: #f1f1f1 !important;
+}
 .RelativeatSecurity {
   position: relative;
 }
@@ -15581,10 +15605,8 @@ label.or-label {
 .homeBgDrk .tooltip-container {
   background-color: #404646 !important;
 }
-.darkTheme label,
-.darkTheme p,
-.darkTheme h3,
-.darkTheme h1 {
+.darkTheme label, .darkTheme p, .darkTheme h3, 
+.darkTheme h1, .darkTheme .goto-custom-topup {
   color: #d9dada !important;
 }
 .dark-confirm {
@@ -15980,7 +16002,7 @@ input#graduationYear {
   z-index: 99999999999 !important;
 }
 .selCalenderUpr .selTimeSlot .selTimeAM {
-  height: 328px;
+  height: 238px;
   overflow-y: scroll;
 }
 @media (min-width: 1466px) {
@@ -16818,6 +16840,31 @@ select:-webkit-autofill:focus {
     margin-top: 17px !important;
     margin-bottom: 12px !important;
   }
+  .Meetlabel_2 button {
+    float: initial !important;
+    margin-top: 0px !important;
+    margin-bottom: 36px !important;
+  }
+  .MuiGrid-root.logForm.form_full .card-header {
+    margin: 0px !important;
+    margin-bottom: 7px !important;
+    padding: 15px;
+  }
+  .relexStressRght a {
+    font-size: 11px !important;
+    padding: 12px 4px !important;
+  }
+  .fatiqueQues a {
+    font-size: 12px !important;
+    padding: 0px 4px !important;
+    min-width: 35px !important;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-right: 4px !important;
+ }
+ .selTimeSlot {
+    width: 100% !important;
+  }
 }
 @media (max-width: 959px) {
   .presSrch a {
@@ -16884,6 +16931,19 @@ select:-webkit-autofill:focus {
     margin-right: 8px !important;
     margin-top: 14px !important;
   }
+  .MuiGrid-root.infoShwSave3.cardioArea {
+    display: block !important;
+  }
+  .infoShwSave3 input {
+    width: 100% !important;
+    margin-right: 0px !important;
+    display: block !important;
+  }
+  .card-content .FeedbackCss {
+    text-align: left !important;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
 }
 @media screen and (min-width: 700px) and (max-width: 959px) {
   .srchFilter .ant-picker-range.allTimeSel1.comonSel {
@@ -16915,7 +16975,10 @@ select:-webkit-autofill:focus {
   }
 }
 @media (max-width: 960px) {
-  .selCalender {
+  .selCalenderUpr .react-calendar {
+    width: 100% !important;
+  }
+  .selCalenderUpr .selCalender {
     width: 100% !important;
   }
   .selCalenderUpr {
@@ -16927,10 +16990,12 @@ select:-webkit-autofill:focus {
   .selTimeSlot {
     margin-left: 0px !important;
     margin-right: 0px !important;
-    width: 375px !important;
-    /* margin: 0 auto !important; */
+    width: 100% !important;
     border: 1px solid #f2f2f2;
     padding: 0px !important;
+  }
+  .selCalender {
+    width: 100% !important;
   }
   .delQues {
     padding: 8px 8px 8px 8px !important;
@@ -16981,7 +17046,7 @@ select:-webkit-autofill:focus {
 }
 @media (min-width: 641px) {
   .presOpinionIner td.pivoted {
-    padding: 12px 18px !important;
+    padding: 10px 10px !important;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 959px) {
@@ -17173,9 +17238,9 @@ select:-webkit-autofill:focus {
   background: #404646 !important;
   border: none;
 }
-.homeBgDrk .mr_sel {
-  border: 1px solid #9a9a9a;
-  color: #bfc1c1;
+.homeBgDrk .mr_sel, .homeBgDrk .logForm input[type='text'] {
+  border: 1px solid #dfdfdf !important;
+  color: #bfc1c1 !important;
 }
 .homeBg .ccl-right-panel {
   min-width: 118px;
@@ -17209,9 +17274,9 @@ select:-webkit-autofill:focus {
   border-radius: 12px;
 }
 .creatTaskCntnt {
-  height: 537px;
-  overflow-y: scroll;
-  padding: 20px 0px;
+  height: 428px;
+  overflow-y: auto;
+  padding: 10px 0px;
 }
 .creatLbl {
   padding: 0px 20px;
@@ -18061,7 +18126,36 @@ ul.duringCovid li:last-child {
 .darkTheme > div:nth-child(4) a.ant-picker-today-btn {
   color: #00abaf;
 }
-
+.darkTheme .react-calendar__month-view__weekdays__weekday {
+  color: #00ABAF;
+}
+.homeBgDrk .regSelectTop .dropdown-item:hover, 
+.homeBgDrk .regSelectTop .dropdown-item:focus {
+  background-color: #000;
+}
+.homeBgDrk .regSelectTop .dropdown-item a.nav-link {
+  color: #bfc1c1 !important;
+}
+.homeBgDrk .regSelectTop .dropdown-item:hover a.nav-link {
+  color: #ffffff !important;
+}
+.homeBgDrk .react-calendar__month-view__days,
+.homeBgDrk .react-calendar__tile:disabled {
+  background: transparent !important;
+}
+.homeBgDrk .react-calendar__tile:disabled {
+  color: #dfdfdf !important;
+}
+.homeBgDrk .selCalenderUpr .react-calendar__navigation button:disabled,
+.homeBgDrk .selCalenderUpr button.react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.homeBgDrk .selCalenderUpr button.react-calendar__navigation__arrow.react-calendar__navigation__next2-button {
+  background-color: #232323;
+  background: #232323;
+  color: #ffffff;
+}
+.homeBgDrk .selCalender span.react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+  color: #00ABAF !important;
+}
 .dropdown-class-name-3 .ant-picker-panel-container .ant-picker-panel {
   background: #404646;
 }
@@ -18123,6 +18217,9 @@ ul.duringCovid li:last-child {
 .profileInfoDate .ant-picker-clear {
   right: 5px !important;
 }
+.MuiGrid-root.docsOpinion {
+  margin-top: 42px;
+}
 @media (max-width: 959px) {
   .menuItems ul li ul li a {
     margin-bottom: 24px !important;
@@ -18134,6 +18231,38 @@ ul.duringCovid li:last-child {
   }
   .drListRght2 label {
     font-size: 12px;
+  }
+  .MuiGrid-root.logForm.accessForm {
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+    width: 94% !important;
+  }
+  a.Serc_img img {
+    height: 17px;
+  }
+  .srchLft a {
+    position: absolute;
+    top: 22px;
+    right: 7px;
+  }
+  .profilePkgIner2 {
+    min-height: initial !important;
+    margin-bottom: 18px;
+    padding: 16px 14px !important;
+    padding-bottom: 0px !important;
+  }
+  .insrnceTbl .table th {
+    font-size: 10px !important;
+  }
+  .editPinform {
+    padding: 18px 22px 20px 22px !important;
+  }
+  .editCourse label {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+  .profileIdRght {
+    text-align: left !important;
   }
 }
 .drListLft2 {
@@ -18174,6 +18303,17 @@ ul.duringCovid li:last-child {
 .darkTheme .cnfrmDiaMain2 {
   background-color: #404646;
 }
+.darkTheme .selTimeSlot a:hover, .darkTheme .suggent-time a:hover, 
+.darkTheme .suggent-time a.current_selected {
+  background-color: #00abaf;
+  color: #ffffff !important;
+}
+.darkTheme .stndQues1 h3 {
+  color: #00abaf !important;
+}
+.homeBgDrk a.openScndhrf img {
+  background-color: #192020;
+}
 .addStnd {
   display: flex;
   align-items: center;
@@ -18213,8 +18353,7 @@ span.PIC_Condition {
 span.PIC_Condition:hover {
   background-color: transparent;
 }
-.bgncmnSpc,
-.haveCmnSpc {
+.bgncmnSpc, .haveCmnSpc {
   margin-bottom: 18px;
 }
 .bgncmnSpc span.MuiFormControlLabel-label {
@@ -18247,120 +18386,133 @@ span.PIC_Condition:hover {
   text-decoration-line: underline;
   cursor: pointer;
 }
-
-
-
-/* added by tanya */
-
-.formopen input{
-  border-radius: 8px;
-  background-color: #00abaf;
-  border: 2px solid #00abaf;
-  width: 240px;
-  color: #ffffff;
-  font-family: Muli;
+.top-up-mid1-inner {
+    margin: 8px;
+    grid-gap: 20px;
+}
+.top-up-head {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+.top-up-minnute {
   font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 16px;
-  text-align: center;
-  padding: 12px 8px;
-  margin-top: 20px;
-  margin-bottom: 2px;
-  outline: none;
-  margin: 10px;
+  font-weight: 700;
+  margin-bottom: 0px;
 }
-.formopen input:hover {
-  background-color: 00abaf;
-  
+button.top-up-buybtn {
+    height: initial !important;
+    font-size: 12px;
+    color: #fff !important;
+    background-color: #00ABAF !important;
+    font-weight: 500;
+    border-radius: 4px;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    border: none;
+    display: block;
+    width: 100%;
+    padding: 8px 4px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
-
-.creatTaskModel3{
-  width: 580px;
-  background: #fff;
-  margin: 0 auto;
-  border: none;
-  outline: none;
-  background-color: #ffffff;
-  box-shadow: 0 24px 32px 0 rgb(0 8 8 / 8%);
-  margin-top: 20px;
-  padding-right: 2px;
-  padding-top: 18px;
-  padding-bottom: 16px;
-  border-radius: 12px;
-  }
-  .darkTheme .creatTaskModel3 {
-    background-color: #404646 !important;
-  }
-  
-  @media (max-width: 768px) {
-    .creatTaskModel3 {
-      width: 98% !important;
-    }
-  }
-  .creatTaskModel11{
-    margin-top:21px!important
-  }
-
-  .creatTaskModel.creatTaskModel11 .MuiGrid-root.creatLbl {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: center;
-  }
-  .creatTaskModel.creatTaskModel11 {
-    padding: 0px;
-  }
-  .creatTaskCntnt {
-    height: 537px;
-    overflow-y: scroll;
-    padding: 20px 0px;
-  }
-  .symptomsType a:hover .symptomsWht {
-    display: block !important;
-  }
-  .symptomsType a .symptomsWht {
-    display: none;
-  }
-  .symptomsType .activeButton .symptomsWht {
-    display: block !important;
-  }
- .darkTheme .ql-toolbar.ql-snow {
-    background-color: #192020 !important;
+.logRow input[type="text"], 
+.MuiGrid-root.logPass input[type="password"] {
+  background-color: hsl(0,0%,100%);
+  border-color: hsl(0,0%,80%);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
 }
-.darkTheme .quill .ql-editor {
-  background: #404646 !important;
-  color: #bfc1c1 !important;
+.MuiGrid-root.selectdoc-button img {
+  height: 21px;
+  width: auto !important;
 }
-.darkTheme .ql-editor {
-  color: #c0c0c0;
+h6.selectdoc-head2 {
+  margin: 5px 0px 12px;
 }
-.darkTheme .symptomsType a {
-  background-color: #363636;
-  border: 1px solid #00abaf;
+.MuiTypography-root.adv2 {
+  font-size: 13px !important;
+  line-height: initial;
+  padding: 4px 6px;
+  margin: 0px;
+  border-radius: 2px;
 }
-.FeedbackCss label{
-  padding:10px 0px;
-
+.logRow .Card_1 .MuiGrid-root.padd_10.MuiGrid-container {
+  align-items: center;
 }
-.noteval{
-  margin-top: 10px;
+.MuiTypography-root.adv1 {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Muli;
 }
-.fillDiaAll2 label {
-  display: contents;
-  margin-top: 20px;
-  display: block !important;
-  margin-bottom: 8px;
+.infoShwSave3.label_1 input[type="button"] {
+  margin-left: 10px;
 }
-
-.darkTheme .fillDiaAll2 .ql-stroke,
-.darkTheme .ql-snow .ql-fill,
-.darkTheme .ql-snow .ql-stroke.ql-fill,
-.darkTheme .ql-snow.ql-toolbar .ql-picker-label {
-  fill: none;
-  stroke: #00abaf !important;
-  color: #00abaf !important;
+.docsOpinLbl .MuiGrid-grid-xs-12.MuiGrid-grid-md-6,
+.docsOpinLbl .MuiGrid-grid-sm-12.MuiGrid-grid-md-8 {
+  max-width: 100% !important;
+  flex: 100%;
 }
-
+.last-sec-setting.form_full .MuiGrid-grid-xs-12.MuiGrid-grid-md-11.MuiGrid-grid-lg-10, 
+.last-sec-setting.form_full .MuiGrid-grid-xs-12.MuiGrid-grid-sm-12.MuiGrid-grid-md-8 {
+  max-width: 100%;
+  flex: 100%;
+  padding: 18px 16px;
+}
+.custom-topup .homeBgIner, .custom-topup .homeBg.homeBgDrk {
+  min-height: initial !important;
+}
+.docsOpinion.docsAllOption .docsOpinLbl label {
+  margin-top: 38px !important;
+}
+.presOpinionIner.presOpinionInerSec {
+  margin: 0px 38px;
+}
+.last-sec-setting.form_full .homeBg {
+  min-height: initial !important;
+}
+.editBoxCntnt .editCloseBtn {
+  position: absolute;
+  top: 19px;
+  right: 16px;
+}
+.langInerFooter.dropdown-menu.show .nav-link {
+  padding: 0px;
+}
+.last-sec-setting.form_full p.middle-setting-items {
+  line-height: initial;
+}
+.infoShwSave3 {
+  margin-top: 18px;
+}
+.card-content .FeedbackCss {
+  width: 100%;
+  text-align: right;
+}
+.MuiGrid-root.logForm.accessForm {
+  margin-top: 50px;
+  margin-left: 45px;
+}
+.cnfrmDiaMain.profilePkg.cnfrmDiaMain1 {
+  margin: 22px 45px;
+}
+.cnfrmDiaMain.profilePkg.cnfrmDiaMain1 {
+  width: 80%;
+  margin: 0 auto !important;
+  margin-top: 41px !important;
+}
+.MuiGrid-root.profilePkgIner3.border-radious-10 {
+  width: 80%;
+  margin: 0 auto !important;
+  margin-top: 32px !important;
+  padding-left: 0px !important;
+}
+.MuiGrid-spacing-xs-1 .MuiGrid-root.textFieldArea1 input[type="number"] {
+  margin-top: 8px;
+}
+.addImgArow img {
+  transform: rotate(180deg);
+  margin-right: 2px;
+  margin-top: 1px;
+  margin-left: 0px !important;
+}

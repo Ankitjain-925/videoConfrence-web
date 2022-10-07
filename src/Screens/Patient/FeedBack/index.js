@@ -23,18 +23,27 @@ class Index extends Component {
 
         };
     }
-    openbutton = () => {
-        this.setState({ openModal: true });
-        
-    }
+    // openbutton = () => {
+    //     this.setState({ openModal: true });
+
+    // }
     closeFullQues = () => {
-        this.setState({ openModal: false });
+        this.setState({ openModal: false }, () => { this.props.history.push("/appointment-list") });
+
     }
-   
-   render() {
-    let translate = getLanguage(this.props.stateLanguageType);
-    let {FeedBack
-    } = translate;
+
+    componentDidMount() {
+        let { openModal, allDoctorData } = this.props.location?.state;
+        console.log("this.props.location?.state", this.props.location?.state)
+        if (this.props.location.state) {
+            this.setState({ openModal: openModal, allDoctorData: allDoctorData });
+        }
+    }
+
+    render() {
+        let translate = getLanguage(this.props.stateLanguageType);
+        let { FeedBack
+        } = translate;
         return (
             <Grid
                 className={
@@ -61,7 +70,7 @@ class Index extends Component {
                                             </Grid>
                                         </Grid>
                                         <Grid>
-                                            <Grid className="formopen label_1 ">
+                                            {/* <Grid className="formopen label_1 ">
                                                 <input
                                                     type="button"
                                                     value={FeedBack}
@@ -70,14 +79,15 @@ class Index extends Component {
                                                     }
 
                                                 />
-                                            </Grid>
+                                            </Grid> */}
                                         </Grid>
                                         <FeedQuestion
                                             closeFullQues={() => this.closeFullQues()}
                                             openModal={this.state.openModal}
-                                           
+                                            allDoctorData={this.state.allDoctorData}
+
                                         />
-                                        </Grid>
+                                    </Grid>
                                 </Grid>
 
                             </Grid>

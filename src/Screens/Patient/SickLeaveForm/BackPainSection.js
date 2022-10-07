@@ -160,7 +160,60 @@ function Index(props) {
         <div className="err_message2">{props.errorChrMsg}</div>
       )}
       <Grid>
-        <Grid className="bgncmnLbl">
+
+      <Grid className="bgncmnSpc">
+        <Grid className="fatiqueQues fatiqueQuess1">
+          <FatiqueQuestion
+            updateAllEntrySec={(e) =>
+              props.updateAllEntrySec(e, 'back_pain_blood_pressure')
+            }
+            label={Do_you_suffer_from_high_or_low_blood}
+            value={props.updateQues?.back_pain_blood_pressure}
+          />
+        </Grid>
+        {props.error_section == 66 && (
+          <div className="err_message2">{props.errorChrMsg}</div>
+        )}
+        {props.updateQues &&
+          props.updateQues?.back_pain_blood_pressure === 'yes' && (
+            <>
+               <Grid container direction="row" spacing="1">
+          <Grid item md={6} sm={6}>
+            <Grid className="fillDia">
+              <MMHG
+                name="back_pain_rr_systolic"
+                Unit="mmHg"
+                label={rr_systolic}
+                onChange={(e) => props.updateAllEntrySec1(e)}
+                value={props.updateQues?.back_pain_rr_systolic}
+              />
+            </Grid>
+            {props.error_section == 33 && (
+              <div className="err_message2">{props.errorChrMsg}</div>
+            )}
+          </Grid>
+          <Grid item md={6} sm={6}>
+            <Grid className="fillDia">
+              <MMHG
+                name="back_pain_rr_diastolic"
+                Unit="mmHg"
+                label={RR_diastolic}
+                onChange={(e) => props.updateAllEntrySec1(e)}
+                value={props.updateQues?.back_pain_rr_diastolic}
+              />
+            </Grid>
+            {props.error_section == 34 && (
+              <div className="err_message2">{props.errorChrMsg}</div>
+            )}
+          </Grid>
+        </Grid> 
+            </>
+          )}
+      </Grid>
+        
+
+
+        {/* <Grid className="bgncmnLbl">
           <label>{Do_you_suffer_from_high_or_low_blood}</label>
         </Grid>
         <Grid container direction="row" spacing="1">
@@ -192,7 +245,7 @@ function Index(props) {
               <div className="err_message2">{props.errorChrMsg}</div>
             )}
           </Grid>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Grid>
   );

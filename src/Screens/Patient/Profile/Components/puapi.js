@@ -110,7 +110,8 @@ export const Upsaterhesus = (current, rhesusfromD) => {
               })
               datas = current.state.UpDataDetails.insurance;
               var forUpdate = {value: true, token: user_token, user: response.data.data}
-              current.props.LoginReducerAim(response.data.data?.email, '', user_token, () => {}, forUpdate);
+              var VideoData = current.props.stateLoginValueAim.VideoData
+              current.props.LoginReducerAim(response.data.data?.email, '', user_token, () => {}, forUpdate, current.props?.stateLoginValueAim?.isVideoLoggedIn, VideoData, current.props?.stateLoginValueAim?.is_vedio_registered);
               current.setState({ loaderImage: false });
           }).catch((error) => {
               current.setState({ loaderImage: false });
@@ -328,7 +329,7 @@ export const saveUserData = (current) => {
     var parent_id = current.state.UpDataDetails.parent_id ? current.state.UpDataDetails.parent_id : '0';
 
     var tocheckWith = (current.state.UpDataDetails?.citizen_country && current.state.UpDataDetails?.citizen_country !=='') ? current.state.UpDataDetails?.citizen_country  :  current?.state?.flag_mobile;
-   console.log('tocheckWith', tocheckWith)
+//    console.log('tocheckWith', tocheckWith)
     var getBucket = contry && contry.length > 0 && contry.filter((value, key) =>  value.code === tocheckWith?.value ?  tocheckWith?.value : tocheckWith);
 
     axios.put(sitedata.data.path + '/UserProfile/Users/update', {

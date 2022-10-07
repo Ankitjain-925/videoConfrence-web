@@ -20,6 +20,10 @@ import PainPoint from 'Screens/Components/PointPain/index';
 import { OptionList } from 'Screens/Login/metadataaction';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { EditRequest, DownloadCert, DownloadBill } from '../SickLeaveForm/api';
+import ButtJoin from "Screens/Components/Button/index";
+import FeedQuestion from '../../Components/FeedQuestion/index';
+
+
 import {
   PaymentDue,
   handleOpenDetail,
@@ -58,6 +62,21 @@ class Index extends Component {
     }
   };
 
+  openFeedback = (data) => {
+    this.setState({
+      showComponent: true,
+      allDoctorData: data?.assinged_to[0]
+    });
+
+  }
+  closeFullQues = () => {
+    this.setState({
+      showComponent: false,
+      openModal: false
+    });
+
+  }
+
   onChangePage = (pageNumber) => {
     this.setState({
       AllDataSec: this.state.AllDataSec1.slice(
@@ -91,6 +110,9 @@ class Index extends Component {
     const { AllDataSec } = this.state;
     let translate = getLanguage(this.props.stateLanguageType);
     let {
+      payment_type,
+      top_up,
+      credit_card,
       meeting,
       time,
       date,
@@ -191,6 +213,14 @@ class Index extends Component {
 
     return (
       <Grid>
+        {this.state.showComponent ?
+          <FeedQuestion
+            closeFullQues={() => this.closeFullQues()}
+            openModal={true}
+            allDoctorData={this.state.allDoctorData}
+          /> :
+          null
+        }
         <Grid
           className={
             this.props.settings &&
@@ -213,7 +243,10 @@ class Index extends Component {
                     <Grid className="docsOpinion docsAllOption">
                       <Grid container direction="row" className="docsOpinLbl">
                         <Grid item xs={12} md={6}>
-                          <label>{appointments}</label>
+                          <h5 className="setting-h5">{appointments}</h5>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <ButtJoin />
                         </Grid>
                       </Grid>
                       <Grid className="presPkgIner2">
@@ -456,7 +489,25 @@ class Index extends Component {
                                                 </a>
                                               </li>
                                             )}
-                                          {item && item.certificate && (
+                                          {item?.approved == true &&
+                                            (!item.is_payment ||
+                                              item.is_payment == true) && (
+                                              <li
+                                                onClick={() => {
+                                                  this.props.history.push("/patient/access-key");
+                                                }}
+                                              >
+                                                <a>
+                                                  <img
+                                                    src={require('assets/images/details.svg')}
+                                                    alt=""
+                                                    title=""
+                                                  />
+                                                  <>{join_meeting}</>
+                                                </a>
+                                              </li>
+                                            )}
+                                          {/* {item && item.certificate && (
                                             <li
                                               onClick={() => {
                                                 DownloadCert(
@@ -474,7 +525,7 @@ class Index extends Component {
                                                 <>{download_certificate}</>
                                               </a>
                                             </li>
-                                          )}
+                                          )} */}
                                           {item.link?.patient_link &&
                                             (!item?.is_decline ||
                                               item?.is_decline === false) &&
@@ -521,6 +572,22 @@ class Index extends Component {
                                                 </a>
                                               </li>
                                             )}
+                                          {item.meetingjoined && (
+                                            <li
+                                              onClick={() => {
+                                                this.openFeedback(item)
+                                              }}
+                                            >
+                                              <a>
+                                                <img
+                                                  src={require('assets/images/details.svg')}
+                                                  alt=""
+                                                  title=""
+                                                />
+                                                Feedback Form
+                                              </a>
+                                            </li>
+                                          )}
                                         </ul>
                                       </a>
                                     </Td>
@@ -617,6 +684,10 @@ class Index extends Component {
                               <h3>{appointment_time}</h3>
                               {this.state.newTask?.start} -{' '}
                               {this.state.newTask?.end}
+                            </Grid>
+                            <Grid>
+                              <h3>{payment_type}</h3>
+                              {this.state.newTask?.payment_by === "Top-Up" ? top_up : credit_card}
                             </Grid>
                             {this.state.newTask.headache === 'yes' && (
                               <Grid>
@@ -739,7 +810,7 @@ class Index extends Component {
 
                                 <Grid>
                                   <Grid>
-                                    <h1>{blood_pressure}</h1>
+                                    <h3>{blood_pressure}</h3>
                                   </Grid>
                                   <Grid container xs={12} md={12}>
                                     <Grid item xs={6} md={6}>
@@ -1399,7 +1470,7 @@ class Index extends Component {
                                   </p>
                                 </Grid>
                                 <Grid>
-                                  <h1>{body_temp}</h1>
+                                  <h3>{body_temp}</h3>
                                 </Grid>
                                 <Grid>
                                   <Grid>
@@ -1443,7 +1514,7 @@ class Index extends Component {
                                   <h3>{feel_depressed}</h3>
                                 </Grid>
                                 <Grid>
-                                  <Grid className="sickAllMngSec">
+                                  <Grid className="">
                                     <label>{depressed_symptoms_begin}</label>
                                   </Grid>
                                   <p>
@@ -1512,7 +1583,7 @@ class Index extends Component {
                                   <h3>{cardiac_problems}</h3>
                                 </Grid>
                                 <Grid>
-                                  <h1>{blood_pressure}</h1>
+                                  <h3>{blood_pressure}</h3>
                                 </Grid>
                                 <Grid container xs={12} md={12}>
                                   <Grid xs={6} md={6}>

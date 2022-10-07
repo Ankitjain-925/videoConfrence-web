@@ -16,6 +16,8 @@ import { connect } from "react-redux";
 import { LoginReducerAim } from "Screens/Login/actions";
 import { LanguageFetchReducer } from 'Screens/actions';
 import { Settings } from "Screens/Login/setting";
+import ButtJoin from "Screens/Components/Button/index";
+
 
 function RegisterVC(props) {
   const [value, setValue] = useState(0)
@@ -54,8 +56,7 @@ function RegisterVC(props) {
           props.settings.setting.mode === 'dark'
           ? 'homeBg darkTheme homeBgDrk'
           : 'homeBg'
-      }
-    >
+      }>
       <Grid className="homeBgIner">
         <Grid container direction="row" justify="center">
           <Grid item xs={12} md={12}>
@@ -66,33 +67,19 @@ function RegisterVC(props) {
               <Notification />
               {/* Website Mid Content */}
               <Grid item xs={12} md={11} lg={10}>
-                <Grid className="docsOpinion">
-                  <Grid container direction="row" className="docsOpinLbl">
-                    <Grid item xs={12} md={6} className="label_1">
-                      <label>{book_appointment}</label>
+                <div className="settingPage 77">
+                  <Grid container direction="row">
+                    <Grid item xs={12} sm={12} md={10} lg={8}>
+                      <Grid container direction="row">
+                         <Grid item xs={12} sm={6} md={6} lg={6}><h5 className="setting-h5">{book_appointment}</h5></Grid>
+                         <Grid item xs={12} sm={6} md={6} lg={6}><ButtJoin /></Grid>
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
-
-                <Grid item xs={12} md={10} lg={8}>
-
-                  {/* <Grid className="profilePkgIner1"> */}
-                  {/* Tabs  */}
-                  {/* <AppBar position="static" className="profileTabsUpr">
-                    <lable>Register </lable>
-                  </AppBar> */}
-                  {/* </Grid> */}
-                  
-
-                    <Main />
-                  
-                  {/* End of Tabs */}
-
-
-                </Grid>
-                {/* Website Right Content */}
-                <Grid item xs={12} md={3}></Grid>
-                {/* End of Website Right Content */}
+                  <Grid container direction="row">
+                    <Grid item xs={12} sm={12} md={10} lg={8}><Main /></Grid>
+                  </Grid>
+                </div>
               </Grid>
               {/* End of Website Right Content */}
             </Grid>

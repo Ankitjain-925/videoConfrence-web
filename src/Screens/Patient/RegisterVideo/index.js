@@ -8,6 +8,7 @@ import AppBar from "@material-ui/core/AppBar";
 import { getLanguage } from "translations/index";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+import { Redirect, Route } from 'react-router-dom';
 import queryString from "query-string";
 import {
   commonNoTokentHeader,
@@ -65,7 +66,7 @@ const RegisterVideo = (props) => {
     if (email !== "" && _password !== "") {
       confirmSubmit(paymentData);
     } else {
-      setErrormsg("Username && password not empty");
+      setErrormsg("Username & password not empty");
       setError(true);
     }
   };
@@ -74,6 +75,11 @@ const RegisterVideo = (props) => {
       onPayment();
     }
   };
+
+  const toggleShow = () => {
+    setHidden(!hidden);
+  }
+
   const confirmSubmit = (paymentData) => {
     let _data = {
       email: userData.email || "",
@@ -95,28 +101,32 @@ const RegisterVideo = (props) => {
       .post(
         path + "/vchat/AddVideoUserAccount",
         _data,
-        commonHeader(props.stateLoginValueAim.token)
+        commonHeader(props?.stateLoginValueAim.token)
       )
       .then((response) => {
-        if (
-          response.data.hassuccessed === true &&
-          response.data.data !== "User Already Register"
-        ) {
-          props.LoginReducerAim("", "", "", "", props.stateLoginValueAim, true);
-          history.push({
-            pathname: "/patient/settings",
-          });
-        } else {
+        if(response.data.hassuccessed){
+          var user_token = props.stateLoginValueAim.token
+          var forUpdate = { value: true, token: user_token, user: props?.stateLoginValueAim?.user }
+          props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props?.stateLoginValueAim?.user_token, () => { }, forUpdate, false, {}, true);
+
           history.push({
             pathname: "/patient/video_login",
           });
+        }
+        else if (
+          !response.data.hassuccessed &&
+          response.data.data !== "User Already Register"
+        ) {
+          setErrormsg("Already exist in system");
+        } else {
+          setErrormsg("Something went wrong please try with another user name");
         }
       });
   };
 
   const onPayment = () => {
     if (!email && !_password) {
-      setErrormsg("Username && password shouldn't be empty");
+      setErrormsg("Username & password shouldn't be empty");
       setError(true);
     } else if (!ITGuideline) {
       setErrormsg("Please accept IT Guideline");
@@ -131,6 +141,20 @@ const RegisterVideo = (props) => {
   const handleCancel = () => {
     setOpenPayment(false);
   };
+  if((props?.stateLoginValueAim?.token == 401 ||
+    props?.stateLoginValueAim?.token == 450) &&
+    props?.stateLoginValueAim?.user?.type !== 'patient'){
+      return <Redirect to={'/'} />;
+  }
+  else if (
+    props?.stateLoginValueAim?.token !== 401 &&
+    props?.stateLoginValueAim?.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    props?.stateLoginValueAim.is_vedio_registered
+  ) {
+      return <Redirect to={'/patient/video_login'} />;
+    }
+  else {
   return (
     <Grid
       className={
@@ -160,7 +184,7 @@ const RegisterVideo = (props) => {
                   </Grid>
                 </Grid>
 
-                <Grid item xs={12} md={10} lg={8}>
+                <Grid item xs={12} md={12} lg={12}>
                   {/* <Grid className="profilePkg"> */}
                   <Grid className="profilePkgIner3 border-radious-10">
                     <Grid className="logForm form_full">
@@ -181,20 +205,57 @@ const RegisterVideo = (props) => {
                           />
                         </Grid>
                       </Grid>
-                      <Grid className="logRow">
-                        <Grid>
-                          <label>{password}</label>
-                        </Grid>
-                        <Grid>
-                          <input
-                            type={hidden ? "password" : "text"}
-                            name="pass"
-                            onKeyDown={(e) => onKeyDownlogin(e)}
-                            value={_password}
-                            onChange={(e) => setPassword(e.target.value)}
-                          />
-                        </Grid>
-                      </Grid>
+                      <Grid className="logRow logpassInst">
+                          <Grid container direction="row">
+                            <Grid item xs={11} sm={6} md={6}>
+                              <label>{password}</label>
+                            </Grid>
+                            {/* <Grid
+                              item
+                              xs={11}
+                              sm={6}
+                              md={6}
+                              className="logFrgtpass"
+                            >
+                              <label>
+                                <a
+                                // onClick={forgotPassword}
+                                >
+                                  {login_Forgotpassword}
+                                </a>
+                              </label>
+                            </Grid> */}
+                          </Grid>
+                          <Grid className="logPass">
+                            {/* <Grid>
+                              <label>{password}</label>
+                            </Grid> */}
+                            <input
+                              type={hidden ? "password" : "text"}
+                              name="pass"
+                              onKeyDown={(e) => onKeyDownlogin(e)}
+                              value={_password}
+                              onChange={(e) => setPassword(e.target.value)}
+                            />
+                            {hidden && (
+                              <a onClick={toggleShow}>
+                                <img
+                                  src={require('assets/images/showeye.svg')}
+                                  alt=""
+                                  title=""
+                                />
+                              </a>
+                            )}
+                            {!hidden && (
+                              <a onClick={toggleShow}>
+                                <img
+                                  src={require('assets/images/hide.svg')}
+                                  alt=""
+                                  title=""
+                                />
+                              </a>
+                            )}
+                          </Grid></Grid>
 
                       <Grid className="aceptTermsPlcy">
                         <FormControlLabel
@@ -248,6 +309,7 @@ const RegisterVideo = (props) => {
       </Grid>
     </Grid>
   );
+                  }
 };
 
 const mapStateToProps = (state) => {
@@ -257,8 +319,6 @@ const mapStateToProps = (state) => {
   const { settings } = state.Settings;
   const { verifyCode } = state.authy;
   const { metadata } = state.OptionList;
-  // const { Doctorsetget } = state.Doctorset;
-  // const { catfil } = state.filterate;
   return {
     stateLanguageType,
     stateLoginValueAim,
@@ -266,8 +326,6 @@ const mapStateToProps = (state) => {
     settings,
     verifyCode,
     metadata,
-    //   Doctorsetget,
-    //   catfil
   };
 };
 export default pure(

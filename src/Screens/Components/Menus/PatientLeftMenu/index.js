@@ -79,13 +79,7 @@ class Index extends Component {
   };
 
   topupPage = () => {
-    // this.props.history.push('/topupPage');
-  };
-
-
-   //For feedback page
-   feedBack = () => {
-    this.props.history.push("/patient/Feed-back");
+    this.props.history.push('/patient/top-up');
   };
 
   render() {
@@ -99,6 +93,11 @@ class Index extends Component {
       dashboard,
       appointments,
       manage_prepaid_talktime,
+      settings,
+      top_up,
+      list_requests,
+      health_profile,
+      assesments,
     } = translate;
     return (
       <Grid
@@ -128,7 +127,9 @@ class Index extends Component {
         </Grid>
         <Grid className="menuItems">
           <ul>
-            <li
+            {this.props.stateLoginValueAim?.isVideoLoggedIn && 
+            <>
+             <li
               className={
                 this.props.currentPage === "settings" ? "menuActv" : ""
               }
@@ -150,7 +151,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Settings"}</span>
+                <span>{health_profile}</span>
               </a>
             </li>
             <li
@@ -178,7 +179,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{"Top-up"}</span>
+                <span>{top_up}</span>
               </a>
             </li>
             <li
@@ -203,7 +204,7 @@ class Index extends Component {
                     title=""
                   />
                 )}
-                <span>{appointments}</span>
+                <span>{assesments}</span>
               </a>
             </li>
             <li
@@ -215,54 +216,27 @@ class Index extends Component {
 
               <a onClick={this.gotoAppointmentList}>
 
-                  {this.props.settings &&
-                    this.props.settings.setting &&
-                    this.props.settings.setting.mode &&
-                    this.props.settings.setting.mode === "dark" ? (
-                    <img
-                      src={require("assets/images/archive2.png")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                      src={require("assets/images/archive.png")}
-                      alt=""
-                      title=""
-                    />
-                  )}
-                  <span>{"List Requests"}</span>
-                </a>
-              </li>
-              <li
-                className={
-                  this.props.currentPage === "feedback" ? "menuActv" : ""
-                }
-              >
-             
-
-                <a onClick={this.feedBack}>
-
-                  {this.props.settings &&
-                    this.props.settings.setting &&
-                    this.props.settings.setting.mode &&
-                    this.props.settings.setting.mode === "dark" ? (
-                      <img
-                      src={require("assets/images/nav-journal-white.svg")}
-                      alt=""
-                      title=""
-                    />
-                  ) : (
-                    <img
-                    src={require("assets/images/nav-journal.svg")}
+                {this.props.settings &&
+                  this.props.settings.setting &&
+                  this.props.settings.setting.mode &&
+                  this.props.settings.setting.mode === "dark" ? (
+                  <img
+                    src={require("assets/images/archive2.png")}
                     alt=""
                     title=""
                   />
-                  )}
-                  <span>{"Feed Back"}</span>
-                </a>
-              </li>
-           
+                ) : (
+                  <img
+                    src={require("assets/images/archive.png")}
+                    alt=""
+                    title=""
+                  />
+                )}
+                <span>{list_requests}</span>
+              </a>
+            </li>
+            </>
+           }
 
             <li
               className={this.props.currentPage === "profile" ? "menuActv" : ""}
