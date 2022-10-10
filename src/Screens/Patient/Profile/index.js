@@ -27,6 +27,7 @@ import { GetLanguageDropdown } from 'Screens/Components/GetMetaData/index.js';
 import { getLanguage } from 'translations/index';
 import { pure } from 'recompose';
 import { commonHeader } from 'component/CommonHeader/index';
+import DeleteAccountSection from "Screens/Components/CommonProfileSec/DeleteAccount";
 function TabContainer(props) {
   return (
     <Typography component="div" className="tabsCntnts">
