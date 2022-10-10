@@ -1949,7 +1949,8 @@
     "please_enter_time":"Please Enter Time",
     "note_already":"Note: Time slots in red is already booked",
     "please_select_situation":"Please Select Situation",
-    "feedback_is_already_given_for_this_Request":"Feedback is already given for this Request"
+    "feedback_is_already_given_for_this_Request":"Feedback is already given for this Request",
+    "diabetes": "Diabetes"
     
   }
 }
