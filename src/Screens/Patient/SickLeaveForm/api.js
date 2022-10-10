@@ -2078,7 +2078,7 @@ export const validatePainHeart = (check, value, item, current) => {
         MoveTop(0);
         return false;
       }
-      else if(!value.headache_situation){
+      else if (!value.headache_situation) {
         current.setState({
           error_section: 85,
           errorChrMsg: please_select_situation,
@@ -2412,7 +2412,7 @@ export const onChange = (date, current) => {
             if (responce.data.hassuccessed) {
               let bookedSlot = [];
               responce && responce.data && responce.data.data && responce.data.data.map((item) => {
-                bookedSlot.push(item?.start + "-" + item?.end)
+                bookedSlot.push(item?.starttime + "-" + item?.endtime)
               })
               calBookedSlot(DoctorSlot, bookedSlot, current)
               current.setState({ loaderImage: false })

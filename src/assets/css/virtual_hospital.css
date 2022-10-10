@@ -16895,7 +16895,8 @@ label.errMsgStyleSecPart {
   font-weight: 600;
   font-size: 23px;
   text-align: center;
-  margin-top: 20%;
+  margin-top: 13%;
+  width: 100%;
   color: #696969;
 }
 
@@ -18129,4 +18130,10 @@ a {
 }
 .card-header p {
   margin-bottom: 6px;
+}
+
+
+.adhsjs{
+  margin: 16px!important;
+  line-height: 0px!important;
 }

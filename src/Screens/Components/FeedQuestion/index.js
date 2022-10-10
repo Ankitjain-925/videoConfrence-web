@@ -29,6 +29,7 @@ class Index extends Component {
             settings: this.props.settings,
             comesFrom: this.props.comesFrom,
             allDoctorData: this.props.allDoctorData,
+            allData: this.props.allData,
             showQuestion: {},
             errorMsg: "",
             loaderImage: false
@@ -54,7 +55,7 @@ class Index extends Component {
         this.setState({ showQuestion: state });
     };
     handleTaskSubmit = () => {
-        const { allDoctorData } = this.props;
+        const { allDoctorData, allData } = this.props;
         let translate = getLanguage(this.props.stateLanguageType);
         let { Something_went_wrong } = translate;
         var data = this.state.showQuestion;
@@ -86,13 +87,25 @@ class Index extends Component {
                 commonHeader(this.props.stateLoginValueAim.token)
             )
             .then((responce) => {
-                this.setState({ loaderImage: false });
                 if (responce.data.hassuccessed) {
-                    this.closeFullQues();
-                    this.setState({ showQuestion: {} });
-
+                    axios
+                        .put(
+                            sitedata.data.path + '/vh/AddTask/' + allData?._id,
+                            { isFeedback: true },
+                            commonHeader(this.props.stateLoginValueAim.token)
+                        )
+                        .then((responce) => {
+                            if (responce.data.hassuccessed) {
+                                this.props.allgetData();
+                                this.closeFullQues();
+                                this.setState({ showQuestion: {}, loaderImage: false });
+                            } else {
+                                this.closeFullQues();
+                                this.setState({ showQuestion: {}, loaderImage: false });
+                            }
+                        })
                 } else {
-                    this.setState({ errorMsg: Something_went_wrong });
+                    this.setState({ errorMsg: Something_went_wrong, loaderImage: false });
                 }
             });
 
@@ -100,15 +113,15 @@ class Index extends Component {
 
 
     render() {
-        console.log("check")
         let translate = getLanguage(this.props.stateLanguageType)
         let {
             FeedBack,
+            feedback_is_already_given_for_this_Request,
             Submit,
             Give_Comment_Doctor,
             Give_rating_Doctor
         } = translate;
-
+        const { allData } = this.props;
         return (
             <Grid>
                 {this.state.loaderImage && <Loader />}
@@ -128,6 +141,7 @@ class Index extends Component {
                     <Grid className="creatTaskModel3 creatTaskModel11">
                         <Grid className="creatTaskCntnt">
                             <Grid>
+                                <div className="err_message">{allData && allData.isFeedback ? feedback_is_already_given_for_this_Request : null}</div>
                                 <Grid container direction="row" justify="center" className="addSpeclLbl">
                                     <Grid item xs={8} md={8} lg={8}>
                                         <label>{FeedBack}</label>
@@ -249,6 +263,7 @@ class Index extends Component {
                                 <Grid className="setDetail-eval">
                                     <Grid item xs={12} md={12} className="saveTasks">
                                         <Button
+                                            disabled={allData && allData.isFeedback}
                                             onClick={() =>
                                                 this.handleTaskSubmit()
                                             }

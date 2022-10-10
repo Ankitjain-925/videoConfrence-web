@@ -62,10 +62,15 @@ class Index extends Component {
     }
   };
 
+
+
+
+
   openFeedback = (data) => {
     this.setState({
       showComponent: true,
-      allDoctorData: data?.assinged_to[0]
+      allDoctorData: data?.assinged_to[0],
+      allData: data
     });
 
   }
@@ -208,16 +213,19 @@ class Index extends Component {
       appointment_time,
       your_payment_process_is_pending,
       Download_Bill,
-      inactive
+      inactive,
+      feedback_form
     } = translate;
 
     return (
       <Grid>
         {this.state.showComponent ?
           <FeedQuestion
+            allgetData={() => allgetData(this.props.stateLoginValueAim.user._id, this)}
             closeFullQues={() => this.closeFullQues()}
             openModal={true}
             allDoctorData={this.state.allDoctorData}
+            allData={this.state.allData}
           /> :
           null
         }
@@ -491,7 +499,7 @@ class Index extends Component {
                                             )}
                                           {item?.approved == true &&
                                             (!item.is_payment ||
-                                              item.is_payment == true) && (
+                                              item.is_payment == true) && (!item?.meetingjoined) && (
                                               <li
                                                 onClick={() => {
                                                   this.props.history.push("/patient/access-key");
@@ -584,7 +592,7 @@ class Index extends Component {
                                                   alt=""
                                                   title=""
                                                 />
-                                                Feedback Form
+                                                {feedback_form}
                                               </a>
                                             </li>
                                           )}

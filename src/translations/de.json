@@ -389,6 +389,8 @@
     "stomach_intensity":"Magen-Intensität",
     "stomach_periodically":"Magen regelmäßig",
     "diarrhea":"Durchfall",
+    "deactivate_account":"Deactivate Account",
+    "deactivate_your_account":"Deactivate Your Account",
     "diarrhea_symptoms_begin":"Durchfall symptome beginnen",
     "diarrhea_suffer_symtoms":"Leiden unter den gleichen Symptomen",
     "diarrhea_vomiting":"Durchfall Erbrechen",
@@ -495,13 +497,15 @@
     "click_on_accept_it_guidline": "Click here to accept IT guideline !",
     "view_guidelines": "View Guideline",
     "guideline": "Guideline",
-    "FeedBack":"Feed Back",
-    "Give_Comment_Doctor":"Give Comment to the Doctor",
-    "Give_rating_Doctor":"Give rating to the Doctor",
+    "FeedBack":"Rückmeldung",
+    "Give_Comment_Doctor":"Geben Sie dem Arzt einen Kommentar",
+    "Give_rating_Doctor":"Geben Sie dem Arzt eine Bewertung",
     "payment_type":"Payment Type:",
     "only_for_patient":"Only for patient" ,
     "You_dont_have_an_access_of_this_meeting":"You don't have an access of this meeting",
     "note_already":"Note: Time slots in red is already booked",
-    "please_select_situation":"Bitte Situation auswählen"
+    "please_select_situation":"Bitte Situation auswählen",
+    "feedback_is_already_given_for_this_Request":"Feedback is already given for this Request",
+    "feedback_form":"Feedback-Formular"  
   }
 }
