@@ -49,47 +49,47 @@ class Index extends Component {
 }
 
   //Dialog for deleting accoount 
-  DeleteAccount=()=>{
-      if(!this.state.notmatch){
-        let translate = getLanguage(this.props.stateLanguageType)
-        let { cancel, ok, reallyWantDelete, looseAllData } = translate;
-        confirmAlert({
-            customUI: ({ onClose }) => {
-              return (
-                <div
-                  className={
-                    this.props.settings &&
-                      this.props.settings.setting &&
-                      this.props.settings.setting.mode === "dark"
-                      ? "dark-confirm react-confirm-alert-body"
-                      : "react-confirm-alert-body"
-                  }
-                >
-                  <h1 className="deletewarninghead">{reallyWantDelete}</h1>
-                  <p className="deletewarning">{looseAllData}</p>
-                  <div className="react-confirm-alert-button-group">
-                    <button
-                      onClick={() => {
-                        this.DeleteUser(this.state.Current_state._id, this.state.Current_state.profile_id, this.state.Current_state.bucket);
-                        onClose();
-                      }}
-                    >
-                      {ok}
-                    </button>
-                    <button
-                      onClick={() => {
-                        onClose();
-                      }}
-                    >
-                      {cancel}
-                    </button>
-                  </div>
-                </div>
-              );
-            },
-          });
-      }
-  }
+  // DeleteAccount=()=>{
+  //     if(!this.state.notmatch){
+  //       let translate = getLanguage(this.props.stateLanguageType)
+  //       let { cancel, ok, reallyWantDelete, looseAllData } = translate;
+  //       confirmAlert({
+  //           customUI: ({ onClose }) => {
+  //             return (
+  //               <div
+  //                 className={
+  //                   this.props.settings &&
+  //                     this.props.settings.setting &&
+  //                     this.props.settings.setting.mode === "dark"
+  //                     ? "dark-confirm react-confirm-alert-body"
+  //                     : "react-confirm-alert-body"
+  //                 }
+  //               >
+  //                 <h1 className="deletewarninghead">{reallyWantDelete}</h1>
+  //                 <p className="deletewarning">{looseAllData}</p>
+  //                 <div className="react-confirm-alert-button-group">
+  //                   <button
+  //                     onClick={() => {
+  //                       this.DeleteUser(this.state.Current_state._id, this.state.Current_state.profile_id, this.state.Current_state.bucket);
+  //                       onClose();
+  //                     }}
+  //                   >
+  //                     {ok}
+  //                   </button>
+  //                   <button
+  //                     onClick={() => {
+  //                       onClose();
+  //                     }}
+  //                   >
+  //                     {cancel}
+  //                   </button>
+  //                 </div>
+  //               </div>
+  //             );
+  //           },
+  //         });
+  //     }
+  // }
   //For Change Password State For version V4
   ChangePass = (e) => {
     const state = this.state.Password;
@@ -163,11 +163,11 @@ class Index extends Component {
                     <input
                       type="password"
                       name="current_pass"
-                      onChange={(e)=>this.ChangePass(e)}
+                      // onChange={(e)=>this.ChangePass(e)}
                     />
                     <input
                       type="submit"
-                      onClick={this.DeleteAccount}
+                      // onClick={this.DeleteAccount}
                       value={Submit} 
                     />
                 </Grid>   

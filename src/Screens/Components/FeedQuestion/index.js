@@ -138,7 +138,7 @@ class Index extends Component {
                             : 'homeBg'
                     }
                 >
-                    <Grid className="creatTaskModel3 creatTaskModel11">
+                    <Grid className="creatTaskModel3 creatTaskModel11 feedBackModal">
                         <Grid className="creatTaskCntnt">
                             <Grid>
                                 <div className="err_message">{allData && allData.isFeedback ? feedback_is_already_given_for_this_Request : null}</div>
@@ -248,7 +248,6 @@ class Index extends Component {
                                         label={Give_rating_Doctor}
                                         value={this.state.showQuestion?.rating}
                                     />
-
                                 </Grid>
                                 <Grid className="setDetail-eval">
                                     <Grid className="fillDiaAll2 ">
