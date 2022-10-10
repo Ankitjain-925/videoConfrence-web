@@ -2018,7 +2018,7 @@ export const validatePainHeart = (check, value, item, current) => {
     }
 
   }
-  else if (item === 'headache_have_diabetes' && check === 'yes') {
+ else if (item === 'headache_have_diabetes' && check === 'yes') {
     if (!value.headache_have_diabetes) {
       current.setState({
         error_section: 46,
@@ -2101,6 +2101,8 @@ export const validatePainHeart = (check, value, item, current) => {
     } else {
       return true;
     }
+
+    
   } else if (item === 'fever_have_a_cough' && check === 'yes') {
     if (!value.fever_have_a_cough) {
       current.setState({
