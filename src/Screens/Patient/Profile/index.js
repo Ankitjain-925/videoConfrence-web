@@ -21,6 +21,7 @@ import { authy } from 'Screens/Login/authy.js';
 import Typography from '@material-ui/core/Typography';
 import ProfileSection from './Components/profileUpdate';
 import SecuritySection from 'Screens/Components/CommonProfileSec/security';
+import DeleteAccountSection from 'Screens/Components/CommonProfileSec/DeleteAccount'
 import Timezone from 'timezon.json';
 import Notification from 'Screens/Components/CometChat/react-chat-ui-kit/CometChat/components/Notifications';
 import { GetLanguageDropdown } from 'Screens/Components/GetMetaData/index.js';
@@ -28,6 +29,7 @@ import { getLanguage } from 'translations/index';
 import { pure } from 'recompose';
 import DeleteAccountSection from 'Screens/Components/CommonProfileSec/DeleteAccount';
 import { commonHeader } from 'component/CommonHeader/index';
+import DeleteAccountSection from "Screens/Components/CommonProfileSec/DeleteAccount";
 function TabContainer(props) {
   return (
     <Typography component="div" className="tabsCntnts">
