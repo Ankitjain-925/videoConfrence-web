@@ -177,9 +177,9 @@ class Index extends Component {
                                                 e,
                                                 'headache_quality_of_pain'
                                             )
-                                        }
-                                        comesFrom="Feedback"
-                                        label="How would you describe the quality of pain?"
+                                        }ck"
+                                        label="How wo
+                                        comesFrom="Feedbauld you describe the quality of pain?"
                                         value={this.state.showQuestion?.headache_quality_of_pain}
                                     />
 
