@@ -2018,7 +2018,7 @@ export const validatePainHeart = (check, value, item, current) => {
     }
 
   }
-  else if (item === 'headache_have_diabetes' && check === 'yes') {
+ else if (item === 'headache_have_diabetes' && check === 'yes') {
     if (!value.headache_have_diabetes) {
       current.setState({
         error_section: 46,
@@ -2077,8 +2077,16 @@ export const validatePainHeart = (check, value, item, current) => {
         MoveTop(200);
         MoveTop(0);
         return false;
-      }
-      else if (!value.headache_situation) {
+      } 
+    else if (calHba1c > 64 / 10) {
+        current.setState({
+          error_section: 56,
+          errorChrMsg: Hba1c_should_between,
+        });
+        MoveTop(200);
+        MoveTop(0);
+        return false;
+      } else if(!value.headache_situation){
         current.setState({
           error_section: 85,
           errorChrMsg: please_select_situation,
@@ -2087,20 +2095,14 @@ export const validatePainHeart = (check, value, item, current) => {
         MoveTop(0);
         return false;
       }
-      else if (calHba1c > 64 / 10) {
-        current.setState({
-          error_section: 56,
-          errorChrMsg: Hba1c_should_between,
-        });
-        MoveTop(200);
-        MoveTop(0);
-        return false;
-      } else {
+      else {
         return true;
       }
     } else {
       return true;
     }
+
+    
   } else if (item === 'fever_have_a_cough' && check === 'yes') {
     if (!value.fever_have_a_cough) {
       current.setState({
