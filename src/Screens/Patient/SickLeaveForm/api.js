@@ -2030,9 +2030,12 @@ export const validatePainHeart = (check, value, item, current) => {
     }
 
   }
+
   else if ((item === 'headache_have_diabetes' || item === 'stomach_have_diabetes') && check === 'yes') {
     if (item === 'headache_have_diabetes') {
       if (!value.headache_have_diabetes) {
+
+ 
         current.setState({
           error_section: 46,
           errorChrMsg: please_select + ' ' + diabetes + ' ' + with_yes_no,
@@ -2198,6 +2201,8 @@ export const validatePainHeart = (check, value, item, current) => {
         return true;
       }
     }
+
+    
   } else if (item === 'fever_have_a_cough' && check === 'yes') {
     if (!value.fever_have_a_cough) {
       current.setState({
