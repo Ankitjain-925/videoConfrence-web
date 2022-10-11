@@ -214,7 +214,8 @@ class Index extends Component {
       your_payment_process_is_pending,
       Download_Bill,
       inactive,
-      feedback_form
+      feedback_form,
+      
     } = translate;
 
     return (
