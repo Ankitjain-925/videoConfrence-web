@@ -213,7 +213,9 @@ class Index extends Component {
       appointment_time,
       your_payment_process_is_pending,
       Download_Bill,
-      inactive
+      inactive,
+      feedback_form,
+      
     } = translate;
 
     return (
@@ -591,7 +593,7 @@ class Index extends Component {
                                                   alt=""
                                                   title=""
                                                 />
-                                                Feedback Form
+                                                {feedback_form}
                                               </a>
                                             </li>
                                           )}

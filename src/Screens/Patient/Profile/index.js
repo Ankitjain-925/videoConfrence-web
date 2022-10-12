@@ -21,6 +21,7 @@ import { authy } from 'Screens/Login/authy.js';
 import Typography from '@material-ui/core/Typography';
 import ProfileSection from './Components/profileUpdate';
 import SecuritySection from 'Screens/Components/CommonProfileSec/security';
+import DeleteAccountSection from 'Screens/Components/CommonProfileSec/DeleteAccount'
 import Timezone from 'timezon.json';
 import Notification from 'Screens/Components/CometChat/react-chat-ui-kit/CometChat/components/Notifications';
 import { GetLanguageDropdown } from 'Screens/Components/GetMetaData/index.js';
@@ -79,9 +80,9 @@ class Index extends Component {
   GetLanguageMetadata = () => {
     var Alltissues = GetLanguageDropdown(
       this.state.allMetadata &&
-        this.state.allMetadata.tissue &&
-        this.state.allMetadata.tissue.length > 0 &&
-        this.state.allMetadata.tissue,
+      this.state.allMetadata.tissue &&
+      this.state.allMetadata.tissue.length > 0 &&
+      this.state.allMetadata.tissue,
       this.props.stateLanguageType
     );
     var zones = GetLanguageDropdown(
@@ -119,7 +120,7 @@ class Index extends Component {
       )
       .then((response) => {
         // console.log('response.data.data', response.data.data);
-       this.setState({ loaderImage: false, LoggedInUser: response.data.data });
+        this.setState({ loaderImage: false, LoggedInUser: response.data.data });
       })
       .catch((error) => {
         this.setState({ loaderImage: false });
@@ -149,15 +150,16 @@ class Index extends Component {
       date_time,
       kyc,
       delete_account,
+      deactivate_account
     } = translate;
 
     return (
       <Grid
         className={
           this.props.settings &&
-          this.props.settings.setting &&
-          this.props.settings.setting.mode &&
-          this.props.settings.setting.mode === 'dark'
+            this.props.settings.setting &&
+            this.props.settings.setting.mode &&
+            this.props.settings.setting.mode === 'dark'
             ? 'homeBg darkTheme homeBgDrk'
             : 'homeBg'
         }
@@ -172,10 +174,10 @@ class Index extends Component {
                 <Notification />
                 {/* Website Mid Content */}
                 <Grid item xs={12} md={10} lg={8}>
-                {!this.props.stateLoginValueAim?.isVideoLoggedIn && 
-                    <div className="backFlow movelogin" onClick={()=>{this.props.history.push('/patient/video_login')}}>
+                  {!this.props.stateLoginValueAim?.isVideoLoggedIn &&
+                    <div className="backFlow movelogin" onClick={() => { this.props.history.push('/patient/video_login') }}>
                       <img src={require('assets/virtual_images/rightArrow.png')} />
-                      <a>Move to Login / Registration page</a>  
+                      <a>Move to Login / Registration page</a>
                     </div>}
                   <Grid className="profilePkg ">
                     <Grid className="profilePkgIner1">
@@ -195,8 +197,8 @@ class Index extends Component {
                             className="aboutTabsIner"
                           />
                           <Tab label={kyc} className="aboutTabsIner" />
-                          <Tab label={date_time} className="aboutTabsIner" />
-                          <Tab label={delete_account} className="aboutTabsIner" /> */}
+                          <Tab label={date_time} className="aboutTabsIner" /> */}
+                          <Tab label={deactivate_account} className="aboutTabsIner" />
                         </Tabs>
                       </AppBar>
                     </Grid>
@@ -220,6 +222,18 @@ class Index extends Component {
                         </TabContainer>
                       )}
                       {/* End of Security */}
+
+                      {/* Start of Delete */}
+                      {value === 2 && (
+                        <TabContainer>
+                          <DeleteAccountSection
+                            user_token={this.props.stateLoginValueAim.token}
+                            LoggedInUser={this.state.LoggedInUser}
+                            getUserData={this.getUserData}
+                          />
+                        </TabContainer>
+                      )}
+                      {/* End of Delete */}
 
                       {/* Start of MyDoctor */}
                       {/* {value === 2 && (
@@ -269,17 +283,6 @@ class Index extends Component {
                         </TabContainer>
                       )} */}
                       {/* End of DateTime */}
-                      {/* Start of Delete */}
-                      {/* {value === 7 && (
-                        <TabContainer>
-                          <DeleteAccountSection
-                            user_token={this.props.stateLoginValueAim.token}
-                            LoggedInUser={this.state.LoggedInUser}
-                            getUserData={this.getUserData}
-                          />
-                        </TabContainer>
-                      )} */}
-                      {/* End of Delete */}
                     </Grid>
                     {/* End of Tabs */}
                   </Grid>
