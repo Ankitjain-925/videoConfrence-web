@@ -1659,7 +1659,7 @@
     "with_yes_no": "with YES / NO",
     "please_select": "Please select",
     "enter_body_temp": "Please Enter body temprature",
-    "valid_body_temp": "Please Enter valid body temprature",
+    "valid_body_temp": "Please Select body temprature between 35-43",
     "enter_sexual_activities": "Please Enter sexual activities",
     "Max_word_limit_exceeds": "Max Words limit exceeds in sexual activities",
     "enter_systolic_value": "Please enter Systolic value",
