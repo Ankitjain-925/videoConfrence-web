@@ -128,9 +128,9 @@ class Index extends Component {
           onClose={() => this.closeFullQues()}
           className={
             this.props.settings &&
-            this.props.settings.setting &&
-            this.props.settings.setting.mode &&
-            this.props.settings.setting.mode === "dark"
+              this.props.settings.setting &&
+              this.props.settings.setting.mode &&
+              this.props.settings.setting.mode === "dark"
               ? "homeBg darkTheme"
               : "homeBg"
           }
