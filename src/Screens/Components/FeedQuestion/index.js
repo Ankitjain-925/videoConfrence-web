@@ -128,9 +128,9 @@ class Index extends Component {
           onClose={() => this.closeFullQues()}
           className={
             this.props.settings &&
-            this.props.settings.setting &&
-            this.props.settings.setting.mode &&
-            this.props.settings.setting.mode === "dark"
+              this.props.settings.setting &&
+              this.props.settings.setting.mode &&
+              this.props.settings.setting.mode === "dark"
               ? "homeBg darkTheme"
               : "homeBg"
           }
@@ -241,49 +241,45 @@ class Index extends Component {
 
                                 </Grid> */}
 
-                                <Grid
-                                    container
-                                    direction="row"
-                                    className="setDetail-eval">
-                                    <SymptomQuestions
-                                        updateEntryState1={(e) =>
-                                            this.updateAllEntrySec(
-                                                e,
-                                                'rating'
-                                            )
-                                        }
-                                        comesFrom="Feedback"
-                                        label={Give_rating_Doctor}
-                                        value={this.state.showQuestion?.rating}
-                                    />
-                                </Grid>
-                                <Grid className="setDetail-eval">
-                                    <Grid className="fillDiaAll2 ">
-                                        <label>{Give_Comment_Doctor}</label>
-                                        <NotesEditor
-                                            name="Comment"
-                                            onChange={(e) => this.updateAllEntrySec(e, 'Comment')}
-                                            value={this.state.showQuestion || ""}
-                                        />
-                                    </Grid>
-                                </Grid>
-                                <Grid className="setDetail-eval">
-                                    <Grid item xs={12} md={12} className="saveTasks">
-                                        <Button
-                                            disabled={allData && allData.isFeedback}
-                                            onClick={() =>
-                                                this.handleTaskSubmit()
-                                            }
-                                        >
-                                            {Submit}
-                                        </Button>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Modal>
-                {/* End of Model setup */}
+                <Grid
+                  container
+                  direction="row"
+                  className="setDetail-eval">
+                  <SymptomQuestions
+                    updateEntryState1={(e) =>
+                      this.updateAllEntrySec(
+                        e,
+                        'rating'
+                      )
+                    }
+                    comesFrom="Feedback"
+                    label={Give_rating_Doctor}
+                    value={this.state.showQuestion?.rating}
+                  />
+                </Grid>
+                <Grid className="setDetail-eval">
+                  <Grid className="fillDiaAll2 ">
+                    <label>{Give_Comment_Doctor}</label>
+                    <NotesEditor
+                      name="Comment"
+                      onChange={(e) => this.updateAllEntrySec(e, 'Comment')}
+                      value={this.state.showQuestion || ""}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid className="setDetail-eval">
+                  <Grid item xs={12} md={12} className="saveTasks">
+                    <Button
+                      disabled={allData && allData.isFeedback}
+                      onClick={() =>
+                        this.handleTaskSubmit()
+                      }
+                    >
+                      {Submit}
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Modal>

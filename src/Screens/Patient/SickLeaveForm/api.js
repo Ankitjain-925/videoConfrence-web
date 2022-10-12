@@ -158,7 +158,6 @@ export const CallTopUpApi_Add = (current, data) => {
   if (current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min && parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min) > 0) {
     calPrePaid = parseInt(current.props.stateLoginValueAim?.VideoData?.prepaid_talktime_min);
   }
-
   calPrePaid = calPrePaid + parseInt(data?.data?.paymentData?.amount / 500)
   var info = {
     paid_amount_obj: {
@@ -2666,9 +2665,9 @@ export const SelectTimeSlot = (AppointDay, Ai, data, current) => {
   let translate = getLanguage(current.props.stateLanguageType);
   let { this_time_slot_is_already_booked, please_select, another_one, upcoming_slots } = translate;
   if (data && data.isBooked) {
-    current.setState({ currentSelected: Ai, bookedError: this_time_slot_is_already_booked + ' ' + please_select + ' ' + another_one });
+    current.setState({ currentSelected: Ai, bookedError: '' });
   } else if (data && data.isAlreadyExist) {
-    current.setState({ currentSelected: Ai, bookedError: please_select + ' ' + upcoming_slots });
+    current.setState({ currentSelected: Ai, bookedError: '' });
   } else {
     current.setState({ bookedError: '', currentSelected: Ai });
   }
