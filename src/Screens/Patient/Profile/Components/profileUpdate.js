@@ -669,7 +669,7 @@ class Index extends Component {
 
                 <Grid className="insrnceTbl">
                     <Grid><h3>{insurance}</h3></Grid>
-                    <Grid className="profileIdRght">
+                    <Grid className="profileIdRght profileIdRghtPart">
                         <a onClick={this.handleAddInsurance}>{Addcompany}</a>
                     </Grid>
                     {/* Add more insurance model Open */}
