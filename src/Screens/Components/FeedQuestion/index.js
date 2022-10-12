@@ -284,9 +284,7 @@ class Index extends Component {
                     </Grid>
                 </Modal>
                 {/* End of Model setup */}
-            </Grid>
-          </Grid>
-        </Modal>
+          
         {/* End of Model setup */}
       </Grid>
     );
