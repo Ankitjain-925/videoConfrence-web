@@ -80,9 +80,9 @@ class Index extends Component {
   GetLanguageMetadata = () => {
     var Alltissues = GetLanguageDropdown(
       this.state.allMetadata &&
-        this.state.allMetadata.tissue &&
-        this.state.allMetadata.tissue.length > 0 &&
-        this.state.allMetadata.tissue,
+      this.state.allMetadata.tissue &&
+      this.state.allMetadata.tissue.length > 0 &&
+      this.state.allMetadata.tissue,
       this.props.stateLanguageType
     );
     var zones = GetLanguageDropdown(
@@ -120,7 +120,7 @@ class Index extends Component {
       )
       .then((response) => {
         // console.log('response.data.data', response.data.data);
-       this.setState({ loaderImage: false, LoggedInUser: response.data.data });
+        this.setState({ loaderImage: false, LoggedInUser: response.data.data });
       })
       .catch((error) => {
         this.setState({ loaderImage: false });
@@ -157,9 +157,9 @@ class Index extends Component {
       <Grid
         className={
           this.props.settings &&
-          this.props.settings.setting &&
-          this.props.settings.setting.mode &&
-          this.props.settings.setting.mode === 'dark'
+            this.props.settings.setting &&
+            this.props.settings.setting.mode &&
+            this.props.settings.setting.mode === 'dark'
             ? 'homeBg darkTheme homeBgDrk'
             : 'homeBg'
         }
@@ -174,10 +174,10 @@ class Index extends Component {
                 <Notification />
                 {/* Website Mid Content */}
                 <Grid item xs={12} md={10} lg={8}>
-                {!this.props.stateLoginValueAim?.isVideoLoggedIn && 
-                    <div className="backFlow movelogin" onClick={()=>{this.props.history.push('/patient/video_login')}}>
+                  {!this.props.stateLoginValueAim?.isVideoLoggedIn &&
+                    <div className="backFlow movelogin" onClick={() => { this.props.history.push('/patient/video_login') }}>
                       <img src={require('assets/virtual_images/rightArrow.png')} />
-                      <a>Move to Login / Registration page</a>  
+                      <a>Move to Login / Registration page</a>
                     </div>}
                   <Grid className="profilePkg ">
                     <Grid className="profilePkgIner1">
@@ -223,8 +223,8 @@ class Index extends Component {
                       )}
                       {/* End of Security */}
 
-                       {/* Start of Delete */}
-                       {value === 2 && (
+                      {/* Start of Delete */}
+                      {value === 2 && (
                         <TabContainer>
                           <DeleteAccountSection
                             user_token={this.props.stateLoginValueAim.token}
@@ -283,7 +283,7 @@ class Index extends Component {
                         </TabContainer>
                       )} */}
                       {/* End of DateTime */}
-                      </Grid>
+                    </Grid>
                     {/* End of Tabs */}
                   </Grid>
                 </Grid>

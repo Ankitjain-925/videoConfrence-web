@@ -158,7 +158,7 @@ const Dashboard = (props) => {
                   <div className="settingPage 66">
                     {!openPayment && (<>
                       <Grid container direction="row" justify="center" alignItems="center">
-                                               <Grid item xs={12} sm={6} md={6} lg={6}><h5 className="setting-h5">{balance}</h5></Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={6}><h5 className="setting-h5">{balance}</h5></Grid>
                         <Grid item xs={12} sm={6} md={6} lg={6}><ButtJoin /></Grid>
                       </Grid>
                     </>
@@ -233,14 +233,12 @@ const Dashboard = (props) => {
                       )}
                       <Grid>
                         {openPayment && (
-
                           <Payment
                             onCancel={handleCancel}
                             usedFor={"top_up"}
                             famount={famount2}
 
                           />
-
                         )}
                       </Grid>
                     </>
@@ -248,8 +246,8 @@ const Dashboard = (props) => {
                       <>
                         {!openPayment && (
                           <div className='last-sec-setting form_full'>
-                            <div className="custom-topup-Back addImgArow" onClick={() => { SetcustomAmount(false) }}>  
-                             <img src={require("assets/images/Right.svg")} alt="" title="" />{back_sec}</div>
+                            <div className="custom-topup-Back addImgArow" onClick={() => { SetcustomAmount(false) }}>
+                              <img src={require("assets/images/Right.svg")} alt="" title="" />{back_sec}</div>
                             <div className='custom-topup form_full_bl'>
                               <div>
                                 <h2 className="custom-topup-head">{add_custom_amount}</h2>
