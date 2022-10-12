@@ -18176,3 +18176,21 @@ a {
 .addFeedBack{
   padding:0px 28px 20px 28px;
 }
+.presPkgInerPart{
+  padding-bottom: 48px;
+}
+.profileIdRghtPart a {
+  color: #00ABAF !important;
+  font-family: Muli;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 12px;
+  cursor: pointer;
+}
+.profileIdRghtPart {
+  text-align: right;
+}
+.darkTheme .profileIdRghtPart a {
+  color: #00ABAF !important;
+}
