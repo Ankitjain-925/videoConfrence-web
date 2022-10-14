@@ -128,9 +128,9 @@ class Index extends Component {
           onClose={() => this.closeFullQues()}
           className={
             this.props.settings &&
-            this.props.settings.setting &&
-            this.props.settings.setting.mode &&
-            this.props.settings.setting.mode === "dark"
+              this.props.settings.setting &&
+              this.props.settings.setting.mode &&
+              this.props.settings.setting.mode === "dark"
               ? "homeBg darkTheme"
               : "homeBg"
           }
@@ -138,6 +138,7 @@ class Index extends Component {
           <Grid className="creatTaskModel3 creatTaskModel11">
             <Grid className="creatTaskCntnt">
               <Grid>
+              
                 <Grid
                   container
                   direction="row"
@@ -179,8 +180,8 @@ class Index extends Component {
                                                 'headache_quality_of_pain'
                                             )
                                         }ck"
-                                        label="How wo
-                                        comesFrom="Feedbauld you describe the quality of pain?"
+                                        comesFrom="Feedback"
+                                         label="How would you describe the quality of pain?"
                                         value={this.state.showQuestion?.headache_quality_of_pain}
                                     />
 
@@ -247,7 +248,9 @@ class Index extends Component {
                     }
                     comesFrom="Feedback"
                     label={Give_rating_Doctor}
-                    value={this.state.showQuestion?.rating}
+                    value={allData?.feedback_rating ?
+                      allData?.feedback_rating:
+                       this.state.showQuestion?.rating}
                   />
                 </Grid>
                 <Grid className="setDetail-eval">
@@ -255,8 +258,10 @@ class Index extends Component {
                     <label>{Give_Comment_Doctor}</label>
                     <NotesEditor
                       name="Comment"
-                      onChange={(e) => this.updateAllEntrySec(e, "Comment")}
-                      value={this.state.showQuestion || ""}
+                      onChange={(e) => this.updateAllEntrySec(e, 'Comment')}
+                      value={allData?.feedback_comment ?
+                        allData?.feedback_comment: 
+                        this.state.showQuestion || ""}
                     />
                   </Grid>
                 </Grid>
@@ -274,6 +279,7 @@ class Index extends Component {
             </Grid>
           </Grid>
         </Modal>
+
         {/* End of Model setup */}
         {/* </Grid>
           </Grid>
