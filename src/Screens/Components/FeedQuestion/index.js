@@ -254,7 +254,9 @@ class Index extends Component {
                     }
                     comesFrom="Feedback"
                     label={Give_rating_Doctor}
-                    value={this.state.showQuestion?.rating}
+                    value={allData?.feedback_rating ?
+                      allData?.feedback_rating:
+                       this.state.showQuestion?.rating}
                   />
                 </Grid>
                 <Grid className="setDetail-eval">
@@ -263,7 +265,9 @@ class Index extends Component {
                     <NotesEditor
                       name="Comment"
                       onChange={(e) => this.updateAllEntrySec(e, 'Comment')}
-                      value={this.state.showQuestion || ""}
+                      value={allData?.feedback_comment ?
+                        allData?.feedback_comment: 
+                        this.state.showQuestion || ""}
                     />
                   </Grid>
                 </Grid>
