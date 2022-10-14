@@ -138,18 +138,13 @@ class Index extends Component {
           <Grid className="creatTaskModel3 creatTaskModel11">
             <Grid className="creatTaskCntnt">
               <Grid>
-                <div className="err_message">
-                  {allData && allData.isFeedback
-                    ? feedback_is_already_given_for_this_Request
-                    : null}
-                </div>
+              
                 <Grid
                   container
                   direction="row"
                   justify="center"
-                  className="addSpeclLbl"
+                  className="addSpeclLbl addFeedBack"
                 >
-
                   <Grid item xs={8} md={8} lg={8}>
                     <label>{FeedBack}</label>
                   </Grid>
@@ -167,6 +162,11 @@ class Index extends Component {
                     </Grid>
                   </Grid>
                 </Grid>
+                <div className="err_message">
+                  {allData && allData.isFeedback
+                    ? feedback_is_already_given_for_this_Request
+                    : null}
+                </div>
                 {/* <Grid
 
                                     container
@@ -179,9 +179,9 @@ class Index extends Component {
                                                 e,
                                                 'headache_quality_of_pain'
                                             )
-                                        }
+                                        }ck"
                                         comesFrom="Feedback"
-                                        label="How would you describe the quality of pain?"
+                                         label="How would you describe the quality of pain?"
                                         value={this.state.showQuestion?.headache_quality_of_pain}
                                     />
 
@@ -241,16 +241,10 @@ class Index extends Component {
 
                                 </Grid> */}
 
-                <Grid
-                  container
-                  direction="row"
-                  className="setDetail-eval">
+                <Grid container direction="row" className="setDetail-eval">
                   <SymptomQuestions
                     updateEntryState1={(e) =>
-                      this.updateAllEntrySec(
-                        e,
-                        'rating'
-                      )
+                      this.updateAllEntrySec(e, "rating")
                     }
                     comesFrom="Feedback"
                     label={Give_rating_Doctor}
@@ -275,9 +269,7 @@ class Index extends Component {
                   <Grid item xs={12} md={12} className="saveTasks">
                     <Button
                       disabled={allData && allData.isFeedback}
-                      onClick={() =>
-                        this.handleTaskSubmit()
-                      }
+                      onClick={() => this.handleTaskSubmit()}
                     >
                       {Submit}
                     </Button>
@@ -287,6 +279,11 @@ class Index extends Component {
             </Grid>
           </Grid>
         </Modal>
+
+        {/* End of Model setup */}
+        {/* </Grid>
+          </Grid>
+        </Modal> */}
         {/* End of Model setup */}
       </Grid>
     );

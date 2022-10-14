@@ -258,7 +258,7 @@ class Index extends Component {
                           <ButtJoin />
                         </Grid>
                       </Grid>
-                      <Grid className="presPkgIner2">
+                      <Grid className="presPkgIner2 presPkgInerPart">
                         {this.state.error_section == 90 && (
                           <div className="err_message2 err_message4">{this.state.errorChrMsg}</div>
                         )}
