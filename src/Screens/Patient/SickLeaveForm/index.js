@@ -127,7 +127,7 @@ class Index extends Component {
     } = this.state;
     return (
 
-      <Grid className="logForm form_full">
+      <Grid className="logForm form_full logForm1">
         <Grid container direction="row" justify="center">
           <Grid item xs={12} md={12} lg={12}>
             {this.props.onSelectLanguage5(openCalendar, updateQues, DataprotectionRules)}

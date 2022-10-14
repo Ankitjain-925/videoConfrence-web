@@ -2308,9 +2308,9 @@ a.menuActv img {
   width: 100%;
 }
 
-.srchLft {
+/* .srchLft {
   border-right: 1px solid #f2f2f2;
-}
+} */
 
 .srchLft input::before,
 .srchLft input::after {
@@ -13154,9 +13154,9 @@ ul.patientHint li {
   color: #bfc1c1;
 }
 
-.darkTheme .srchLft {
+/* .darkTheme .srchLft {
   border-right: 1px solid #828282;
-}
+} */
 
 .darkTheme .wardInfo a {
   color: #bfc1c1;
@@ -18193,4 +18193,19 @@ a {
 }
 .darkTheme .profileIdRghtPart a {
   color: #00ABAF !important;
+}
+.profileIdRght1{
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+@media screen and (max-width: 959px){
+.profileIdRght1 {
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+}
+.logForm1 label{
+  margin:0px 0px 6px 0px!important;
 }
