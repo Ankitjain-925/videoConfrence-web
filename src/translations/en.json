@@ -512,6 +512,8 @@
     "please_select_situation":"Please Select Situation",
     "feedback_is_already_given_for_this_Request":"Feedback is already given for this Request",
     "diabetes": "Diabetes",
-    "feedback_form":"Feedback Form"
+    "feedback_form":"Feedback Form",
+    "emergency":"Emergency",
+    "telephone_nmbr":"Telephone number"
   }
 }

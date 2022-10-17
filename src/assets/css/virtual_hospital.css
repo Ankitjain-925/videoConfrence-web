@@ -18209,3 +18209,9 @@ a {
 .logForm1 label{
   margin:0px 0px 6px 0px!important;
 }
+.allStuPart{
+  margin-top:12px;
+}
+.homeBgDrk .logForm2 input[type='text']{
+  border: none!important;
+}

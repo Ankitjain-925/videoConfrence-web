@@ -83,7 +83,7 @@ class SelectDoctor extends Component {
       video_call,
     } = translate;
     return (
-      <Grid className="logForm form_full">
+      <Grid className="logForm form_full logForm2">
         {/* Start of Bread Crumb */}
         <Grid container direction="row" alignItems="center">
           <Grid item xs={12} md={12}  >
