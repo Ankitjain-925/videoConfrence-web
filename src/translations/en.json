@@ -512,6 +512,8 @@
     "please_select_situation":"Please Select Situation",
     "feedback_is_already_given_for_this_Request":"Feedback is already given for this Request",
     "diabetes": "Diabetes",
-    "feedback_form":"Feedback Form"
+    "feedback_form":"Feedback Form",
+    "reallyWantDelete": "Do you really want to delete your Account?",
+    "looseAllData": "You will lose all your data and no one can ever access it again! Also the information stored inside the AIS blockchain is lost forever as you are the only one to be able to see it."
   }
 }
