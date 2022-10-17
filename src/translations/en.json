@@ -228,7 +228,6 @@
     "Fever": "Fever",
     "Diarrhea": "Diarrhea",
     "Status": "Status",
-    "diabetes": "Diabetes",
     "Citizenship": "Citizenship",
     "pain_level": "Pain level",
     "added_on": "Added on",
@@ -514,6 +513,8 @@
     "diabetes": "Diabetes",
     "feedback_form":"Feedback Form",
     "reallyWantDelete": "Do you really want to delete your Account?",
-    "looseAllData": "You will lose all your data and no one can ever access it again! Also the information stored inside the AIS blockchain is lost forever as you are the only one to be able to see it."
+    "looseAllData": "You will lose all your data and no one can ever access it again! Also the information stored inside the AIS blockchain is lost forever as you are the only one to be able to see it.",
+    "emergency":"Emergency",
+    "telephone_nmbr":"Telephone number"
   }
 }

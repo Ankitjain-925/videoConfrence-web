@@ -250,7 +250,7 @@ function Index(props) {
         )}
             </Grid>
           </Grid>
-          <Grid className="fillDia">
+          <Grid className="fillDia allStuPart">
             <SelectByTwo
               name="stomach_situation"
               label={situation}
