@@ -1824,14 +1824,22 @@ export const validatePainHeart = (check, value, item, current) => {
       });
       MoveTop(550);
       return false;
-    } else if (value < 36 || value > 41) {
+    } else if ((value < 38.05 || value > 43.0) && item === 'fever_top_body_temp') {
       current.setState({
         error_section: section,
-        errorChrMsg: valid_body_temp,
+        errorChrMsg: valid_body_temp + " " + "(38.05°C - 43.0°C)",
       });
       MoveTop(550);
       return false;
-    } else {
+    } else if ((value < 37.05 || value > 38.0) && item === 'fever_low_body_temp') {
+      current.setState({
+        error_section: section,
+        errorChrMsg: valid_body_temp + " " + "(37.05°C - 38.0°C)",
+      });
+      MoveTop(550);
+      return false;
+    }
+    else {
       return true;
     }
   }
