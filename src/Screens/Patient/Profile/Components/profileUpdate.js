@@ -323,7 +323,7 @@ class Index extends Component {
                         </Modal>
                         {/* End of QR Model setup */}
                         <Grid item xs={12} md={4}>
-                            <Grid className="profileIdRght">
+                            <Grid className="profileIdRght profileIdRght1">
                                 <a onClick={this.handlePinOpen}>{Change} {ID} / {pin}</a>
                             </Grid>
                         </Grid>
@@ -669,7 +669,7 @@ class Index extends Component {
 
                 <Grid className="insrnceTbl">
                     <Grid><h3>{insurance}</h3></Grid>
-                    <Grid className="profileIdRght">
+                    <Grid className="profileIdRght profileIdRghtPart">
                         <a onClick={this.handleAddInsurance}>{Addcompany}</a>
                     </Grid>
                     {/* Add more insurance model Open */}

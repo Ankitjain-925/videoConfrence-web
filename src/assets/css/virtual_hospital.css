@@ -2308,9 +2308,9 @@ a.menuActv img {
   width: 100%;
 }
 
-.srchLft {
+/* .srchLft {
   border-right: 1px solid #f2f2f2;
-}
+} */
 
 .srchLft input::before,
 .srchLft input::after {
@@ -12581,12 +12581,6 @@ p.more-change-staff-img2 {
   border-radius: 12px;
 }
 
-.creatTaskCntnt {
-  height: 475px;
-  overflow-y: auto;
-  padding: 20px 0px;
-}
-
 .creatLbl {
   padding: 0px 20px;
   border-bottom: 1px solid #dedcdc;
@@ -13160,9 +13154,9 @@ ul.patientHint li {
   color: #bfc1c1;
 }
 
-.darkTheme .srchLft {
+/* .darkTheme .srchLft {
   border-right: 1px solid #828282;
-}
+} */
 
 .darkTheme .wardInfo a {
   color: #bfc1c1;
@@ -16890,14 +16884,20 @@ label.errMsgStyleSecPart {
 .topTxtVideoSec {
   margin-left: 18px;
 }
-
+.msgSectionCss label.formviewhead {
+  color: #00abaf !important;
+  font-size: 32px;
+}
 .msgSectionCss {
   font-weight: 600;
   font-size: 23px;
   text-align: center;
-  margin-top: 13%;
-  width: 100%;
+  margin-top: 20%;
   color: #696969;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 15%;
 }
 
 .declineListCol .homeBgDrk .presOpinionIner td.pivoted {
@@ -18136,4 +18136,82 @@ a {
 .adhsjs{
   margin: 16px!important;
   line-height: 0px!important;
+}
+.feedBackModal .creatTaskCntnt {
+  padding: 0px !important;
+}
+.creatTaskModel3.creatTaskModel11.feedBackModal {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.feedBackModal .saveTasks button {
+  margin-bottom: 32px;
+}
+.feedBackModal .creatTaskCntnt {
+  height: 395px !important;
+}
+.feedBackModal .saveTasks button {
+  margin-top: 25px !important;
+  margin-bottom: 22px !important;
+}
+.cstmVdoCallNw div {
+  width: 100% !important;
+}
+.call-page-card.form_full .call-feedback-part {
+  border-bottom: none !important;
+}
+.call-page-card.form_full  .MuiPaper-elevation8 {
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 12%), 0px 8px 10px 1px rgb(0 0 0 / 0%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+}
+.call-page-card.form_full .allSickVideoSec {
+  height: 412px !important;
+}
+.call-page-card {
+  padding: 20px 20px;
+  border: 1px solid #cccbcb;
+}
+.darkTheme .call-page-card.form_full div:last-child {
+  color: #ffffff;
+}
+.addFeedBack{
+  padding:0px 28px 20px 28px;
+}
+.presPkgInerPart{
+  padding-bottom: 48px;
+}
+.profileIdRghtPart a {
+  color: #00ABAF !important;
+  font-family: Muli;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 12px;
+  cursor: pointer;
+}
+.profileIdRghtPart {
+  text-align: right;
+}
+.darkTheme .profileIdRghtPart a {
+  color: #00ABAF !important;
+}
+.profileIdRght1{
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+@media screen and (max-width: 959px){
+.profileIdRght1 {
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+}
+.logForm1 label{
+  margin:0px 0px 6px 0px!important;
+}
+.allStuPart{
+  margin-top:12px;
+}
+.homeBgDrk .logForm2 input[type='text']{
+  border: none!important;
 }

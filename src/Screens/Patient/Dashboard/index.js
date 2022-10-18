@@ -59,6 +59,7 @@ const Dashboard = (props) => {
     privact_policy,
     rate_aimedies_diagnostics,
     logout_sec,
+    health_profile,
   } = translate;
   
 
@@ -143,7 +144,7 @@ const Dashboard = (props) => {
                   <div className="settingPage">
                     <Grid container direction="row" justify="center">
                       <Grid item xs={3} md={3} lg={3}>
-                        <h5 className="setting-h5">Health Profile</h5>
+                        <h5 className="setting-h5">{health_profile}</h5>
 
                       </Grid>
                       <Grid item xs={6} md={5} lg={5}>
@@ -186,7 +187,6 @@ const Dashboard = (props) => {
           languageValue={languageValue}
           handleCloseFancyLanguage={() => handleCloseFancyLanguage()}
           openLanguageModel={() => openLanguageModel()}
-
         />
       </Grid>
     )

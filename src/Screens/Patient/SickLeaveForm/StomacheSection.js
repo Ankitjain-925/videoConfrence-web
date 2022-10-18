@@ -208,9 +208,12 @@ function Index(props) {
           label={do_you_have_diabetes}
           value={props.updateQues?.stomach_have_diabetes}
         />
-        {props.error_section == 80 && (
+          {props.error_section == 110 && (
           <div className="err_message2">{props.errorChrMsg}</div>
         )}
+        {/* {props.error_section == 80 && (
+          <div className="err_message2">{props.errorChrMsg}</div>
+        )} */}
       </Grid>
       {props.updateQues && props.updateQues?.stomach_have_diabetes === 'yes' && (
         <>
@@ -225,6 +228,9 @@ function Index(props) {
                   value={props.updateQues?.stomach_blood_sugar}
                 />
               </Grid>
+              {props.error_section == 111 && (
+                <div className="err_message2">{props.errorChrMsg}</div>
+              )}
               {props.error_section == 46 && (
                 <div className="err_message2">{props.errorChrMsg}</div>
               )}
@@ -239,9 +245,12 @@ function Index(props) {
                   value={props.updateQues?.stomach_Hba1c}
                 />
               </Grid>
+              {props.error_section == 112 && (
+          <div className="err_message2">{props.errorChrMsg}</div>
+        )}
             </Grid>
           </Grid>
-          <Grid className="fillDia">
+          <Grid className="fillDia allStuPart">
             <SelectByTwo
               name="stomach_situation"
               label={situation}
@@ -250,6 +259,9 @@ function Index(props) {
               value={props.updateQues?.stomach_situation}
             />
           </Grid>
+          {props.error_section == 113 && (
+          <div className="err_message2">{props.errorChrMsg}</div>
+        )}
         </>
       )}
       <Grid className="sickQuesSec">

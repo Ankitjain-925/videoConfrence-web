@@ -8,11 +8,14 @@ import SymptomQuestions from '../../Components/TimelineComponent/CovidSymptomsFi
 import SelectByTwo from 'Screens/Components/SelectbyTwo/index';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { getLanguage } from 'translations/index';
-
+import useAllLanguage from "../../Hooks/Language"
 
 
 function Index(props) {
-  let translate = getLanguage(props.stateLanguageType);
+  const language = useAllLanguage();
+
+
+  let translate = getLanguage(language);
   const {
     where_did_the_pain_begin,
     back,
@@ -53,8 +56,8 @@ function Index(props) {
                         name="headache_painbegin_back"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_painbegin_back &&
-                          props.updateQues?.headache_painbegin_back == true
+                            props.updateQues?.headache_painbegin_back &&
+                            props.updateQues?.headache_painbegin_back == true
                             ? false
                             : true
                         }
@@ -78,8 +81,8 @@ function Index(props) {
                         name="headache_painbegin_front"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_painbegin_front &&
-                          props.updateQues?.headache_painbegin_front == true
+                            props.updateQues?.headache_painbegin_front &&
+                            props.updateQues?.headache_painbegin_front == true
                             ? false
                             : true
                         }
@@ -103,8 +106,8 @@ function Index(props) {
                         name="headache_painbegin_left"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_painbegin_left &&
-                          props.updateQues?.headache_painbegin_left == true
+                            props.updateQues?.headache_painbegin_left &&
+                            props.updateQues?.headache_painbegin_left == true
                             ? false
                             : true
                         }
@@ -128,8 +131,8 @@ function Index(props) {
                         name="headache_painbegin_right"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_painbegin_right &&
-                          props.updateQues?.headache_painbegin_right == true
+                            props.updateQues?.headache_painbegin_right &&
+                            props.updateQues?.headache_painbegin_right == true
                             ? false
                             : true
                         }
@@ -153,8 +156,8 @@ function Index(props) {
                         name="headache_painbegin_top"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_painbegin_top &&
-                          props.updateQues?.headache_painbegin_top == true
+                            props.updateQues?.headache_painbegin_top &&
+                            props.updateQues?.headache_painbegin_top == true
                             ? false
                             : true
                         }
@@ -193,8 +196,8 @@ function Index(props) {
                         name="headache_hurtnow_back"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_hurtnow_back &&
-                          props.updateQues?.headache_hurtnow_back == true
+                            props.updateQues?.headache_hurtnow_back &&
+                            props.updateQues?.headache_hurtnow_back == true
                             ? false
                             : true
                         }
@@ -218,8 +221,8 @@ function Index(props) {
                         name="headache_hurtnow_front"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_hurtnow_front &&
-                          props.updateQues?.headache_hurtnow_front == true
+                            props.updateQues?.headache_hurtnow_front &&
+                            props.updateQues?.headache_hurtnow_front == true
                             ? false
                             : true
                         }
@@ -243,8 +246,8 @@ function Index(props) {
                         name="headache_hurtnow_left"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_hurtnow_left &&
-                          props.updateQues?.headache_hurtnow_left == true
+                            props.updateQues?.headache_hurtnow_left &&
+                            props.updateQues?.headache_hurtnow_left == true
                             ? false
                             : true
                         }
@@ -268,8 +271,8 @@ function Index(props) {
                         name="headache_hurtnow_right"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_hurtnow_right &&
-                          props.updateQues?.headache_hurtnow_right == true
+                            props.updateQues?.headache_hurtnow_right &&
+                            props.updateQues?.headache_hurtnow_right == true
                             ? false
                             : true
                         }
@@ -293,8 +296,8 @@ function Index(props) {
                         name="headache_hurtnow_top"
                         value={
                           props.updateQues &&
-                          props.updateQues?.headache_hurtnow_top &&
-                          props.updateQues?.headache_hurtnow_top == true
+                            props.updateQues?.headache_hurtnow_top &&
+                            props.updateQues?.headache_hurtnow_top == true
                             ? false
                             : true
                         }
@@ -376,7 +379,7 @@ function Index(props) {
           )}
         </Grid>
       </Grid> */}
-      
+
       <Grid className="bgncmnSpc">
         <Grid className="fatiqueQues fatiqueQuess1">
           <FatiqueQuestion
@@ -394,22 +397,22 @@ function Index(props) {
           props.updateQues?.headache_have_temprature === 'yes' && (
             <>
               <Grid container direction="row" spacing="1">
-          <Grid item md={12} sm={12} className="textFieldArea1">
-            <Grid className="fillDia">
-            <input
-            type="number"
-            placeholder="36.6"
-            name="headache_body_temp"
-            onChange={(e) => props.updateAllEntrySec1(e, 'headache_body_temp')}
-            // className={forError ? 'setRedColor' : ''}
-            value={props.updateQues?.headache_body_temp}
-          ></input>
-          {props.error_section == 5 && (
-            <div className="err_message2">{props.errorChrMsg}</div>
-          )}
-          </Grid>
-         
-              </Grid>
+                <Grid item md={12} sm={12} className="textFieldArea1">
+                  <Grid className="fillDia">
+                    <input
+                      type="number"
+                      placeholder="36.6"
+                      name="headache_body_temp"
+                      onChange={(e) => props.updateAllEntrySec1(e, 'headache_body_temp')}
+                      // className={forError ? 'setRedColor' : ''}
+                      value={props.updateQues?.headache_body_temp}
+                    ></input>
+                    {props.error_section == 5 && (
+                      <div className="err_message2">{props.errorChrMsg}</div>
+                    )}
+                  </Grid>
+
+                </Grid>
               </Grid>
             </>
           )}
@@ -463,7 +466,7 @@ function Index(props) {
                   )}
                 </Grid>
               </Grid>
-              <Grid className="fillDia">
+              <Grid className="fillDia allStuPart">
                 <SelectByTwo
                   name="headache_situation"
                   label={situation}
@@ -498,7 +501,7 @@ function Index(props) {
             updateEntryState1={(e) =>
               props.updateAllEntrySec(e, 'headache_quality_of_pain')
             }
-           
+
             comesFrom="Feedback"
             label={describe_the_quality_of_pain}
             value={props.updateQues?.headache_quality_of_pain}
@@ -573,7 +576,7 @@ function Index(props) {
       </Grid>
     </Grid>
   );
-  
+
 }
 
 export default Index;

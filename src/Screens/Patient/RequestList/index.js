@@ -213,7 +213,9 @@ class Index extends Component {
       appointment_time,
       your_payment_process_is_pending,
       Download_Bill,
-      inactive
+      inactive,
+      feedback_form,
+      
     } = translate;
 
     return (
@@ -256,7 +258,7 @@ class Index extends Component {
                           <ButtJoin />
                         </Grid>
                       </Grid>
-                      <Grid className="presPkgIner2">
+                      <Grid className="presPkgIner2 presPkgInerPart">
                         {this.state.error_section == 90 && (
                           <div className="err_message2 err_message4">{this.state.errorChrMsg}</div>
                         )}
@@ -591,7 +593,7 @@ class Index extends Component {
                                                   alt=""
                                                   title=""
                                                 />
-                                                Feedback Form
+                                                {feedback_form}
                                               </a>
                                             </li>
                                           )}
