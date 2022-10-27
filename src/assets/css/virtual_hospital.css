@@ -18215,3 +18215,9 @@ a {
 .homeBgDrk .logForm2 input[type='text']{
   border: none!important;
 }
+
+.succ_message{
+  color: #00abaf;
+  text-align: center;
+  
+}
