@@ -21,103 +21,128 @@ class Index extends Component {
       Password: {},
       notmatch: false,
       loaderImage: false,
-      enterpass: false
+      // enterpass: false/
+      successMsg: false
     };
   }
 
-  //FOR DELETING THE USER
-  DeleteUser = (deletekey, profile_id, bucket) => {
-    this.setState({ loaderImage: true });
-    const user_token = this.props.stateLoginValueAim.token;
-    // axios.delete(sitedata.data.path + '/admin/deleteUser/' + deletekey + '?bucket=' + bucket, commonHeader(user_token))
-    //   .then((response) => {
-    //     this.setState({ loaderImage: false });
-    //     var data = JSON.stringify({ "permanent": true });
-    //     var config = {
-    //       method: 'delete',
-    //       url: 'https://api-eu.cometchat.io/v2.0/users/' + profile_id.toLowerCase(),
-    //       headers: commonCometDelHeader(),
-    //       data: data
-    //     };
-
-    //     axios(config)
-    //       .then(function (response) { })
-    //       .catch(function (error) { });
-    //     this.props.history.push('/');
-
-    //   }).catch((error) => { });
+  DeleteUser = () => {
+    const { stateLoginValueAim } = this.props;
+    let id = stateLoginValueAim?.user?._id;
+    console.log("id", id)
+    this.setState({ loaderImage: true, successMsg: false });
+    const user_token = stateLoginValueAim?.token;
+    axios
+      .put(sitedata.data.path + '/UpdateVideoAccount/' + id,
+        {
+          status: false
+        },
+        commonHeader(user_token))
+      .then((response) => {
+        this.setState({ loaderImage: false, successMsg: true });
+        setTimeout(() => { this.setState({ successMsg: false }); }, 5000)
+      }).catch((error) => {
+        this.setState({ loaderImage: false });
+      });
   }
+
+  //FOR DELETING THE USER
+  // DeleteUser = (deletekey, profile_id, bucket) => {
+  //   this.setState({ loaderImage: true });
+  //   const user_token = this.props.stateLoginValueAim.token;
+  //   axios.delete(sitedata.data.path + '/admin/deleteUser/' + deletekey + '?bucket=' + bucket, commonHeader(user_token))
+  //     .then((response) => {
+  //       this.setState({ loaderImage: false });
+  //       var data = JSON.stringify({ "permanent": true });
+  //       var config = {
+  //         method: 'delete',
+  //         url: 'https://api-eu.cometchat.io/v2.0/users/' + profile_id.toLowerCase(),
+  //         headers: commonCometDelHeader(),
+  //         data: data
+  //       };
+  //       axios(config)
+  //         .then(function (response) { })
+  //         .catch(function (error) { });
+  //       this.props.history.push('/');
+
+  //     }).catch((error) => { });
+  // }
 
   // Dialog for deleting accoount 
   DeleteAccount = () => {
-    if (!this.state.notmatch) {
-      let translate = getLanguage(this.props.stateLanguageType)
-      let { cancel, ok, reallyWantDelete, looseAllData } = translate;
-      confirmAlert({
-        customUI: ({ onClose }) => {
-          return (
-            <div
-              className={
-                this.props.settings &&
-                  this.props.settings.setting &&
-                  this.props.settings.setting.mode === "dark"
-                  ? "dark-confirm react-confirm-alert-body"
-                  : "react-confirm-alert-body"
-              }
-            >
-              <h1 className="deletewarninghead">{reallyWantDelete}</h1>
-              <p className="deletewarning">{looseAllData}</p>
-              <div className="react-confirm-alert-button-group">
-                <button
-                  onClick={() => {
-                    this.DeleteUser(this.state.Current_state._id, this.state.Current_state.profile_id, this.state.Current_state.bucket);
-                    onClose();
-                  }}
-                >
-                  {ok}
-                </button>
-                <button
-                  onClick={() => {
-                    onClose();
-                  }}
-                >
-                  {cancel}
-                </button>
-              </div>
+    const { stateLoginValueAim } = this.props;
+    var talkTime = stateLoginValueAim &&
+      stateLoginValueAim.VideoData &&
+      stateLoginValueAim.VideoData.prepaid_talktime_min;
+    // if (!this.state.notmatch) {
+    let translate = getLanguage(this.props.stateLanguageType)
+    let { cancel, ok, reallyWantDelete, looseAllData } = translate;
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div
+            className={
+              this.props.settings &&
+                this.props.settings.setting &&
+                this.props.settings.setting.mode === "dark"
+                ? "dark-confirm react-confirm-alert-body"
+                : "react-confirm-alert-body"
+            }
+          >
+            <h1 className="deletewarninghead">{reallyWantDelete}</h1>
+            <p className="deletewarning">{(talkTime === 0 || talkTime === null) ? "You will deactivate this video conference account, You will again activate this account when you try to log in again."
+              : "You will deactivate this video conference account, You will again activate this account when you try to log in again. Regarding your prepaid balance refund policy, Aimedis super admin will contact you shortly."}</p>
+            <div className="react-confirm-alert-button-group">
+              <button
+                onClick={() => {
+                  this.DeleteUser();
+                  onClose();
+                }}
+              >
+                {ok}
+              </button>
+              <button
+                onClick={() => {
+                  onClose();
+                }}
+              >
+                {cancel}
+              </button>
             </div>
-          );
-        },
-      });
-    }
+          </div>
+        );
+      },
+    });
+    // }
   }
 
   //For Change Password State For version V4
-  ChangePass = (e) => {
-    const state = this.state.Password;
-    state[e.target.name] = e.target.value;
-    if (
-      e.target.value &&
-      e.target.value.length > 0 &&
-      e.target.name === "current_pass"
-    ) {
-      axios
-        .post(
-          sitedata.data.path + "/UserProfile/Users/checkPass",
-          {
-            password: this.state.Password.current_pass,
-          },
-          commonHeader(this.props.user_token)
-        )
-        .then((responce) => {
-          if (responce.data.data) {
-            this.setState({ notmatch: false, fillall: false });
-          } else {
-            this.setState({ notmatch: true, fillall: false });
-          }
-        });
-    }
-    this.setState({ Password: state });
-  };
+  // ChangePass = (e) => {
+  //   const state = this.state.Password;
+  //   state[e.target.name] = e.target.value;
+  //   if (
+  //     e.target.value &&
+  //     e.target.value.length > 0 &&
+  //     e.target.name === "current_pass"
+  //   ) {
+  //     axios
+  //       .post(
+  //         sitedata.data.path + "/UserProfile/Users/checkPass",
+  //         {
+  //           password: this.state.Password.current_pass,
+  //         },
+  //         commonHeader(this.props.user_token)
+  //       )
+  //       .then((responce) => {
+  //         if (responce.data.data) {
+  //           this.setState({ notmatch: false, fillall: false });
+  //         } else {
+  //           this.setState({ notmatch: true, fillall: false });
+  //         }
+  //       });
+  //   }
+  //   this.setState({ Password: state });
+  // };
 
 
   render() {
@@ -139,6 +164,9 @@ class Index extends Component {
         {this.state.notmatch && (
           <div className="err_message">{current_pass_not_match}</div>
         )}
+        {this.state.successMsg && (
+          <div className="succ_message">Your Account is successfully Deactivated</div>
+        )}
 
         <Grid container direction="row" alignItems="center" spacing={2}>
           <Grid item xs={12} md={5}>
@@ -151,11 +179,11 @@ class Index extends Component {
               <input
                 type="submit"
                 className=""
-                onClick={() => { this.setState({ enterpass: true }) }}
+                onClick={this.DeleteAccount}
                 value={deactivate_account}
               />
             </Grid>
-            {this.state.enterpass &&
+            {/* {this.state.enterpass &&
               <Grid className="genPass current_pass_sec">
                 <Grid className="genPassInr">
                   <label>
@@ -173,7 +201,7 @@ class Index extends Component {
                     value={Submit}
                   />
                 </Grid>
-              </Grid>}
+              </Grid>} */}
           </Grid>
           <Grid item xs={12} md={7}></Grid>
         </Grid>

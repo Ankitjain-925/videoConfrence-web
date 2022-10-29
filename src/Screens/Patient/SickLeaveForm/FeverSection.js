@@ -22,7 +22,7 @@ function Index(props) {
     cold,
     sputum_what_consistency_and_color,
   } = translate;
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   return (
     <Grid className="borderLineAfer">
@@ -60,7 +60,7 @@ function Index(props) {
             </Grid>
             <Grid>
               <label>
-                {top} {value_Number_in_C}
+                {top} {value_Number_in_C} {"(38.05°C - 43.0°C)"}
               </label>
               <input
                 type="number"
@@ -80,7 +80,7 @@ function Index(props) {
           <Grid>
             <Grid>
               <label>
-                {low} {value_Number_in_C}
+                {low} {value_Number_in_C} {"(37.05°C - 38.0°C)"}
               </label>
             </Grid>
             <Grid>
@@ -143,8 +143,8 @@ function Index(props) {
                             name="fever_cold"
                             value={
                               props.updateQues &&
-                              props.updateQues?.fever_cold &&
-                              props.updateQues?.fever_cold == true
+                                props.updateQues?.fever_cold &&
+                                props.updateQues?.fever_cold == true
                                 ? false
                                 : true
                             }
@@ -168,8 +168,8 @@ function Index(props) {
                             name="fever_hoarseness"
                             value={
                               props.updateQues &&
-                              props.updateQues?.fever_hoarseness &&
-                              props.updateQues?.fever_hoarseness == true
+                                props.updateQues?.fever_hoarseness &&
+                                props.updateQues?.fever_hoarseness == true
                                 ? false
                                 : true
                             }
@@ -196,7 +196,7 @@ function Index(props) {
         </Grid>
       )}
 
-<Grid className="bgncmnSpc">
+      <Grid className="bgncmnSpc">
         <Grid className="fatiqueQues fatiqueQuess1">
           <FatiqueQuestion
             updateAllEntrySec={(e) =>
@@ -213,19 +213,19 @@ function Index(props) {
           props.updateQues?.fever_have_a_Sputum === 'yes' && (
             <>
               <Grid container direction="row" spacing="1">
-          <Grid item md={12} sm={12} className="textFieldArea1">
-            <Grid className="fillDia">
-            <NotesEditor
-              name="fever_sputum"
-              onChange={(e) => props.updateAllEntrySec(e, 'fever_sputum')}
-              value={props.updateQues?.fever_sputum}
-            />
-            {props.error_section == 30 && (
-              <div className="err_message2">{props.errorChrMsg}</div>
-            )}
-          </Grid>
-         
-              </Grid>
+                <Grid item md={12} sm={12} className="textFieldArea1">
+                  <Grid className="fillDia">
+                    <NotesEditor
+                      name="fever_sputum"
+                      onChange={(e) => props.updateAllEntrySec(e, 'fever_sputum')}
+                      value={props.updateQues?.fever_sputum}
+                    />
+                    {props.error_section == 30 && (
+                      <div className="err_message2">{props.errorChrMsg}</div>
+                    )}
+                  </Grid>
+
+                </Grid>
               </Grid>
             </>
           )}
