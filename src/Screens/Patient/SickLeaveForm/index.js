@@ -79,6 +79,12 @@ class Index extends Component {
     // onChange(new Date(), this);
   };
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.stateLanguageType !== this.props.stateLanguageType) {
+      GetLanguageMetadata(this);   
+    }
+  };
+
   getMetadata = () => {
     this.setState({ allMetadata: this.props.metadata }, () => {
       GetLanguageMetadata(this);
