@@ -61,10 +61,19 @@ const LoginVideo = (props) => {
       .post(path + "/vchat/UsernameLogin", _data, commonHeader(props.token))
       .then((response) => {
         if (response.data.hassuccessed === true) {
-          props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props.token, () => { }, props.stateLoginValueAim, true, response?.data?.data);
-          history.push({
-            pathname: "/patient/settings",
-          });
+          if (response.data.status) {
+            props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props.token, () => { }, props.stateLoginValueAim, true, response?.data?.data);
+            history.push({
+              pathname: "/patient/settings",
+            });
+          } else {
+            setErrormsg("You account is deactivated or may be in processing for deactivate");
+            setError(true);
+            setTimeout(() => {
+              setErrormsg("");
+              setError(false);
+            }, 5000);
+          }
         } else {
           setErrormsg("Username / Password is worng");
           setError(true);
@@ -82,17 +91,17 @@ const LoginVideo = (props) => {
   else if (
     props?.stateLoginValueAim.token !== 401 &&
     props?.stateLoginValueAim.token !== 450 &&
-    props?.stateLoginValueAim?.user?.type === 'patient' && 
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
     !props?.stateLoginValueAim.is_vedio_registered
   ) {
-      return <Redirect to={'/patient/video_register'} />;
-    }
-    else if (props?.stateLoginValueAim.token !== 401 &&
-      props?.stateLoginValueAim.token !== 450 &&
-      props?.stateLoginValueAim?.user?.type === 'patient' && 
-      props?.stateLoginValueAim?.isVideoLoggedIn) {
-      return <Redirect to={'/patient/settings'} />;
-    }
+    return <Redirect to={'/patient/video_register'} />;
+  }
+  else if (props?.stateLoginValueAim.token !== 401 &&
+    props?.stateLoginValueAim.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    props?.stateLoginValueAim?.isVideoLoggedIn) {
+    return <Redirect to={'/patient/settings'} />;
+  }
   else {
     return (
 

@@ -12,6 +12,7 @@ import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { getLanguage } from "translations/index";
 import { commonHeader, commonCometDelHeader } from 'component/CommonHeader/index';
+import Refund from '../../Patient/Refund/index'
 
 class Index extends Component {
   constructor(props) {
@@ -22,18 +23,18 @@ class Index extends Component {
       notmatch: false,
       loaderImage: false,
       // enterpass: false/
-      successMsg: false
+      successMsg: false,
+      openModal: false
     };
   }
 
   DeleteUser = () => {
     const { stateLoginValueAim } = this.props;
-    let id = stateLoginValueAim?.user?._id;
-    console.log("id", id)
+    var id = this.props.stateLoginValueAim?.VideoData?._id;
     this.setState({ loaderImage: true, successMsg: false });
     const user_token = stateLoginValueAim?.token;
     axios
-      .put(sitedata.data.path + '/UpdateVideoAccount/' + id,
+      .put(sitedata.data.path + '/vchat/UpdateVideoAccount/' + id,
         {
           status: false
         },
@@ -144,8 +145,19 @@ class Index extends Component {
   //   this.setState({ Password: state });
   // };
 
+  openFullQues = () => {
+    this.setState({ openModal: true });
+  }
+
+  closeFullQues = () => {
+    this.setState({ openModal: false });
+  }
 
   render() {
+    const { stateLoginValueAim } = this.props;
+    var talkTime = stateLoginValueAim &&
+      stateLoginValueAim.VideoData &&
+      stateLoginValueAim.VideoData.prepaid_talktime_min;
     let translate = getLanguage(this.props.stateLanguageType)
     let {
       password,
@@ -158,6 +170,8 @@ class Index extends Component {
       deactivate_account
     } = translate;
 
+
+
     return (
       <div>
         {this.state.loaderImage && <Loader />}
@@ -167,7 +181,6 @@ class Index extends Component {
         {this.state.successMsg && (
           <div className="succ_message">Your Account is successfully Deactivated</div>
         )}
-
         <Grid container direction="row" alignItems="center" spacing={2}>
           <Grid item xs={12} md={5}>
 
@@ -179,10 +192,18 @@ class Index extends Component {
               <input
                 type="submit"
                 className=""
-                onClick={this.DeleteAccount}
+                onClick={() =>
+                  (talkTime == 0 || talkTime == null)
+                    ? this.DeleteAccount()
+                    : this.props.history.push("/refund")
+                }
                 value={deactivate_account}
               />
             </Grid>
+            {/* <Refund
+            closeFullQues={() => this.closeFullQues()}
+            openModal={this.state.openModal}
+            /> */}
             {/* {this.state.enterpass &&
               <Grid className="genPass current_pass_sec">
                 <Grid className="genPassInr">

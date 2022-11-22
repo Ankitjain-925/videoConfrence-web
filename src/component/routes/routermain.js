@@ -24,6 +24,8 @@ import RegisterVC from "Screens/Patient/RegisterVC/index";
 import TopUp from "Screens/Patient/Dashboard/topup"
 import FeedBack from "Screens/Patient/FeedBack";
 import Card from "Screens/Patient/RegisterVC/PaymentSection/index";
+import Refund from "Screens/Patient/Refund/index";
+
 // import TopUp from "Screens/Patient/Dashboard/topup"
 class Routermain extends Component {
   render() {
@@ -124,6 +126,11 @@ class Routermain extends Component {
               path="/patient/Feed-back"
               render={(props) => <FeedBack {...props} />}
             />
+            <Route
+              exact
+              path="/refund"
+              render={(props) => <Refund {...props} />}
+            />
 
             {/* Need to route required component */}
             <Route
@@ -131,6 +138,8 @@ class Routermain extends Component {
               exact={true}
               render={(props) => <NotFound {...props} />}
             />
+
+
           </Switch >
         </Grid >
       </Router >

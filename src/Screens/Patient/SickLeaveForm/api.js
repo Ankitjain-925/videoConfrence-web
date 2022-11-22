@@ -179,6 +179,7 @@ export const CallTopUpApi_Add = (current, data) => {
       var user_token = current.props.stateLoginValueAim.token
       var forUpdate = { value: true, token: user_token, user: current.props?.stateLoginValueAim?.user }
       var VideoData = res.data?.data
+      console.log("VideoData", VideoData)
       current.props.LoginReducerAim(current.props?.stateLoginValueAim?.user?.email, '', current.props?.stateLoginValueAim?.user_token, () => { }, forUpdate, current.props?.stateLoginValueAim?.isVideoLoggedIn, VideoData, current.props?.stateLoginValueAim?.is_vedio_registered);
     })
     .catch((err) => {
