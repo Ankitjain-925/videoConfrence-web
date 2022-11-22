@@ -182,7 +182,7 @@ class Index extends Component {
           <div className="succ_message">Your Account is successfully Deactivated</div>
         )}
         <Grid container direction="row" alignItems="center" spacing={2}>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={8}>
 
             <Grid className="chngPasswrd">
               <h2>{deactivate_your_account}</h2>

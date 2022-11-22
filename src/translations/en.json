@@ -488,7 +488,7 @@
     "add_custom_amount":"Add a custom amount",
     "will_recieve":"You will recieve:",
     "Continue":"Continue",
-    "only_for_patient":"Only for patient" ,
+    "only_for_patient":"User is not able to login from here, Only patient have right to login" ,
     "You_dont_have_an_access_of_this_meeting":"You don't have an access of this meeting",
     "enter_time_talk":"Enter Time To Talk",
     "estimated_amount":"Estimated Amount",
