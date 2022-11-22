@@ -61,7 +61,8 @@ const LoginVideo = (props) => {
       .post(path + "/vchat/UsernameLogin", _data, commonHeader(props.token))
       .then((response) => {
         if (response.data.hassuccessed === true) {
-          if (response.data.status) {
+          if (response?.data?.data?.status &&
+            response?.data?.data?.status === "true") {
             props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props.token, () => { }, props.stateLoginValueAim, true, response?.data?.data);
             history.push({
               pathname: "/patient/settings",
