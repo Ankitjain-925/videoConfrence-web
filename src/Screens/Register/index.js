@@ -61,29 +61,29 @@ class Index extends Component {
       recaptcha: false,
       mode:
         this.props.settings &&
-        this.props.settings.setting &&
-        this.props.settings.setting.mode
+          this.props.settings.setting &&
+          this.props.settings.setting.mode
           ? this.props.settings.setting.mode
           : 'normal',
     };
   }
 
-    // for activate marketing user
-    activatenewsLetter = (response) => {
-      var data = {
-        first_name: response.data.data.first_name,
-        last_name: response.data.data.last_name,
-        email: response.data.data.email,
-      };
-      axios
-        .post(
-          sitedata.data.path + '/UserProfile/marketing_user',
-          data,
-          commonHeader(response.data.data.usertoken)
-        )
-        .then((responce) => {})
-        .catch(() => {});
+  // for activate marketing user
+  activatenewsLetter = (response) => {
+    var data = {
+      first_name: response.data.data.first_name,
+      last_name: response.data.data.last_name,
+      email: response.data.data.email,
     };
+    axios
+      .post(
+        sitedata.data.path + '/UserProfile/marketing_user',
+        data,
+        commonHeader(response.data.data.usertoken)
+      )
+      .then((responce) => { })
+      .catch(() => { });
+  };
 
   //On change password
   handlePasswordChange = (e) => {
@@ -211,7 +211,7 @@ class Index extends Component {
                       this.setState({ error_msg: responce.data.message });
                     }
                   })
-                  .catch((err) => {});
+                  .catch((err) => { });
               } else {
                 this.setState({ regisError0: fillreptcha });
               }
@@ -238,7 +238,7 @@ class Index extends Component {
     if (
       (e.target.name === 'terms_and_conditions' ||
         e.target.name === 'license_of_practice',
-      e.target.name === 'is2fa')
+        e.target.name === 'is2fa')
     ) {
       state[e.target.name] = e.target.checked;
     } else if (e.target.name === 'Aimedis_health_newletter') {
@@ -344,9 +344,9 @@ class Index extends Component {
               .then((result) => {
                 this.setState({ success: true, loaderImage: false });
               })
-              .catch((error) => {});
+              .catch((error) => { });
           })
-          .catch((error) => {});
+          .catch((error) => { });
       }
     } else {
       this.getUpdate(country_code, getBucket);
@@ -475,9 +475,9 @@ class Index extends Component {
       <Grid
         className={
           this.props.settings &&
-          this.props.settings.setting &&
-          this.props.settings.setting.mode &&
-          this.props.settings.setting.mode === 'dark'
+            this.props.settings.setting &&
+            this.props.settings.setting.mode &&
+            this.props.settings.setting.mode === 'dark'
             ? 'loginSiteUpr homeBgDrk'
             : 'loginSiteUpr'
         }
@@ -684,7 +684,7 @@ class Index extends Component {
                       )}
                     </Grid>
                     {this.state.userDetails &&
-                    this.state.userDetails.password ? (
+                      this.state.userDetails.password ? (
                       <div className="passInst">
                         <div className="passInstIner">
                           <p>{Register_Passwordshould}</p>
@@ -905,36 +905,36 @@ class Index extends Component {
                   {(this.state.selectedOption == 'doctor' ||
                     this.state.selectedOption == 'nurse' ||
                     this.state.selectedOption == 'pharmacy') && (
-                    <Grid item xs={12} sm={12} className="common_name_v2_reg">
-                      <label htmlFor="UploadDocument">
-                        {' '}
-                        {click_here_uplod_license}{' '}
-                        <img
-                          src={require('assets/images/links.png')}
-                          alt=""
-                          title=""
-                          className="link_docs"
+                      <Grid item xs={12} sm={12} className="common_name_v2_reg">
+                        <label htmlFor="UploadDocument">
+                          {' '}
+                          {click_here_uplod_license}{' '}
+                          <img
+                            src={require('assets/images/links.png')}
+                            alt=""
+                            title=""
+                            className="link_docs"
+                          />
+                        </label>
+                        <input
+                          type="file"
+                          style={{ display: 'none' }}
+                          id="UploadDocument"
+                          name="UploadDocument"
+                          onChange={(e) => this.UploadFile(e)}
+                          multiple
                         />
-                      </label>
-                      <input
-                        type="file"
-                        style={{ display: 'none' }}
-                        id="UploadDocument"
-                        name="UploadDocument"
-                        onChange={(e) => this.UploadFile(e)}
-                        multiple
-                      />
-                      <div>
-                        {this.state.fileattach &&
-                          this.state.fileattach.length > 0 &&
-                          this.state.fileattach.map((data) => (
-                            <span className="ViewImage">
-                              <img src={data} />
-                            </span>
-                          ))}
-                      </div>
-                    </Grid>
-                  )}
+                        <div>
+                          {this.state.fileattach &&
+                            this.state.fileattach.length > 0 &&
+                            this.state.fileattach.map((data) => (
+                              <span className="ViewImage">
+                                <img src={data} />
+                              </span>
+                            ))}
+                        </div>
+                      </Grid>
+                    )}
 
                   <Grid className="registerRow">
                     <FormControlLabel
@@ -943,8 +943,8 @@ class Index extends Component {
                         <Checkbox
                           value={
                             this.state.userDetails &&
-                            this.state.userDetails?.Aimedis_health_newletter &&
-                            this.state.userDetails?.Aimedis_health_newletter ==
+                              this.state.userDetails?.Aimedis_health_newletter &&
+                              this.state.userDetails?.Aimedis_health_newletter ==
                               true
                               ? false
                               : true

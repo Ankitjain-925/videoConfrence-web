@@ -58,6 +58,10 @@ class Index extends Component {
   componentDidMount() {
     this.getUserData();
     this.getMetadata();
+    if (this.props.location.state) {
+      var value = 2;
+      this.setState({ value });
+    }
   }
 
   // For change the Tabs
