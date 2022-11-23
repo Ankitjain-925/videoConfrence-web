@@ -269,7 +269,7 @@ class Index extends Component {
                                                             <Select
                                                                 name="BankCountry"
                                                                 options={selectCountry}
-                                                                placeholder="Search_Select"
+                                                                placeholder="Search Select"
                                                                 onChange={(e) => this.updateEntryState(e, "BankCountry")}
                                                                 value={refundData?.BankCountry}
                                                                 className="addStafSelect abc123455"
