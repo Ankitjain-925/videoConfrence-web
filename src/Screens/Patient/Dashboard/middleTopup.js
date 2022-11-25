@@ -38,7 +38,6 @@ const TopUpdetail = (props) => {
   const [value, setValue] = useState(0);
   const [languageValue, setLanguageValue] = useState(null);
   const [openFancyLanguage, setOpenFancyLanguage] = useState(false)
-  console.log("props?.stateLoginValueAim?.VideoData?.prepaid_talktime_min", props?.stateLoginValueAim?.VideoData?.prepaid_talktime_min)
   let translate = getLanguage(props.stateLanguageType);
   let {
     my_profile,

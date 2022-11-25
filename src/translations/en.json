@@ -263,7 +263,7 @@
     "follow": "Follow",
     "unfollow": "Unfollow",
     "since": "since",
-    "not_followed_by_yet": "noch nicht gefolgt",
+    "not_followed_by_yet": "not followed by Yet.",
     "hurtnow": "Hurt now",
     "headache_hurtnow_back": "Back",
     "headache_hurtnow_front": "Front",
@@ -515,6 +515,10 @@
     "reallyWantDelete": "Do you really want to deactivate the Account?",
     "looseAllData": "You will lose all your data and no one can ever access it again! Also the information stored inside the AIS blockchain is lost forever as you are the only one to be able to see it.",
     "emergency":"Emergency",
-    "telephone_nmbr":"Telephone number"
+    "telephone_nmbr":"Telephone number",
+    "appointments":"Appointments list",
+    "enabled":"Enabled",
+    "disabled":"Disabled"
+
   }
 }

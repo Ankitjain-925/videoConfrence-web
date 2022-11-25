@@ -26,7 +26,7 @@ const getDoctorArray = async (doctorArray = new Set(), user_token) => {
         response.data.data.length > 0 &&
         response.data.data.map((data, index) => {
           if (isInDoctorList(data)) {
-            doctorArray.push(data.profile_id.toLowerCase());         
+            doctorArray.push(data.profile_id.toLowerCase());
           }
         });
     });
@@ -63,7 +63,7 @@ const getNusePharma = async (
         response.data.data &&
           response.data.data.length > 0 &&
           response.data.data.map((data, index) => {
-            doctorArray.push(data.profile_id.toLowerCase());
+            doctorArray.push(data?.profile_id.toLowerCase());
           });
       })
       .catch(() => { });
@@ -154,9 +154,9 @@ export const Doctorarrays = (type, user, token, CB = () => { }) => {
             .get(sitedata.data.path + "/UserProfile/Users/" + user_id, commonHeader(user_token))
             .then((response) => {
               const hasDocAroundClock =
-              response.data?.data?.paid_services?.filter(it => {
-                return it.description == 'Doc Around The Clock';
-              })?.length > 0;
+                response.data?.data?.paid_services?.filter(it => {
+                  return it.description == 'Doc Around The Clock';
+                })?.length > 0;
               if (type === "patient") {
                 if (hasDocAroundClock) {
                   doctorArray.push(doctor8.toLowerCase());
@@ -166,9 +166,9 @@ export const Doctorarrays = (type, user, token, CB = () => { }) => {
                 response.data.data.fav_doctor &&
                 response.data.data.fav_doctor.map((value, i) => {
                   if (
-                    doctorArray.indexOf(value.profile_id.toLowerCase()) === -1
+                    doctorArray.indexOf(value?.profile_id.toLowerCase()) === -1
                   ) {
-                    doctorArray.push(value.profile_id.toLowerCase());
+                    doctorArray.push(value?.profile_id.toLowerCase());
                   }
                 });
               CB();
