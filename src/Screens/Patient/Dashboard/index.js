@@ -61,7 +61,7 @@ const Dashboard = (props) => {
     logout_sec,
     health_profile,
   } = translate;
-  
+
 
   const profileLink = () => {
     history.push("/patient");

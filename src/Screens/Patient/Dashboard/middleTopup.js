@@ -38,7 +38,6 @@ const TopUpdetail = (props) => {
   const [value, setValue] = useState(0);
   const [languageValue, setLanguageValue] = useState(null);
   const [openFancyLanguage, setOpenFancyLanguage] = useState(false)
-
   let translate = getLanguage(props.stateLanguageType);
   let {
     my_profile,
@@ -55,19 +54,19 @@ const TopUpdetail = (props) => {
   ) {
     return <Redirect to={'/'} />;
   }
-  else{
-  return (
-        <Grid>
-            <div className='settingbox form_full'>
-                <div >
-                    <label>{your_aimedis_credit}</label>
-                    <p>{props?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || 0}{' '}{'Min'}</p>
-                </div>
-                <div>
-                    {props.btnShow && <Button variant='contained' className="topupButton" onClick={()=>{props.history.push('/patient/top-up')}}>{top_up}</Button>}
-                </div>
-            </div>    
-        </Grid>
+  else {
+    return (
+      <Grid>
+        <div className='settingbox form_full'>
+          <div >
+            <label>{your_aimedis_credit}</label>
+            <p>{props?.stateLoginValueAim?.VideoData?.prepaid_talktime_min || 0}{' '}{'Min'}</p>
+          </div>
+          <div>
+            {props.btnShow && <Button variant='contained' className="topupButton" onClick={() => { props.history.push('/patient/top-up') }}>{top_up}</Button>}
+          </div>
+        </div>
+      </Grid>
     )
   }
 }
