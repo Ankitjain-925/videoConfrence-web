@@ -8833,6 +8833,12 @@ span.dosMg {
   font-weight: 600;
   letter-spacing: 0;
   line-height: 18px;
+  width: 100%;
+}
+#FirstInput::-webkit-inner-spin-button, 
+    #FirstInput::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+     margin: 0; 
 }
 .rrSysto input,
 .rrSysto button,
