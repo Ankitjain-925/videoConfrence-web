@@ -230,11 +230,11 @@ class Index extends Component {
                       {/* Start of Delete */}
                       {value === 2 && (
                         <TabContainer>
-                          {/* <DeleteAccountSection
+                          <DeleteAccountSection
                             user_token={this.props.stateLoginValueAim.token}
                             LoggedInUser={this.state.LoggedInUser}
                             getUserData={this.getUserData}
-                          /> */}
+                          /> 
                         </TabContainer>
                       )}
                       {/* End of Delete */}
