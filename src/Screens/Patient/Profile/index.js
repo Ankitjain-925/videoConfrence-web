@@ -234,7 +234,7 @@ class Index extends Component {
                             user_token={this.props.stateLoginValueAim.token}
                             LoggedInUser={this.state.LoggedInUser}
                             getUserData={this.getUserData}
-                          />
+                          /> 
                         </TabContainer>
                       )}
                       {/* End of Delete */}

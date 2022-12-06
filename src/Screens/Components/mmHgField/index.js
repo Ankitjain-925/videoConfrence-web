@@ -40,7 +40,8 @@ class MMHG extends Component {
         </Grid>
         <Grid className="rrInput">
           <input
-            type="text"
+          id="FirstInput"
+            type="number"
             onChange={this.onDataChange}
             name={this.state.name}
             value={this.state.value}
