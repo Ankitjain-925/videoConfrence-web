@@ -3,6 +3,7 @@ import LinearStepper from "./LinearStepper";
 import { CssBaseline, Container, Paper, Box } from "@material-ui/core";
 import React, { useState } from "react"
 import Grid from '@material-ui/core/Grid';
+import { Redirect } from 'react-router-dom';
 import LeftMenu from 'Screens/Components/Menus/PatientLeftMenu/index';
 import LeftMenuMobile from 'Screens/Components/Menus/PatientLeftMenu/mobile';
 import Notification from 'Screens/Components/CometChat/react-chat-ui-kit/CometChat/components/Notifications';
@@ -47,6 +48,14 @@ function RegisterVC(props) {
     position: "relative",
     left: "10px"
   };
+
+  if (props?.stateLoginValueAim.token !== 401 &&
+    props?.stateLoginValueAim.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    !props?.stateLoginValueAim?.isVideoLoggedIn) {
+    return <Redirect to={'/patient/video_login'} />;
+  }
+  else {
   return (
     <Grid
       className={
@@ -88,6 +97,7 @@ function RegisterVC(props) {
       </Grid>
     </Grid>
   )
+    }
 }
 const mapStateToProps = (state) => {
   const { stateLoginValueAim, loadingaIndicatoranswerdetail } =
