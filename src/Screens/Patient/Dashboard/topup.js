@@ -145,13 +145,11 @@ const Dashboard = (props) => {
     setOpenFancyLanguage(false);
   };
 
-  if (
-    props?.stateLoginValueAim.user === 'undefined' ||
-    props?.stateLoginValueAim.token === 450 ||
-    props?.stateLoginValueAim.token === 'undefined' ||
-    props?.stateLoginValueAim.user.type !== 'patient'
-  ) {
-    return <Redirect to={'/'} />;
+  if (props?.stateLoginValueAim.token !== 401 &&
+    props?.stateLoginValueAim.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    !props?.stateLoginValueAim?.isVideoLoggedIn) {
+    return <Redirect to={'/patient/video_login'} />;
   }
   else {
     return (
