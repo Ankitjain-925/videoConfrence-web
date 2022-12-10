@@ -52,12 +52,6 @@ const Dashboard = (props) => {
   const [famount2, fsetAmount2] = useState();
   const [btdisable, setbtdisable] = useState(false);
 
-
-
-
-
-
-
   let translate = getLanguage(props.stateLanguageType);
   let {
     my_profile,
