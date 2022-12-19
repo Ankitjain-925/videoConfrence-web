@@ -220,8 +220,12 @@ class Index extends Component {
       
     } = translate;
     const { stateLoginValueAim } = this.props;
-
-    if (stateLoginValueAim.token !== 401 &&
+    if((stateLoginValueAim?.token == 401 ||
+      stateLoginValueAim?.token == 450) &&
+      stateLoginValueAim?.user?.type !== 'patient'){
+        return <Redirect to={'/'} />;
+    }
+    else if (stateLoginValueAim.token !== 401 &&
       stateLoginValueAim.token !== 450 &&
       stateLoginValueAim?.user?.type === 'patient' &&
       !stateLoginValueAim?.isVideoLoggedIn) {

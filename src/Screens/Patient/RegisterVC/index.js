@@ -48,8 +48,12 @@ function RegisterVC(props) {
     position: "relative",
     left: "10px"
   };
-
-  if (props?.stateLoginValueAim.token !== 401 &&
+  if((props?.stateLoginValueAim?.token == 401 ||
+    props?.stateLoginValueAim?.token == 450) &&
+    props?.stateLoginValueAim?.user?.type !== 'patient'){
+      return <Redirect to={'/'} />;
+  }
+  else if (props?.stateLoginValueAim.token !== 401 &&
     props?.stateLoginValueAim.token !== 450 &&
     props?.stateLoginValueAim?.user?.type === 'patient' &&
     !props?.stateLoginValueAim?.isVideoLoggedIn) {
