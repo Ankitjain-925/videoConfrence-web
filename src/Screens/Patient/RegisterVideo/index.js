@@ -104,7 +104,7 @@ const RegisterVideo = (props) => {
         commonHeader(props?.stateLoginValueAim.token)
       )
       .then((response) => {
-        if(response.data.hassuccessed){
+        if (response.data.hassuccessed) {
           var user_token = props.stateLoginValueAim.token
           var forUpdate = { value: true, token: user_token, user: props?.stateLoginValueAim?.user }
           props.LoginReducerAim(props?.stateLoginValueAim?.user?.email, '', props?.stateLoginValueAim?.user_token, () => { }, forUpdate, false, {}, true);
@@ -123,10 +123,42 @@ const RegisterVideo = (props) => {
         }
       });
   };
-
+  const SetVa = (e) => {
+    if (e.target.name == "email") {
+      if (e.target.value == "") {
+        setEmail();
+        setOpenPayment(false);
+      }
+      else {
+        setEmail(e.target.value);
+      }
+    }
+    if (e.target.name == "pass") {
+      if (e.target.value == "") {
+        setPassword();
+        setOpenPayment(false);
+      }
+      else {
+        setPassword(e.target.value);
+      }
+    }
+    if (e.target.name == "ITGuideline") {
+      if (e.target.checked == false) {
+        setITGuideline(!ITGuideline);
+        setOpenPayment(false);
+      }
+      else {
+        setITGuideline(!ITGuideline);
+      }
+    }
+  };
   const onPayment = () => {
-    if (!email && !_password) {
-      setErrormsg("Username & password shouldn't be empty");
+    if (!email) {
+      setErrormsg("Username shouldn't be empty");
+      setError(true);
+    }
+    else if (!_password) {
+      setErrormsg("Password shouldn't be empty");
       setError(true);
     } else if (!ITGuideline) {
       setErrormsg("Please accept IT Guideline");
@@ -141,10 +173,10 @@ const RegisterVideo = (props) => {
   const handleCancel = () => {
     setOpenPayment(false);
   };
-  if((props?.stateLoginValueAim?.token == 401 ||
+  if ((props?.stateLoginValueAim?.token == 401 ||
     props?.stateLoginValueAim?.token == 450) &&
-    props?.stateLoginValueAim?.user?.type !== 'patient'){
-      return <Redirect to={'/'} />;
+    props?.stateLoginValueAim?.user?.type !== 'patient') {
+    return <Redirect to={'/'} />;
   }
   else if (
     props?.stateLoginValueAim?.token !== 401 &&
@@ -152,60 +184,60 @@ const RegisterVideo = (props) => {
     props?.stateLoginValueAim?.user?.type === 'patient' &&
     props?.stateLoginValueAim.is_vedio_registered
   ) {
-      return <Redirect to={'/patient/video_login'} />;
-    }
+    return <Redirect to={'/patient/video_login'} />;
+  }
   else {
-  return (
-    <Grid
-      className={
-        props.settings &&
-        props.settings.setting &&
-        props.settings.setting.mode &&
-        props.settings.setting.mode === "dark"
-          ? "homeBg darkTheme homeBgDrk"
-          : "homeBg"
-      }
-    >
-      <Grid className="homeBgIner">
-        <Grid container direction="row" justify="center">
-          <Grid item xs={12} md={12}>
-            <Grid container direction="row">
-              {/* Website Menu */}
-              <LeftMenu isNotShow={true} currentPage="register_video" />
-              <LeftMenuMobile isNotShow={true} currentPage="register_video" />
-              <Notification />
-              {/* Website Mid Content */}
-              <Grid item xs={12} md={11} lg={10}>
-                <Grid className="docsOpinion">
-                  <Grid container direction="row" className="docsOpinLbl">
-                    <Grid item xs={12} md={6}>
-                      <label>{register_video_confrance}</label>
+    return (
+      <Grid
+        className={
+          props.settings &&
+            props.settings.setting &&
+            props.settings.setting.mode &&
+            props.settings.setting.mode === "dark"
+            ? "homeBg darkTheme homeBgDrk"
+            : "homeBg"
+        }
+      >
+        <Grid className="homeBgIner">
+          <Grid container direction="row" justify="center">
+            <Grid item xs={12} md={12}>
+              <Grid container direction="row">
+                {/* Website Menu */}
+                <LeftMenu isNotShow={true} currentPage="register_video" />
+                <LeftMenuMobile isNotShow={true} currentPage="register_video" />
+                <Notification />
+                {/* Website Mid Content */}
+                <Grid item xs={12} md={11} lg={10}>
+                  <Grid className="docsOpinion">
+                    <Grid container direction="row" className="docsOpinLbl">
+                      <Grid item xs={12} md={6}>
+                        <label>{register_video_confrance}</label>
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
 
-                <Grid item xs={12} md={12} lg={12}>
-                  {/* <Grid className="profilePkg"> */}
-                  <Grid className="profilePkgIner3 border-radious-10">
-                    <Grid className="logForm form_full">
-                      {error && <div className="err_message">{errormsg}</div>}
-                      <Grid className="logRow">
-                        <Grid>
-                          <label>{username}</label>
+                  <Grid item xs={12} md={12} lg={12}>
+                    {/* <Grid className="profilePkg"> */}
+                    <Grid className="profilePkgIner3 border-radious-10">
+                      <Grid className="logForm form_full">
+                        {error && <div className="err_message">{errormsg}</div>}
+                        <Grid className="logRow">
+                          <Grid>
+                            <label>{username}</label>
+                          </Grid>
+                          <Grid>
+                            <input
+                              type="text"
+                              value={email}
+                              name="email"
+                              onKeyDown={(e) => onKeyDownlogin(e)}
+                              onChange={(e) => {
+                                SetVa(e);
+                              }}
+                            />
+                          </Grid>
                         </Grid>
-                        <Grid>
-                          <input
-                            type="text"
-                            value={email}
-                            name="email"
-                            onKeyDown={(e) => onKeyDownlogin(e)}
-                            onChange={(e) => {
-                              setEmail(e.target.value);
-                            }}
-                          />
-                        </Grid>
-                      </Grid>
-                      <Grid className="logRow logpassInst">
+                        <Grid className="logRow logpassInst">
                           <Grid container direction="row">
                             <Grid item xs={11} sm={6} md={6}>
                               <label>{password}</label>
@@ -235,7 +267,7 @@ const RegisterVideo = (props) => {
                               name="pass"
                               onKeyDown={(e) => onKeyDownlogin(e)}
                               value={_password}
-                              onChange={(e) => setPassword(e.target.value)}
+                              onChange={(e) => SetVa(e)}
                             />
                             {hidden && (
                               <a onClick={toggleShow}>
@@ -257,59 +289,60 @@ const RegisterVideo = (props) => {
                             )}
                           </Grid></Grid>
 
-                      <Grid className="aceptTermsPlcy">
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              value="checkedB"
-                              color="#00ABAF"
-                              checked={ITGuideline}
-                              onChange={() => {
-                                setITGuideline(!ITGuideline);
-                              }}
-                            />
-                          }
-                          label={click_on_accept_it_guidline}
-                        />
-                        <span
-                          onClick={() => history.push("/video-guideline")}
-                          className="guidline_text"
-                        >
-                          {view_guidelines}
-                        </span>
+                        <Grid className="aceptTermsPlcy">
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                              name="ITGuideline"
+                                value="checkedB"
+                                color="#00ABAF"
+                                checked={ITGuideline}
+                                onChange={(e) => {
+                                  SetVa(e);
+                                }}
+                              />
+                            }
+                            label={click_on_accept_it_guidline}
+                          />
+                          <span
+                            onClick={() => history.push("/video-guideline")}
+                            className="guidline_text"
+                          >
+                            {view_guidelines}
+                          </span>
+                        </Grid>
+
+                        <Grid className="infoShwSave3">
+                          <input
+                            type="submit"
+                            value="submit"
+                            onClick={() => onPayment()}
+                          />
+                        </Grid>
                       </Grid>
 
-                      <Grid className="infoShwSave3">
-                        <input
-                          type="submit"
-                          value="submit"
-                          onClick={() => onPayment()}
-                        />
-                      </Grid>
+                      {/* </Grid> */}
                     </Grid>
-
-                    {/* </Grid> */}
+                    {openPayment && (
+                      <Payment
+                        onCancel={handleCancel}
+                        usedFor={"register_video"}
+                        onSuccessPayment={BtnSubmit}
+                      />
+                    )}
                   </Grid>
-                  {openPayment && (
-                    <Payment
-                      onCancel={handleCancel}
-                      usedFor={"register_video"}
-                      onSuccessPayment={BtnSubmit}
-                    />
-                  )}
+                  {/* End of Tabs */}
                 </Grid>
-                {/* End of Tabs */}
+                {/* Website Right Content */}
+                <Grid item xs={12} md={3}></Grid>
+                {/* End of Website Right Content */}
               </Grid>
-              {/* Website Right Content */}
-              <Grid item xs={12} md={3}></Grid>
-              {/* End of Website Right Content */}
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
-  );
-                  }
+    );
+  }
 };
 
 const mapStateToProps = (state) => {
