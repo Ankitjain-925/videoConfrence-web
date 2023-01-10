@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LanguageFetchReducer } from 'Screens/actions';

@@ -50,11 +50,7 @@ const Dashboard = (props) => {
   const [amount, setAmount] = useState("30");
   const [famount, fsetAmount] = useState(amount / 5);
   const [famount2, fsetAmount2] = useState();
-
-
-
-
-
+  const [btdisable, setbtdisable] = useState(false);
 
   let translate = getLanguage(props.stateLanguageType);
   let {
@@ -117,8 +113,23 @@ const Dashboard = (props) => {
   };
 
   const setAmo = (e) => {
+    console.log("123", e)
+    if( e <= 5000 && e > 0){
+      setErrormsg("");
     setAmount(e);
     fsetAmount(e / 5);
+    setbtdisable(false)
+    }
+    else if(e == ""){
+    setbtdisable(true)
+    fsetAmount(0);
+    }
+    else{
+      setErrormsg("Amount shouldn't be greater than 5000");
+      setAmount("");
+      fsetAmount(0);
+      setbtdisable(true)
+    }
   }
 
 
@@ -127,14 +138,17 @@ const Dashboard = (props) => {
   const handleCloseFancyLanguage = () => {
     setOpenFancyLanguage(false);
   };
+  if((props?.stateLoginValueAim?.token == 401 ||
+    props?.stateLoginValueAim?.token == 450) &&
+    props?.stateLoginValueAim?.user?.type !== 'patient'){
+      return <Redirect to={'/'} />;
+  }
 
-  if (
-    props?.stateLoginValueAim.user === 'undefined' ||
-    props?.stateLoginValueAim.token === 450 ||
-    props?.stateLoginValueAim.token === 'undefined' ||
-    props?.stateLoginValueAim.user.type !== 'patient'
-  ) {
-    return <Redirect to={'/'} />;
+  else if (props?.stateLoginValueAim.token !== 401 &&
+    props?.stateLoginValueAim.token !== 450 &&
+    props?.stateLoginValueAim?.user?.type === 'patient' &&
+    !props?.stateLoginValueAim?.isVideoLoggedIn) {
+    return <Redirect to={'/patient/video_login'} />;
   }
   else {
     return (
@@ -253,6 +267,7 @@ const Dashboard = (props) => {
                                 <h2 className="custom-topup-head">{add_custom_amount}</h2>
                               </div>
                               <div className="custom-topup-field form_full">
+                              <div className="err_message">{errormsg}</div>
                                 <MMHG
                                   onKeyDown={(e) => onKeyDownlogin(e)}
                                   name="amount"
@@ -270,7 +285,7 @@ const Dashboard = (props) => {
                               </div>
                               <div className="custom-topup-recieve">{will_recieve}<span className="custom-topup-rmin">{famount}{' '}{'Min'}</span></div>
                               <div className="continueBTN-topup">
-                                <Button variant='contained' onClick={() => onPayment()}>{Continue}</Button>
+                                <Button variant='contained' disabled={btdisable} onClick={() => onPayment()}>{Continue}</Button>
 
                               </div>
 

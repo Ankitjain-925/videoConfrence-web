@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import { getLanguage } from 'translations/index';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
 import { LoginReducerAim } from 'Screens/Login/actions';
 import { LanguageFetchReducer } from 'Screens/actions';
 import { Settings } from 'Screens/Login/setting';
@@ -217,6 +219,18 @@ class Index extends Component {
       feedback_form,
       
     } = translate;
+    const { stateLoginValueAim } = this.props;
+    if((stateLoginValueAim?.token == 401 ||
+      stateLoginValueAim?.token == 450) &&
+      stateLoginValueAim?.user?.type !== 'patient'){
+        return <Redirect to={'/'} />;
+    }
+    else if (stateLoginValueAim.token !== 401 &&
+      stateLoginValueAim.token !== 450 &&
+      stateLoginValueAim?.user?.type === 'patient' &&
+      !stateLoginValueAim?.isVideoLoggedIn) {
+      return <Redirect to={'/patient/video_login'} />;
+    }
 
     return (
       <Grid>

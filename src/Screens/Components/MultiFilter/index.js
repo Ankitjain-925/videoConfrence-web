@@ -1,4 +1,4 @@
-import { data } from "jquery"
+
 
 export const MultiFilter = (user, assignedTo, Speciality, fullData) => {
     let fullarray = []
