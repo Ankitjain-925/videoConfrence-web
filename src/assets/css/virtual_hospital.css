@@ -18282,3 +18282,11 @@ min-height: 44px!important;
 .darkTheme .profileInfoIner343 input{
   min-height: 44px!important;
   }
+
+  .backFlowVideo{
+    margin-bottom: 0px!important;
+  }
+
+  .backFlowVideo a{
+    background-color: transparent!important;
+  }
