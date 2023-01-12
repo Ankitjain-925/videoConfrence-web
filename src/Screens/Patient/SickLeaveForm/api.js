@@ -2748,6 +2748,10 @@ export const CallTopUpApi = (current, data) => {
       info)
     .then((res) => {
       if (res && res.data && res.data.hassuccessed) {
+        var user_token = current.props.stateLoginValueAim.token
+        var forUpdate = { value: true, token: user_token, user: current.props?.stateLoginValueAim?.user }
+        var VideoData = res.data?.data
+        current.props.LoginReducerAim(current.props?.stateLoginValueAim?.user?.email, '', current.props?.stateLoginValueAim?.user_token, () => { }, forUpdate, current.props?.stateLoginValueAim?.isVideoLoggedIn, VideoData, current.props?.stateLoginValueAim?.is_vedio_registered);
         saveOnDB1(data, res?.data?.data, current);
         current.setState({ loaderImage: false });
       }
