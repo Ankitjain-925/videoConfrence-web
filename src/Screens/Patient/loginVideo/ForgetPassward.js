@@ -21,6 +21,7 @@ const path = sitedata.data.path;
 
 const LoginVideo = (props) => {
     let history = useHistory();
+    const [_username, set_UserName] = useState("");
     const [_newPassword, set_NewPassword] = useState("");
     const [_confPassword, set_ConfPassword] = useState("");
     const [hidden, setHidden] = useState(true);
@@ -28,7 +29,7 @@ const LoginVideo = (props) => {
     const [errormsg, setErrormsg] = useState("");
     const [loaderImage, setloaderImage] = useState(false);
     let translate = getLanguage(props.stateLanguageType);
-    let { back_sec, forget_password, new_password, confirm_password, change_password
+    let { back_sec, forget_credentials, new_password, confirm_password, change_crendential, username
     } =
         translate;
 
@@ -37,15 +38,15 @@ const LoginVideo = (props) => {
     }
 
     const BtnSubmit = () => {
-        if (_newPassword && _confPassword && _newPassword.localeCompare(_confPassword)) {
+        if (_username && _newPassword && _confPassword && _newPassword.localeCompare(_confPassword)) {
             setErrormsg("Confirm Passward must same as New passward");
             setError(true);
         }
-        else if (_newPassword !== "" && _confPassword !== "") {
+        else if (_username !== "" && _newPassword !== "" && _confPassword !== "") {
             confirmSubmit();
         }
         else {
-            setErrormsg("New Password & Confirm Password not empty");
+            setErrormsg("Username & New Password & Confirm Password not empty");
             setError(true);
         }
     };
@@ -58,6 +59,7 @@ const LoginVideo = (props) => {
         setErrormsg("");
         setError(false);
         let _data = {
+            username: _username,
             password: _newPassword,
             patient_id: props?.stateLoginValueAim?.user?._id
         };
@@ -139,7 +141,7 @@ const LoginVideo = (props) => {
                                                 </Grid>
                                             </Grid>
                                             <Grid item xs={12} md={12} lg={12}>
-                                                <label>{forget_password}</label>
+                                                <label>{forget_credentials}</label>
                                             </Grid>
                                         </Grid>
                                     </Grid>
@@ -151,6 +153,26 @@ const LoginVideo = (props) => {
                                                 <Grid className="profilePkgIner3 border-radious-10">
                                                     <Grid className="logForm form_full">
                                                         {error && <div className="err_message">{errormsg}</div>}
+
+                                                        <Grid className="logRow">
+                                                            <Grid>
+                                                                <label>{username}</label>
+                                                            </Grid>
+                                                            <Grid>
+                                                                <input
+                                                                    type="text"
+                                                                    value={_username}
+                                                                    name="userName"
+                                                                    onKeyDown={(e) => onKeyDownlogin(e)}
+                                                                    onChange={(e) => {
+                                                                        set_UserName(e.target.value);
+                                                                    }}
+                                                                />
+                                                            </Grid>
+                                                        </Grid>
+
+
+
                                                         <Grid className="logRow">
                                                             <Grid>
                                                                 <label>{new_password}</label>
@@ -205,7 +227,7 @@ const LoginVideo = (props) => {
                                                         <Grid className="infoShwSave3">
                                                             <input
                                                                 type="submit"
-                                                                value={change_password}
+                                                                value={change_crendential}
                                                                 onClick={() => BtnSubmit()}
                                                             />
                                                         </Grid>
