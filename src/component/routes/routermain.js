@@ -25,6 +25,7 @@ import TopUp from "Screens/Patient/Dashboard/topup"
 import FeedBack from "Screens/Patient/FeedBack";
 import Card from "Screens/Patient/RegisterVC/PaymentSection/index";
 import Refund from "Screens/Patient/Refund/index";
+import VideoForgetPass from "Screens/Patient/loginVideo/ForgetPassward"
 
 // import TopUp from "Screens/Patient/Dashboard/topup"
 class Routermain extends Component {
@@ -110,6 +111,11 @@ class Routermain extends Component {
               exact
               path="/forgot-password"
               render={(props) => <ForgotPass {...props} />}
+            />
+            <Route
+              exact
+              path="/video-forgot-password"
+              render={(props) => <VideoForgetPass {...props} />}
             />
             <Route
               exact

@@ -36,6 +36,10 @@ const LoginVideo = (props) => {
     setHidden(!hidden);
   }
 
+  const forgotPassword = () => {
+    props.history.push('/video-forgot-password');
+  }
+
   const BtnSubmit = () => {
     if (_username !== "" && _password !== "") {
       confirmSubmit();
@@ -160,7 +164,7 @@ const LoginVideo = (props) => {
                             <Grid item xs={11} sm={6} md={6}>
                               <label>{login_Password}</label>
                             </Grid>
-                            {/* <Grid
+                            <Grid
                               item
                               xs={11}
                               sm={6}
@@ -169,12 +173,12 @@ const LoginVideo = (props) => {
                             >
                               <label>
                                 <a
-                                // onClick={forgotPassword}
+                                  onClick={forgotPassword}
                                 >
                                   {login_Forgotpassword}
                                 </a>
                               </label>
-                            </Grid> */}
+                            </Grid>
                           </Grid>
                           <Grid className="logPass">
                             {/* <Grid>

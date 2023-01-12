@@ -122,31 +122,31 @@ class VideoCallPat extends Component {
               var taskData = response.data.data.Task;
               var gender = response.data.data.gender;
               this.getFeedbackIssue(response?.data?.data);
-              CometChat.login(profile_id, COMETCHAT_CONSTANTS.AUTH_KEY)
-                .then((resp) => {
-                  axios
-                    .post(APIs1.cometUserList, {
-                      profile_id: profile_id,
-                    })
-                    .then((response) => {
-                      this.setState({
-                        loaderImage: false,
-                        startCall: 1,
-                        allTasks: taskData,
-                        gender: gender
-                      });
-                      this.startTimer(taskData);
-                    })
-                    .catch((err) => {
-                      this.setState({
-                        loaderImage: false,
-                      });
-                    });
-                }).catch((err) => {
-                  this.setState({
-                    loaderImage: false,
-                  });
-                });
+              // CometChat.login(profile_id, COMETCHAT_CONSTANTS.AUTH_KEY)
+              //   .then((resp) => {
+              //     axios
+              //       .post(APIs1.cometUserList, {
+              //         profile_id: profile_id,
+              //       })
+              //       .then((response) => {
+              //         this.setState({
+              //           loaderImage: false,
+              //           startCall: 1,
+              //           allTasks: taskData,
+              //           gender: gender
+              //         });
+              //         this.startTimer(taskData);
+              //       })
+              //       .catch((err) => {
+              //         this.setState({
+              //           loaderImage: false,
+              //         });
+              //       });
+              //   }).catch((err) => {
+              //     this.setState({
+              //       loaderImage: false,
+              //     });
+              //   });
             } else {
               this.setState({
                 loaderImage: false, startCall: 7,

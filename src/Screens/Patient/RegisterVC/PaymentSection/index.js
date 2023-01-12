@@ -173,21 +173,21 @@ class Index extends Component {
                                     {/* Website Menu */}
                                     <LeftMenu isNotShow={true} currentPage="feedback" />
                                     <LeftMenuMobile isNotShow={true} currentPage="feedback" />
-                                    <Grid item xs={12} md={11} lg={10}>
+                                    <Grid item xs={12} md={7} lg={6}>
                                         <Grid className="docsOpinion">
                                             <Grid container direction="row" className="docsOpinLbl">
-                                                <Grid item xs={12} md={6}>
+                                                <Grid item xs={12} sm={6} md={6}>
                                                     <label> {allData?.payment_by === "Top-Up" ? "Top Up" : "Credit Card"} Payment</label>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={8}>
+                                        <Grid item xs={12} sm={12} md={12} lg={12}>
                                             <Grid className="cnfrmDiaMain profilePkg cnfrmDiaMain1">
                                                 <div className="payment_sec_extra_ser1">
                                                     <div className="sbu_button">
                                                         <h2>{Payment}</h2>
                                                         <Grid container direction="row" spacing={2}>
-                                                            <Grid item xs={12} md={6}>
+                                                            <Grid item xs={12} sm={6} md={6}>
                                                                 {allData?.payment_by === "Top-Up" ? <button
                                                                     onClick={() => {
                                                                         CallTopUpApi(this, allData);
@@ -199,7 +199,7 @@ class Index extends Component {
                                                                     : <Checkout />
                                                                 }
                                                             </Grid>
-                                                            <Grid item xs={12} md={6}>
+                                                            <Grid item xs={12} sm={6} md={6}>
                                                                 <button
                                                                     onClick={() => {
                                                                         CancelClick(this);
