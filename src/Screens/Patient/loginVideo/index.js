@@ -29,7 +29,7 @@ const LoginVideo = (props) => {
   const [errormsg, setErrormsg] = useState("");
 
   let translate = getLanguage(props.stateLanguageType);
-  let { login_video_confrence, username, password, login_LOGIN_btn, login_Forgotpassword, login_Password } =
+  let { login_video_confrence, username, password, login_LOGIN_btn1, forget_credentials, login_Password } =
     translate;
 
   const toggleShow = () => {
@@ -164,7 +164,7 @@ const LoginVideo = (props) => {
                             <Grid item xs={11} sm={6} md={6}>
                               <label>{login_Password}</label>
                             </Grid>
-                            <Grid
+                            {/* <Grid
                               item
                               xs={11}
                               sm={6}
@@ -178,7 +178,7 @@ const LoginVideo = (props) => {
                                   {login_Forgotpassword}
                                 </a>
                               </label>
-                            </Grid>
+                            </Grid> */}
                           </Grid>
                           <Grid className="logPass">
                             {/* <Grid>
@@ -210,14 +210,27 @@ const LoginVideo = (props) => {
                               </a>
                             )}
                           </Grid></Grid>
+                        <Grid xs={12} md={12} lg={12}>
+                          <Grid container direction="row" className="applyCssOnBtn">
+                            <Grid item xs={12} md={6} lg={6}>
+                              <Grid className="infoShwSave3">
+                                <input
+                                  type="submit"
+                                  value={login_LOGIN_btn1}
+                                  onClick={() => BtnSubmit()}
+                                />
+                              </Grid>
+                            </Grid>
 
-                        <Grid className="infoShwSave3">
-                          <input
-                            type="submit"
-                            value={login_LOGIN_btn}
-                            onClick={() => BtnSubmit()}
-                          />
-                        </Grid>
+                            <Grid item xs={12} md={6} lg={6}>
+                              <Grid className="infoShwSave3">
+                                <input
+                                  type="submit"
+                                  value={forget_credentials}
+                                  onClick={() => forgotPassword()}
+                                />
+                              </Grid>
+                            </Grid>   </Grid></Grid>
                       </Grid>
 
                     </Grid>
