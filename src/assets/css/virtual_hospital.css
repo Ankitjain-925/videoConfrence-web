@@ -18282,3 +18282,8 @@ min-height: 44px!important;
 .darkTheme .profileInfoIner343 input{
   min-height: 44px!important;
   }
+
+.darkTheme .addCustomAmt input{
+  background-color: #000;
+  color: #d9dada;
+ } 

@@ -266,7 +266,7 @@ const Dashboard = (props) => {
                               <div>
                                 <h2 className="custom-topup-head">{add_custom_amount}</h2>
                               </div>
-                              <div className="custom-topup-field form_full">
+                              <div className="custom-topup-field form_full addCustomAmt">
                               <div className="err_message">{errormsg}</div>
                                 <MMHG
                                   onKeyDown={(e) => onKeyDownlogin(e)}
