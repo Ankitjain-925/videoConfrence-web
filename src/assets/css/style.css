@@ -16988,7 +16988,7 @@ select:-webkit-autofill:focus {
     width: 100% !important;
   }
   .selCalenderUpr {
-    display: block !important;
+    display: inline-block !important;
   }
   .selCalenderUpr .selTimeSlot .selTimeAM {
     height: 110px !important;
