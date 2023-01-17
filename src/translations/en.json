@@ -521,6 +521,8 @@
     "disabled":"Disabled",
     "login_LOGIN_btn1":"Log In",
     "forget_credentials":"Forget Credentials",
-    "change_crendential":"Change Credentials"
+    "change_crendential":"Change Credentials",
+    "confirm_password_same_as_new":"Confirm Passward must same as New passward",
+    "username_not_empty":"Username & New Password & Confirm Password can't be empty"
   }
 }

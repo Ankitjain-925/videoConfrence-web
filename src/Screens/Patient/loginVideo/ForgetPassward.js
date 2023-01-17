@@ -29,7 +29,7 @@ const LoginVideo = (props) => {
     const [errormsg, setErrormsg] = useState("");
     const [loaderImage, setloaderImage] = useState(false);
     let translate = getLanguage(props.stateLanguageType);
-    let { back_sec, forget_credentials, new_password, confirm_password, change_crendential, username
+    let { back_sec, forget_credentials, new_password, confirm_password, change_crendential, username, confirm_password_same_as_new, username_not_empty
     } =
         translate;
 
@@ -39,14 +39,14 @@ const LoginVideo = (props) => {
 
     const BtnSubmit = () => {
         if (_username && _newPassword && _confPassword && _newPassword.localeCompare(_confPassword)) {
-            setErrormsg("Confirm Passward must same as New passward");
+            setErrormsg(confirm_password_same_as_new);
             setError(true);
         }
         else if (_username !== "" && _newPassword !== "" && _confPassword !== "") {
             confirmSubmit();
         }
         else {
-            setErrormsg("Username & New Password & Confirm Password not empty");
+            setErrormsg(username_not_empty);
             setError(true);
         }
     };

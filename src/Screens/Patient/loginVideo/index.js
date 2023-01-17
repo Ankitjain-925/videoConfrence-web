@@ -211,7 +211,7 @@ const LoginVideo = (props) => {
                             )}
                           </Grid></Grid>
                         <Grid xs={12} md={12} lg={12}>
-                          <Grid container direction="row" className="applyCssOnBtn">
+                          <Grid container direction="row">
                             <Grid item xs={12} md={6} lg={6}>
                               <Grid className="infoShwSave3">
                                 <input
@@ -223,19 +223,30 @@ const LoginVideo = (props) => {
                             </Grid>
 
                             <Grid item xs={12} md={6} lg={6}>
-                              <Grid className="infoShwSave3">
+                              {/* <Grid className="infoShwSave3">
                                 <input
                                   type="submit"
                                   value={forget_credentials}
                                   onClick={() => forgotPassword()}
                                 />
+                              </Grid> */}
+
+                              <Grid item xs={11} sm={6} md={6}
+                                className="logFrgtpass logFrgtpass1"
+                              >
+                                <label>
+                                  <a
+                                    onClick={forgotPassword}
+                                  >
+                                    {forget_credentials}
+                                  </a>
+                                </label>
                               </Grid>
-                            </Grid>   </Grid></Grid>
+                            </Grid>
+                          </Grid>
+                        </Grid>
                       </Grid>
-
                     </Grid>
-
-
                   </Grid>
                   {/* </Grid> */}
                 </Grid>
