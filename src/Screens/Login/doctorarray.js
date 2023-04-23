@@ -162,13 +162,16 @@ export const Doctorarrays = (type, user, token, CB = () => { }) => {
                   doctorArray.push(doctor8.toLowerCase());
                 }
               }
-              response.data.data &&
+              response &&
+                response.data &&
+                response.data.data &&
                 response.data.data.fav_doctor &&
+                response.data.data.fav_doctor.length > 0 &&
                 response.data.data.fav_doctor.map((value, i) => {
                   if (
-                    doctorArray.indexOf(value?.profile_id.toLowerCase()) === -1
+                    doctorArray.indexOf(value?.profile_id?.toLowerCase()) === -1
                   ) {
-                    doctorArray.push(value?.profile_id.toLowerCase());
+                    doctorArray.push(value?.profile_id?.toLowerCase());
                   }
                 });
               CB();

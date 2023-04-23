@@ -2674,7 +2674,7 @@ export const SelectTimeSlot = (AppointDay, Ai, data, current) => {
   if (data && data.isBooked) {
     current.setState({ currentSelected: Ai, bookedError: this_time_slot_is_already_booked + ' ' + please_select + ' ' + another_one });
   } else if (data && data.isAlreadyExist) {
-    current.setState({ currentSelected: Ai, bookedError: please_select + ' ' + upcoming_slots });
+    current.setState({ currentSelected: Ai, bookedError: '' });
   } else {
     current.setState({ bookedError: '', currentSelected: Ai });
   }
